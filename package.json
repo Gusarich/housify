@@ -1,0 +1,25 @@
+{
+    "name": "housify",
+    "version": "0.0.1",
+    "main": "index.js",
+    "author": "Gusarich",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "spell": "cspell src",
+        "all": "yarn format && yarn lint && yarn spell && yarn build"
+    },
+    "devDependencies": {
+        "@eslint/create-config": "^1.1.5",
+        "@eslint/js": "^9.6.0",
+        "cspell": "^8.10.4",
+        "eslint": "9.x",
+        "eslint-config-prettier": "^9.1.0",
+        "globals": "^15.8.0",
+        "prettier": "3.3.2",
+        "typescript": "^5.5.3",
+        "typescript-eslint": "^7.15.0"
+    }
+}
