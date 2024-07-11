@@ -195,7 +195,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
     },
     integerLiteral(_arg0) {
         return createAstNode({
-            kind: 'expressionLiteral',
+            kind: 'integerLiteral',
             value: this.sourceString,
         });
     },
@@ -214,7 +214,7 @@ semantics.addOperation<AstBinaryOp>('astOfBinaryOp', {
                 return op.sourceString as AstBinaryOp;
             default:
                 throw new Error(
-                    `Unexpected binary operator: ${op.sourceString}`,
+                    `Unexpected binary operator: '${op.sourceString}'`,
                 );
         }
     },
@@ -229,7 +229,7 @@ semantics.addOperation<AstUnaryOp>('astOfUnaryOp', {
                 return op.sourceString as AstUnaryOp;
             default:
                 throw new Error(
-                    `Unexpected unary operator: ${op.sourceString}`,
+                    `Unexpected unary operator: '${op.sourceString}'`,
                 );
         }
     },

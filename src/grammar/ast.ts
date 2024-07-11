@@ -77,7 +77,7 @@ export type AstExpression =
     | AstExpressionBinary
     | AstExpressionUnary
     | AstExpressionField
-    | AstExpressionLiteral
+    | AstIntegerLiteral
     | AstExpressionId;
 
 export type AstBinaryOp = '+' | '-' | '*' | '/';
@@ -106,8 +106,8 @@ export type AstExpressionField = {
     id: number;
 };
 
-export type AstExpressionLiteral = {
-    kind: 'expressionLiteral';
+export type AstIntegerLiteral = {
+    kind: 'integerLiteral';
     value: string;
     id: number;
 };
@@ -127,22 +127,9 @@ export type AstId = {
 export type AstNode =
     | AstModule
     | AstModuleItem
-    | AstHouse
     | AstHouseItem
-    | AstGlobalStat
-    | AstPlayerStat
-    | AstHandler
     | AstStatement
-    | AstStatementAssign
-    | AstStatementLet
-    | AstStatementExpression
-    | AstStatementIf
     | AstExpression
-    | AstExpressionBinary
-    | AstExpressionUnary
-    | AstExpressionField
-    | AstExpressionLiteral
-    | AstExpressionId
     | AstId;
 
 let nextId = 1;
