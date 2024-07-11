@@ -4,9 +4,23 @@ import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
-    { files: ['**/*.{js,mjs,cjs,ts}'] },
+    {
+        files: ['**/*.{js,mjs,cjs,ts}'],
+    },
     { languageOptions: { globals: globals.browser } },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     eslintConfigPrettier,
+    {
+        rules: {
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_',
+                    caughtErrorsIgnorePattern: '^_',
+                },
+            ],
+        },
+    },
 ];

@@ -1,0 +1,69 @@
+Housify {
+    Module = ModuleItem*
+
+    ModuleItem = House
+    
+    House = house id "{" HouseItem* "}"
+
+    HouseItem = GlobalStat | PlayerStat | Handler
+
+    GlobalStat = global id ":" Type ("=" Expression)? ";"
+    PlayerStat = player id ":" Type ("=" Expression)? ";"
+
+    Handler = handle id "{" Statement* "}"
+
+    Statement = StatementAssign
+              | StatementLet
+              | StatementExpression
+              | StatementIf
+    
+    StatementAssign = Expression "=" Expression ";"
+
+    StatementLet = let id ":" Type "=" Expression ";"
+
+    StatementExpression = Expression ";"
+
+    StatementIf = if Expression "{" Statement* "}" ~else --noElse
+                | if Expression "{" Statement* "}" else "{" Statement* "}" --withElse
+                | if Expression "{" Statement* "}" else StatementIf --withElseIf
+    
+    Expression = ExpressionBinary
+               | ExpressionUnary
+               | ExpressionField
+               | ExpressionLiteral
+               | ExpressionId
+               | ExpressionParens
+    
+    ExpressionBinary = Expression binaryOp Expression
+    ExpressionUnary = unaryOp Expression
+    ExpressionField = Expression "." id
+    ExpressionLiteral = integerLiteral
+    ExpressionId = id
+    ExpressionParens = "(" Expression ")"
+
+    binaryOp = "+" | "-" | "*" | "/"
+    unaryOp = "+" | "-" | "!"
+
+    Type = id --regular
+
+    integerLiteral = digit+
+
+    letterAsciiLC = "a".."z"
+    letterAsciiUC = "A".."Z"
+    letterAscii = letterAsciiLC | letterAsciiUC
+    letterComment = letterAsciiLC | letterAsciiUC | digit | "_"
+
+    idStart = letterAscii | "_"
+    idPart = letterAscii | digit | "_"
+    id = ~keyword #idStart #(idPart*)
+
+    house = "house" ~idPart
+    global = "global" ~idPart
+    player = "player" ~idPart
+    handle = "handle" ~idPart
+    let = "let" ~idPart
+    if = "if" ~idPart
+    else = "else" ~idPart
+
+    keyword = house | global | player | handle | let | if | else
+}
