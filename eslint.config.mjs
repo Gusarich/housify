@@ -21,6 +21,7 @@ export default [
                     caughtErrorsIgnorePattern: '^_',
                 },
             ],
+            'no-fallthrough': 'off',
         },
     },
 ];

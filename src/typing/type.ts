@@ -1,1 +1,8 @@
-export type Type = 'int';
+export type Type =
+    | { name: 'void' }
+    | {
+          name: 'int';
+      }
+    | {
+          name: 'bool';
+      };

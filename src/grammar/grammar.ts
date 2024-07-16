@@ -174,13 +174,6 @@ semantics.addOperation<AstNode>('astOfExpression', {
             operand: operand.astOfExpression(),
         });
     },
-    ExpressionField(path, _arg1, id) {
-        return createAstNode({
-            kind: 'expressionField',
-            path: path.astOfExpression(),
-            field: id.astOfExpression(),
-        });
-    },
     ExpressionLiteral(arg0) {
         return arg0.astOfExpression();
     },
@@ -225,7 +218,9 @@ semantics.addOperation<AstUnaryOp>('astOfUnaryOp', {
         switch (op.sourceString) {
             case '+':
             case '-':
-            case '!':
+            case 'not':
+            case 'and':
+            case 'or':
                 return op.sourceString as AstUnaryOp;
             default:
                 throw new Error(

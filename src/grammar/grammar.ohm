@@ -29,19 +29,17 @@ Housify {
     
     Expression = ExpressionBinary
                | ExpressionUnary
-               | ExpressionField
                | ExpressionLiteral
                | ExpressionId
                | ExpressionParens
     
     ExpressionBinary = Expression binaryOp Expression
     ExpressionUnary = unaryOp Expression
-    ExpressionField = Expression "." id
     ExpressionLiteral = integerLiteral
     ExpressionId = id
     ExpressionParens = "(" Expression ")"
 
-    binaryOp = "+" | "-" | "*" | "/"
+    binaryOp = "+" | "-" | "*" | "/" | "==" | "!=" | "<" | "<=" | ">" | ">=" | "&&" | "||"
     unaryOp = "+" | "-" | "!"
 
     Type = id --regular

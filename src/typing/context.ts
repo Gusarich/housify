@@ -7,6 +7,14 @@ export class StatementContext {
         this.variables = new Map();
     }
 
+    clone() {
+        const sctx = new StatementContext();
+        for (const [name, type] of this.variables) {
+            sctx.addVariable(name, type);
+        }
+        return sctx;
+    }
+
     addVariable(name: string, type: Type) {
         this.variables.set(name, type);
     }

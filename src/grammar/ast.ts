@@ -76,11 +76,22 @@ export type AstStatementIf = {
 export type AstExpression =
     | AstExpressionBinary
     | AstExpressionUnary
-    | AstExpressionField
     | AstIntegerLiteral
     | AstExpressionId;
 
-export type AstBinaryOp = '+' | '-' | '*' | '/';
+export type AstBinaryOp =
+    | '+'
+    | '-'
+    | '*'
+    | '/'
+    | '=='
+    | '!='
+    | '<'
+    | '<='
+    | '>'
+    | '>='
+    | '&&'
+    | '||';
 
 export type AstExpressionBinary = {
     kind: 'expressionBinary';
@@ -96,13 +107,6 @@ export type AstExpressionUnary = {
     kind: 'expressionUnary';
     op: AstUnaryOp;
     operand: AstExpression;
-    id: number;
-};
-
-export type AstExpressionField = {
-    kind: 'expressionField';
-    path: AstExpression;
-    field: AstId;
     id: number;
 };
 
