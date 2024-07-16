@@ -27,7 +27,8 @@ Housify {
                 | if Expression "{" Statement* "}" else "{" Statement* "}" --withElse
                 | if Expression "{" Statement* "}" else StatementIf --withElseIf
     
-    Expression = ExpressionBinary
+    Expression = ExpressionField
+               | ExpressionBinary
                | ExpressionUnary
                | ExpressionLiteral
                | ExpressionId
@@ -37,6 +38,7 @@ Housify {
     ExpressionUnary = unaryOp Expression
     ExpressionLiteral = integerLiteral
     ExpressionId = id
+    ExpressionField = Expression "." id
     ExpressionParens = "(" Expression ")"
 
     binaryOp = "+" | "-" | "*" | "/" | "==" | "!=" | "<" | "<=" | ">" | ">=" | "&&" | "||"

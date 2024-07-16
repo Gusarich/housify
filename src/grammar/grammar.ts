@@ -180,6 +180,13 @@ semantics.addOperation<AstNode>('astOfExpression', {
     ExpressionId(arg0) {
         return arg0.astOfExpression();
     },
+    ExpressionField(struct, _arg1, field) {
+        return createAstNode({
+            kind: 'expressionField',
+            struct: struct.astOfExpression(),
+            field: field.astOfExpression(),
+        });
+    },
     id(_arg0, _arg1) {
         return createAstNode({
             kind: 'id',

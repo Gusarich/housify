@@ -74,10 +74,18 @@ export type AstStatementIf = {
 };
 
 export type AstExpression =
+    | AstExpressionField
     | AstExpressionBinary
     | AstExpressionUnary
     | AstIntegerLiteral
     | AstExpressionId;
+
+export type AstExpressionField = {
+    kind: 'expressionField';
+    struct: AstExpression;
+    field: AstId;
+    id: number;
+};
 
 export type AstBinaryOp =
     | '+'

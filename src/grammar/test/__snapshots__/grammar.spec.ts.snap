@@ -33,7 +33,7 @@ exports[`Grammar should fail 4 1`] = `
 > 4 |     }
           ^
   5 | }
-Expected ";", "=", "||", "&&", ">=", ">", "<=", "<", "!=", "==", "/", "*", "-", or "+""
+Expected ";", "=", "||", "&&", ">=", ">", "<=", "<", "!=", "==", "/", "*", "-", "+", or ".""
 `;
 
 exports[`Grammar should fail 5 1`] = `
@@ -78,7 +78,7 @@ exports[`Grammar should fail 9 1`] = `
 > 4 |     }
           ^
   5 | }
-Expected ";", "=", "||", "&&", ">=", ">", "<=", "<", "!=", "==", "/", "*", "-", or "+""
+Expected ";", "=", "||", "&&", ">=", ">", "<=", "<", "!=", "==", "/", "*", "-", "+", or ".""
 `;
 
 exports[`Grammar should fail 10 1`] = `
@@ -623,6 +623,133 @@ exports[`Grammar should parse 10 1`] = `
               },
               "id": 8,
               "kind": "statementExpression",
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse 11 1`] = `
+{
+  "id": 26,
+  "items": [
+    {
+      "id": 25,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BlockBreak",
+          },
+          "id": 24,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 7,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 4,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 5,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "self",
+                },
+              },
+              "value": {
+                "id": 6,
+                "kind": "integerLiteral",
+                "value": "10",
+              },
+            },
+            {
+              "id": 14,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 11,
+                  "kind": "id",
+                  "name": "y",
+                },
+                "id": 12,
+                "kind": "expressionField",
+                "struct": {
+                  "field": {
+                    "id": 9,
+                    "kind": "id",
+                    "name": "x",
+                  },
+                  "id": 10,
+                  "kind": "expressionField",
+                  "struct": {
+                    "id": 8,
+                    "kind": "id",
+                    "name": "self",
+                  },
+                },
+              },
+              "value": {
+                "id": 13,
+                "kind": "integerLiteral",
+                "value": "10",
+              },
+            },
+            {
+              "id": 23,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 20,
+                  "kind": "id",
+                  "name": "z",
+                },
+                "id": 21,
+                "kind": "expressionField",
+                "struct": {
+                  "field": {
+                    "id": 18,
+                    "kind": "id",
+                    "name": "y",
+                  },
+                  "id": 19,
+                  "kind": "expressionField",
+                  "struct": {
+                    "field": {
+                      "id": 16,
+                      "kind": "id",
+                      "name": "x",
+                    },
+                    "id": 17,
+                    "kind": "expressionField",
+                    "struct": {
+                      "id": 15,
+                      "kind": "id",
+                      "name": "self",
+                    },
+                  },
+                },
+              },
+              "value": {
+                "id": 22,
+                "kind": "integerLiteral",
+                "value": "10",
+              },
             },
           ],
         },

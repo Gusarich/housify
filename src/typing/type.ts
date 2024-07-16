@@ -5,4 +5,8 @@ export type Type =
       }
     | {
           name: 'bool';
+      }
+    | {
+          name: 'struct';
+          fields: { name: string; type: Type }[];
       };

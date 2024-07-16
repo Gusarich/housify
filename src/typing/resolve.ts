@@ -61,6 +61,19 @@ export function resolveExpression(
                     return { name: 'bool' };
             }
         }
+        case 'expressionField': {
+            const struct = resolveExpression(expression.struct, sctx);
+            if (struct.name !== 'struct') {
+                throw new Error('Expression must be a struct');
+            }
+            const field = struct.fields.find(
+                (field) => field.name === expression.field.name,
+            );
+            if (!field) {
+                throw new Error(`Field '${expression.field.name}' not found`);
+            }
+            return field.type;
+        }
     }
 }
 
