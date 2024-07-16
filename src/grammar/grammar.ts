@@ -204,6 +204,14 @@ semantics.addOperation<AstBinaryOp>('astOfBinaryOp', {
             case '-':
             case '*':
             case '/':
+            case '==':
+            case '!=':
+            case '<':
+            case '<=':
+            case '>':
+            case '>=':
+            case '&&':
+            case '||':
                 return op.sourceString as AstBinaryOp;
             default:
                 throw new Error(
@@ -218,9 +226,7 @@ semantics.addOperation<AstUnaryOp>('astOfUnaryOp', {
         switch (op.sourceString) {
             case '+':
             case '-':
-            case 'not':
-            case 'and':
-            case 'or':
+            case '!':
                 return op.sourceString as AstUnaryOp;
             default:
                 throw new Error(
