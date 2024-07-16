@@ -31,14 +31,6 @@ jobs:
               run: |
                   yarn install
 
-            - name: List installed packages
-              run: |
-                  yarn list
-
-            - name: Print environment info
-              run: |
-                  yarn cross-env echo $NODE_ENV
-
             - name: Build the compiler
               run: |
                   yarn clean
