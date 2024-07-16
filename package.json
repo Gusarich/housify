@@ -8,7 +8,7 @@
         "build": "ohm generateBundles --withTypes src/grammar/*.ohm && tsc",
         "lint": "eslint .",
         "format": "prettier --write .",
-        "format:check": "prettier --check .",
+        "format:check": "prettier --check . --end-of-line auto",
         "spell": "cspell src",
         "all": "yarn format && yarn lint && yarn spell && yarn build",
         "test": "jest",
