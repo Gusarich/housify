@@ -5,7 +5,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
     {
-        files: ['**/*.{js,mjs,cjs,ts}'],
+        files: ['src/**/*.ts'],
     },
     { languageOptions: { globals: globals.browser } },
     pluginJs.configs.recommended,
@@ -23,5 +23,8 @@ export default [
             ],
             'no-fallthrough': 'off',
         },
+    },
+    {
+        ignores: ['**/*.{js,d.ts}', 'dist/**'],
     },
 ];
