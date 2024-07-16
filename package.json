@@ -5,13 +5,14 @@
     "author": "Gusarich",
     "license": "MIT",
     "scripts": {
-        "build": "tsc",
-        "gen:grammar": "ohm generateBundles --withTypes src/grammar/*.ohm",
+        "build": "ohm generateBundles --withTypes src/grammar/*.ohm && tsc",
         "lint": "eslint .",
         "format": "prettier --write .",
+        "format:check": "prettier --check .",
         "spell": "cspell src",
         "all": "yarn format && yarn lint && yarn spell && yarn build",
-        "test": "jest"
+        "test": "jest",
+        "clean": "rm -rf dist"
     },
     "devDependencies": {
         "@eslint/create-config": "^1.1.5",

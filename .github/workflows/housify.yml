@@ -1,0 +1,65 @@
+name: Housify CI
+
+on:
+    push:
+        branches: ['main']
+    pull_request:
+        branches: ['main']
+    workflow_dispatch:
+
+jobs:
+    test:
+        strategy:
+            fail-fast: false
+            matrix:
+                node-version: [20]
+                os: [ubuntu-latest, windows-latest, macos-latest]
+
+        runs-on: ${{ matrix.os }}
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'yarn'
+
+            - name: Install dependencies
+              run: |
+                  yarn install
+
+            - name: List installed packages
+              run: |
+                  yarn list
+
+            - name: Print environment info
+              run: |
+                  yarn cross-env echo $NODE_ENV
+
+            - name: Build the compiler
+              run: |
+                  yarn clean
+                  yarn build
+
+            - name: Check there are no uncommited changes
+              run: |
+                  npm pkg fix && git diff --exit-code
+
+            - name: Test the compiler
+              run: |
+                  yarn test
+
+            - name: Check there are no errors reported by ESLint
+              run: |
+                  yarn lint
+
+            - name: Check formatting with Prettier
+              run: |
+                  yarn format:check
+
+            - name: Spellcheck the codebase
+              run: |
+                  yarn spell
