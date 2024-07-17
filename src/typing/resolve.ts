@@ -57,6 +57,8 @@ export function resolveExpression(
         }
         case 'integerLiteral':
             return registerExpression(ctx, expression.id, { type: 'int' });
+        case 'booleanLiteral':
+            return registerExpression(ctx, expression.id, { type: 'bool' });
         case 'expressionBinary': {
             const left = resolveExpression(expression.left, ctx, sctx);
             const right = resolveExpression(expression.right, ctx, sctx);
@@ -129,7 +131,6 @@ export function resolveExpression(
             return registerExpression(ctx, expression.id, field.type);
         }
     }
-    console.log('wtf?', expression);
 }
 
 export function processStatement(
@@ -257,11 +258,13 @@ export function processHouse(
             case 'globalStat':
                 processStatDefinition(item, ctx, sctx);
                 break;
-            case 'handler':
+            case 'handler': {
+                const sctxHandler = sctx.clone();
                 for (const statement of item.statements) {
-                    processStatement(statement, ctx, sctx.clone());
+                    processStatement(statement, ctx, sctxHandler);
                 }
                 break;
+            }
         }
     }
 }

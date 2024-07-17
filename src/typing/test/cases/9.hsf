@@ -1,0 +1,7 @@
+house MyHouse {
+    handle BlockBreak {
+        let y: int = 10;
+        let z: int = y + 10;
+        let x: int = y + z;
+    }
+}

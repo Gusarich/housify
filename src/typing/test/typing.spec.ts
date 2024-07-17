@@ -4,7 +4,7 @@ import { resetNodeId } from '../../grammar/ast';
 import { parse } from '../../grammar/grammar';
 import { CompilerContext } from '../context';
 
-describe('Grammar', () => {
+describe('Typing', () => {
     beforeEach(() => {
         resetNodeId();
     });
