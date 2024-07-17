@@ -207,6 +207,12 @@ semantics.addOperation<AstNode>('astOfExpression', {
             value: this.sourceString,
         });
     },
+    booleanLiteral(_arg0) {
+        return createAstNode({
+            kind: 'booleanLiteral',
+            value: this.sourceString === 'true',
+        });
+    },
     ExpressionParens(_arg0, expression, _arg2) {
         return expression.astOfExpression();
     },

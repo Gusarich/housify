@@ -37,7 +37,7 @@ Housify {
     
     ExpressionBinary = Expression binaryOp Expression
     ExpressionUnary = unaryOp Expression
-    ExpressionLiteral = integerLiteral
+    ExpressionLiteral = integerLiteral | booleanLiteral
     ExpressionId = id
     ExpressionField = Expression "." id
     ExpressionParens = "(" Expression ")"
@@ -48,6 +48,8 @@ Housify {
     Type = id --regular
 
     integerLiteral = digit+
+
+    booleanLiteral = true | false
 
     letterAsciiLC = "a".."z"
     letterAsciiUC = "A".."Z"
@@ -68,6 +70,8 @@ Housify {
     let = "let" ~idPart
     if = "if" ~idPart
     else = "else" ~idPart
+    true = "true" ~idPart
+    false = "false" ~idPart
 
     keyword = house | global | player | handle | let | if | else
 }

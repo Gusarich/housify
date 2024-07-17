@@ -78,6 +78,7 @@ export type AstExpression =
     | AstExpressionBinary
     | AstExpressionUnary
     | AstIntegerLiteral
+    | AstBooleanLiteral
     | AstExpressionId;
 
 export type AstExpressionField = {
@@ -121,6 +122,12 @@ export type AstExpressionUnary = {
 export type AstIntegerLiteral = {
     kind: 'integerLiteral';
     value: string;
+    id: number;
+};
+
+export type AstBooleanLiteral = {
+    kind: 'booleanLiteral';
+    value: boolean;
     id: number;
 };
 
