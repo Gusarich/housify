@@ -61,11 +61,11 @@ export class CompilerContext {
     }
 
     clone() {
-        const cctx = new CompilerContext();
+        const ctx = new CompilerContext();
         for (const [id, type] of this.expressions) {
-            cctx.addExpression(id, type);
+            ctx.addExpression(id, type);
         }
-        return cctx;
+        return ctx;
     }
 
     addExpression(id: number, type: Type) {
