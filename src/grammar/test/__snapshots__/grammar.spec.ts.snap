@@ -199,10 +199,10 @@ exports[`Grammar should parse 1 1`] = `
 
 exports[`Grammar should parse 2 1`] = `
 {
-  "id": 8,
+  "id": 9,
   "items": [
     {
-      "id": 7,
+      "id": 8,
       "items": [
         {
           "event": {
@@ -210,19 +210,23 @@ exports[`Grammar should parse 2 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 6,
+          "id": 7,
           "kind": "handler",
           "statements": [
             {
-              "id": 5,
+              "id": 6,
               "kind": "statementAssign",
               "lvalue": {
-                "id": 3,
-                "kind": "id",
-                "name": "x",
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
               },
               "value": {
-                "id": 4,
+                "id": 5,
                 "kind": "integerLiteral",
                 "value": "5",
               },
@@ -334,10 +338,10 @@ exports[`Grammar should parse 4 1`] = `
 
 exports[`Grammar should parse 5 1`] = `
 {
-  "id": 12,
+  "id": 14,
   "items": [
     {
-      "id": 11,
+      "id": 13,
       "items": [
         {
           "event": {
@@ -345,38 +349,46 @@ exports[`Grammar should parse 5 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 10,
+          "id": 12,
           "kind": "handler",
           "statements": [
             {
               "condition": {
-                "id": 5,
+                "id": 6,
                 "kind": "expressionBinary",
                 "left": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "x",
+                  "id": 4,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 3,
+                    "kind": "id",
+                    "name": "x",
+                  },
                 },
                 "op": "==",
                 "right": {
-                  "id": 4,
+                  "id": 5,
                   "kind": "integerLiteral",
                   "value": "5",
                 },
               },
-              "id": 9,
+              "id": 11,
               "kind": "statementIf",
               "then": [
                 {
-                  "id": 8,
+                  "id": 10,
                   "kind": "statementAssign",
                   "lvalue": {
-                    "id": 6,
-                    "kind": "id",
-                    "name": "y",
+                    "id": 8,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 7,
+                      "kind": "id",
+                      "name": "y",
+                    },
                   },
                   "value": {
-                    "id": 7,
+                    "id": 9,
                     "kind": "integerLiteral",
                     "value": "10",
                   },
@@ -400,10 +412,10 @@ exports[`Grammar should parse 5 1`] = `
 
 exports[`Grammar should parse 6 1`] = `
 {
-  "id": 10,
+  "id": 11,
   "items": [
     {
-      "id": 9,
+      "id": 10,
       "items": [
         {
           "event": {
@@ -411,28 +423,32 @@ exports[`Grammar should parse 6 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 8,
+          "id": 9,
           "kind": "handler",
           "statements": [
             {
-              "id": 7,
+              "id": 8,
               "kind": "statementAssign",
               "lvalue": {
-                "id": 3,
-                "kind": "id",
-                "name": "x",
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
               },
               "value": {
-                "id": 6,
+                "id": 7,
                 "kind": "expressionBinary",
                 "left": {
-                  "id": 4,
+                  "id": 5,
                   "kind": "integerLiteral",
                   "value": "5",
                 },
                 "op": "+",
                 "right": {
-                  "id": 5,
+                  "id": 6,
                   "kind": "integerLiteral",
                   "value": "3",
                 },
@@ -455,10 +471,10 @@ exports[`Grammar should parse 6 1`] = `
 
 exports[`Grammar should parse 7 1`] = `
 {
-  "id": 9,
+  "id": 10,
   "items": [
     {
-      "id": 8,
+      "id": 9,
       "items": [
         {
           "event": {
@@ -466,23 +482,27 @@ exports[`Grammar should parse 7 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 7,
+          "id": 8,
           "kind": "handler",
           "statements": [
             {
-              "id": 6,
+              "id": 7,
               "kind": "statementAssign",
               "lvalue": {
-                "id": 3,
-                "kind": "id",
-                "name": "x",
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
               },
               "value": {
-                "id": 5,
+                "id": 6,
                 "kind": "expressionUnary",
                 "op": "-",
                 "operand": {
-                  "id": 4,
+                  "id": 5,
                   "kind": "integerLiteral",
                   "value": "5",
                 },
@@ -505,10 +525,10 @@ exports[`Grammar should parse 7 1`] = `
 
 exports[`Grammar should parse 8 1`] = `
 {
-  "id": 8,
+  "id": 9,
   "items": [
     {
-      "id": 7,
+      "id": 8,
       "items": [
         {
           "event": {
@@ -516,19 +536,23 @@ exports[`Grammar should parse 8 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 6,
+          "id": 7,
           "kind": "handler",
           "statements": [
             {
-              "id": 5,
+              "id": 6,
               "kind": "statementAssign",
               "lvalue": {
-                "id": 3,
-                "kind": "id",
-                "name": "x",
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
               },
               "value": {
-                "id": 4,
+                "id": 5,
                 "kind": "integerLiteral",
                 "value": "42",
               },
@@ -550,10 +574,10 @@ exports[`Grammar should parse 8 1`] = `
 
 exports[`Grammar should parse 9 1`] = `
 {
-  "id": 7,
+  "id": 8,
   "items": [
     {
-      "id": 6,
+      "id": 7,
       "items": [
         {
           "event": {
@@ -561,16 +585,20 @@ exports[`Grammar should parse 9 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 5,
+          "id": 6,
           "kind": "handler",
           "statements": [
             {
               "expression": {
-                "id": 3,
-                "kind": "id",
-                "name": "myVar",
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "myVar",
+                },
               },
-              "id": 4,
+              "id": 5,
               "kind": "statementExpression",
             },
           ],
@@ -590,10 +618,10 @@ exports[`Grammar should parse 9 1`] = `
 
 exports[`Grammar should parse 10 1`] = `
 {
-  "id": 11,
+  "id": 14,
   "items": [
     {
-      "id": 10,
+      "id": 13,
       "items": [
         {
           "event": {
@@ -601,36 +629,48 @@ exports[`Grammar should parse 10 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 9,
+          "id": 12,
           "kind": "handler",
           "statements": [
             {
               "expression": {
-                "id": 7,
+                "id": 10,
                 "kind": "expressionBinary",
                 "left": {
-                  "id": 5,
+                  "id": 7,
                   "kind": "expressionBinary",
                   "left": {
-                    "id": 3,
-                    "kind": "id",
-                    "name": "x",
+                    "id": 4,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 3,
+                      "kind": "id",
+                      "name": "x",
+                    },
                   },
                   "op": "+",
                   "right": {
-                    "id": 4,
-                    "kind": "id",
-                    "name": "y",
+                    "id": 6,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 5,
+                      "kind": "id",
+                      "name": "y",
+                    },
                   },
                 },
                 "op": "*",
                 "right": {
-                  "id": 6,
-                  "kind": "id",
-                  "name": "z",
+                  "id": 9,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 8,
+                    "kind": "id",
+                    "name": "z",
+                  },
                 },
               },
-              "id": 8,
+              "id": 11,
               "kind": "statementExpression",
             },
           ],
@@ -650,10 +690,10 @@ exports[`Grammar should parse 10 1`] = `
 
 exports[`Grammar should parse 11 1`] = `
 {
-  "id": 26,
+  "id": 29,
   "items": [
     {
-      "id": 25,
+      "id": 28,
       "items": [
         {
           "event": {
@@ -661,93 +701,60 @@ exports[`Grammar should parse 11 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 24,
+          "id": 27,
           "kind": "handler",
           "statements": [
             {
-              "id": 7,
+              "id": 8,
               "kind": "statementAssign",
               "lvalue": {
                 "field": {
-                  "id": 4,
+                  "id": 5,
                   "kind": "id",
                   "name": "x",
                 },
-                "id": 5,
-                "kind": "expressionField",
-                "struct": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "self",
-                },
-              },
-              "value": {
                 "id": 6,
-                "kind": "integerLiteral",
-                "value": "10",
-              },
-            },
-            {
-              "id": 14,
-              "kind": "statementAssign",
-              "lvalue": {
-                "field": {
-                  "id": 11,
-                  "kind": "id",
-                  "name": "y",
-                },
-                "id": 12,
                 "kind": "expressionField",
                 "struct": {
-                  "field": {
-                    "id": 9,
-                    "kind": "id",
-                    "name": "x",
-                  },
-                  "id": 10,
-                  "kind": "expressionField",
-                  "struct": {
-                    "id": 8,
+                  "id": 4,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 3,
                     "kind": "id",
                     "name": "self",
                   },
                 },
               },
               "value": {
-                "id": 13,
+                "id": 7,
                 "kind": "integerLiteral",
                 "value": "10",
               },
             },
             {
-              "id": 23,
+              "id": 16,
               "kind": "statementAssign",
               "lvalue": {
                 "field": {
-                  "id": 20,
+                  "id": 13,
                   "kind": "id",
-                  "name": "z",
+                  "name": "y",
                 },
-                "id": 21,
+                "id": 14,
                 "kind": "expressionField",
                 "struct": {
                   "field": {
-                    "id": 18,
+                    "id": 11,
                     "kind": "id",
-                    "name": "y",
+                    "name": "x",
                   },
-                  "id": 19,
+                  "id": 12,
                   "kind": "expressionField",
                   "struct": {
-                    "field": {
-                      "id": 16,
-                      "kind": "id",
-                      "name": "x",
-                    },
-                    "id": 17,
-                    "kind": "expressionField",
-                    "struct": {
-                      "id": 15,
+                    "id": 10,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 9,
                       "kind": "id",
                       "name": "self",
                     },
@@ -755,7 +762,52 @@ exports[`Grammar should parse 11 1`] = `
                 },
               },
               "value": {
-                "id": 22,
+                "id": 15,
+                "kind": "integerLiteral",
+                "value": "10",
+              },
+            },
+            {
+              "id": 26,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 23,
+                  "kind": "id",
+                  "name": "z",
+                },
+                "id": 24,
+                "kind": "expressionField",
+                "struct": {
+                  "field": {
+                    "id": 21,
+                    "kind": "id",
+                    "name": "y",
+                  },
+                  "id": 22,
+                  "kind": "expressionField",
+                  "struct": {
+                    "field": {
+                      "id": 19,
+                      "kind": "id",
+                      "name": "x",
+                    },
+                    "id": 20,
+                    "kind": "expressionField",
+                    "struct": {
+                      "id": 18,
+                      "kind": "expressionId",
+                      "name": {
+                        "id": 17,
+                        "kind": "id",
+                        "name": "self",
+                      },
+                    },
+                  },
+                },
+              },
+              "value": {
+                "id": 25,
                 "kind": "integerLiteral",
                 "value": "10",
               },
@@ -777,10 +829,10 @@ exports[`Grammar should parse 11 1`] = `
 
 exports[`Grammar should parse 12 1`] = `
 {
-  "id": 10,
+  "id": 11,
   "items": [
     {
-      "id": 9,
+      "id": 10,
       "items": [
         {
           "event": {
@@ -788,28 +840,32 @@ exports[`Grammar should parse 12 1`] = `
             "kind": "id",
             "name": "BlockBreak",
           },
-          "id": 8,
+          "id": 9,
           "kind": "handler",
           "statements": [
             {
-              "id": 7,
+              "id": 8,
               "kind": "statementAssign",
               "lvalue": {
                 "field": {
-                  "id": 4,
+                  "id": 5,
                   "kind": "id",
                   "name": "x",
                 },
-                "id": 5,
+                "id": 6,
                 "kind": "expressionField",
                 "struct": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "global",
+                  "id": 4,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 3,
+                    "kind": "id",
+                    "name": "global",
+                  },
                 },
               },
               "value": {
-                "id": 6,
+                "id": 7,
                 "kind": "integerLiteral",
                 "value": "123",
               },

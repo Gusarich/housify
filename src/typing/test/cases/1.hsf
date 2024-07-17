@@ -1,0 +1,8 @@
+house MyHouse {
+    global x: int = 10;
+
+    handle BlockBreak {
+        global.x = 123;
+        let y: int = global.x + 1;
+    }
+}

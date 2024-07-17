@@ -1,12 +1,13 @@
 export type Type =
-    | { name: 'void' }
+    | { type: 'void' }
     | {
-          name: 'int';
+          type: 'int';
       }
     | {
-          name: 'bool';
+          type: 'bool';
       }
     | {
-          name: 'struct';
+          type: 'struct';
+          name: string;
           fields: { name: string; type: Type }[];
       };

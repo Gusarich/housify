@@ -183,7 +183,10 @@ semantics.addOperation<AstNode>('astOfExpression', {
         return arg0.astOfExpression();
     },
     ExpressionId(arg0) {
-        return arg0.astOfExpression();
+        return createAstNode({
+            kind: 'expressionId',
+            name: arg0.astOfExpression(),
+        });
     },
     ExpressionField(struct, _arg1, field) {
         return createAstNode({
