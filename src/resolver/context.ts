@@ -1,3 +1,4 @@
+import { EventType } from '../housing/events';
 import { Type } from './type';
 
 export class StatementContext {
@@ -53,17 +54,36 @@ export class StatementContext {
     }
 }
 
+export type House = {
+    globalStats: {
+        name: string;
+        type: Type;
+        defaultValue?: number | boolean;
+    }[];
+    playerStats: {
+        name: string;
+        type: Type;
+        defaultValue?: number | boolean;
+    }[];
+    handlers: EventType[];
+};
+
 export class CompilerContext {
     expressions: Map<number, Type>;
+    houses: Map<string, House>;
 
     constructor() {
         this.expressions = new Map();
+        this.houses = new Map();
     }
 
     clone() {
         const ctx = new CompilerContext();
         for (const [id, type] of this.expressions) {
             ctx.addExpression(id, type);
+        }
+        for (const [name, house] of this.houses) {
+            ctx.addHouse(name, house);
         }
         return ctx;
     }
@@ -82,5 +102,21 @@ export class CompilerContext {
 
     deleteExpression(id: number) {
         this.expressions.delete(id);
+    }
+
+    addHouse(name: string, house: House) {
+        this.houses.set(name, house);
+    }
+
+    getHouse(name: string) {
+        return this.houses.get(name);
+    }
+
+    hasHouse(name: string) {
+        return this.houses.has(name);
+    }
+
+    deleteHouse(name: string) {
+        this.houses.delete(name);
     }
 }

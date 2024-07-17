@@ -1,6 +1,14 @@
 {
     "version": "0.2",
     "language": "en",
-    "words": ["lvalue", "Housify", "Nonterminal", "sctx", "struct"],
+    "words": [
+        "lvalue",
+        "Housify",
+        "Nonterminal",
+        "sctx",
+        "struct",
+        "fadein",
+        "gamemode"
+    ],
     "ignorePaths": ["node_modules/**"]
 }

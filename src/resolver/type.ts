@@ -1,3 +1,5 @@
+import { AstExpression } from '../grammar/ast';
+
 export type Type =
     | { type: 'void' }
     | {
@@ -9,5 +11,5 @@ export type Type =
     | {
           type: 'struct';
           name: string;
-          fields: { name: string; type: Type }[];
+          fields: { name: string; type: Type; defaultValue?: AstExpression }[];
       };

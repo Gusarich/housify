@@ -4,15 +4,14 @@ import { resetNodeId } from '../../grammar/ast';
 import { parse } from '../../grammar/grammar';
 import { CompilerContext } from '../context';
 
-describe('Typing', () => {
+describe('Resolver', () => {
     beforeEach(() => {
         resetNodeId();
     });
 
     for (const r of loadCases(__dirname + '/cases/')) {
-        it('should parse ' + r.name, () => {
+        it('should resolve ' + r.name, () => {
             const moduleAst = parse(r.code);
-            expect(moduleAst).toMatchSnapshot();
             const ctx = new CompilerContext();
             resolveModule(moduleAst, ctx);
             expect(ctx).toMatchSnapshot();

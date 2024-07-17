@@ -1,3 +1,4 @@
+import { evaluateConstantValue } from '../evaluator/evaluate';
 import {
     AstExpression,
     AstGlobalStat,
@@ -212,6 +213,7 @@ export function processStatement(
 
 export function processStatDefinition(
     stat: AstGlobalStat | AstPlayerStat,
+    houseName: string,
     ctx: CompilerContext,
     sctx: StatementContext,
 ) {
@@ -239,10 +241,30 @@ export function processStatDefinition(
     }
 
     // Add the stat
+    const type = resolveType(stat.type, sctx);
+
     statStruct.fields.push({
         name: stat.name.name,
-        type: resolveType(stat.type, sctx),
+        type,
+        defaultValue: stat.defaultValue,
     });
+    if (stat.kind === 'globalStat') {
+        ctx.houses.get(houseName)!.globalStats.push({
+            name: stat.name.name,
+            type,
+            defaultValue: stat.defaultValue
+                ? evaluateConstantValue(stat.defaultValue, ctx, sctx)
+                : undefined,
+        });
+    } else {
+        ctx.houses.get(houseName)!.playerStats.push({
+            name: stat.name.name,
+            type,
+            defaultValue: stat.defaultValue
+                ? evaluateConstantValue(stat.defaultValue, ctx, sctx)
+                : undefined,
+        });
+    }
 }
 
 export function processHouse(
@@ -250,6 +272,11 @@ export function processHouse(
     ctx: CompilerContext,
     sctx: StatementContext,
 ) {
+    ctx.addHouse(house.name.name, {
+        globalStats: [],
+        playerStats: [],
+        handlers: [],
+    });
     sctx.addVariable('global', {
         type: 'struct',
         name: 'global',
@@ -264,7 +291,7 @@ export function processHouse(
         switch (item.kind) {
             case 'playerStat':
             case 'globalStat':
-                processStatDefinition(item, ctx, sctx);
+                processStatDefinition(item, house.name.name, ctx, sctx);
                 break;
             case 'handler': {
                 const sctxHandler = sctx.clone();

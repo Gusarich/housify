@@ -1,19 +1,28 @@
+import { writeModule } from '../generator/generate';
 import { parse } from '../grammar/grammar';
-import { CompilerContext } from '../typing/context';
-import { resolveModule } from '../typing/resolve';
+import { optimize } from '../optimizer/optimize';
+import { CompilerContext } from '../resolver/context';
+import { resolveModule } from '../resolver/resolve';
 
 export function compile(src: string) {
-    // Parse
-    console.log('Parsing source code...');
+    // Parsing
+    console.log('Parsing...');
     const moduleAst = parse(src);
 
-    // Resolve
-    console.log('Resolving module...');
+    // Resolving
+    console.log('Resolving...');
     const ctx = new CompilerContext();
     resolveModule(moduleAst, ctx);
 
-    // Write
-    // TODO: Implement this
+    // Generating
+    console.log('Generating...');
+    const compiledModule = writeModule(moduleAst, ctx);
+
+    // Optimizing
+    console.log('Optimizing...');
+    const optimizedModule = optimize(compiledModule);
 
     console.log('Compilation successful!');
+
+    return optimizedModule;
 }
