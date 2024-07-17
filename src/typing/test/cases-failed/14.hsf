@@ -1,0 +1,12 @@
+house MyHouse {
+    handle BlockBreak {
+        let x: int = 10;
+        if (x == 10) {
+            if (x == 20) {
+                x = 30;
+            } else {
+                x = true;
+            }
+        }
+    }
+}

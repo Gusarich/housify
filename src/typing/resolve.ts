@@ -67,6 +67,12 @@ export function resolveExpression(
                 case '-':
                 case '*':
                 case '/':
+                    if (left.type !== 'int' || right.type !== 'int') {
+                        throw new Error('Operands must be integers');
+                    }
+                    return registerExpression(ctx, expression.id, {
+                        type: 'int',
+                    });
                 case '<':
                 case '<=':
                 case '>':
@@ -75,7 +81,7 @@ export function resolveExpression(
                         throw new Error('Operands must be integers');
                     }
                     return registerExpression(ctx, expression.id, {
-                        type: 'int',
+                        type: 'bool',
                     });
                 case '==':
                 case '!=':
@@ -170,12 +176,14 @@ export function processStatement(
             if (conditionType.type !== 'bool') {
                 throw new Error('Condition must be a boolean');
             }
+            const sctxThen = sctx.clone();
             for (const thenStatement of statement.then) {
-                processStatement(thenStatement, ctx, sctx.clone());
+                processStatement(thenStatement, ctx, sctxThen);
             }
             if (statement.else) {
+                const sctxElse = sctx.clone();
                 for (const elseStatement of statement.else) {
-                    processStatement(elseStatement, ctx, sctx.clone());
+                    processStatement(elseStatement, ctx, sctxElse);
                 }
             }
             break;

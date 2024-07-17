@@ -2,6 +2,44 @@
 
 exports[`Typing should fail 1 1`] = `"Cannot assign 'int' to 'bool'"`;
 
+exports[`Typing should fail 2 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 3 1`] = `"Cannot assign 'int' to 'bool'"`;
+
+exports[`Typing should fail 4 1`] = `"Variable 'x' not found"`;
+
+exports[`Typing should fail 5 1`] = `"Variable 'x' already exists"`;
+
+exports[`Typing should fail 6 1`] = `"Field 'nonExistentField' not found"`;
+
+exports[`Typing should fail 7 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 8 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 9 1`] = `"Operands must be integers"`;
+
+exports[`Typing should fail 10 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 11 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 12 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 13 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 14 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 15 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 16 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 17 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 18 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 19 1`] = `"Cannot assign 'bool' to 'int'"`;
+
+exports[`Typing should fail 20 1`] = `"Cannot assign 'int' to 'bool'"`;
+
 exports[`Typing should parse 1 1`] = `
 {
   "id": 24,
