@@ -54,9 +54,12 @@ Housify {
     letterAscii = letterAsciiLC | letterAsciiUC
     letterComment = letterAsciiLC | letterAsciiUC | digit | "_"
 
+    id = idRegular | idExceptions
+
     idStart = letterAscii | "_"
     idPart = letterAscii | digit | "_"
-    id = ~keyword #idStart #(idPart*)
+    idRegular = ~keyword #idStart #(idPart*)
+    idExceptions = global | player
 
     house = "house" ~idPart
     global = "global" ~idPart
