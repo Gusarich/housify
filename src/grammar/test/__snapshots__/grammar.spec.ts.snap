@@ -90,6 +90,15 @@ exports[`Grammar should fail 10 1`] = `
 Expected "(", "_", "A".."Z", "a".."z", a digit, "!", "-", or "+""
 `;
 
+exports[`Grammar should fail 11 1`] = `
+"Line 10, col 5:
+   9 | 
+> 10 |     player yp: int;
+           ^
+  11 | }
+Expected "}" or "handle""
+`;
+
 exports[`Grammar should parse 1 1`] = `
 {
   "id": 19,

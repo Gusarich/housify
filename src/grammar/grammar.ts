@@ -27,17 +27,22 @@ semantics.addOperation<AstNode>('astOfModuleItem', {
     ModuleItem(arg0) {
         return arg0.astOfModuleItem();
     },
-    House(_arg0, id, _arg2, items, _arg4) {
+    House(_arg0, id, _arg2, itemsTop, items, _arg4) {
         return createAstNode({
             kind: 'house',
             name: id.astOfExpression(),
-            items: items.children.map((item) => item.astOfHouseItem()),
+            items: itemsTop.children
+                .map((item) => item.astOfHouseItem())
+                .concat(items.children.map((item) => item.astOfHouseItem())),
         });
     },
 });
 
 semantics.addOperation<AstNode>('astOfHouseItem', {
     HouseItem(arg0) {
+        return arg0.astOfHouseItem();
+    },
+    HouseItemTop(arg0) {
         return arg0.astOfHouseItem();
     },
     GlobalStat(_arg0, name, _arg2, type, _arg4, defaultValueOpt, _arg6) {

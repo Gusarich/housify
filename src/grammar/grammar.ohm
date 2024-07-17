@@ -3,9 +3,10 @@ Housify {
 
     ModuleItem = House
     
-    House = house id "{" HouseItem* "}"
+    House = house id "{" HouseItemTop* HouseItem* "}"
 
-    HouseItem = GlobalStat | PlayerStat | Handler
+    HouseItemTop = GlobalStat | PlayerStat
+    HouseItem = Handler
 
     GlobalStat = global id ":" Type ("=" Expression)? ";"
     PlayerStat = player id ":" Type ("=" Expression)? ";"

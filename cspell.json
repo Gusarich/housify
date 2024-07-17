@@ -1,6 +1,6 @@
 {
     "version": "0.2",
     "language": "en",
-    "words": ["lvalue", "Housify", "Nonterminal", "sctx"],
+    "words": ["lvalue", "Housify", "Nonterminal", "sctx", "struct"],
     "ignorePaths": ["node_modules/**"]
 }
