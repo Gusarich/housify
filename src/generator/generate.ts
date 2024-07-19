@@ -48,6 +48,32 @@ export type CompiledHandler = {
     actions: Action[];
 };
 
+export function cloneCompiledPiece(
+    piece: CompiledModule | CompiledHouse | CompiledHandler,
+): CompiledModule | CompiledHouse | CompiledHandler {
+    switch (piece.kind) {
+        case 'module':
+            return {
+                ...piece,
+                houses: piece.houses.map(cloneCompiledPiece) as CompiledHouse[],
+            };
+        case 'house':
+            return {
+                ...piece,
+                globalStats: [...piece.globalStats],
+                playerStats: [...piece.playerStats],
+                handlers: piece.handlers.map(
+                    cloneCompiledPiece,
+                ) as CompiledHandler[],
+            };
+        case 'handler':
+            return {
+                ...piece,
+                actions: [...piece.actions],
+            };
+    }
+}
+
 export function writeStructPath(path: AstExpressionField): string {
     if (path.struct.kind === 'expressionId') {
         return path.struct.name.name + '.' + path.field.name;

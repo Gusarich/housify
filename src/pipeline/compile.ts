@@ -16,13 +16,13 @@ export function compile(src: string) {
 
     // Generating
     console.log('Generating...');
-    const compiledModule = writeModule(moduleAst, ctx);
+    const module = writeModule(moduleAst, ctx);
 
     // Optimizing
     console.log('Optimizing...');
-    const optimizedModule = optimize(compiledModule);
+    optimize(module);
 
     console.log('Compilation successful!');
 
-    return optimizedModule;
+    return module;
 }
