@@ -23,7 +23,7 @@ exports[`Generator should generate 1 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$0%",
+              "amount": "%player.$$0%",
               "mode": "SET",
               "stat": "counter",
               "type": "CHANGE_GLOBAL_STAT",
@@ -68,7 +68,7 @@ exports[`Generator should generate 2 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$0%",
+              "amount": "%player.$$0%",
               "mode": "SET",
               "stat": "joinCounter",
               "type": "CHANGE_GLOBAL_STAT",
@@ -92,7 +92,7 @@ exports[`Generator should generate 2 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$1%",
+              "amount": "%player.$$1%",
               "mode": "SET",
               "stat": "quitCounter",
               "type": "CHANGE_GLOBAL_STAT",
@@ -137,7 +137,7 @@ exports[`Generator should generate 3 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$0%",
+              "amount": "%player.$$0%",
               "mode": "SET",
               "stat": "$$1",
               "type": "CHANGE_STAT",
@@ -149,7 +149,7 @@ exports[`Generator should generate 3 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$1%",
+              "amount": "%player.$$1%",
               "mode": "SET",
               "stat": "$$2",
               "type": "CHANGE_STAT",
@@ -161,7 +161,7 @@ exports[`Generator should generate 3 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$2%",
+              "amount": "%player.$$2%",
               "mode": "SET",
               "stat": "$$3",
               "type": "CHANGE_STAT",
@@ -173,7 +173,7 @@ exports[`Generator should generate 3 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$3%",
+              "amount": "%player.$$3%",
               "mode": "SET",
               "stat": "counter",
               "type": "CHANGE_GLOBAL_STAT",
@@ -232,19 +232,19 @@ exports[`Generator should generate 4 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$0%",
+              "amount": "%player.$$0%",
               "mode": "SET",
               "stat": "$$2",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$1%",
+              "amount": "%player.$$1%",
               "mode": "INCREMENT",
               "stat": "$$2",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$2%",
+              "amount": "%player.$$2%",
               "mode": "SET",
               "stat": "$$3",
               "type": "CHANGE_STAT",
@@ -256,7 +256,7 @@ exports[`Generator should generate 4 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$3%",
+              "amount": "%player.$$3%",
               "mode": "SET",
               "stat": "counter",
               "type": "CHANGE_GLOBAL_STAT",
@@ -309,13 +309,13 @@ exports[`Generator should generate 5 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$0%",
+              "amount": "%player.$$0%",
               "mode": "INCREMENT",
               "stat": "$$1",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$1%",
+              "amount": "%player.$$1%",
               "mode": "SET",
               "stat": "$$2",
               "type": "CHANGE_STAT",
@@ -327,7 +327,7 @@ exports[`Generator should generate 5 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$2%",
+              "amount": "%player.$$2%",
               "mode": "SET",
               "stat": "$$3",
               "type": "CHANGE_STAT",
@@ -339,7 +339,7 @@ exports[`Generator should generate 5 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$3%",
+              "amount": "%player.$$3%",
               "mode": "SET",
               "stat": "$$4",
               "type": "CHANGE_STAT",
@@ -351,7 +351,7 @@ exports[`Generator should generate 5 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$4%",
+              "amount": "%player.$$4%",
               "mode": "SET",
               "stat": "counter",
               "type": "CHANGE_GLOBAL_STAT",
@@ -405,13 +405,13 @@ exports[`Generator should generate 6 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$0%",
+              "amount": "%player.$$0%",
               "mode": "INCREMENT",
               "stat": "$$1",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$1%",
+              "amount": "%player.$$1%",
               "mode": "SET",
               "stat": "$$2",
               "type": "CHANGE_STAT",
@@ -423,7 +423,7 @@ exports[`Generator should generate 6 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$2%",
+              "amount": "%player.$$2%",
               "mode": "SET",
               "stat": "$$3",
               "type": "CHANGE_STAT",
@@ -435,7 +435,7 @@ exports[`Generator should generate 6 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$3%",
+              "amount": "%player.$$3%",
               "mode": "SET",
               "stat": "$$4",
               "type": "CHANGE_STAT",
@@ -447,13 +447,13 @@ exports[`Generator should generate 6 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$4%",
+              "amount": "%player.$$4%",
               "mode": "SET",
               "stat": "$x",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%player.$x%",
+              "amount": "%player.x%",
               "mode": "SET",
               "stat": "$$5",
               "type": "CHANGE_STAT",
@@ -471,13 +471,13 @@ exports[`Generator should generate 6 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$5%",
+              "amount": "%player.$$5%",
               "mode": "INCREMENT",
               "stat": "$$6",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$6%",
+              "amount": "%player.$$6%",
               "mode": "SET",
               "stat": "counter",
               "type": "CHANGE_GLOBAL_STAT",
@@ -534,25 +534,25 @@ exports[`Generator should generate 7 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%player.$y%",
+              "amount": "%player.y%",
               "mode": "DECREMENT",
               "stat": "$$0",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%player.$x%",
+              "amount": "%player.x%",
               "mode": "SET",
               "stat": "$$1",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$0%",
+              "amount": "%player.$$0%",
               "mode": "MULTIPLY",
               "stat": "$$1",
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$1%",
+              "amount": "%player.$$1%",
               "mode": "SET",
               "stat": "$$2",
               "type": "CHANGE_STAT",
@@ -564,7 +564,7 @@ exports[`Generator should generate 7 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$2%",
+              "amount": "%player.$$2%",
               "mode": "SET",
               "stat": "$$3",
               "type": "CHANGE_STAT",
@@ -576,7 +576,7 @@ exports[`Generator should generate 7 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$2%",
+              "amount": "%player.$$2%",
               "mode": "SET",
               "stat": "$$4",
               "type": "CHANGE_STAT",
@@ -594,7 +594,7 @@ exports[`Generator should generate 7 1`] = `
               "type": "CHANGE_STAT",
             },
             {
-              "amount": "%$$3%",
+              "amount": "%player.$$3%",
               "mode": "SET",
               "stat": "$z",
               "type": "CHANGE_STAT",

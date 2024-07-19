@@ -19,6 +19,14 @@ type WriterContext = {
     ctx: CompilerContext;
 };
 
+function wrapAsPlayerStat(stat: string) {
+    return '%player.' + stat + '%';
+}
+
+function wrapAsGlobalStat(stat: string) {
+    return '%global.' + stat + '%';
+}
+
 let tempId = 0;
 
 function getNextTempId() {
@@ -95,16 +103,16 @@ export function writeExpression(
         case 'booleanLiteral':
             return expression.value ? '1' : '0';
         case 'expressionId':
-            return '%player.$' + expression.name.name + '%';
+            return wrapAsPlayerStat(expression.name.name);
         case 'expressionField':
             if (expression.struct.kind === 'expressionId') {
                 if (expression.struct.name.name === 'global') {
-                    return '%global.' + expression.field.name + '%';
+                    return wrapAsGlobalStat(expression.field.name);
                 } else {
-                    return '%' + writeStructPath(expression) + '%';
+                    return wrapAsPlayerStat(writeStructPath(expression));
                 }
             } else {
-                return '%' + writeStructPath(expression) + '%';
+                return wrapAsPlayerStat(writeStructPath(expression));
             }
         case 'expressionUnary': {
             const operand = writeExpression(expression.operand, wctx);
@@ -143,7 +151,7 @@ export function writeExpression(
                     break;
                 }
             }
-            return '%' + tempStat + '%';
+            return wrapAsPlayerStat(tempStat);
         }
         case 'expressionBinary': {
             const left = writeExpression(expression.left, wctx);
@@ -260,7 +268,7 @@ export function writeExpression(
                 default:
                     throw new Error('Comparisons are not implemented yet');
             }
-            return '%' + tempStat + '%';
+            return wrapAsPlayerStat(tempStat);
         }
     }
 }
