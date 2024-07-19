@@ -1,0 +1,12 @@
+house TestHouse {
+    global joinCounter: int = 0;
+    global quitCounter: int = 0;
+
+    handle(event: JoinEvent) {
+        global.joinCounter = global.joinCounter + 1;
+    }
+
+    handle(event: QuitEvent) {
+        global.quitCounter = global.quitCounter + 1;
+    }
+}

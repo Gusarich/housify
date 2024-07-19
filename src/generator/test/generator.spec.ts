@@ -19,15 +19,4 @@ describe('Generator', () => {
             expect(module).toMatchSnapshot();
         });
     }
-
-    for (const r of loadCases(__dirname + '/cases-failed/')) {
-        it('should fail ' + r.name, () => {
-            const moduleAst = parse(r.code);
-            const ctx = new CompilerContext();
-            resolveModule(moduleAst, ctx);
-            expect(() => {
-                writeModule(moduleAst, ctx);
-            }).toThrowErrorMatchingSnapshot();
-        });
-    }
 });

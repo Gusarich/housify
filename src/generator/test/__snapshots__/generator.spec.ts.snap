@@ -2,7 +2,52 @@
 
 exports[`Generator should generate 1 1`] = `
 {
-  "houses": [],
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Generator should generate 2 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "joinCounter",
+        "quitCounter",
+      ],
+      "handlers": [
+        {
+          "actions": [],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+        {
+          "actions": [],
+          "event": "QUIT",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [],
+    },
+  ],
   "kind": "module",
 }
 `;

@@ -9,6 +9,7 @@ import { Action, ActionType } from '../housing/actions';
 import { EventType } from '../housing/events';
 import { StatMode } from '../housing/util';
 import { CompilerContext } from '../resolver/context';
+import { camelToSnake } from '../utils/letterCases';
 
 export type CompiledModule = {
     kind: 'module';
@@ -60,9 +61,12 @@ export function writeHandler(
     ast: AstHandler,
     ctx: CompilerContext,
 ): CompiledHandler {
-    if (!(ast.event.name in EventType)) {
+    const eventName = ast.event.type.name;
+    const eventNameSnake = camelToSnake(eventName.slice(0, -5)).toUpperCase();
+
+    if (!(eventNameSnake in EventType)) {
         // must never happen
-        throw new Error(`Unknown event type: ${ast.event.name}`);
+        throw new Error(`Unknown event type: ${eventName}`);
     }
 
     const actions: Action[] = [];
@@ -72,7 +76,7 @@ export function writeHandler(
 
     return {
         kind: 'handler',
-        event: ast.event.name as EventType,
+        event: eventNameSnake as EventType,
         actions,
     };
 }
