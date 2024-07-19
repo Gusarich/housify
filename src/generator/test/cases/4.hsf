@@ -1,0 +1,7 @@
+house TestHouse {
+    global counter: int = 0;
+
+    handle(event: JoinEvent) {
+        global.counter = global.counter + 1 + (2 - 3) + 4;
+    }
+}

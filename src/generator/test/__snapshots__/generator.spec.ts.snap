@@ -113,3 +113,394 @@ exports[`Generator should generate 2 1`] = `
   "kind": "module",
 }
 `;
+
+exports[`Generator should generate 3 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "amount": "%global.counter%",
+              "mode": "SET",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "INCREMENT",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$0%",
+              "mode": "SET",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "2",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$1%",
+              "mode": "SET",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "3",
+              "mode": "INCREMENT",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$2%",
+              "mode": "SET",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "4",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$3%",
+              "mode": "SET",
+              "stat": "counter",
+              "type": "CHANGE_GLOBAL_STAT",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$$0",
+        "$$1",
+        "$$2",
+        "$$3",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Generator should generate 4 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "amount": "%global.counter%",
+              "mode": "SET",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "INCREMENT",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "2",
+              "mode": "SET",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "3",
+              "mode": "DECREMENT",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$0%",
+              "mode": "SET",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$1%",
+              "mode": "INCREMENT",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$2%",
+              "mode": "SET",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "4",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$3%",
+              "mode": "SET",
+              "stat": "counter",
+              "type": "CHANGE_GLOBAL_STAT",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$$0",
+        "$$1",
+        "$$2",
+        "$$3",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Generator should generate 5 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "amount": "%global.counter%",
+              "mode": "SET",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "2",
+              "mode": "MULTIPLY",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "3",
+              "mode": "SET",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$0%",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$1%",
+              "mode": "SET",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "DECREMENT",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$2%",
+              "mode": "SET",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "4",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$3%",
+              "mode": "SET",
+              "stat": "$$4",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "5",
+              "mode": "INCREMENT",
+              "stat": "$$4",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$4%",
+              "mode": "SET",
+              "stat": "counter",
+              "type": "CHANGE_GLOBAL_STAT",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$$0",
+        "$$1",
+        "$$2",
+        "$$3",
+        "$$4",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Generator should generate 6 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "amount": "%global.counter%",
+              "mode": "SET",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "2",
+              "mode": "MULTIPLY",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "3",
+              "mode": "SET",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$0%",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$1%",
+              "mode": "SET",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "DECREMENT",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$2%",
+              "mode": "SET",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "4",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$3%",
+              "mode": "SET",
+              "stat": "$$4",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "5",
+              "mode": "INCREMENT",
+              "stat": "$$4",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$4%",
+              "mode": "SET",
+              "stat": "$x",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%player.$x%",
+              "mode": "SET",
+              "stat": "$$5",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "2",
+              "mode": "MULTIPLY",
+              "stat": "$$5",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "SET",
+              "stat": "$$6",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$5%",
+              "mode": "INCREMENT",
+              "stat": "$$6",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$6%",
+              "mode": "SET",
+              "stat": "counter",
+              "type": "CHANGE_GLOBAL_STAT",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$x",
+        "$$0",
+        "$$1",
+        "$$2",
+        "$$3",
+        "$$4",
+        "$$5",
+        "$$6",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;

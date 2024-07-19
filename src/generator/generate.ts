@@ -159,13 +159,13 @@ export function writeExpression(
                         type: ActionType.CHANGE_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: '0',
+                        amount: left,
                     });
                     wctx.actions.push({
                         type: ActionType.CHANGE_STAT,
                         mode: StatMode.MULTIPLY,
                         stat: tempStat,
-                        amount: left,
+                        amount: right,
                     });
                     break;
                 case '/':
