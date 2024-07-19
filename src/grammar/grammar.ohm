@@ -30,18 +30,47 @@ Housify {
                 | if Expression "{" Statement* "}" else "{" Statement* "}" --withElse
                 | if Expression "{" Statement* "}" else StatementIf --withElseIf
     
-    Expression = ExpressionField
-               | ExpressionBinary
-               | ExpressionUnary
-               | ExpressionLiteral
-               | ExpressionId
-               | ExpressionParens
+    // Expressions are ordered by precedence
     
-    ExpressionBinary = Expression binaryOp Expression
-    ExpressionUnary = unaryOp Expression
+    Expression = ExpressionOr
+
+    ExpressionOr = ExpressionOr "||" ExpressionAnd --or
+                 | ExpressionAnd
+
+    ExpressionAnd = ExpressionAnd "&&" ExpressionEquality --and
+                  | ExpressionEquality
+
+    ExpressionEquality = ExpressionEquality "!=" ExpressionCompare --not
+                       | ExpressionEquality "==" ExpressionCompare --eq
+                       | ExpressionCompare
+
+    ExpressionCompare = ExpressionCompare ">" ExpressionAdd --gt
+                      | ExpressionCompare ">=" ExpressionAdd --gte
+                      | ExpressionCompare "<" ExpressionAdd --lt
+                      | ExpressionCompare "<=" ExpressionAdd --lte
+                      | ExpressionAdd
+
+    ExpressionAdd = ExpressionAdd "+" ~"+" ExpressionMul --add
+                  | ExpressionAdd "-" ~"-" ExpressionMul --sub
+                  | ExpressionMul
+
+    ExpressionMul = ExpressionMul "*" ExpressionUnary --mul
+                  | ExpressionMul "/" ExpressionUnary --div
+                  | ExpressionUnary
+
+    ExpressionUnary = "-" ExpressionUnary --minus
+                    | "!" ExpressionUnary --not
+                    | ExpressionPrimary
+
+    // Order is important
+    ExpressionPrimary = ExpressionField
+                      | ExpressionParens
+                      | ExpressionLiteral
+                      | ExpressionId
+    
     ExpressionLiteral = integerLiteral | booleanLiteral
     ExpressionId = id
-    ExpressionField = Expression "." id
+    ExpressionField = ExpressionPrimary "." id
     ExpressionParens = "(" Expression ")"
 
     binaryOp = "+" | "-" | "*" | "/" | "==" | "!=" | "<" | "<=" | ">" | ">=" | "&&" | "||"

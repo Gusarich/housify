@@ -1,11 +1,5 @@
 import { IterationNode } from 'ohm-js';
-import {
-    AstBinaryOp,
-    AstModule,
-    AstNode,
-    AstUnaryOp,
-    createAstNode,
-} from './ast';
+import { AstModule, AstNode, createAstNode } from './ast';
 import grammar from './grammar.ohm-bundle';
 
 function unwrapOptNode(node: IterationNode): IterationNode | undefined {
@@ -174,18 +168,113 @@ semantics.addOperation<AstNode>('astOfExpression', {
     Expression(arg0) {
         return arg0.astOfExpression();
     },
-    ExpressionBinary(left, op, right) {
+    ExpressionAdd_add(left, op, right) {
         return createAstNode({
             kind: 'expressionBinary',
-            op: op.astOfBinaryOp(),
+            op: '+',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
         });
     },
-    ExpressionUnary(op, operand) {
+    ExpressionAdd_sub(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '-',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionAnd_and(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '&&',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionCompare_gt(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '>',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionCompare_gte(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '>=',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionCompare_lt(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '<',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionCompare_lte(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '<=',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionEquality_eq(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '==',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionEquality_not(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '!=',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionMul_div(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '/',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionMul_mul(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '*',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionOr_or(left, op, right) {
+        return createAstNode({
+            kind: 'expressionBinary',
+            op: '||',
+            left: left.astOfExpression(),
+            right: right.astOfExpression(),
+        });
+    },
+    ExpressionUnary_minus(op, operand) {
         return createAstNode({
             kind: 'expressionUnary',
-            op: op.astOfUnaryOp(),
+            op: '-',
+            operand: operand.astOfExpression(),
+        });
+    },
+    ExpressionUnary_not(op, operand) {
+        return createAstNode({
+            kind: 'expressionUnary',
+            op: '!',
             operand: operand.astOfExpression(),
         });
     },
@@ -225,45 +314,6 @@ semantics.addOperation<AstNode>('astOfExpression', {
     },
     ExpressionParens(_arg0, expression, _arg2) {
         return expression.astOfExpression();
-    },
-});
-
-semantics.addOperation<AstBinaryOp>('astOfBinaryOp', {
-    binaryOp(op) {
-        switch (op.sourceString) {
-            case '+':
-            case '-':
-            case '*':
-            case '/':
-            case '==':
-            case '!=':
-            case '<':
-            case '<=':
-            case '>':
-            case '>=':
-            case '&&':
-            case '||':
-                return op.sourceString as AstBinaryOp;
-            default:
-                throw new Error(
-                    `Unexpected binary operator: '${op.sourceString}'`,
-                );
-        }
-    },
-});
-
-semantics.addOperation<AstUnaryOp>('astOfUnaryOp', {
-    unaryOp(op) {
-        switch (op.sourceString) {
-            case '+':
-            case '-':
-            case '!':
-                return op.sourceString as AstUnaryOp;
-            default:
-                throw new Error(
-                    `Unexpected unary operator: '${op.sourceString}'`,
-                );
-        }
     },
 });
 

@@ -117,7 +117,7 @@ export type AstExpressionBinary = {
     id: number;
 };
 
-export type AstUnaryOp = '+' | '-' | '!';
+export type AstUnaryOp = '-' | '!';
 
 export type AstExpressionUnary = {
     kind: 'expressionUnary';

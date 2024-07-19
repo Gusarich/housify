@@ -105,7 +105,6 @@ export function resolveExpression(
         case 'expressionUnary': {
             const operand = resolveExpression(expression.operand, ctx, sctx);
             switch (expression.op) {
-                case '+':
                 case '-':
                     if (operand.type !== 'int') {
                         throw new Error('Operand must be an integer');
