@@ -504,3 +504,120 @@ exports[`Generator should generate 6 1`] = `
   "kind": "module",
 }
 `;
+
+exports[`Generator should generate 7 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "amount": "1",
+              "mode": "SET",
+              "stat": "$x",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "0",
+              "mode": "SET",
+              "stat": "$y",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "SET",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%player.$y%",
+              "mode": "DECREMENT",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%player.$x%",
+              "mode": "SET",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$0%",
+              "mode": "MULTIPLY",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$1%",
+              "mode": "SET",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "0",
+              "mode": "MULTIPLY",
+              "stat": "$$2",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$2%",
+              "mode": "SET",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$2%",
+              "mode": "SET",
+              "stat": "$$4",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "MULTIPLY",
+              "stat": "$$4",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "$$4",
+              "mode": "DECREMENT",
+              "stat": "$$3",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$3%",
+              "mode": "SET",
+              "stat": "$z",
+              "type": "CHANGE_STAT",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$x",
+        "$y",
+        "$z",
+        "$$0",
+        "$$1",
+        "$$2",
+        "$$3",
+        "$$4",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;

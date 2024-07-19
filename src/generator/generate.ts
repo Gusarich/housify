@@ -182,8 +182,57 @@ export function writeExpression(
                         amount: right,
                     });
                     break;
+                case '&&':
+                    wctx.actions.push({
+                        type: ActionType.CHANGE_STAT,
+                        mode: StatMode.SET,
+                        stat: tempStat,
+                        amount: left,
+                    });
+                    wctx.actions.push({
+                        type: ActionType.CHANGE_STAT,
+                        mode: StatMode.MULTIPLY,
+                        stat: tempStat,
+                        amount: right,
+                    });
+                    break;
+                case '||': {
+                    wctx.actions.push({
+                        type: ActionType.CHANGE_STAT,
+                        mode: StatMode.SET,
+                        stat: tempStat,
+                        amount: left,
+                    });
+                    wctx.actions.push({
+                        type: ActionType.CHANGE_STAT,
+                        mode: StatMode.INCREMENT,
+                        stat: tempStat,
+                        amount: right,
+                    });
+                    const tempStat2 = '$$' + getNextTempId();
+                    wctx.playerStats.set(tempStat2, wctx.playerStats.size);
+                    wctx.actions.push({
+                        type: ActionType.CHANGE_STAT,
+                        mode: StatMode.SET,
+                        stat: tempStat2,
+                        amount: left,
+                    });
+                    wctx.actions.push({
+                        type: ActionType.CHANGE_STAT,
+                        mode: StatMode.MULTIPLY,
+                        stat: tempStat2,
+                        amount: right,
+                    });
+                    wctx.actions.push({
+                        type: ActionType.CHANGE_STAT,
+                        mode: StatMode.DECREMENT,
+                        stat: tempStat,
+                        amount: tempStat2,
+                    });
+                    break;
+                }
                 default:
-                    throw new Error('Not implemented yet');
+                    throw new Error('Comparisons are not implemented yet');
             }
             return '%' + tempStat + '%';
         }
