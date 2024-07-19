@@ -45,7 +45,7 @@ Housify {
     ExpressionParens = "(" Expression ")"
 
     binaryOp = "+" | "-" | "*" | "/" | "==" | "!=" | "<" | "<=" | ">" | ">=" | "&&" | "||"
-    unaryOp = "+" | "-" | "!"
+    unaryOp = "-" | "!"
 
     Type = id --regular
 

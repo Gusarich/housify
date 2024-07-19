@@ -1046,7 +1046,7 @@ CompilerContext {
     89 => {
       "type": "int",
     },
-    90 => {
+    94 => {
       "type": "int",
     },
     95 => {
@@ -1055,7 +1055,7 @@ CompilerContext {
     96 => {
       "type": "int",
     },
-    97 => {
+    98 => {
       "type": "int",
     },
     99 => {
@@ -1067,10 +1067,10 @@ CompilerContext {
     101 => {
       "type": "int",
     },
-    102 => {
+    106 => {
       "type": "int",
     },
-    107 => {
+    108 => {
       "type": "int",
     },
     109 => {
@@ -1082,10 +1082,10 @@ CompilerContext {
     111 => {
       "type": "int",
     },
-    112 => {
+    116 => {
       "type": "int",
     },
-    117 => {
+    118 => {
       "type": "int",
     },
     119 => {
@@ -1097,16 +1097,16 @@ CompilerContext {
     121 => {
       "type": "int",
     },
-    122 => {
+    126 => {
       "type": "int",
     },
     127 => {
       "type": "int",
     },
     128 => {
-      "type": "int",
+      "type": "bool",
     },
-    129 => {
+    133 => {
       "type": "bool",
     },
     134 => {
@@ -1115,34 +1115,34 @@ CompilerContext {
     135 => {
       "type": "bool",
     },
-    136 => {
+    140 => {
       "type": "bool",
     },
     141 => {
       "type": "bool",
     },
-    142 => {
-      "type": "bool",
+    146 => {
+      "type": "int",
     },
     147 => {
       "type": "int",
     },
-    148 => {
+    152 => {
       "type": "int",
     },
-    153 => {
+    157 => {
       "type": "int",
     },
-    154 => {
+    158 => {
       "type": "int",
     },
     159 => {
       "type": "int",
     },
-    160 => {
+    161 => {
       "type": "int",
     },
-    161 => {
+    162 => {
       "type": "int",
     },
     163 => {
@@ -1151,13 +1151,13 @@ CompilerContext {
     164 => {
       "type": "int",
     },
-    165 => {
-      "type": "int",
-    },
-    166 => {
+    169 => {
       "type": "int",
     },
     171 => {
+      "type": "int",
+    },
+    172 => {
       "type": "int",
     },
     173 => {
@@ -1166,55 +1166,43 @@ CompilerContext {
     174 => {
       "type": "int",
     },
-    175 => {
+    179 => {
       "type": "int",
     },
-    176 => {
+    180 => {
       "type": "int",
     },
     181 => {
       "type": "int",
     },
-    182 => {
+    186 => {
       "type": "int",
     },
-    183 => {
+    187 => {
       "type": "int",
     },
     188 => {
-      "type": "int",
+      "type": "bool",
     },
-    189 => {
-      "type": "int",
+    193 => {
+      "type": "bool",
     },
-    190 => {
+    194 => {
       "type": "bool",
     },
     195 => {
       "type": "bool",
     },
-    196 => {
+    200 => {
       "type": "bool",
     },
-    197 => {
+    201 => {
       "type": "bool",
     },
-    202 => {
-      "type": "bool",
-    },
-    203 => {
-      "type": "bool",
-    },
-    208 => {
+    206 => {
       "type": "int",
     },
-    209 => {
-      "type": "int",
-    },
-    214 => {
-      "type": "int",
-    },
-    215 => {
+    207 => {
       "type": "int",
     },
   },
