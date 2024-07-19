@@ -3,7 +3,7 @@ house MyHouse {
     global y: int = 20;
     player z: int = 30;
 
-    handle BlockBreak {
+    handle(event: BlockBreak) {
         let a: int = global.x + global.y;
         let b: int = a * player.z;
         let c: int = b - 5;

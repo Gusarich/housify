@@ -1,4 +1,3 @@
-import { evaluateConstantValue } from '../evaluator/evaluate';
 import {
     AstExpression,
     AstGlobalStat,
@@ -252,17 +251,13 @@ export function processStatDefinition(
         ctx.houses.get(houseName)!.globalStats.push({
             name: stat.name.name,
             type,
-            defaultValue: stat.defaultValue
-                ? evaluateConstantValue(stat.defaultValue, ctx, sctx)
-                : undefined,
+            defaultValue: stat.defaultValue,
         });
     } else {
         ctx.houses.get(houseName)!.playerStats.push({
             name: stat.name.name,
             type,
-            defaultValue: stat.defaultValue
-                ? evaluateConstantValue(stat.defaultValue, ctx, sctx)
-                : undefined,
+            defaultValue: stat.defaultValue,
         });
     }
 }

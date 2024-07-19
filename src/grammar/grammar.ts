@@ -61,13 +61,23 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
             defaultValue: unwrapOptNode(defaultValueOpt)?.astOfExpression(),
         });
     },
-    Handler(_arg0, event, _arg2, statements, _arg4) {
+    Handler(_arg0, _arg1, eventParameter, _arg3, _arg4, statements, _arg6) {
         return createAstNode({
             kind: 'handler',
-            event: event.astOfExpression(),
+            event: eventParameter.astOfParameter(),
             statements: statements.children.map((statement) =>
                 statement.astOfStatement(),
             ),
+        });
+    },
+});
+
+semantics.addOperation<AstNode>('astOfParameter', {
+    Parameter(arg0, _arg1, arg2) {
+        return createAstNode({
+            kind: 'parameter',
+            name: arg0.astOfExpression(),
+            type: arg2.astOfType(),
         });
     },
 });

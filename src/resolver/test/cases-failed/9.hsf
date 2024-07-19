@@ -1,5 +1,5 @@
 house MyHouse {
-    handle BlockBreak {
+    handle(event: BlockBreak) {
         let x: bool = true;
         let y: int = x + 1;
     }

@@ -1,3 +1,4 @@
+import { AstExpression } from '../grammar/ast';
 import { EventType } from '../housing/events';
 import { Type } from './type';
 
@@ -58,12 +59,12 @@ export type House = {
     globalStats: {
         name: string;
         type: Type;
-        defaultValue?: number | boolean;
+        defaultValue?: AstExpression;
     }[];
     playerStats: {
         name: string;
         type: Type;
-        defaultValue?: number | boolean;
+        defaultValue?: AstExpression;
     }[];
     handlers: EventType[];
 };

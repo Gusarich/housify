@@ -46,30 +46,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    8 => {
-      "fields": [
-        {
-          "defaultValue": {
-            "id": 4,
-            "kind": "integerLiteral",
-            "value": "10",
-          },
-          "name": "x",
-          "type": {
-            "type": "int",
-          },
-        },
-      ],
-      "name": "global",
-      "type": "struct",
-    },
     10 => {
-      "type": "int",
-    },
-    11 => {
-      "type": "int",
-    },
-    16 => {
       "fields": [
         {
           "defaultValue": {
@@ -85,14 +62,37 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
+    },
+    12 => {
+      "type": "int",
+    },
+    13 => {
+      "type": "int",
     },
     18 => {
-      "type": "int",
-    },
-    19 => {
-      "type": "int",
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
     },
     20 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    22 => {
       "type": "int",
     },
   },
@@ -100,7 +100,11 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": 10,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
           "name": "x",
           "type": {
             "type": "int",
@@ -120,7 +124,7 @@ CompilerContext {
     4 => {
       "type": "bool",
     },
-    8 => {
+    10 => {
       "fields": [
         {
           "defaultValue": {
@@ -136,11 +140,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
-    },
-    10 => {
-      "type": "bool",
     },
     12 => {
+      "type": "bool",
+    },
+    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -157,10 +161,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    14 => {
+    16 => {
       "type": "bool",
     },
-    15 => {
+    17 => {
       "type": "bool",
     },
   },
@@ -168,7 +172,11 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": true,
+          "defaultValue": {
+            "id": 4,
+            "kind": "booleanLiteral",
+            "value": true,
+          },
           "name": "isActive",
           "type": {
             "type": "bool",
@@ -188,7 +196,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    8 => {
+    10 => {
       "fields": [
         {
           "defaultValue": {
@@ -204,11 +212,11 @@ CompilerContext {
       ],
       "name": "player",
       "type": "struct",
-    },
-    10 => {
-      "type": "int",
     },
     12 => {
+      "type": "int",
+    },
+    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -225,13 +233,13 @@ CompilerContext {
       "name": "player",
       "type": "struct",
     },
-    14 => {
-      "type": "int",
-    },
-    15 => {
-      "type": "int",
-    },
     16 => {
+      "type": "int",
+    },
+    17 => {
+      "type": "int",
+    },
+    18 => {
       "type": "int",
     },
   },
@@ -241,7 +249,11 @@ CompilerContext {
       "handlers": [],
       "playerStats": [
         {
-          "defaultValue": 100,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "100",
+          },
           "name": "score",
           "type": {
             "type": "int",
@@ -259,7 +271,7 @@ CompilerContext {
     4 => {
       "type": "bool",
     },
-    8 => {
+    10 => {
       "fields": [
         {
           "defaultValue": {
@@ -275,11 +287,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
-    },
-    10 => {
-      "type": "bool",
     },
     12 => {
+      "type": "bool",
+    },
+    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -296,10 +308,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    14 => {
+    16 => {
       "type": "bool",
     },
-    15 => {
+    17 => {
       "type": "bool",
     },
   },
@@ -307,7 +319,11 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": true,
+          "defaultValue": {
+            "id": 4,
+            "kind": "booleanLiteral",
+            "value": true,
+          },
           "name": "isActive",
           "type": {
             "type": "bool",
@@ -324,22 +340,22 @@ CompilerContext {
 exports[`Resolver should resolve 5 1`] = `
 CompilerContext {
   "expressions": Map {
-    5 => {
-      "type": "int",
-    },
-    8 => {
-      "type": "int",
-    },
-    9 => {
+    7 => {
       "type": "int",
     },
     10 => {
-      "type": "bool",
-    },
-    13 => {
       "type": "int",
     },
-    17 => {
+    11 => {
+      "type": "int",
+    },
+    12 => {
+      "type": "bool",
+    },
+    15 => {
+      "type": "int",
+    },
+    19 => {
       "type": "int",
     },
   },
@@ -356,34 +372,34 @@ CompilerContext {
 exports[`Resolver should resolve 6 1`] = `
 CompilerContext {
   "expressions": Map {
-    5 => {
-      "type": "int",
-    },
-    8 => {
-      "type": "int",
-    },
-    9 => {
+    7 => {
       "type": "int",
     },
     10 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "int",
+    },
+    12 => {
       "type": "bool",
     },
-    13 => {
-      "type": "int",
-    },
-    16 => {
-      "type": "int",
-    },
-    17 => {
+    15 => {
       "type": "int",
     },
     18 => {
-      "type": "bool",
-    },
-    21 => {
       "type": "int",
     },
-    25 => {
+    19 => {
+      "type": "int",
+    },
+    20 => {
+      "type": "bool",
+    },
+    23 => {
+      "type": "int",
+    },
+    27 => {
       "type": "int",
     },
   },
@@ -400,7 +416,7 @@ CompilerContext {
 exports[`Resolver should resolve 7 1`] = `
 CompilerContext {
   "expressions": Map {
-    5 => {
+    7 => {
       "type": "int",
     },
   },
@@ -420,7 +436,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    8 => {
+    10 => {
       "fields": [
         {
           "defaultValue": {
@@ -437,10 +453,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    10 => {
+    12 => {
       "type": "int",
     },
-    11 => {
+    13 => {
       "type": "int",
     },
   },
@@ -448,7 +464,11 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": 10,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
           "name": "x",
           "type": {
             "type": "int",
@@ -465,25 +485,25 @@ CompilerContext {
 exports[`Resolver should resolve 9 1`] = `
 CompilerContext {
   "expressions": Map {
-    5 => {
-      "type": "int",
-    },
-    10 => {
-      "type": "int",
-    },
-    11 => {
+    7 => {
       "type": "int",
     },
     12 => {
       "type": "int",
     },
-    17 => {
+    13 => {
+      "type": "int",
+    },
+    14 => {
       "type": "int",
     },
     19 => {
       "type": "int",
     },
-    20 => {
+    21 => {
+      "type": "int",
+    },
+    22 => {
       "type": "int",
     },
   },
@@ -500,13 +520,13 @@ CompilerContext {
 exports[`Resolver should resolve 10 1`] = `
 CompilerContext {
   "expressions": Map {
-    5 => {
+    7 => {
       "type": "int",
     },
-    10 => {
+    12 => {
       "type": "int",
     },
-    11 => {
+    13 => {
       "type": "int",
     },
   },
@@ -529,7 +549,7 @@ CompilerContext {
     8 => {
       "type": "int",
     },
-    14 => {
+    16 => {
       "fields": [
         {
           "defaultValue": {
@@ -556,11 +576,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
-    },
-    16 => {
-      "type": "int",
     },
     18 => {
+      "type": "int",
+    },
+    20 => {
       "fields": [
         {
           "defaultValue": {
@@ -588,10 +608,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    20 => {
+    22 => {
       "type": "int",
     },
-    21 => {
+    23 => {
       "type": "int",
     },
   },
@@ -599,14 +619,22 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": 10,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
           "name": "x",
           "type": {
             "type": "int",
           },
         },
         {
-          "defaultValue": 20,
+          "defaultValue": {
+            "id": 8,
+            "kind": "integerLiteral",
+            "value": "20",
+          },
           "name": "y",
           "type": {
             "type": "int",
@@ -629,7 +657,7 @@ CompilerContext {
     8 => {
       "type": "int",
     },
-    14 => {
+    16 => {
       "fields": [
         {
           "defaultValue": {
@@ -656,11 +684,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
-    },
-    16 => {
-      "type": "int",
     },
     18 => {
+      "type": "int",
+    },
+    20 => {
       "fields": [
         {
           "defaultValue": {
@@ -688,10 +716,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    20 => {
+    22 => {
       "type": "int",
     },
-    21 => {
+    23 => {
       "type": "int",
     },
   },
@@ -699,14 +727,22 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": 10,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
           "name": "x",
           "type": {
             "type": "int",
           },
         },
         {
-          "defaultValue": 20,
+          "defaultValue": {
+            "id": 8,
+            "kind": "integerLiteral",
+            "value": "20",
+          },
           "name": "y",
           "type": {
             "type": "int",
@@ -726,7 +762,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    8 => {
+    10 => {
       "fields": [
         {
           "defaultValue": {
@@ -743,10 +779,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    10 => {
+    12 => {
       "type": "int",
     },
-    11 => {
+    13 => {
       "type": "int",
     },
   },
@@ -754,7 +790,11 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": 10,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
           "name": "x",
           "type": {
             "type": "int",
@@ -774,7 +814,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    8 => {
+    10 => {
       "fields": [
         {
           "defaultValue": {
@@ -790,11 +830,11 @@ CompilerContext {
       ],
       "name": "player",
       "type": "struct",
-    },
-    10 => {
-      "type": "int",
     },
     12 => {
+      "type": "int",
+    },
+    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -811,13 +851,13 @@ CompilerContext {
       "name": "player",
       "type": "struct",
     },
-    14 => {
-      "type": "int",
-    },
-    15 => {
-      "type": "int",
-    },
     16 => {
+      "type": "int",
+    },
+    17 => {
+      "type": "int",
+    },
+    18 => {
       "type": "int",
     },
   },
@@ -827,7 +867,11 @@ CompilerContext {
       "handlers": [],
       "playerStats": [
         {
-          "defaultValue": 100,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "100",
+          },
           "name": "score",
           "type": {
             "type": "int",
@@ -851,7 +895,7 @@ CompilerContext {
     12 => {
       "type": "int",
     },
-    18 => {
+    20 => {
       "fields": [
         {
           "defaultValue": {
@@ -878,11 +922,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
-    },
-    20 => {
-      "type": "int",
     },
     22 => {
+      "type": "int",
+    },
+    24 => {
       "fields": [
         {
           "defaultValue": {
@@ -910,16 +954,16 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    24 => {
+    26 => {
       "type": "int",
     },
-    25 => {
-      "type": "int",
-    },
-    30 => {
+    27 => {
       "type": "int",
     },
     32 => {
+      "type": "int",
+    },
+    34 => {
       "fields": [
         {
           "defaultValue": {
@@ -936,88 +980,82 @@ CompilerContext {
       "name": "player",
       "type": "struct",
     },
-    34 => {
+    36 => {
       "type": "int",
     },
-    35 => {
-      "type": "int",
-    },
-    40 => {
-      "type": "int",
-    },
-    41 => {
+    37 => {
       "type": "int",
     },
     42 => {
       "type": "int",
     },
-    47 => {
+    43 => {
       "type": "int",
     },
-    48 => {
+    44 => {
       "type": "int",
     },
     49 => {
       "type": "int",
     },
-    54 => {
+    50 => {
       "type": "int",
     },
-    55 => {
+    51 => {
       "type": "int",
     },
     56 => {
       "type": "int",
     },
-    61 => {
+    57 => {
       "type": "int",
     },
-    62 => {
+    58 => {
       "type": "int",
     },
     63 => {
-      "type": "bool",
+      "type": "int",
     },
-    68 => {
-      "type": "bool",
+    64 => {
+      "type": "int",
     },
-    69 => {
+    65 => {
       "type": "bool",
     },
     70 => {
       "type": "bool",
     },
-    75 => {
+    71 => {
       "type": "bool",
     },
-    76 => {
+    72 => {
       "type": "bool",
     },
-    81 => {
+    77 => {
+      "type": "bool",
+    },
+    78 => {
+      "type": "bool",
+    },
+    83 => {
       "type": "int",
     },
-    82 => {
+    84 => {
       "type": "int",
     },
-    87 => {
+    89 => {
       "type": "int",
     },
-    88 => {
-      "type": "int",
-    },
-    93 => {
-      "type": "int",
-    },
-    94 => {
+    90 => {
       "type": "int",
     },
     95 => {
       "type": "int",
     },
-    97 => {
+    96 => {
       "type": "int",
     },
-    98 => {
+    97 => {
       "type": "int",
     },
     99 => {
@@ -1026,13 +1064,13 @@ CompilerContext {
     100 => {
       "type": "int",
     },
-    105 => {
+    101 => {
+      "type": "int",
+    },
+    102 => {
       "type": "int",
     },
     107 => {
-      "type": "int",
-    },
-    108 => {
       "type": "int",
     },
     109 => {
@@ -1041,13 +1079,13 @@ CompilerContext {
     110 => {
       "type": "int",
     },
-    115 => {
+    111 => {
+      "type": "int",
+    },
+    112 => {
       "type": "int",
     },
     117 => {
-      "type": "int",
-    },
-    118 => {
       "type": "int",
     },
     119 => {
@@ -1056,55 +1094,55 @@ CompilerContext {
     120 => {
       "type": "int",
     },
-    125 => {
+    121 => {
       "type": "int",
     },
-    126 => {
+    122 => {
       "type": "int",
     },
     127 => {
-      "type": "bool",
+      "type": "int",
     },
-    132 => {
-      "type": "bool",
+    128 => {
+      "type": "int",
     },
-    133 => {
+    129 => {
       "type": "bool",
     },
     134 => {
       "type": "bool",
     },
-    139 => {
+    135 => {
       "type": "bool",
     },
-    140 => {
+    136 => {
       "type": "bool",
     },
-    145 => {
+    141 => {
+      "type": "bool",
+    },
+    142 => {
+      "type": "bool",
+    },
+    147 => {
       "type": "int",
     },
-    146 => {
+    148 => {
       "type": "int",
     },
-    151 => {
+    153 => {
       "type": "int",
     },
-    152 => {
-      "type": "int",
-    },
-    157 => {
-      "type": "int",
-    },
-    158 => {
+    154 => {
       "type": "int",
     },
     159 => {
       "type": "int",
     },
-    161 => {
+    160 => {
       "type": "int",
     },
-    162 => {
+    161 => {
       "type": "int",
     },
     163 => {
@@ -1113,13 +1151,13 @@ CompilerContext {
     164 => {
       "type": "int",
     },
-    169 => {
+    165 => {
+      "type": "int",
+    },
+    166 => {
       "type": "int",
     },
     171 => {
-      "type": "int",
-    },
-    172 => {
       "type": "int",
     },
     173 => {
@@ -1128,49 +1166,55 @@ CompilerContext {
     174 => {
       "type": "int",
     },
-    179 => {
+    175 => {
       "type": "int",
     },
-    180 => {
+    176 => {
       "type": "int",
     },
     181 => {
       "type": "int",
     },
-    186 => {
+    182 => {
       "type": "int",
     },
-    187 => {
+    183 => {
       "type": "int",
     },
     188 => {
-      "type": "bool",
+      "type": "int",
     },
-    193 => {
-      "type": "bool",
+    189 => {
+      "type": "int",
     },
-    194 => {
+    190 => {
       "type": "bool",
     },
     195 => {
       "type": "bool",
     },
-    200 => {
+    196 => {
       "type": "bool",
     },
-    201 => {
+    197 => {
       "type": "bool",
     },
-    206 => {
+    202 => {
+      "type": "bool",
+    },
+    203 => {
+      "type": "bool",
+    },
+    208 => {
       "type": "int",
     },
-    207 => {
+    209 => {
       "type": "int",
     },
-    212 => {
+    214 => {
       "type": "int",
     },
-    213 => {
+    215 => {
       "type": "int",
     },
   },
@@ -1178,14 +1222,22 @@ CompilerContext {
     "MyHouse" => {
       "globalStats": [
         {
-          "defaultValue": 10,
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
           "name": "x",
           "type": {
             "type": "int",
           },
         },
         {
-          "defaultValue": 20,
+          "defaultValue": {
+            "id": 8,
+            "kind": "integerLiteral",
+            "value": "20",
+          },
           "name": "y",
           "type": {
             "type": "int",
@@ -1195,7 +1247,11 @@ CompilerContext {
       "handlers": [],
       "playerStats": [
         {
-          "defaultValue": 30,
+          "defaultValue": {
+            "id": 12,
+            "kind": "integerLiteral",
+            "value": "30",
+          },
           "name": "z",
           "type": {
             "type": "int",

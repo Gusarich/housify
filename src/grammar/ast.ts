@@ -33,8 +33,15 @@ export type AstPlayerStat = {
 
 export type AstHandler = {
     kind: 'handler';
-    event: AstId;
+    event: AstParameter;
     statements: AstStatement[];
+    id: number;
+};
+
+export type AstParameter = {
+    kind: 'parameter';
+    name: AstId;
+    type: AstId;
     id: number;
 };
 
@@ -149,7 +156,8 @@ export type AstNode =
     | AstHouseItem
     | AstStatement
     | AstExpression
-    | AstId;
+    | AstId
+    | AstParameter;
 
 let nextId = 1;
 
