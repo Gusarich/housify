@@ -3,11 +3,12 @@ import { parse } from '../../grammar/grammar';
 import { CompilerContext } from '../../resolver/context';
 import { resolveModule } from '../../resolver/resolve';
 import { loadCases } from '../../utils/loadCases';
-import { writeModule } from '../generate';
+import { resetTempId, writeModule } from '../generate';
 
 describe('Generator', () => {
     beforeEach(() => {
         resetNodeId();
+        resetTempId();
     });
 
     for (const r of loadCases(__dirname + '/cases/')) {

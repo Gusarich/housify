@@ -8,7 +8,8 @@
         "sctx",
         "struct",
         "fadein",
-        "gamemode"
+        "gamemode",
+        "wctx"
     ],
     "ignorePaths": ["node_modules/**"]
 }

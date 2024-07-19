@@ -9,14 +9,35 @@ exports[`Generator should generate 1 1`] = `
       ],
       "handlers": [
         {
-          "actions": [],
+          "actions": [
+            {
+              "amount": "%global.counter%",
+              "mode": "SET",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "INCREMENT",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$0%",
+              "mode": "SET",
+              "stat": "counter",
+              "type": "CHANGE_GLOBAL_STAT",
+            },
+          ],
           "event": "JOIN",
           "kind": "handler",
         },
       ],
       "kind": "house",
       "name": "TestHouse",
-      "playerStats": [],
+      "playerStats": [
+        "$$0",
+      ],
     },
   ],
   "kind": "module",
@@ -33,19 +54,60 @@ exports[`Generator should generate 2 1`] = `
       ],
       "handlers": [
         {
-          "actions": [],
+          "actions": [
+            {
+              "amount": "%global.joinCounter%",
+              "mode": "SET",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "INCREMENT",
+              "stat": "$$0",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$0%",
+              "mode": "SET",
+              "stat": "joinCounter",
+              "type": "CHANGE_GLOBAL_STAT",
+            },
+          ],
           "event": "JOIN",
           "kind": "handler",
         },
         {
-          "actions": [],
+          "actions": [
+            {
+              "amount": "%global.quitCounter%",
+              "mode": "SET",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "1",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "type": "CHANGE_STAT",
+            },
+            {
+              "amount": "%$$1%",
+              "mode": "SET",
+              "stat": "quitCounter",
+              "type": "CHANGE_GLOBAL_STAT",
+            },
+          ],
           "event": "QUIT",
           "kind": "handler",
         },
       ],
       "kind": "house",
       "name": "TestHouse",
-      "playerStats": [],
+      "playerStats": [
+        "$$0",
+        "$$1",
+      ],
     },
   ],
   "kind": "module",
