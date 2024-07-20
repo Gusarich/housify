@@ -2,20 +2,20 @@
 
 This document outlines the roadmap for the project. It is a living document and will be updated as the project progresses.
 
-## The first usable version
+## The First Usable Version
 
-This is the first version of the project that can be used for development in Hypixel Housing. It will include the basic functionality of the language and the compiler. It is a starting point for the project.
+This is the initial version of the project that can be used for development in Hypixel Housing. It includes the basic functionality of the language and the compiler. It serves as a starting point for the project.
 
 ### Compiler
 
 -   [x] Basic grammar for the language
 -   [x] AST resolver with type checking
 -   [x] Generator for the JSON output
--   [x] Constant evaluation in some simple cases
--   [ ] All the actions, conditions, events and functions from the Hypixel Housing
--   [x] Minimal tests for all of the compiler parts
+-   [x] Constant evaluation in simple cases
+-   [ ] All actions, conditions, events, and functions from Hypixel Housing
+-   [x] Minimal tests for all parts of the compiler
 
-### Command line interface
+### Command Line Interface
 
 -   [x] Basic CLI with a single command for compiling the Housify module
 
@@ -30,24 +30,24 @@ This is the first version of the project that can be used for development in Hyp
 ### Meta
 
 -   [ ] Contributing guidelines
--   [x] Complete README, CHANGELOG, LICENSE and ROADMAP
--   [x] CI pipeline for the project testing
--   [x] Formatter, linter spellchecking and pre-commit hooks for the project
+-   [x] Complete README, CHANGELOG, LICENSE, and ROADMAP
+-   [x] CI pipeline for project testing
+-   [x] Formatter, linter, spellchecking, and pre-commit hooks for the project
 
-## The 1.0.0 release
+## The 1.0.0 Release
 
-This is the first version of the project that can be used for production development in Hypixel Housing. It will include all the basic functionality of the language and the compiler. It is a stable version of the project which includes all the necessary features for the development process and is ready for the public use.
+This is the first version of the project that can be used for production development in Hypixel Housing. It will include all the basic functionality of the language and the compiler. It is a stable version of the project that includes all necessary features for the development process and is ready for public use.
 
 ### Compiler
 
 -   [ ] Functions
--   [ ] Full support of conditions
--   [ ] All the actions, conditions, events and functions from the Hypixel Housing
--   [ ] Full tests for all of the compiler parts
+-   [ ] Full support for conditions
+-   [ ] All actions, conditions, events, and functions from Hypixel Housing
+-   [ ] Full tests for all parts of the compiler
 -   [ ] Simple optimizations
 -   [ ] Better error messages
 
-### Command line interface
+### Command Line Interface
 
 -   [ ] More CLI options for the compiler
 
@@ -65,15 +65,15 @@ This is the first version of the project that can be used for production develop
 -   [ ] Website for the project
 -   [ ] Release checklist template
 
-## Future versions
+## Future Versions
 
-This section outlines the features that are planned for the future versions of the project. These features are still in the planning stage and are subject to change.
+This section outlines the features planned for future versions of the project. These features are still in the planning stage and are subject to change.
 
 ### Compiler
 
 -   TO BE FILLED
 
-### Command line interface
+### Command Line Interface
 
 -   TO BE FILLED
 
