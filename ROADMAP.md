@@ -12,7 +12,7 @@ This is the initial version of the project that can be used for development in H
 -   [x] AST resolver with type checking
 -   [x] Generator for the JSON output
 -   [x] Constant evaluation in simple cases
--   [ ] All actions, conditions, events, and functions from Hypixel Housing
+-   [ ] Necessary actions, conditions, events, and functions from Hypixel Housing
 -   [x] Minimal tests for all parts of the compiler
 
 ### Command Line Interface
@@ -29,7 +29,8 @@ This is the initial version of the project that can be used for development in H
 
 ### Meta
 
--   [ ] Contributing guidelines
+-   [x] Contributing guidelines
+-   [ ] Issue and pull request templates
 -   [x] Complete README, CHANGELOG, LICENSE, and ROADMAP
 -   [x] CI pipeline for project testing
 -   [x] Formatter, linter, spellchecking, and pre-commit hooks for the project
@@ -40,7 +41,7 @@ This is the first version of the project that can be used for production develop
 
 ### Compiler
 
--   [ ] Functions
+-   [ ] Housing Functions and Inline Functions
 -   [ ] Full support for conditions
 -   [ ] All actions, conditions, events, and functions from Hypixel Housing
 -   [ ] Full tests for all parts of the compiler
@@ -60,7 +61,6 @@ This is the first version of the project that can be used for production develop
 
 ### Meta
 
--   [ ] Issue and pull request templates
 -   [ ] Labels and milestones
 -   [ ] Website for the project
 -   [ ] Release checklist template
