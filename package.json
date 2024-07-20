@@ -1,11 +1,14 @@
 {
     "name": "housify",
     "version": "0.0.1",
-    "main": "index.js",
+    "bin": {
+        "housify": "./dist/cli/main.js",
+        "hsf": "./dist/cli/main.js"
+    },
     "author": "Gusarich",
     "license": "MIT",
     "scripts": {
-        "build": "ohm generateBundles --withTypes src/grammar/*.ohm && tsc",
+        "build": "ohm generateBundles --withTypes src/grammar/*.ohm && tsc && cp ./src/grammar/grammar.ohm* ./dist/grammar/",
         "lint": "eslint .",
         "format": "prettier --write .",
         "format:check": "prettier --check . --end-of-line auto",
@@ -34,6 +37,7 @@
         "typescript-eslint": "^7.15.0"
     },
     "dependencies": {
+        "commander": "^12.1.0",
         "ohm-js": "^17.1.0"
     }
 }

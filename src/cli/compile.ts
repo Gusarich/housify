@@ -1,6 +1,5 @@
 import { writeModule } from '../generator/generate';
 import { parse } from '../grammar/grammar';
-import { optimize } from '../optimizer/optimize';
 import { CompilerContext } from '../resolver/context';
 import { resolveModule } from '../resolver/resolve';
 
@@ -17,10 +16,6 @@ export function compile(src: string) {
     // Generating
     console.log('Generating...');
     const module = writeModule(moduleAst, ctx);
-
-    // Optimizing
-    console.log('Optimizing...');
-    optimize(module);
 
     console.log('Compilation successful!');
 
