@@ -13,11 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-## [0.0.1] - 2024-07-20
+## [0.0.1-alpha] - 2024-07-20
 
 ### Added
 
 -   The initial version of the compiler
 
-[unreleased]: https://github.com/Gusarich/housify/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/Gusarich/housify/releases/tag/v0.0.1
+[unreleased]: https://github.com/Gusarich/housify/compare/v0.0.1-alpha...HEAD
+[0.0.1-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.1-alpha
