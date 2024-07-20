@@ -5,41 +5,41 @@ import { GameMode, StatMode } from './util';
 //
 
 export type Condition =
-    | InGroupCondition
+    | RequiredGroupCondition
     | PlayerStatCondition
     | GlobalStatCondition
-    | HasPermissionCondition
-    | InRegionCondition
+    | RequiredPermissionCondition
+    | WithinRegionCondition
     | HasItemCondition
-    | InParkourCondition
-    | PotionEffectCondition
+    | DoingParkourCondition
+    | HasPotionEffectCondition
     | SneakingCondition
     | FlyingCondition
     | HealthCondition
     | MaxHealthCondition
-    | HungerLevelCondition
-    | GameModeCondition
+    | HungerCondition
+    | RequiredGamemodeCondition
     | PlaceholderNumberCondition
-    | InTeamCondition
+    | RequiredTeamCondition
     | TeamStatCondition;
 
 export enum ConditionType {
-    IN_GROUP = 'IN_GROUP',
+    REQUIRED_GROUP = 'REQUIRED_GROUP',
     PLAYER_STAT = 'PLAYER_STAT',
     GLOBAL_STAT = 'GLOBAL_STAT',
-    HAS_PERMISSION = 'HAS_PERMISSION',
-    IN_REGION = 'IN_REGION',
+    REQUIRED_PERMISSION = 'REQUIRED_PERMISSION',
+    WITHIN_REGION = 'WITHIN_REGION',
     HAS_ITEM = 'HAS_ITEM',
-    IN_PARKOUR = 'IN_PARKOUR',
-    POTION_EFFECT = 'POTION_EFFECT',
+    DOING_PARKOUR = 'DOING_PARKOUR',
+    HAS_POTION_EFFECT = 'HAS_POTION_EFFECT',
     SNEAKING = 'SNEAKING',
     FLYING = 'FLYING',
     HEALTH = 'HEALTH',
     MAX_HEALTH = 'MAX_HEALTH',
-    HUNGER_LEVEL = 'HUNGER_LEVEL',
-    GAMEMODE = 'GAMEMODE',
+    HUNGER = 'HUNGER',
+    REQUIRED_GAMEMODE = 'REQUIRED_GAMEMODE',
     PLACEHOLDER_NUMBER = 'PLACEHOLDER_NUMBER',
-    IN_TEAM = 'IN_TEAM',
+    REQUIRED_TEAM = 'REQUIRED_TEAM',
     TEAM_STAT = 'TEAM_STAT',
     PVP_ENABLED = 'PVP_ENABLED',
     FISHING_ENVIRONMENT = 'FISHING_ENVIRONMENT',
@@ -50,8 +50,8 @@ export enum ConditionType {
     IS_ITEM = 'IS_ITEM',
 }
 
-export type InGroupCondition = {
-    type: ConditionType.IN_GROUP;
+export type RequiredGroupCondition = {
+    type: ConditionType.REQUIRED_GROUP;
     required_group: string;
     include_higher_groups: boolean;
 };
@@ -70,13 +70,13 @@ export type GlobalStatCondition = {
     amount: number;
 };
 
-export type HasPermissionCondition = {
-    type: ConditionType.HAS_PERMISSION;
+export type RequiredPermissionCondition = {
+    type: ConditionType.REQUIRED_PERMISSION;
     required_permission: string;
 };
 
-export type InRegionCondition = {
-    type: ConditionType.IN_REGION;
+export type WithinRegionCondition = {
+    type: ConditionType.WITHIN_REGION;
     region: string;
 };
 
@@ -88,12 +88,12 @@ export type HasItemCondition = {
     required_amount: 'Any' | number; // Adjust if there are more specific types
 };
 
-export type InParkourCondition = {
-    type: ConditionType.IN_PARKOUR;
+export type DoingParkourCondition = {
+    type: ConditionType.DOING_PARKOUR;
 };
 
-export type PotionEffectCondition = {
-    type: ConditionType.POTION_EFFECT;
+export type HasPotionEffectCondition = {
+    type: ConditionType.HAS_POTION_EFFECT;
     effect: number;
 };
 
@@ -117,14 +117,14 @@ export type MaxHealthCondition = {
     amount: number;
 };
 
-export type HungerLevelCondition = {
-    type: ConditionType.HUNGER_LEVEL;
+export type HungerCondition = {
+    type: ConditionType.HUNGER;
     mode: StatMode;
     amount: number;
 };
 
-export type GameModeCondition = {
-    type: ConditionType.GAMEMODE;
+export type RequiredGamemodeCondition = {
+    type: ConditionType.REQUIRED_GAMEMODE;
     required_gamemode: GameMode;
 };
 
@@ -135,8 +135,8 @@ export type PlaceholderNumberCondition = {
     amount: number;
 };
 
-export type InTeamCondition = {
-    type: ConditionType.IN_TEAM;
+export type RequiredTeamCondition = {
+    type: ConditionType.REQUIRED_TEAM;
     required_team: string;
 };
 

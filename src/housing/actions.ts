@@ -10,22 +10,22 @@ export type Action =
     | CancelEventAction
     | ExitAction
     | ChangePlayerGroupAction
-    | KillAction
+    | KillPlayerAction
     | FullHealAction
-    | SpawnAction
-    | TitleAction
-    | ActionBarAction
+    | SetSpawnAction
+    | DisplayTitleAction
+    | DisplayActionBarAction
     | ResetInventoryAction
-    | SetMaxHealthAction
+    | ChangeMaxHealthAction
     | ParkourCheckpointAction
     | GiveItemAction
     | RemoveItemAction
-    | SendMessageAction
-    | PotionEffectAction
-    | ClearEffectsAction
+    | SendChatMessageAction
+    | ApplyPotionEffectAction
+    | ClearPotionEffectsAction
     | GiveExpLevelsAction
     | SendToLobbyAction
-    | ChangeStatAction
+    | ChangePlayerStatAction
     | ChangeGlobalStatAction
     | TeleportPlayerAction
     | FailParkourAction
@@ -37,9 +37,9 @@ export type Action =
     | RandomAction
     | UseHeldItemAction
     | TriggerFunctionAction
-    | ApplyLayoutAction
+    | ApplyInventoryLayoutAction
     | EnchantHeldItemAction
-    | PauseAction
+    | PauseExecutionAction
     | SetPlayerTeamAction
     | ChangeTeamStatAction
     | DisplayMenuAction
@@ -50,36 +50,36 @@ export enum ActionType {
     CANCEL_EVENT = 'CANCEL_EVENT',
     EXIT = 'EXIT',
     CHANGE_PLAYER_GROUP = 'CHANGE_PLAYER_GROUP',
-    KILL = 'KILL',
+    KILL_PLAYER = 'KILL_PLAYER',
     FULL_HEAL = 'FULL_HEAL',
-    SPAWN = 'SPAWN',
-    TITLE = 'TITLE',
-    ACTION_BAR = 'ACTION_BAR',
+    SET_SPAWN = 'SET_SPAWN',
+    DISPLAY_TITLE = 'DISPLAY_TITLE',
+    DISPLAY_ACTION_BAR = 'DISPLAY_ACTION_BAR',
     RESET_INVENTORY = 'RESET_INVENTORY',
-    SET_MAX_HEALTH = 'SET_MAX_HEALTH',
+    CHANGE_MAX_HEALTH = 'CHANGE_MAX_HEALTH',
     PARKOUR_CHECKPOINT = 'PARKOUR_CHECKPOINT',
     GIVE_ITEM = 'GIVE_ITEM',
     REMOVE_ITEM = 'REMOVE_ITEM',
-    SEND_MESSAGE = 'SEND_MESSAGE',
-    POTION_EFFECT = 'POTION_EFFECT',
-    CLEAR_EFFECTS = 'CLEAR_EFFECTS',
+    SEND_CHAT_MESSAGE = 'SEND_CHAT_MESSAGE',
+    APPLY_POTION_EFFECT = 'APPLY_POTION_EFFECT',
+    CLEAR_POTION_EFFECTS = 'CLEAR_POTION_EFFECTS',
     GIVE_EXP_LEVELS = 'GIVE_EXP_LEVELS',
     SEND_TO_LOBBY = 'SEND_TO_LOBBY',
-    CHANGE_STAT = 'CHANGE_STAT',
+    CHANGE_PLAYER_STAT = 'CHANGE_PLAYER_STAT',
     CHANGE_GLOBAL_STAT = 'CHANGE_GLOBAL_STAT',
     TELEPORT_PLAYER = 'TELEPORT_PLAYER',
     FAIL_PARKOUR = 'FAIL_PARKOUR',
     PLAY_SOUND = 'PLAY_SOUND',
     SET_COMPASS_TARGET = 'SET_COMPASS_TARGET',
     SET_GAME_MODE = 'SET_GAME_MODE',
-    SET_HEALTH = 'SET_HEALTH',
-    SET_HUNGER_LEVEL = 'SET_HUNGER_LEVEL',
+    CHANGE_HEALTH = 'CHANGE_HEALTH',
+    CHANGE_HUNGER_LEVEL = 'CHANGE_HUNGER_LEVEL',
     RANDOM_ACTION = 'RANDOM_ACTION',
     USE_HELD_ITEM = 'USE_HELD_ITEM',
     TRIGGER_FUNCTION = 'TRIGGER_FUNCTION',
-    APPLY_LAYOUT = 'APPLY_LAYOUT',
+    APPLY_INVENTORY_LAYOUT = 'APPLY_INVENTORY_LAYOUT',
     ENCHANT_HELD_ITEM = 'ENCHANT_HELD_ITEM',
-    PAUSE = 'PAUSE',
+    PAUSE_EXECUTION = 'PAUSE_EXECUTION',
     SET_PLAYER_TEAM = 'SET_PLAYER_TEAM',
     CHANGE_TEAM_STAT = 'CHANGE_TEAM_STAT',
     DISPLAY_MENU = 'DISPLAY_MENU',
@@ -108,20 +108,20 @@ export type ChangePlayerGroupAction = {
     demotion_protection: boolean;
 };
 
-export type KillAction = {
-    type: ActionType.KILL;
+export type KillPlayerAction = {
+    type: ActionType.KILL_PLAYER;
 };
 
 export type FullHealAction = {
     type: ActionType.FULL_HEAL;
 };
 
-export type SpawnAction = {
-    type: ActionType.SPAWN;
+export type SetSpawnAction = {
+    type: ActionType.SET_SPAWN;
 };
 
-export type TitleAction = {
-    type: ActionType.TITLE;
+export type DisplayTitleAction = {
+    type: ActionType.DISPLAY_TITLE;
     title: string;
     subtitle: string;
     fadein: number;
@@ -129,8 +129,8 @@ export type TitleAction = {
     fadeout: number;
 };
 
-export type ActionBarAction = {
-    type: ActionType.ACTION_BAR;
+export type DisplayActionBarAction = {
+    type: ActionType.DISPLAY_ACTION_BAR;
     message: string;
 };
 
@@ -138,8 +138,8 @@ export type ResetInventoryAction = {
     type: ActionType.RESET_INVENTORY;
 };
 
-export type SetMaxHealthAction = {
-    type: ActionType.SET_MAX_HEALTH;
+export type ChangeMaxHealthAction = {
+    type: ActionType.CHANGE_MAX_HEALTH;
     max_health: number;
     heal_on_change: boolean;
 };
@@ -161,21 +161,21 @@ export type RemoveItemAction = {
     item: string;
 };
 
-export type SendMessageAction = {
-    type: ActionType.SEND_MESSAGE;
+export type SendChatMessageAction = {
+    type: ActionType.SEND_CHAT_MESSAGE;
     message: string;
 };
 
-export type PotionEffectAction = {
-    type: ActionType.POTION_EFFECT;
+export type ApplyPotionEffectAction = {
+    type: ActionType.APPLY_POTION_EFFECT;
     effect: number;
     level: number;
     duration: number;
     override_existing_effects: boolean;
 };
 
-export type ClearEffectsAction = {
-    type: ActionType.CLEAR_EFFECTS;
+export type ClearPotionEffectsAction = {
+    type: ActionType.CLEAR_POTION_EFFECTS;
 };
 
 export type GiveExpLevelsAction = {
@@ -188,8 +188,8 @@ export type SendToLobbyAction = {
     location: string;
 };
 
-export type ChangeStatAction = {
-    type: ActionType.CHANGE_STAT;
+export type ChangePlayerStatAction = {
+    type: ActionType.CHANGE_PLAYER_STAT;
     mode: StatMode;
     stat: string;
     amount: string;
@@ -230,12 +230,12 @@ export type SetGameModeAction = {
 };
 
 export type ChangeHealthAction = {
-    type: ActionType.SET_HEALTH;
+    type: ActionType.CHANGE_HEALTH;
     health: number;
 };
 
 export type ChangeHungerLevelAction = {
-    type: ActionType.SET_HUNGER_LEVEL;
+    type: ActionType.CHANGE_HUNGER_LEVEL;
     hunger: number;
 };
 
@@ -253,8 +253,8 @@ export type TriggerFunctionAction = {
     function: string;
 };
 
-export type ApplyLayoutAction = {
-    type: ActionType.APPLY_LAYOUT;
+export type ApplyInventoryLayoutAction = {
+    type: ActionType.APPLY_INVENTORY_LAYOUT;
     layout: string;
 };
 
@@ -264,8 +264,8 @@ export type EnchantHeldItemAction = {
     level: number;
 };
 
-export type PauseAction = {
-    type: ActionType.PAUSE;
+export type PauseExecutionAction = {
+    type: ActionType.PAUSE_EXECUTION;
     ticks_to_wait: number;
 };
 
