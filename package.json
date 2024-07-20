@@ -1,6 +1,12 @@
 {
     "name": "housify",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Gusarich/housify.git"
+    },
+    "description": "Advanced programming language and compiler specifically designed for Hypixel Housing",
+    "main": "dist/index.js",
     "bin": {
         "housify": "dist/cli/main.js",
         "hsf": "dist/cli/main.js"

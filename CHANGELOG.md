@@ -9,11 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   Single-line comments with `//` and multi-line comments with `/* */`: PR [#14](https://github.com/Guasrich/housify/pull/14)
-
 ### Changed
 
 ### Fixed
+
+## [0.0.2-alpha] - 2024-07-20
+
+### Added
+
+-   Single-line comments with `//` and multi-line comments with `/* */`: PR [#14](https://github.com/Gusarich/housify/pull/14)
 
 ## [0.0.1-alpha] - 2024-07-20
 
@@ -21,5 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   The initial version of the compiler
 
-[unreleased]: https://github.com/Gusarich/housify/compare/v0.0.1-alpha...HEAD
+[unreleased]: https://github.com/Gusarich/housify/compare/v0.0.2-alpha...HEAD
+[0.0.2-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.2-alpha
 [0.0.1-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.1-alpha
