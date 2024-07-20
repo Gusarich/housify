@@ -2,6 +2,8 @@
 
 Housify is a programming language and compiler designed for advanced and convenient development in Hypixel Housing.
 
+> **⚠️ WARNING: This repository is currently under active development and is not yet usable. Please check back later for updates.**
+
 ## Table of Contents
 
 -   [Installation](#installation)
