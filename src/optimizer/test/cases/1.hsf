@@ -1,5 +1,0 @@
-house TestHouse {
-    handle(event: JoinEvent) {
-        let x: int = 1 + 2 * 3 - 4;
-    }
-}
