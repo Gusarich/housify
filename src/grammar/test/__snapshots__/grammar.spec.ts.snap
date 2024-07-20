@@ -1117,3 +1117,218 @@ exports[`Grammar should parse 13 1`] = `
   "kind": "module",
 }
 `;
+
+exports[`Grammar should parse 14 1`] = `
+{
+  "id": 19,
+  "items": [
+    {
+      "id": 18,
+      "items": [
+        {
+          "event": {
+            "id": 4,
+            "kind": "parameter",
+            "name": {
+              "id": 2,
+              "kind": "id",
+              "name": "event",
+            },
+            "type": {
+              "id": 3,
+              "kind": "id",
+              "name": "BlockBreak",
+            },
+          },
+          "id": 17,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 10,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 7,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 8,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 6,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 5,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "value": {
+                "id": 9,
+                "kind": "integerLiteral",
+                "value": "123",
+              },
+            },
+            {
+              "id": 16,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 13,
+                  "kind": "id",
+                  "name": "y",
+                },
+                "id": 14,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 12,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 11,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "value": {
+                "id": 15,
+                "kind": "integerLiteral",
+                "value": "456",
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse 15 1`] = `
+{
+  "id": 25,
+  "items": [
+    {
+      "id": 24,
+      "items": [
+        {
+          "event": {
+            "id": 4,
+            "kind": "parameter",
+            "name": {
+              "id": 2,
+              "kind": "id",
+              "name": "event",
+            },
+            "type": {
+              "id": 3,
+              "kind": "id",
+              "name": "BlockBreak",
+            },
+          },
+          "id": 23,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 10,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 7,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 8,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 6,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 5,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "value": {
+                "id": 9,
+                "kind": "integerLiteral",
+                "value": "123",
+              },
+            },
+            {
+              "id": 16,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 13,
+                  "kind": "id",
+                  "name": "y",
+                },
+                "id": 14,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 12,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 11,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "value": {
+                "id": 15,
+                "kind": "integerLiteral",
+                "value": "456",
+              },
+            },
+            {
+              "id": 22,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 19,
+                  "kind": "id",
+                  "name": "y",
+                },
+                "id": 20,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 18,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 17,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "value": {
+                "id": 21,
+                "kind": "integerLiteral",
+                "value": "456",
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;

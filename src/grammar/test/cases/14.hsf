@@ -1,0 +1,8 @@
+house MyHouse {
+    handle(event: BlockBreak) {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}

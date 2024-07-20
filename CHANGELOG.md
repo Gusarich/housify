@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+-   Single-line comments with `//` and multi-line comments with `/* */`: PR [#14](https://github.com/Guasrich/housify/pull/14)
+
 ### Changed
 
 ### Fixed
