@@ -29,6 +29,7 @@ This is the initial version of the project that can be used for development in H
 
 ### Meta
 
+-   [x] npm package
 -   [x] Contributing guidelines
 -   [ ] Issue and pull request templates
 -   [x] Complete README, CHANGELOG, LICENSE, and ROADMAP

@@ -1,6 +1,6 @@
 # Housify
 
-Housify is a programming language and compiler designed for advanced and convenient development in Hypixel Housing.
+Housify is a programming language and compiler specifically designed to enhance and simplify development within Hypixel Housing.
 
 > **⚠️ WARNING: This repository is currently under active development and is not yet usable. Please check back later for updates.**
 
@@ -15,18 +15,15 @@ Housify is a programming language and compiler designed for advanced and conveni
 
 ## Installation
 
-Currently, there is no published package available. To install Housify, you need to clone the repository, build, and link it yourself. Ensure you have NodeJS and a Node Package Manager (such as `npm` or `yarn`) installed. Below is an example of installation using `yarn`:
+Housify is now available as an npm package. To install Housify, ensure you have Node.js and npm installed. Then, you can install Housify using the following command:
 
 ```bash
-git clone https://github.com/Gusarich/housify.git
-cd housify
-yarn build
-yarn link
+npm install -g housify
 ```
 
 ## Usage
 
-Housify modules consist of one or multiple houses. Each house describes its stats and handlers. Below is an example of a simple counter house:
+Housify modules consist of one or more houses. Each house describes its stats and event handlers. Below is an example of a simple counter house:
 
 ```housify
 house Counter {
@@ -46,16 +43,16 @@ After writing your Housify module, compile it using the CLI:
 housify my-module.hsf
 ```
 
-This will compile your module into a JSON file with a formal description of all houses, including used stat names and the list of actions for each handler.
+This command compiles your module into a JSON file containing a formal description of all houses, including the stat names and a list of actions for each handler.
 
-You can then pass that JSON into Housing Writer (in progress) to automatically import all actions into the game without manually writing everything.
+You can then pass the generated JSON to the Housing Writer (currently in progress) to automatically import all actions into the game without manually writing everything.
 
 ## Contributing
 
-We welcome contributions from the community! Please adhere to the following guidelines when contributing:
+We welcome contributions from the community! Please follow these guidelines when contributing:
 
-1. **Open an Issue First:** Before opening a pull request (PR), please open a related issue first. This helps to discuss the changes and get feedback before investing time in development.
-2. **Single Issue Focus:** Each issue should address a single, understandable problem. This makes it easier to manage, review, and discuss the changes.
+1. **Open an Issue First:** Before submitting a pull request (PR), please open a related issue to discuss the changes and receive feedback.
+2. **Single Issue Focus:** Each issue should address a single, understandable problem, making it easier to manage, review, and discuss changes.
 
 To contribute:
 

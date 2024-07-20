@@ -1,0 +1,33 @@
+# Exclude version control files
+.git
+.gitignore
+.gitattributes
+.github/
+
+# Exclude development tools
+.husky/
+.prettierignore
+.prettierrc
+cspell.json
+eslint.config.mjs
+jest.config.ts
+tsconfig.json
+
+# Exclude source files
+src/
+test/
+
+# Exclude logs and temporary files
+*.log
+*.tsbuildinfo
+
+# Exclude node_modules (already excluded by default)
+node_modules/
+
+# Exclude coverage reports
+coverage/
+
+# Exclude other unnecessary files
+ROADMAP.md
+.DS_Store
+dist/utils/loadCases*

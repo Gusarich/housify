@@ -22,7 +22,8 @@
         "all": "yarn format:check && yarn lint && yarn spell",
         "test": "jest",
         "clean": "rm -rf dist",
-        "prepare": "husky"
+        "prepare": "husky",
+        "prepack": "yarn clean && yarn build"
     },
     "devDependencies": {
         "@eslint/create-config": "^1.1.5",
