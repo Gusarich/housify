@@ -2,8 +2,8 @@
     "name": "housify",
     "version": "0.0.1",
     "bin": {
-        "housify": "./dist/cli/main.js",
-        "hsf": "./dist/cli/main.js"
+        "housify": "dist/cli/main.js",
+        "hsf": "dist/cli/main.js"
     },
     "author": "Gusarich",
     "license": "MIT",
