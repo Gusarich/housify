@@ -1,6 +1,5 @@
 import {
     AstExpression,
-    AstExpressionField,
     AstHandler,
     AstHouse,
     AstModule,
@@ -10,7 +9,9 @@ import { Action, ActionType } from '../housing/actions';
 import { EventType } from '../housing/events';
 import { StatMode } from '../housing/util';
 import { CompilerContext } from '../resolver/context';
+import { resolveStructPath } from '../resolver/resolve';
 import { camelToSnake } from '../utils/letterCases';
+import { evaluateConstantExpression } from './evaluate';
 
 type WriterContext = {
     actions: Action[];
@@ -19,11 +20,11 @@ type WriterContext = {
     ctx: CompilerContext;
 };
 
-function wrapAsPlayerStat(stat: string) {
+export function wrapAsPlayerStat(stat: string) {
     return '%player.' + stat + '%';
 }
 
-function wrapAsGlobalStat(stat: string) {
+export function wrapAsGlobalStat(stat: string) {
     return '%global.' + stat + '%';
 }
 
@@ -82,38 +83,37 @@ export function cloneCompiledPiece(
     }
 }
 
-export function writeStructPath(path: AstExpressionField): string {
-    if (path.struct.kind === 'expressionId') {
-        return path.struct.name.name + '.' + path.field.name;
-    } else if (path.struct.kind === 'expressionField') {
-        return writeStructPath(path.struct) + '.' + path.field.name;
-    } else {
-        // must never happen
-        throw new Error('Invalid struct path');
-    }
-}
-
 export function writeExpression(
     expression: AstExpression,
     wctx: WriterContext,
 ): string {
+    try {
+        const result = evaluateConstantExpression(expression);
+        return result;
+    } catch {
+        /* empty */
+    }
+
     switch (expression.kind) {
         case 'integerLiteral':
             return expression.value;
         case 'booleanLiteral':
             return expression.value ? '1' : '0';
         case 'expressionId':
-            return wrapAsPlayerStat(expression.name.name);
+            return wrapAsPlayerStat('$' + expression.name.name);
         case 'expressionField':
             if (expression.struct.kind === 'expressionId') {
                 if (expression.struct.name.name === 'global') {
                     return wrapAsGlobalStat(expression.field.name);
-                } else {
-                    return wrapAsPlayerStat(writeStructPath(expression));
+                } else if (expression.struct.name.name === 'player') {
+                    return wrapAsPlayerStat(
+                        resolveStructPath(expression).join('.'),
+                    );
                 }
-            } else {
-                return wrapAsPlayerStat(writeStructPath(expression));
             }
+            return wrapAsPlayerStat(
+                '$' + resolveStructPath(expression).join('.'),
+            );
         case 'expressionUnary': {
             const operand = writeExpression(expression.operand, wctx);
             const tempStat = '$$' + getNextTempId();
@@ -304,29 +304,24 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                             stat: statement.lvalue.field.name,
                             amount: writeExpression(statement.value, wctx),
                         });
-                    } else if (statement.lvalue.struct.name.name === 'player') {
+                        break;
+                    }
+                    if (statement.lvalue.struct.name.name === 'player') {
                         wctx.actions.push({
                             type: ActionType.CHANGE_STAT,
                             mode: StatMode.SET,
                             stat: statement.lvalue.field.name,
                             amount: writeExpression(statement.value, wctx),
                         });
-                    } else {
-                        wctx.actions.push({
-                            type: ActionType.CHANGE_STAT,
-                            mode: StatMode.SET,
-                            stat: writeStructPath(statement.lvalue),
-                            amount: writeExpression(statement.value, wctx),
-                        });
+                        break;
                     }
-                } else {
-                    wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
-                        mode: StatMode.SET,
-                        stat: writeStructPath(statement.lvalue),
-                        amount: writeExpression(statement.value, wctx),
-                    });
                 }
+                wctx.actions.push({
+                    type: ActionType.CHANGE_STAT,
+                    mode: StatMode.SET,
+                    stat: '$' + resolveStructPath(statement.lvalue).join('.'),
+                    amount: writeExpression(statement.value, wctx),
+                });
             } else {
                 // must never happen
                 throw new Error('Invalid lvalue');

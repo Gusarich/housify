@@ -1,5 +1,6 @@
 import {
     AstExpression,
+    AstExpressionField,
     AstGlobalStat,
     AstHouse,
     AstId,
@@ -32,6 +33,17 @@ export function resolveType(type: AstId, sctx: StatementContext): Type {
                 throw new Error(`Type '${type.name}' not found`);
             }
             return sctx.getType(type.name)!;
+    }
+}
+
+export function resolveStructPath(path: AstExpressionField): string[] {
+    if (path.struct.kind === 'expressionId') {
+        return [path.struct.name.name, path.field.name];
+    } else if (path.struct.kind === 'expressionField') {
+        return resolveStructPath(path.struct).concat(path.field.name);
+    } else {
+        // must never happen
+        throw new Error('Invalid struct path');
     }
 }
 
