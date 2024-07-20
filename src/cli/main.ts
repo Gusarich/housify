@@ -4,7 +4,8 @@ import { Command } from 'commander';
 import * as fs from 'fs';
 import * as path from 'path';
 import { compile } from './compile';
-import * as pkg from '../../package.json';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pkg = require('../../package.json');
 
 const program = new Command();
 
