@@ -1,7 +1,7 @@
-import { writeModule } from '../generator/generate';
-import { parse } from '../grammar/grammar';
-import { CompilerContext } from '../resolver/context';
-import { resolveModule } from '../resolver/resolve';
+import { writeModule } from './generator/generate';
+import { parse } from './grammar/grammar';
+import { CompilerContext } from './resolver/context';
+import { resolveModule } from './resolver/resolve';
 
 export function compile(src: string) {
     // Parsing

@@ -3,7 +3,7 @@
 import { Command } from 'commander';
 import * as fs from 'fs';
 import * as path from 'path';
-import { compile } from './compile';
+import { compile } from '../compile';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pkg = require('../../package.json');
 
