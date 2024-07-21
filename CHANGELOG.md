@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+-   Expression statements of types other than `void` are now forbidden: PR [#21](https://github.com/Gusarich/housify/pull/21)
+
 ### Fixed
 
 ## [0.0.2-alpha] - 2024-07-20
