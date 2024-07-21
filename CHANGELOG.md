@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [0.0.3-alpha] - 2024-07-21
+
+### Added
+
 -   All missing Housing types have been added, and the names and fields have been fixed: PR [#17](https://github.com/Gusarich/housify/pull/17)
 -   Support for `if` statements and all binary comparisons: PR [#20](https://github.com/Gusarich/housify/pull/20)
 
@@ -32,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   The initial version of the compiler
 
-[unreleased]: https://github.com/Gusarich/housify/compare/v0.0.2-alpha...HEAD
+[unreleased]: https://github.com/Gusarich/housify/compare/v0.0.3-alpha...HEAD
+[0.0.3-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.3-alpha
 [0.0.2-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.2-alpha
 [0.0.1-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.1-alpha
