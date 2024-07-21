@@ -189,14 +189,14 @@ export type ChangePlayerStatAction = {
     kind: ActionKind.CHANGE_PLAYER_STAT;
     stat: string;
     mode: StatMode;
-    amount: string;
+    value: string;
 };
 
 export type ChangeGlobalStatAction = {
     kind: ActionKind.CHANGE_GLOBAL_STAT;
     stat: string;
     mode: StatMode;
-    amount: string;
+    value: string;
 };
 
 export type TeleportPlayerAction = {
@@ -279,7 +279,7 @@ export type ChangeTeamStatAction = {
     kind: ActionKind.CHANGE_TEAM_STAT;
     stat: string;
     mode: StatMode;
-    amount: string;
+    value: string;
     team: string;
 };
 

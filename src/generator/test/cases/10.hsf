@@ -1,0 +1,12 @@
+house TestHouse {
+    global counter: int = 0;
+
+    handle(event: JoinEvent) {
+        let x: int = 5;
+        let y: int = 2;
+        let z: bool = true;
+        if (x > 4 || y < 3 || x <= y || x >= y || x == y || x != y) {
+            global.counter = 10;
+        }
+    }
+}
