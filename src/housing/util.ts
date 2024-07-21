@@ -1,17 +1,12 @@
-//
-// TODO: COMPLETE AND ENSURE TO MATCH ACTUAL TYPES
-//
-
 export type Coordinates = {
-    relZ: number;
-    relY: number;
-    relX: number;
     x: number;
     y: number;
     z: number;
     pitch: number;
     yaw: number;
 };
+
+export type Location = 'Spawn' | 'Invoker' | Coordinates; // we don't support "Current Location" due to its unpredictability
 
 export enum StatMode {
     INCREMENT = 'INCREMENT',

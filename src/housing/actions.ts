@@ -1,9 +1,5 @@
 import { Condition } from './conditions';
-import { Coordinates, Gamemode, StatMode } from './util';
-
-//
-// TODO: COMPLETE AND ENSURE TO MATCH ACTUAL TYPES
-//
+import { Gamemode, StatMode } from './util';
 
 export type Action =
     | ConditionalAction
@@ -89,9 +85,9 @@ export enum ActionType {
 export type ConditionalAction = {
     type: ActionType.CONDITIONAL;
     conditions: Condition[];
-    match_any_condition: boolean;
-    if_actions: Action[];
-    else_actions: Action[];
+    matchAny: boolean;
+    then: Action[];
+    else: Action[];
 };
 
 export type CancelEventAction = {
@@ -105,7 +101,7 @@ export type ExitAction = {
 export type ChangePlayerGroupAction = {
     type: ActionType.CHANGE_PLAYER_GROUP;
     group: string;
-    demotion_protection: boolean;
+    demotionProtection: boolean;
 };
 
 export type KillPlayerAction = {
@@ -140,8 +136,9 @@ export type ResetInventoryAction = {
 
 export type ChangeMaxHealthAction = {
     type: ActionType.CHANGE_MAX_HEALTH;
-    max_health: number;
-    heal_on_change: boolean;
+    value: string;
+    mode: StatMode;
+    healOnChange: boolean;
 };
 
 export type ParkourCheckpointAction = {
@@ -151,9 +148,9 @@ export type ParkourCheckpointAction = {
 export type GiveItemAction = {
     type: ActionType.GIVE_ITEM;
     item: string;
-    allow_multiple: boolean;
-    inventory_slot: number;
-    replace_existing_item: boolean;
+    allowMultiple: boolean;
+    slot: number;
+    replace: boolean;
 };
 
 export type RemoveItemAction = {
@@ -168,10 +165,10 @@ export type SendChatMessageAction = {
 
 export type ApplyPotionEffectAction = {
     type: ActionType.APPLY_POTION_EFFECT;
-    effect: number;
-    level: number;
+    effect: string; // TODO: make an enum with all effects
     duration: number;
-    override_existing_effects: boolean;
+    level: number;
+    override: boolean;
 };
 
 export type ClearPotionEffectsAction = {
@@ -185,26 +182,26 @@ export type GiveExpLevelsAction = {
 
 export type SendToLobbyAction = {
     type: ActionType.SEND_TO_LOBBY;
-    location: string;
+    location: string; // TODO: make an enum with all locations
 };
 
 export type ChangePlayerStatAction = {
     type: ActionType.CHANGE_PLAYER_STAT;
-    mode: StatMode;
     stat: string;
+    mode: StatMode;
     amount: string;
 };
 
 export type ChangeGlobalStatAction = {
     type: ActionType.CHANGE_GLOBAL_STAT;
-    mode: StatMode;
     stat: string;
+    mode: StatMode;
     amount: string;
 };
 
 export type TeleportPlayerAction = {
     type: ActionType.TELEPORT_PLAYER;
-    location: Coordinates;
+    location: Location;
 };
 
 export type FailParkourAction = {
@@ -217,11 +214,12 @@ export type PlaySoundAction = {
     sound: string;
     volume: number;
     pitch: number;
+    location: Location;
 };
 
 export type SetCompassTargetAction = {
     type: ActionType.SET_COMPASS_TARGET;
-    location: Coordinates;
+    location: Location;
 };
 
 export type SetGamemodeAction = {
@@ -231,12 +229,14 @@ export type SetGamemodeAction = {
 
 export type ChangeHealthAction = {
     type: ActionType.CHANGE_HEALTH;
-    health: number;
+    value: string;
+    mode: StatMode;
 };
 
 export type ChangeHungerLevelAction = {
     type: ActionType.CHANGE_HUNGER_LEVEL;
-    hunger: number;
+    value: string;
+    mode: StatMode;
 };
 
 export type RandomAction = {
@@ -251,6 +251,7 @@ export type UseHeldItemAction = {
 export type TriggerFunctionAction = {
     type: ActionType.TRIGGER_FUNCTION;
     function: string;
+    everyone: boolean;
 };
 
 export type ApplyInventoryLayoutAction = {
@@ -260,13 +261,13 @@ export type ApplyInventoryLayoutAction = {
 
 export type EnchantHeldItemAction = {
     type: ActionType.ENCHANT_HELD_ITEM;
-    enchantment: number;
+    enchantment: string; // TODO: make an enum with all enchantments
     level: number;
 };
 
 export type PauseExecutionAction = {
     type: ActionType.PAUSE_EXECUTION;
-    ticks_to_wait: number;
+    ticks: number;
 };
 
 export type SetPlayerTeamAction = {
