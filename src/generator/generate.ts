@@ -452,7 +452,7 @@ export function writeHandler(
     ast: AstHandler,
     wctx: WriterContext,
 ): CompiledHandler {
-    const eventName = ast.event.type.name;
+    const eventName = ast.event.name;
     const eventNameSnake = camelToSnake(eventName.slice(0, -5)).toUpperCase();
 
     if (!(eventNameSnake in EventType)) {

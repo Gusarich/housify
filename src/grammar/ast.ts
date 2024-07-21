@@ -33,7 +33,7 @@ export type AstPlayerStat = {
 
 export type AstHandler = {
     kind: 'handler';
-    event: AstParameter;
+    event: AstId;
     statements: AstStatement[];
     id: number;
 };
