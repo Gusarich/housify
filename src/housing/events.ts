@@ -1,5 +1,5 @@
-import { ConditionType } from './conditions';
-import { ActionType } from './actions';
+import { ConditionKind } from './conditions';
+import { ActionKind } from './actions';
 
 export enum EventType {
     JOIN = 'JOIN',
@@ -24,62 +24,62 @@ export enum EventType {
 
 export type Event = {
     type: EventType;
-    actions: ActionType[];
-    conditions: ConditionType[];
+    actions: ActionKind[];
+    conditions: ConditionKind[];
 };
 
 const defaultActions = [
-    ActionType.CONDITIONAL,
-    ActionType.CHANGE_PLAYER_GROUP,
-    ActionType.FULL_HEAL,
-    ActionType.DISPLAY_TITLE,
-    ActionType.DISPLAY_ACTION_BAR,
-    ActionType.RESET_INVENTORY,
-    ActionType.CHANGE_MAX_HEALTH,
-    ActionType.PARKOUR_CHECKPOINT,
-    ActionType.GIVE_ITEM,
-    ActionType.REMOVE_ITEM,
-    ActionType.SEND_CHAT_MESSAGE,
-    ActionType.APPLY_POTION_EFFECT,
-    ActionType.CLEAR_POTION_EFFECTS,
-    ActionType.GIVE_EXP_LEVELS,
-    ActionType.CHANGE_PLAYER_STAT,
-    ActionType.CHANGE_GLOBAL_STAT,
-    ActionType.TELEPORT_PLAYER,
-    ActionType.FAIL_PARKOUR,
-    ActionType.PLAY_SOUND,
-    ActionType.SET_COMPASS_TARGET,
-    ActionType.SET_GAME_MODE,
-    ActionType.CHANGE_HEALTH,
-    ActionType.CHANGE_HUNGER_LEVEL,
-    ActionType.RANDOM_ACTION,
-    ActionType.TRIGGER_FUNCTION,
-    ActionType.APPLY_INVENTORY_LAYOUT,
-    ActionType.ENCHANT_HELD_ITEM,
-    ActionType.PAUSE_EXECUTION,
-    ActionType.SET_PLAYER_TEAM,
-    ActionType.CHANGE_TEAM_STAT,
-    ActionType.DISPLAY_MENU,
+    ActionKind.CONDITIONAL,
+    ActionKind.CHANGE_PLAYER_GROUP,
+    ActionKind.FULL_HEAL,
+    ActionKind.DISPLAY_TITLE,
+    ActionKind.DISPLAY_ACTION_BAR,
+    ActionKind.RESET_INVENTORY,
+    ActionKind.CHANGE_MAX_HEALTH,
+    ActionKind.PARKOUR_CHECKPOINT,
+    ActionKind.GIVE_ITEM,
+    ActionKind.REMOVE_ITEM,
+    ActionKind.SEND_CHAT_MESSAGE,
+    ActionKind.APPLY_POTION_EFFECT,
+    ActionKind.CLEAR_POTION_EFFECTS,
+    ActionKind.GIVE_EXP_LEVELS,
+    ActionKind.CHANGE_PLAYER_STAT,
+    ActionKind.CHANGE_GLOBAL_STAT,
+    ActionKind.TELEPORT_PLAYER,
+    ActionKind.FAIL_PARKOUR,
+    ActionKind.PLAY_SOUND,
+    ActionKind.SET_COMPASS_TARGET,
+    ActionKind.SET_GAME_MODE,
+    ActionKind.CHANGE_HEALTH,
+    ActionKind.CHANGE_HUNGER_LEVEL,
+    ActionKind.RANDOM_ACTION,
+    ActionKind.TRIGGER_FUNCTION,
+    ActionKind.APPLY_INVENTORY_LAYOUT,
+    ActionKind.ENCHANT_HELD_ITEM,
+    ActionKind.PAUSE_EXECUTION,
+    ActionKind.SET_PLAYER_TEAM,
+    ActionKind.CHANGE_TEAM_STAT,
+    ActionKind.DISPLAY_MENU,
 ];
 
 const defaultConditions = [
-    ConditionType.REQUIRED_GROUP,
-    ConditionType.PLAYER_STAT,
-    ConditionType.GLOBAL_STAT,
-    ConditionType.REQUIRED_PERMISSION,
-    ConditionType.WITHIN_REGION,
-    ConditionType.HAS_ITEM,
-    ConditionType.DOING_PARKOUR,
-    ConditionType.HAS_POTION_EFFECT,
-    ConditionType.SNEAKING,
-    ConditionType.FLYING,
-    ConditionType.HEALTH,
-    ConditionType.MAX_HEALTH,
-    ConditionType.HUNGER,
-    ConditionType.REQUIRED_GAMEMODE,
-    ConditionType.PLACEHOLDER_NUMBER,
-    ConditionType.REQUIRED_TEAM,
-    ConditionType.TEAM_STAT,
+    ConditionKind.REQUIRED_GROUP,
+    ConditionKind.PLAYER_STAT,
+    ConditionKind.GLOBAL_STAT,
+    ConditionKind.REQUIRED_PERMISSION,
+    ConditionKind.WITHIN_REGION,
+    ConditionKind.HAS_ITEM,
+    ConditionKind.DOING_PARKOUR,
+    ConditionKind.HAS_POTION_EFFECT,
+    ConditionKind.SNEAKING,
+    ConditionKind.FLYING,
+    ConditionKind.HEALTH,
+    ConditionKind.MAX_HEALTH,
+    ConditionKind.HUNGER,
+    ConditionKind.REQUIRED_GAMEMODE,
+    ConditionKind.PLACEHOLDER_NUMBER,
+    ConditionKind.REQUIRED_TEAM,
+    ConditionKind.TEAM_STAT,
 ];
 
 export const JoinEvent: Event = {
@@ -91,20 +91,20 @@ export const JoinEvent: Event = {
 export const QuitEvent: Event = {
     type: EventType.QUIT,
     actions: [
-        ActionType.CONDITIONAL,
-        ActionType.CHANGE_PLAYER_STAT,
-        ActionType.CHANGE_GLOBAL_STAT,
-        ActionType.RANDOM_ACTION,
-        ActionType.TRIGGER_FUNCTION,
-        ActionType.PAUSE_EXECUTION,
-        ActionType.CHANGE_TEAM_STAT,
+        ActionKind.CONDITIONAL,
+        ActionKind.CHANGE_PLAYER_STAT,
+        ActionKind.CHANGE_GLOBAL_STAT,
+        ActionKind.RANDOM_ACTION,
+        ActionKind.TRIGGER_FUNCTION,
+        ActionKind.PAUSE_EXECUTION,
+        ActionKind.CHANGE_TEAM_STAT,
     ],
     conditions: [...defaultConditions],
 };
 
 export const DeathEvent: Event = {
     type: EventType.DEATH,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
     conditions: [...defaultConditions],
 };
 
@@ -129,35 +129,35 @@ export const GroupChangeEvent: Event = {
 export const PvpStateChangeEvent: Event = {
     type: EventType.PVP_STATE_CHANGE,
     actions: [...defaultActions],
-    conditions: [...defaultConditions, ConditionType.PVP_ENABLED],
+    conditions: [...defaultConditions, ConditionKind.PVP_ENABLED],
 };
 
 export const FishCaughtEvent: Event = {
     type: EventType.FISH_CAUGHT,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
-    conditions: [...defaultConditions, ConditionType.FISHING_ENVIRONMENT],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
+    conditions: [...defaultConditions, ConditionKind.FISHING_ENVIRONMENT],
 };
 
 export const PortalUseEvent: Event = {
     type: EventType.PORTAL_USE,
     actions: [...defaultActions],
-    conditions: [...defaultConditions, ConditionType.PORTAL_TYPE],
+    conditions: [...defaultConditions, ConditionKind.PORTAL_TYPE],
 };
 
 export const DamageEvent: Event = {
     type: EventType.DAMAGE,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
     conditions: [
         ...defaultConditions,
-        ConditionType.DAMAGE_CAUSE,
-        ConditionType.DAMAGE_AMOUNT,
+        ConditionKind.DAMAGE_CAUSE,
+        ConditionKind.DAMAGE_AMOUNT,
     ],
 };
 
 export const BlockBreakEvent: Event = {
     type: EventType.BLOCK_BREAK,
     actions: [...defaultActions],
-    conditions: [...defaultConditions, ConditionType.BLOCK_TYPE],
+    conditions: [...defaultConditions, ConditionKind.BLOCK_TYPE],
 };
 
 export const ParkourStartEvent: Event = {
@@ -174,30 +174,30 @@ export const ParkourFinishEvent: Event = {
 
 export const DropItemEvent: Event = {
     type: EventType.DROP_ITEM,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
-    conditions: [...defaultConditions, ConditionType.IS_ITEM],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
+    conditions: [...defaultConditions, ConditionKind.IS_ITEM],
 };
 
 export const PickupItemEvent: Event = {
     type: EventType.PICKUP_ITEM,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
-    conditions: [...defaultConditions, ConditionType.IS_ITEM],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
+    conditions: [...defaultConditions, ConditionKind.IS_ITEM],
 };
 
 export const ChangeHeldItemEvent: Event = {
     type: EventType.CHANGE_HELD_ITEM,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
-    conditions: [...defaultConditions, ConditionType.IS_ITEM],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
+    conditions: [...defaultConditions, ConditionKind.IS_ITEM],
 };
 
 export const ToggleSneakEvent: Event = {
     type: EventType.TOGGLE_SNEAK,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
     conditions: [...defaultConditions],
 };
 
 export const ToggleFlightEvent: Event = {
     type: EventType.TOGGLE_FLIGHT,
-    actions: [...defaultActions, ActionType.CANCEL_EVENT],
+    actions: [...defaultActions, ActionKind.CANCEL_EVENT],
     conditions: [...defaultConditions],
 };

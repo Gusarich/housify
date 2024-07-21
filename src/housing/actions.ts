@@ -41,7 +41,7 @@ export type Action =
     | DisplayMenuAction
     | CloseMenuAction;
 
-export enum ActionType {
+export enum ActionKind {
     CONDITIONAL = 'CONDITIONAL',
     CANCEL_EVENT = 'CANCEL_EVENT',
     EXIT = 'EXIT',
@@ -83,7 +83,7 @@ export enum ActionType {
 }
 
 export type ConditionalAction = {
-    type: ActionType.CONDITIONAL;
+    kind: ActionKind.CONDITIONAL;
     conditions: Condition[];
     matchAny: boolean;
     then: Action[];
@@ -91,33 +91,33 @@ export type ConditionalAction = {
 };
 
 export type CancelEventAction = {
-    type: ActionType.CANCEL_EVENT;
+    kind: ActionKind.CANCEL_EVENT;
 };
 
 export type ExitAction = {
-    type: ActionType.EXIT;
+    kind: ActionKind.EXIT;
 };
 
 export type ChangePlayerGroupAction = {
-    type: ActionType.CHANGE_PLAYER_GROUP;
+    kind: ActionKind.CHANGE_PLAYER_GROUP;
     group: string;
     demotionProtection: boolean;
 };
 
 export type KillPlayerAction = {
-    type: ActionType.KILL_PLAYER;
+    kind: ActionKind.KILL_PLAYER;
 };
 
 export type FullHealAction = {
-    type: ActionType.FULL_HEAL;
+    kind: ActionKind.FULL_HEAL;
 };
 
 export type SetSpawnAction = {
-    type: ActionType.SET_SPAWN;
+    kind: ActionKind.SET_SPAWN;
 };
 
 export type DisplayTitleAction = {
-    type: ActionType.DISPLAY_TITLE;
+    kind: ActionKind.DISPLAY_TITLE;
     title: string;
     subtitle: string;
     fadein: number;
@@ -126,27 +126,27 @@ export type DisplayTitleAction = {
 };
 
 export type DisplayActionBarAction = {
-    type: ActionType.DISPLAY_ACTION_BAR;
+    kind: ActionKind.DISPLAY_ACTION_BAR;
     message: string;
 };
 
 export type ResetInventoryAction = {
-    type: ActionType.RESET_INVENTORY;
+    kind: ActionKind.RESET_INVENTORY;
 };
 
 export type ChangeMaxHealthAction = {
-    type: ActionType.CHANGE_MAX_HEALTH;
+    kind: ActionKind.CHANGE_MAX_HEALTH;
     value: string;
     mode: StatMode;
     healOnChange: boolean;
 };
 
 export type ParkourCheckpointAction = {
-    type: ActionType.PARKOUR_CHECKPOINT;
+    kind: ActionKind.PARKOUR_CHECKPOINT;
 };
 
 export type GiveItemAction = {
-    type: ActionType.GIVE_ITEM;
+    kind: ActionKind.GIVE_ITEM;
     item: string;
     allowMultiple: boolean;
     slot: number;
@@ -154,17 +154,17 @@ export type GiveItemAction = {
 };
 
 export type RemoveItemAction = {
-    type: ActionType.REMOVE_ITEM;
+    kind: ActionKind.REMOVE_ITEM;
     item: string;
 };
 
 export type SendChatMessageAction = {
-    type: ActionType.SEND_CHAT_MESSAGE;
+    kind: ActionKind.SEND_CHAT_MESSAGE;
     message: string;
 };
 
 export type ApplyPotionEffectAction = {
-    type: ActionType.APPLY_POTION_EFFECT;
+    kind: ActionKind.APPLY_POTION_EFFECT;
     effect: string; // TODO: make an enum with all effects
     duration: number;
     level: number;
@@ -172,45 +172,45 @@ export type ApplyPotionEffectAction = {
 };
 
 export type ClearPotionEffectsAction = {
-    type: ActionType.CLEAR_POTION_EFFECTS;
+    kind: ActionKind.CLEAR_POTION_EFFECTS;
 };
 
 export type GiveExpLevelsAction = {
-    type: ActionType.GIVE_EXP_LEVELS;
+    kind: ActionKind.GIVE_EXP_LEVELS;
     levels: number;
 };
 
 export type SendToLobbyAction = {
-    type: ActionType.SEND_TO_LOBBY;
+    kind: ActionKind.SEND_TO_LOBBY;
     location: string; // TODO: make an enum with all locations
 };
 
 export type ChangePlayerStatAction = {
-    type: ActionType.CHANGE_PLAYER_STAT;
+    kind: ActionKind.CHANGE_PLAYER_STAT;
     stat: string;
     mode: StatMode;
     amount: string;
 };
 
 export type ChangeGlobalStatAction = {
-    type: ActionType.CHANGE_GLOBAL_STAT;
+    kind: ActionKind.CHANGE_GLOBAL_STAT;
     stat: string;
     mode: StatMode;
     amount: string;
 };
 
 export type TeleportPlayerAction = {
-    type: ActionType.TELEPORT_PLAYER;
+    kind: ActionKind.TELEPORT_PLAYER;
     location: Location;
 };
 
 export type FailParkourAction = {
-    type: ActionType.FAIL_PARKOUR;
+    kind: ActionKind.FAIL_PARKOUR;
     reason: string;
 };
 
 export type PlaySoundAction = {
-    type: ActionType.PLAY_SOUND;
+    kind: ActionKind.PLAY_SOUND;
     sound: string;
     volume: number;
     pitch: number;
@@ -218,65 +218,65 @@ export type PlaySoundAction = {
 };
 
 export type SetCompassTargetAction = {
-    type: ActionType.SET_COMPASS_TARGET;
+    kind: ActionKind.SET_COMPASS_TARGET;
     location: Location;
 };
 
 export type SetGamemodeAction = {
-    type: ActionType.SET_GAME_MODE;
+    kind: ActionKind.SET_GAME_MODE;
     gamemode: Gamemode;
 };
 
 export type ChangeHealthAction = {
-    type: ActionType.CHANGE_HEALTH;
+    kind: ActionKind.CHANGE_HEALTH;
     value: string;
     mode: StatMode;
 };
 
 export type ChangeHungerLevelAction = {
-    type: ActionType.CHANGE_HUNGER_LEVEL;
+    kind: ActionKind.CHANGE_HUNGER_LEVEL;
     value: string;
     mode: StatMode;
 };
 
 export type RandomAction = {
-    type: ActionType.RANDOM_ACTION;
+    kind: ActionKind.RANDOM_ACTION;
     actions: Action[];
 };
 
 export type UseHeldItemAction = {
-    type: ActionType.USE_HELD_ITEM;
+    kind: ActionKind.USE_HELD_ITEM;
 };
 
 export type TriggerFunctionAction = {
-    type: ActionType.TRIGGER_FUNCTION;
+    kind: ActionKind.TRIGGER_FUNCTION;
     function: string;
     everyone: boolean;
 };
 
 export type ApplyInventoryLayoutAction = {
-    type: ActionType.APPLY_INVENTORY_LAYOUT;
+    kind: ActionKind.APPLY_INVENTORY_LAYOUT;
     layout: string;
 };
 
 export type EnchantHeldItemAction = {
-    type: ActionType.ENCHANT_HELD_ITEM;
+    kind: ActionKind.ENCHANT_HELD_ITEM;
     enchantment: string; // TODO: make an enum with all enchantments
     level: number;
 };
 
 export type PauseExecutionAction = {
-    type: ActionType.PAUSE_EXECUTION;
+    kind: ActionKind.PAUSE_EXECUTION;
     ticks: number;
 };
 
 export type SetPlayerTeamAction = {
-    type: ActionType.SET_PLAYER_TEAM;
+    kind: ActionKind.SET_PLAYER_TEAM;
     team: string;
 };
 
 export type ChangeTeamStatAction = {
-    type: ActionType.CHANGE_TEAM_STAT;
+    kind: ActionKind.CHANGE_TEAM_STAT;
     stat: string;
     mode: StatMode;
     amount: string;
@@ -284,10 +284,10 @@ export type ChangeTeamStatAction = {
 };
 
 export type DisplayMenuAction = {
-    type: ActionType.DISPLAY_MENU;
+    kind: ActionKind.DISPLAY_MENU;
     menu: string;
 };
 
 export type CloseMenuAction = {
-    type: ActionType.CLOSE_MENU;
+    kind: ActionKind.CLOSE_MENU;
 };

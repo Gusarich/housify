@@ -17,9 +17,16 @@ export type Condition =
     | RequiredGamemodeCondition
     | PlaceholderNumberCondition
     | RequiredTeamCondition
-    | TeamStatCondition;
+    | TeamStatCondition
+    | PvpEnabledCondition
+    | FishingEnvironmentCondition
+    | PortalTypeCondition
+    | DamageCauseCondition
+    | DamageAmountCondition
+    | BlockTypeCondition
+    | IsItemCondition;
 
-export enum ConditionType {
+export enum ConditionKind {
     REQUIRED_GROUP = 'REQUIRED_GROUP',
     PLAYER_STAT = 'PLAYER_STAT',
     GLOBAL_STAT = 'GLOBAL_STAT',
@@ -47,37 +54,37 @@ export enum ConditionType {
 }
 
 export type RequiredGroupCondition = {
-    type: ConditionType.REQUIRED_GROUP;
+    kind: ConditionKind.REQUIRED_GROUP;
     group: string;
     includeHigher: boolean;
 };
 
 export type PlayerStatCondition = {
-    type: ConditionType.PLAYER_STAT;
+    kind: ConditionKind.PLAYER_STAT;
     stat: string;
     mode: Comparator;
     value: string;
 };
 
 export type GlobalStatCondition = {
-    type: ConditionType.GLOBAL_STAT;
+    kind: ConditionKind.GLOBAL_STAT;
     stat: string;
     mode: Comparator;
     value: string;
 };
 
 export type RequiredPermissionCondition = {
-    type: ConditionType.REQUIRED_PERMISSION;
+    kind: ConditionKind.REQUIRED_PERMISSION;
     permission: string; // TODO: make an enum with all permissions
 };
 
 export type WithinRegionCondition = {
-    type: ConditionType.WITHIN_REGION;
+    kind: ConditionKind.WITHIN_REGION;
     region: string;
 };
 
 export type HasItemCondition = {
-    type: ConditionType.HAS_ITEM;
+    kind: ConditionKind.HAS_ITEM;
     item: string;
     what: 'ItemType' | 'Metadata';
     where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
@@ -85,59 +92,59 @@ export type HasItemCondition = {
 };
 
 export type DoingParkourCondition = {
-    type: ConditionType.DOING_PARKOUR;
+    kind: ConditionKind.DOING_PARKOUR;
 };
 
 export type HasPotionEffectCondition = {
-    type: ConditionType.HAS_POTION_EFFECT;
+    kind: ConditionKind.HAS_POTION_EFFECT;
     effect: string; // TODO: make an enum with all effects
 };
 
 export type SneakingCondition = {
-    type: ConditionType.SNEAKING;
+    kind: ConditionKind.SNEAKING;
 };
 
 export type FlyingCondition = {
-    type: ConditionType.FLYING;
+    kind: ConditionKind.FLYING;
 };
 
 export type HealthCondition = {
-    type: ConditionType.HEALTH;
+    kind: ConditionKind.HEALTH;
     mode: Comparator;
     value: string;
 };
 
 export type MaxHealthCondition = {
-    type: ConditionType.MAX_HEALTH;
+    kind: ConditionKind.MAX_HEALTH;
     mode: Comparator;
     value: string;
 };
 
 export type HungerCondition = {
-    type: ConditionType.HUNGER;
+    kind: ConditionKind.HUNGER;
     mode: Comparator;
     value: string;
 };
 
 export type RequiredGamemodeCondition = {
-    type: ConditionType.REQUIRED_GAMEMODE;
+    kind: ConditionKind.REQUIRED_GAMEMODE;
     gamemode: Gamemode;
 };
 
 export type PlaceholderNumberCondition = {
-    type: ConditionType.PLACEHOLDER_NUMBER;
+    kind: ConditionKind.PLACEHOLDER_NUMBER;
     placeholder: string;
     mode: Comparator;
     value: string;
 };
 
 export type RequiredTeamCondition = {
-    type: ConditionType.REQUIRED_TEAM;
+    kind: ConditionKind.REQUIRED_TEAM;
     team: string;
 };
 
 export type TeamStatCondition = {
-    type: ConditionType.TEAM_STAT;
+    kind: ConditionKind.TEAM_STAT;
     stat: string;
     team: string;
     mode: Comparator;
@@ -145,38 +152,38 @@ export type TeamStatCondition = {
 };
 
 export type PvpEnabledCondition = {
-    type: ConditionType.PVP_ENABLED;
+    kind: ConditionKind.PVP_ENABLED;
 };
 
 export type FishingEnvironmentCondition = {
-    type: ConditionType.FISHING_ENVIRONMENT;
+    kind: ConditionKind.FISHING_ENVIRONMENT;
     environment: 'Water' | 'Lava';
 };
 
 export type PortalTypeCondition = {
-    type: ConditionType.PORTAL_TYPE;
+    kind: ConditionKind.PORTAL_TYPE;
     portal: 'Nether' | 'End';
 };
 
 export type DamageCauseCondition = {
-    type: ConditionType.DAMAGE_CAUSE;
+    kind: ConditionKind.DAMAGE_CAUSE;
     cause: string; // TODO: make an enum with all causes
 };
 
 export type DamageAmountCondition = {
-    type: ConditionType.DAMAGE_AMOUNT;
+    kind: ConditionKind.DAMAGE_AMOUNT;
     mode: Comparator;
     value: string;
 };
 
 export type BlockTypeCondition = {
-    type: ConditionType.BLOCK_TYPE;
+    kind: ConditionKind.BLOCK_TYPE;
     item: string;
     matchTypeOnly: boolean;
 };
 
 export type IsItemCondition = {
-    type: ConditionType.IS_ITEM;
+    kind: ConditionKind.IS_ITEM;
     item: string;
     what: 'ItemType' | 'Metadata';
     where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
