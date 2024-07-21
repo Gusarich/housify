@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+-   Stat placeholders are now generated accurately: PR [#23](https://github.com/Gusarich/housify/pull/23)
+
 ## [0.0.2-alpha] - 2024-07-20
 
 ### Added
