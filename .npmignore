@@ -4,6 +4,12 @@
 .gitattributes
 .github/
 
+# Exclude documentation
+pages/
+next.config.mjs
+theme.config.jsx
+.next/
+
 # Exclude development tools
 .husky/
 .prettierignore

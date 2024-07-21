@@ -1,0 +1,22 @@
+{
+    "index": {
+        "type": "page",
+        "hidden": "true",
+        "display": "hidden",
+        "theme": {
+            "typesetting": "article"
+        }
+    },
+    "guide": {
+        "type": "page",
+        "title": "Guide"
+    },
+    "language": {
+        "type": "page",
+        "title": "Language"
+    },
+    "examples": {
+        "type": "page",
+        "title": "Examples"
+    }
+}

@@ -61,7 +61,14 @@
         /* Advanced Options */
         "skipLibCheck": true /* Skip type checking of declaration files. */,
         "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "noEmit": true,
+        "incremental": true,
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "jsx": "preserve"
     },
     "include": ["src/**/*"],
     "exclude": ["**/**.spec.ts"]
