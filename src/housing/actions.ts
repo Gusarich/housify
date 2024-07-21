@@ -1,85 +1,81 @@
 import { Condition } from './conditions';
-import { Coordinates, GameMode, StatMode } from './util';
-
-//
-// TODO: COMPLETE AND ENSURE TO MATCH ACTUAL TYPES
-//
+import { Gamemode, StatMode } from './util';
 
 export type Action =
     | ConditionalAction
     | CancelEventAction
     | ExitAction
     | ChangePlayerGroupAction
-    | KillAction
+    | KillPlayerAction
     | FullHealAction
-    | SpawnAction
-    | TitleAction
-    | ActionBarAction
+    | SetSpawnAction
+    | DisplayTitleAction
+    | DisplayActionBarAction
     | ResetInventoryAction
-    | SetMaxHealthAction
+    | ChangeMaxHealthAction
     | ParkourCheckpointAction
     | GiveItemAction
     | RemoveItemAction
-    | SendMessageAction
-    | PotionEffectAction
-    | ClearEffectsAction
+    | SendChatMessageAction
+    | ApplyPotionEffectAction
+    | ClearPotionEffectsAction
     | GiveExpLevelsAction
     | SendToLobbyAction
-    | ChangeStatAction
+    | ChangePlayerStatAction
     | ChangeGlobalStatAction
     | TeleportPlayerAction
     | FailParkourAction
     | PlaySoundAction
     | SetCompassTargetAction
-    | SetGameModeAction
+    | SetGamemodeAction
     | ChangeHealthAction
     | ChangeHungerLevelAction
     | RandomAction
     | UseHeldItemAction
     | TriggerFunctionAction
-    | ApplyLayoutAction
+    | ApplyInventoryLayoutAction
     | EnchantHeldItemAction
-    | PauseAction
+    | PauseExecutionAction
     | SetPlayerTeamAction
     | ChangeTeamStatAction
     | DisplayMenuAction
     | CloseMenuAction;
 
-export enum ActionType {
+export enum ActionKind {
     CONDITIONAL = 'CONDITIONAL',
     CANCEL_EVENT = 'CANCEL_EVENT',
     EXIT = 'EXIT',
     CHANGE_PLAYER_GROUP = 'CHANGE_PLAYER_GROUP',
-    KILL = 'KILL',
+    KILL_PLAYER = 'KILL_PLAYER',
     FULL_HEAL = 'FULL_HEAL',
-    SPAWN = 'SPAWN',
-    TITLE = 'TITLE',
-    ACTION_BAR = 'ACTION_BAR',
+    SET_SPAWN = 'SET_SPAWN',
+    DISPLAY_TITLE = 'DISPLAY_TITLE',
+    DISPLAY_ACTION_BAR = 'DISPLAY_ACTION_BAR',
     RESET_INVENTORY = 'RESET_INVENTORY',
-    SET_MAX_HEALTH = 'SET_MAX_HEALTH',
+    CHANGE_MAX_HEALTH = 'CHANGE_MAX_HEALTH',
     PARKOUR_CHECKPOINT = 'PARKOUR_CHECKPOINT',
     GIVE_ITEM = 'GIVE_ITEM',
     REMOVE_ITEM = 'REMOVE_ITEM',
-    SEND_MESSAGE = 'SEND_MESSAGE',
-    POTION_EFFECT = 'POTION_EFFECT',
-    CLEAR_EFFECTS = 'CLEAR_EFFECTS',
+    SEND_CHAT_MESSAGE = 'SEND_CHAT_MESSAGE',
+    APPLY_POTION_EFFECT = 'APPLY_POTION_EFFECT',
+    CLEAR_POTION_EFFECTS = 'CLEAR_POTION_EFFECTS',
     GIVE_EXP_LEVELS = 'GIVE_EXP_LEVELS',
     SEND_TO_LOBBY = 'SEND_TO_LOBBY',
-    CHANGE_STAT = 'CHANGE_STAT',
+    CHANGE_PLAYER_STAT = 'CHANGE_PLAYER_STAT',
     CHANGE_GLOBAL_STAT = 'CHANGE_GLOBAL_STAT',
     TELEPORT_PLAYER = 'TELEPORT_PLAYER',
     FAIL_PARKOUR = 'FAIL_PARKOUR',
     PLAY_SOUND = 'PLAY_SOUND',
     SET_COMPASS_TARGET = 'SET_COMPASS_TARGET',
     SET_GAME_MODE = 'SET_GAME_MODE',
-    SET_HEALTH = 'SET_HEALTH',
-    SET_HUNGER_LEVEL = 'SET_HUNGER_LEVEL',
+    CHANGE_HEALTH = 'CHANGE_HEALTH',
+    CHANGE_HUNGER_LEVEL = 'CHANGE_HUNGER_LEVEL',
     RANDOM_ACTION = 'RANDOM_ACTION',
     USE_HELD_ITEM = 'USE_HELD_ITEM',
     TRIGGER_FUNCTION = 'TRIGGER_FUNCTION',
-    APPLY_LAYOUT = 'APPLY_LAYOUT',
+    APPLY_INVENTORY_LAYOUT = 'APPLY_INVENTORY_LAYOUT',
     ENCHANT_HELD_ITEM = 'ENCHANT_HELD_ITEM',
-    PAUSE = 'PAUSE',
+    PAUSE_EXECUTION = 'PAUSE_EXECUTION',
     SET_PLAYER_TEAM = 'SET_PLAYER_TEAM',
     CHANGE_TEAM_STAT = 'CHANGE_TEAM_STAT',
     DISPLAY_MENU = 'DISPLAY_MENU',
@@ -87,41 +83,41 @@ export enum ActionType {
 }
 
 export type ConditionalAction = {
-    type: ActionType.CONDITIONAL;
+    kind: ActionKind.CONDITIONAL;
     conditions: Condition[];
-    match_any_condition: boolean;
-    if_actions: Action[];
-    else_actions: Action[];
+    matchAny: boolean;
+    then: Action[];
+    else: Action[];
 };
 
 export type CancelEventAction = {
-    type: ActionType.CANCEL_EVENT;
+    kind: ActionKind.CANCEL_EVENT;
 };
 
 export type ExitAction = {
-    type: ActionType.EXIT;
+    kind: ActionKind.EXIT;
 };
 
 export type ChangePlayerGroupAction = {
-    type: ActionType.CHANGE_PLAYER_GROUP;
+    kind: ActionKind.CHANGE_PLAYER_GROUP;
     group: string;
-    demotion_protection: boolean;
+    demotionProtection: boolean;
 };
 
-export type KillAction = {
-    type: ActionType.KILL;
+export type KillPlayerAction = {
+    kind: ActionKind.KILL_PLAYER;
 };
 
 export type FullHealAction = {
-    type: ActionType.FULL_HEAL;
+    kind: ActionKind.FULL_HEAL;
 };
 
-export type SpawnAction = {
-    type: ActionType.SPAWN;
+export type SetSpawnAction = {
+    kind: ActionKind.SET_SPAWN;
 };
 
-export type TitleAction = {
-    type: ActionType.TITLE;
+export type DisplayTitleAction = {
+    kind: ActionKind.DISPLAY_TITLE;
     title: string;
     subtitle: string;
     fadein: number;
@@ -129,153 +125,158 @@ export type TitleAction = {
     fadeout: number;
 };
 
-export type ActionBarAction = {
-    type: ActionType.ACTION_BAR;
+export type DisplayActionBarAction = {
+    kind: ActionKind.DISPLAY_ACTION_BAR;
     message: string;
 };
 
 export type ResetInventoryAction = {
-    type: ActionType.RESET_INVENTORY;
+    kind: ActionKind.RESET_INVENTORY;
 };
 
-export type SetMaxHealthAction = {
-    type: ActionType.SET_MAX_HEALTH;
-    max_health: number;
-    heal_on_change: boolean;
+export type ChangeMaxHealthAction = {
+    kind: ActionKind.CHANGE_MAX_HEALTH;
+    value: string;
+    mode: StatMode;
+    healOnChange: boolean;
 };
 
 export type ParkourCheckpointAction = {
-    type: ActionType.PARKOUR_CHECKPOINT;
+    kind: ActionKind.PARKOUR_CHECKPOINT;
 };
 
 export type GiveItemAction = {
-    type: ActionType.GIVE_ITEM;
+    kind: ActionKind.GIVE_ITEM;
     item: string;
-    allow_multiple: boolean;
-    inventory_slot: number;
-    replace_existing_item: boolean;
+    allowMultiple: boolean;
+    slot: number;
+    replace: boolean;
 };
 
 export type RemoveItemAction = {
-    type: ActionType.REMOVE_ITEM;
+    kind: ActionKind.REMOVE_ITEM;
     item: string;
 };
 
-export type SendMessageAction = {
-    type: ActionType.SEND_MESSAGE;
+export type SendChatMessageAction = {
+    kind: ActionKind.SEND_CHAT_MESSAGE;
     message: string;
 };
 
-export type PotionEffectAction = {
-    type: ActionType.POTION_EFFECT;
-    effect: number;
-    level: number;
+export type ApplyPotionEffectAction = {
+    kind: ActionKind.APPLY_POTION_EFFECT;
+    effect: string; // TODO: make an enum with all effects
     duration: number;
-    override_existing_effects: boolean;
+    level: number;
+    override: boolean;
 };
 
-export type ClearEffectsAction = {
-    type: ActionType.CLEAR_EFFECTS;
+export type ClearPotionEffectsAction = {
+    kind: ActionKind.CLEAR_POTION_EFFECTS;
 };
 
 export type GiveExpLevelsAction = {
-    type: ActionType.GIVE_EXP_LEVELS;
+    kind: ActionKind.GIVE_EXP_LEVELS;
     levels: number;
 };
 
 export type SendToLobbyAction = {
-    type: ActionType.SEND_TO_LOBBY;
-    location: string;
+    kind: ActionKind.SEND_TO_LOBBY;
+    location: string; // TODO: make an enum with all locations
 };
 
-export type ChangeStatAction = {
-    type: ActionType.CHANGE_STAT;
-    mode: StatMode;
+export type ChangePlayerStatAction = {
+    kind: ActionKind.CHANGE_PLAYER_STAT;
     stat: string;
+    mode: StatMode;
     amount: string;
 };
 
 export type ChangeGlobalStatAction = {
-    type: ActionType.CHANGE_GLOBAL_STAT;
-    mode: StatMode;
+    kind: ActionKind.CHANGE_GLOBAL_STAT;
     stat: string;
+    mode: StatMode;
     amount: string;
 };
 
 export type TeleportPlayerAction = {
-    type: ActionType.TELEPORT_PLAYER;
-    location: Coordinates;
+    kind: ActionKind.TELEPORT_PLAYER;
+    location: Location;
 };
 
 export type FailParkourAction = {
-    type: ActionType.FAIL_PARKOUR;
+    kind: ActionKind.FAIL_PARKOUR;
     reason: string;
 };
 
 export type PlaySoundAction = {
-    type: ActionType.PLAY_SOUND;
+    kind: ActionKind.PLAY_SOUND;
     sound: string;
     volume: number;
     pitch: number;
+    location: Location;
 };
 
 export type SetCompassTargetAction = {
-    type: ActionType.SET_COMPASS_TARGET;
-    location: Coordinates;
+    kind: ActionKind.SET_COMPASS_TARGET;
+    location: Location;
 };
 
-export type SetGameModeAction = {
-    type: ActionType.SET_GAME_MODE;
-    gamemode: GameMode;
+export type SetGamemodeAction = {
+    kind: ActionKind.SET_GAME_MODE;
+    gamemode: Gamemode;
 };
 
 export type ChangeHealthAction = {
-    type: ActionType.SET_HEALTH;
-    health: number;
+    kind: ActionKind.CHANGE_HEALTH;
+    value: string;
+    mode: StatMode;
 };
 
 export type ChangeHungerLevelAction = {
-    type: ActionType.SET_HUNGER_LEVEL;
-    hunger: number;
+    kind: ActionKind.CHANGE_HUNGER_LEVEL;
+    value: string;
+    mode: StatMode;
 };
 
 export type RandomAction = {
-    type: ActionType.RANDOM_ACTION;
+    kind: ActionKind.RANDOM_ACTION;
     actions: Action[];
 };
 
 export type UseHeldItemAction = {
-    type: ActionType.USE_HELD_ITEM;
+    kind: ActionKind.USE_HELD_ITEM;
 };
 
 export type TriggerFunctionAction = {
-    type: ActionType.TRIGGER_FUNCTION;
+    kind: ActionKind.TRIGGER_FUNCTION;
     function: string;
+    everyone: boolean;
 };
 
-export type ApplyLayoutAction = {
-    type: ActionType.APPLY_LAYOUT;
+export type ApplyInventoryLayoutAction = {
+    kind: ActionKind.APPLY_INVENTORY_LAYOUT;
     layout: string;
 };
 
 export type EnchantHeldItemAction = {
-    type: ActionType.ENCHANT_HELD_ITEM;
-    enchantment: number;
+    kind: ActionKind.ENCHANT_HELD_ITEM;
+    enchantment: string; // TODO: make an enum with all enchantments
     level: number;
 };
 
-export type PauseAction = {
-    type: ActionType.PAUSE;
-    ticks_to_wait: number;
+export type PauseExecutionAction = {
+    kind: ActionKind.PAUSE_EXECUTION;
+    ticks: number;
 };
 
 export type SetPlayerTeamAction = {
-    type: ActionType.SET_PLAYER_TEAM;
+    kind: ActionKind.SET_PLAYER_TEAM;
     team: string;
 };
 
 export type ChangeTeamStatAction = {
-    type: ActionType.CHANGE_TEAM_STAT;
+    kind: ActionKind.CHANGE_TEAM_STAT;
     stat: string;
     mode: StatMode;
     amount: string;
@@ -283,10 +284,10 @@ export type ChangeTeamStatAction = {
 };
 
 export type DisplayMenuAction = {
-    type: ActionType.DISPLAY_MENU;
+    kind: ActionKind.DISPLAY_MENU;
     menu: string;
 };
 
 export type CloseMenuAction = {
-    type: ActionType.CLOSE_MENU;
+    kind: ActionKind.CLOSE_MENU;
 };

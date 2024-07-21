@@ -9,7 +9,8 @@
         "struct",
         "fadein",
         "gamemode",
-        "wctx"
+        "wctx",
+        "hotbar"
     ],
     "ignorePaths": ["node_modules/**"]
 }

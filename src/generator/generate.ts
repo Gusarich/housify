@@ -5,7 +5,7 @@ import {
     AstModule,
     AstStatement,
 } from '../grammar/ast';
-import { Action, ActionType } from '../housing/actions';
+import { Action, ActionKind } from '../housing/actions';
 import { EventType } from '../housing/events';
 import { StatMode } from '../housing/util';
 import { CompilerContext } from '../resolver/context';
@@ -122,13 +122,13 @@ export function writeExpression(
             switch (expression.op) {
                 case '-': {
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: '0',
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
                         amount: operand,
@@ -137,13 +137,13 @@ export function writeExpression(
                 }
                 case '!': {
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: '1',
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
                         amount: operand,
@@ -162,13 +162,13 @@ export function writeExpression(
             switch (expression.op) {
                 case '+':
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: left,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.INCREMENT,
                         stat: tempStat,
                         amount: right,
@@ -176,13 +176,13 @@ export function writeExpression(
                     break;
                 case '-':
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: left,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
                         amount: right,
@@ -190,13 +190,13 @@ export function writeExpression(
                     break;
                 case '*':
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: left,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.MULTIPLY,
                         stat: tempStat,
                         amount: right,
@@ -204,13 +204,13 @@ export function writeExpression(
                     break;
                 case '/':
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: left,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DIVIDE,
                         stat: tempStat,
                         amount: right,
@@ -218,13 +218,13 @@ export function writeExpression(
                     break;
                 case '&&':
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: left,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.MULTIPLY,
                         stat: tempStat,
                         amount: right,
@@ -232,13 +232,13 @@ export function writeExpression(
                     break;
                 case '||': {
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
                         amount: left,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.INCREMENT,
                         stat: tempStat,
                         amount: right,
@@ -246,19 +246,19 @@ export function writeExpression(
                     const tempStat2 = '$$' + getNextTempId();
                     wctx.playerStats.set(tempStat2, wctx.playerStats.size);
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat2,
                         amount: left,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.MULTIPLY,
                         stat: tempStat2,
                         amount: right,
                     });
                     wctx.actions.push({
-                        type: ActionType.CHANGE_STAT,
+                        kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
                         amount: tempStat2,
@@ -281,7 +281,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 wctx.playerStats.size,
             );
             wctx.actions.push({
-                type: ActionType.CHANGE_STAT,
+                kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatMode.SET,
                 stat: '$' + statement.name.name,
                 amount: writeExpression(statement.value, wctx),
@@ -290,7 +290,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
         case 'statementAssign':
             if (statement.lvalue.kind === 'expressionId') {
                 wctx.actions.push({
-                    type: ActionType.CHANGE_STAT,
+                    kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode: StatMode.SET,
                     stat: '$' + statement.lvalue.name.name,
                     amount: writeExpression(statement.value, wctx),
@@ -299,7 +299,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 if (statement.lvalue.struct.kind === 'expressionId') {
                     if (statement.lvalue.struct.name.name === 'global') {
                         wctx.actions.push({
-                            type: ActionType.CHANGE_GLOBAL_STAT,
+                            kind: ActionKind.CHANGE_GLOBAL_STAT,
                             mode: StatMode.SET,
                             stat: statement.lvalue.field.name,
                             amount: writeExpression(statement.value, wctx),
@@ -308,7 +308,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     }
                     if (statement.lvalue.struct.name.name === 'player') {
                         wctx.actions.push({
-                            type: ActionType.CHANGE_STAT,
+                            kind: ActionKind.CHANGE_PLAYER_STAT,
                             mode: StatMode.SET,
                             stat: statement.lvalue.field.name,
                             amount: writeExpression(statement.value, wctx),
@@ -317,7 +317,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     }
                 }
                 wctx.actions.push({
-                    type: ActionType.CHANGE_STAT,
+                    kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode: StatMode.SET,
                     stat: '$' + resolveStructPath(statement.lvalue).join('.'),
                     amount: writeExpression(statement.value, wctx),
@@ -338,10 +338,10 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             //     ctx,
             // );
             // actions.push({
-            //     type: ActionType.CONDITIONAL,
+            //     kind: ActionKind.CONDITIONAL,
             //     conditions: [
             //         {
-            //             type: ConditionType.PLAYER_STAT,
+            //             kind: ConditionKind.PLAYER_STAT,
             //             stat: condition,
             //             mode: mode
             //         },

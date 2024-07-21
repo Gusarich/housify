@@ -1,45 +1,48 @@
-import { GameMode, StatMode } from './util';
-
-//
-// TODO: COMPLETE AND ENSURE TO MATCH ACTUAL TYPES
-//
+import { Comparator, Gamemode } from './util';
 
 export type Condition =
-    | InGroupCondition
+    | RequiredGroupCondition
     | PlayerStatCondition
     | GlobalStatCondition
-    | HasPermissionCondition
-    | InRegionCondition
+    | RequiredPermissionCondition
+    | WithinRegionCondition
     | HasItemCondition
-    | InParkourCondition
-    | PotionEffectCondition
+    | DoingParkourCondition
+    | HasPotionEffectCondition
     | SneakingCondition
     | FlyingCondition
     | HealthCondition
     | MaxHealthCondition
-    | HungerLevelCondition
-    | GameModeCondition
+    | HungerCondition
+    | RequiredGamemodeCondition
     | PlaceholderNumberCondition
-    | InTeamCondition
-    | TeamStatCondition;
+    | RequiredTeamCondition
+    | TeamStatCondition
+    | PvpEnabledCondition
+    | FishingEnvironmentCondition
+    | PortalTypeCondition
+    | DamageCauseCondition
+    | DamageAmountCondition
+    | BlockTypeCondition
+    | IsItemCondition;
 
-export enum ConditionType {
-    IN_GROUP = 'IN_GROUP',
+export enum ConditionKind {
+    REQUIRED_GROUP = 'REQUIRED_GROUP',
     PLAYER_STAT = 'PLAYER_STAT',
     GLOBAL_STAT = 'GLOBAL_STAT',
-    HAS_PERMISSION = 'HAS_PERMISSION',
-    IN_REGION = 'IN_REGION',
+    REQUIRED_PERMISSION = 'REQUIRED_PERMISSION',
+    WITHIN_REGION = 'WITHIN_REGION',
     HAS_ITEM = 'HAS_ITEM',
-    IN_PARKOUR = 'IN_PARKOUR',
-    POTION_EFFECT = 'POTION_EFFECT',
+    DOING_PARKOUR = 'DOING_PARKOUR',
+    HAS_POTION_EFFECT = 'HAS_POTION_EFFECT',
     SNEAKING = 'SNEAKING',
     FLYING = 'FLYING',
     HEALTH = 'HEALTH',
     MAX_HEALTH = 'MAX_HEALTH',
-    HUNGER_LEVEL = 'HUNGER_LEVEL',
-    GAMEMODE = 'GAMEMODE',
+    HUNGER = 'HUNGER',
+    REQUIRED_GAMEMODE = 'REQUIRED_GAMEMODE',
     PLACEHOLDER_NUMBER = 'PLACEHOLDER_NUMBER',
-    IN_TEAM = 'IN_TEAM',
+    REQUIRED_TEAM = 'REQUIRED_TEAM',
     TEAM_STAT = 'TEAM_STAT',
     PVP_ENABLED = 'PVP_ENABLED',
     FISHING_ENVIRONMENT = 'FISHING_ENVIRONMENT',
@@ -50,100 +53,139 @@ export enum ConditionType {
     IS_ITEM = 'IS_ITEM',
 }
 
-export type InGroupCondition = {
-    type: ConditionType.IN_GROUP;
-    required_group: string;
-    include_higher_groups: boolean;
+export type RequiredGroupCondition = {
+    kind: ConditionKind.REQUIRED_GROUP;
+    group: string;
+    includeHigher: boolean;
 };
 
 export type PlayerStatCondition = {
-    type: ConditionType.PLAYER_STAT;
+    kind: ConditionKind.PLAYER_STAT;
     stat: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
 export type GlobalStatCondition = {
-    type: ConditionType.GLOBAL_STAT;
+    kind: ConditionKind.GLOBAL_STAT;
     stat: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
-export type HasPermissionCondition = {
-    type: ConditionType.HAS_PERMISSION;
-    required_permission: string;
+export type RequiredPermissionCondition = {
+    kind: ConditionKind.REQUIRED_PERMISSION;
+    permission: string; // TODO: make an enum with all permissions
 };
 
-export type InRegionCondition = {
-    type: ConditionType.IN_REGION;
+export type WithinRegionCondition = {
+    kind: ConditionKind.WITHIN_REGION;
     region: string;
 };
 
 export type HasItemCondition = {
-    type: ConditionType.HAS_ITEM;
+    kind: ConditionKind.HAS_ITEM;
     item: string;
-    what_to_check: 'Metadata' | 'AnotherOption'; // Adjust with actual options
-    where_to_check: 'Anywhere' | 'AnotherOption'; // Adjust with actual options
-    required_amount: 'Any' | number; // Adjust if there are more specific types
+    what: 'ItemType' | 'Metadata';
+    where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
+    amount: 'Any' | 'GreaterOrEqual';
 };
 
-export type InParkourCondition = {
-    type: ConditionType.IN_PARKOUR;
+export type DoingParkourCondition = {
+    kind: ConditionKind.DOING_PARKOUR;
 };
 
-export type PotionEffectCondition = {
-    type: ConditionType.POTION_EFFECT;
-    effect: number;
+export type HasPotionEffectCondition = {
+    kind: ConditionKind.HAS_POTION_EFFECT;
+    effect: string; // TODO: make an enum with all effects
 };
 
 export type SneakingCondition = {
-    type: ConditionType.SNEAKING;
+    kind: ConditionKind.SNEAKING;
 };
 
 export type FlyingCondition = {
-    type: ConditionType.FLYING;
+    kind: ConditionKind.FLYING;
 };
 
 export type HealthCondition = {
-    type: ConditionType.HEALTH;
-    mode: StatMode;
-    amount: number;
+    kind: ConditionKind.HEALTH;
+    mode: Comparator;
+    value: string;
 };
 
 export type MaxHealthCondition = {
-    type: ConditionType.MAX_HEALTH;
-    mode: StatMode;
-    amount: number;
+    kind: ConditionKind.MAX_HEALTH;
+    mode: Comparator;
+    value: string;
 };
 
-export type HungerLevelCondition = {
-    type: ConditionType.HUNGER_LEVEL;
-    mode: StatMode;
-    amount: number;
+export type HungerCondition = {
+    kind: ConditionKind.HUNGER;
+    mode: Comparator;
+    value: string;
 };
 
-export type GameModeCondition = {
-    type: ConditionType.GAMEMODE;
-    required_gamemode: GameMode;
+export type RequiredGamemodeCondition = {
+    kind: ConditionKind.REQUIRED_GAMEMODE;
+    gamemode: Gamemode;
 };
 
 export type PlaceholderNumberCondition = {
-    type: ConditionType.PLACEHOLDER_NUMBER;
+    kind: ConditionKind.PLACEHOLDER_NUMBER;
     placeholder: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
-export type InTeamCondition = {
-    type: ConditionType.IN_TEAM;
-    required_team: string;
+export type RequiredTeamCondition = {
+    kind: ConditionKind.REQUIRED_TEAM;
+    team: string;
 };
 
 export type TeamStatCondition = {
-    type: ConditionType.TEAM_STAT;
+    kind: ConditionKind.TEAM_STAT;
     stat: string;
     team: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
+};
+
+export type PvpEnabledCondition = {
+    kind: ConditionKind.PVP_ENABLED;
+};
+
+export type FishingEnvironmentCondition = {
+    kind: ConditionKind.FISHING_ENVIRONMENT;
+    environment: 'Water' | 'Lava';
+};
+
+export type PortalTypeCondition = {
+    kind: ConditionKind.PORTAL_TYPE;
+    portal: 'Nether' | 'End';
+};
+
+export type DamageCauseCondition = {
+    kind: ConditionKind.DAMAGE_CAUSE;
+    cause: string; // TODO: make an enum with all causes
+};
+
+export type DamageAmountCondition = {
+    kind: ConditionKind.DAMAGE_AMOUNT;
+    mode: Comparator;
+    value: string;
+};
+
+export type BlockTypeCondition = {
+    kind: ConditionKind.BLOCK_TYPE;
+    item: string;
+    matchTypeOnly: boolean;
+};
+
+export type IsItemCondition = {
+    kind: ConditionKind.IS_ITEM;
+    item: string;
+    what: 'ItemType' | 'Metadata';
+    where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
+    amount: 'Any' | 'GreaterOrEqual';
 };
