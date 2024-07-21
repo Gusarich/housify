@@ -48,7 +48,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    10 => {
+    8 => {
       "fields": [
         {
           "defaultValue": {
@@ -65,36 +65,36 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    12 => {
+    10 => {
       "type": "int",
     },
-    13 => {
+    11 => {
       "type": "int",
+    },
+    16 => {
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
     },
     18 => {
-      "fields": [
-        {
-          "defaultValue": {
-            "id": 4,
-            "kind": "integerLiteral",
-            "value": "10",
-          },
-          "name": "x",
-          "type": {
-            "type": "int",
-          },
-        },
-      ],
-      "name": "global",
-      "type": "struct",
+      "type": "int",
+    },
+    19 => {
+      "type": "int",
     },
     20 => {
-      "type": "int",
-    },
-    21 => {
-      "type": "int",
-    },
-    22 => {
       "type": "int",
     },
   },
@@ -126,7 +126,7 @@ CompilerContext {
     4 => {
       "type": "bool",
     },
-    10 => {
+    8 => {
       "fields": [
         {
           "defaultValue": {
@@ -142,11 +142,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
+    },
+    10 => {
+      "type": "bool",
     },
     12 => {
-      "type": "bool",
-    },
-    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -163,10 +163,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    16 => {
+    14 => {
       "type": "bool",
     },
-    17 => {
+    15 => {
       "type": "bool",
     },
   },
@@ -198,7 +198,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    10 => {
+    8 => {
       "fields": [
         {
           "defaultValue": {
@@ -214,11 +214,11 @@ CompilerContext {
       ],
       "name": "player",
       "type": "struct",
+    },
+    10 => {
+      "type": "int",
     },
     12 => {
-      "type": "int",
-    },
-    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -235,13 +235,13 @@ CompilerContext {
       "name": "player",
       "type": "struct",
     },
+    14 => {
+      "type": "int",
+    },
+    15 => {
+      "type": "int",
+    },
     16 => {
-      "type": "int",
-    },
-    17 => {
-      "type": "int",
-    },
-    18 => {
       "type": "int",
     },
   },
@@ -273,7 +273,7 @@ CompilerContext {
     4 => {
       "type": "bool",
     },
-    10 => {
+    8 => {
       "fields": [
         {
           "defaultValue": {
@@ -289,11 +289,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
+    },
+    10 => {
+      "type": "bool",
     },
     12 => {
-      "type": "bool",
-    },
-    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -310,10 +310,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    16 => {
+    14 => {
       "type": "bool",
     },
-    17 => {
+    15 => {
       "type": "bool",
     },
   },
@@ -342,22 +342,22 @@ CompilerContext {
 exports[`Resolver should resolve 5 1`] = `
 CompilerContext {
   "expressions": Map {
-    7 => {
+    5 => {
+      "type": "int",
+    },
+    8 => {
+      "type": "int",
+    },
+    9 => {
       "type": "int",
     },
     10 => {
-      "type": "int",
-    },
-    11 => {
-      "type": "int",
-    },
-    12 => {
       "type": "bool",
     },
-    15 => {
+    13 => {
       "type": "int",
     },
-    19 => {
+    17 => {
       "type": "int",
     },
   },
@@ -374,34 +374,34 @@ CompilerContext {
 exports[`Resolver should resolve 6 1`] = `
 CompilerContext {
   "expressions": Map {
-    7 => {
+    5 => {
+      "type": "int",
+    },
+    8 => {
+      "type": "int",
+    },
+    9 => {
       "type": "int",
     },
     10 => {
-      "type": "int",
-    },
-    11 => {
-      "type": "int",
-    },
-    12 => {
       "type": "bool",
     },
-    15 => {
+    13 => {
+      "type": "int",
+    },
+    16 => {
+      "type": "int",
+    },
+    17 => {
       "type": "int",
     },
     18 => {
-      "type": "int",
-    },
-    19 => {
-      "type": "int",
-    },
-    20 => {
       "type": "bool",
     },
-    23 => {
+    21 => {
       "type": "int",
     },
-    27 => {
+    25 => {
       "type": "int",
     },
   },
@@ -418,7 +418,7 @@ CompilerContext {
 exports[`Resolver should resolve 7 1`] = `
 CompilerContext {
   "expressions": Map {
-    7 => {
+    5 => {
       "type": "int",
     },
   },
@@ -438,7 +438,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    10 => {
+    8 => {
       "fields": [
         {
           "defaultValue": {
@@ -455,10 +455,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    12 => {
+    10 => {
       "type": "int",
     },
-    13 => {
+    11 => {
       "type": "int",
     },
   },
@@ -487,25 +487,25 @@ CompilerContext {
 exports[`Resolver should resolve 9 1`] = `
 CompilerContext {
   "expressions": Map {
-    7 => {
+    5 => {
+      "type": "int",
+    },
+    10 => {
+      "type": "int",
+    },
+    11 => {
       "type": "int",
     },
     12 => {
       "type": "int",
     },
-    13 => {
-      "type": "int",
-    },
-    14 => {
+    17 => {
       "type": "int",
     },
     19 => {
       "type": "int",
     },
-    21 => {
-      "type": "int",
-    },
-    22 => {
+    20 => {
       "type": "int",
     },
   },
@@ -522,13 +522,13 @@ CompilerContext {
 exports[`Resolver should resolve 10 1`] = `
 CompilerContext {
   "expressions": Map {
-    7 => {
+    5 => {
       "type": "int",
     },
-    12 => {
+    10 => {
       "type": "int",
     },
-    13 => {
+    11 => {
       "type": "int",
     },
   },
@@ -551,7 +551,7 @@ CompilerContext {
     8 => {
       "type": "int",
     },
-    16 => {
+    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -578,11 +578,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
+    },
+    16 => {
+      "type": "int",
     },
     18 => {
-      "type": "int",
-    },
-    20 => {
       "fields": [
         {
           "defaultValue": {
@@ -610,10 +610,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    22 => {
+    20 => {
       "type": "int",
     },
-    23 => {
+    21 => {
       "type": "int",
     },
   },
@@ -659,7 +659,7 @@ CompilerContext {
     8 => {
       "type": "int",
     },
-    16 => {
+    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -686,11 +686,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
+    },
+    16 => {
+      "type": "int",
     },
     18 => {
-      "type": "int",
-    },
-    20 => {
       "fields": [
         {
           "defaultValue": {
@@ -718,10 +718,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    22 => {
+    20 => {
       "type": "int",
     },
-    23 => {
+    21 => {
       "type": "int",
     },
   },
@@ -764,7 +764,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    10 => {
+    8 => {
       "fields": [
         {
           "defaultValue": {
@@ -781,10 +781,10 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    12 => {
+    10 => {
       "type": "int",
     },
-    13 => {
+    11 => {
       "type": "int",
     },
   },
@@ -816,7 +816,7 @@ CompilerContext {
     4 => {
       "type": "int",
     },
-    10 => {
+    8 => {
       "fields": [
         {
           "defaultValue": {
@@ -832,11 +832,11 @@ CompilerContext {
       ],
       "name": "player",
       "type": "struct",
+    },
+    10 => {
+      "type": "int",
     },
     12 => {
-      "type": "int",
-    },
-    14 => {
       "fields": [
         {
           "defaultValue": {
@@ -853,13 +853,13 @@ CompilerContext {
       "name": "player",
       "type": "struct",
     },
+    14 => {
+      "type": "int",
+    },
+    15 => {
+      "type": "int",
+    },
     16 => {
-      "type": "int",
-    },
-    17 => {
-      "type": "int",
-    },
-    18 => {
       "type": "int",
     },
   },
@@ -897,7 +897,7 @@ CompilerContext {
     12 => {
       "type": "int",
     },
-    20 => {
+    18 => {
       "fields": [
         {
           "defaultValue": {
@@ -924,11 +924,11 @@ CompilerContext {
       ],
       "name": "global",
       "type": "struct",
+    },
+    20 => {
+      "type": "int",
     },
     22 => {
-      "type": "int",
-    },
-    24 => {
       "fields": [
         {
           "defaultValue": {
@@ -956,16 +956,16 @@ CompilerContext {
       "name": "global",
       "type": "struct",
     },
-    26 => {
+    24 => {
       "type": "int",
     },
-    27 => {
+    25 => {
+      "type": "int",
+    },
+    30 => {
       "type": "int",
     },
     32 => {
-      "type": "int",
-    },
-    34 => {
       "fields": [
         {
           "defaultValue": {
@@ -982,79 +982,85 @@ CompilerContext {
       "name": "player",
       "type": "struct",
     },
-    36 => {
+    34 => {
       "type": "int",
     },
-    37 => {
+    35 => {
+      "type": "int",
+    },
+    40 => {
+      "type": "int",
+    },
+    41 => {
       "type": "int",
     },
     42 => {
       "type": "int",
     },
-    43 => {
+    47 => {
       "type": "int",
     },
-    44 => {
+    48 => {
       "type": "int",
     },
     49 => {
       "type": "int",
     },
-    50 => {
+    54 => {
       "type": "int",
     },
-    51 => {
+    55 => {
       "type": "int",
     },
     56 => {
       "type": "int",
     },
-    57 => {
+    61 => {
       "type": "int",
     },
-    58 => {
+    62 => {
       "type": "int",
     },
     63 => {
-      "type": "int",
+      "type": "bool",
     },
-    64 => {
-      "type": "int",
+    68 => {
+      "type": "bool",
     },
-    65 => {
+    69 => {
       "type": "bool",
     },
     70 => {
       "type": "bool",
     },
-    71 => {
+    75 => {
       "type": "bool",
     },
-    72 => {
+    76 => {
       "type": "bool",
     },
-    77 => {
-      "type": "bool",
-    },
-    78 => {
-      "type": "bool",
-    },
-    83 => {
+    81 => {
       "type": "int",
     },
-    84 => {
+    82 => {
       "type": "int",
     },
-    89 => {
+    87 => {
+      "type": "int",
+    },
+    92 => {
+      "type": "int",
+    },
+    93 => {
       "type": "int",
     },
     94 => {
       "type": "int",
     },
-    95 => {
+    96 => {
       "type": "int",
     },
-    96 => {
+    97 => {
       "type": "int",
     },
     98 => {
@@ -1063,13 +1069,13 @@ CompilerContext {
     99 => {
       "type": "int",
     },
-    100 => {
-      "type": "int",
-    },
-    101 => {
+    104 => {
       "type": "int",
     },
     106 => {
+      "type": "int",
+    },
+    107 => {
       "type": "int",
     },
     108 => {
@@ -1078,13 +1084,13 @@ CompilerContext {
     109 => {
       "type": "int",
     },
-    110 => {
-      "type": "int",
-    },
-    111 => {
+    114 => {
       "type": "int",
     },
     116 => {
+      "type": "int",
+    },
+    117 => {
       "type": "int",
     },
     118 => {
@@ -1093,52 +1099,52 @@ CompilerContext {
     119 => {
       "type": "int",
     },
-    120 => {
+    124 => {
       "type": "int",
     },
-    121 => {
+    125 => {
       "type": "int",
     },
     126 => {
-      "type": "int",
+      "type": "bool",
     },
-    127 => {
-      "type": "int",
+    131 => {
+      "type": "bool",
     },
-    128 => {
+    132 => {
       "type": "bool",
     },
     133 => {
       "type": "bool",
     },
-    134 => {
+    138 => {
       "type": "bool",
     },
-    135 => {
+    139 => {
       "type": "bool",
     },
-    140 => {
-      "type": "bool",
-    },
-    141 => {
-      "type": "bool",
-    },
-    146 => {
+    144 => {
       "type": "int",
     },
-    147 => {
+    145 => {
       "type": "int",
     },
-    152 => {
+    150 => {
+      "type": "int",
+    },
+    155 => {
+      "type": "int",
+    },
+    156 => {
       "type": "int",
     },
     157 => {
       "type": "int",
     },
-    158 => {
+    159 => {
       "type": "int",
     },
-    159 => {
+    160 => {
       "type": "int",
     },
     161 => {
@@ -1147,13 +1153,13 @@ CompilerContext {
     162 => {
       "type": "int",
     },
-    163 => {
-      "type": "int",
-    },
-    164 => {
+    167 => {
       "type": "int",
     },
     169 => {
+      "type": "int",
+    },
+    170 => {
       "type": "int",
     },
     171 => {
@@ -1162,49 +1168,43 @@ CompilerContext {
     172 => {
       "type": "int",
     },
-    173 => {
+    177 => {
       "type": "int",
     },
-    174 => {
+    178 => {
       "type": "int",
     },
     179 => {
       "type": "int",
     },
-    180 => {
+    184 => {
       "type": "int",
     },
-    181 => {
+    185 => {
       "type": "int",
     },
     186 => {
-      "type": "int",
+      "type": "bool",
     },
-    187 => {
-      "type": "int",
+    191 => {
+      "type": "bool",
     },
-    188 => {
+    192 => {
       "type": "bool",
     },
     193 => {
       "type": "bool",
     },
-    194 => {
+    198 => {
       "type": "bool",
     },
-    195 => {
+    199 => {
       "type": "bool",
     },
-    200 => {
-      "type": "bool",
-    },
-    201 => {
-      "type": "bool",
-    },
-    206 => {
+    204 => {
       "type": "int",
     },
-    207 => {
+    205 => {
       "type": "int",
     },
   },

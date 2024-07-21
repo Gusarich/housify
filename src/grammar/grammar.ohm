@@ -11,7 +11,7 @@ Housify {
     GlobalStat = global id ":" Type ("=" Expression)? ";"
     PlayerStat = player id ":" Type ("=" Expression)? ";"
 
-    Handler = handle "(" Parameter ")" "{" Statement* "}"
+    Handler = handle id "{" Statement* "}"
 
     Parameter = id ":" Type
 

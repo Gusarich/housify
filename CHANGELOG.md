@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+-   Handlers grammar has been changed to `handle Event { Statements }`: PR [#35](https://github.com/Gusarich/housify/pull/35)
+
 ### Fixed
 
 ## [0.0.3-alpha] - 2024-07-21

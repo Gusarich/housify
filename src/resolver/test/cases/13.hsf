@@ -1,7 +1,7 @@
 house MyHouse {
     global x: int = 10;
 
-    handle(event: BlockBreak) {
+    handle BlockBreak {
         global.x = 20;
     }
 }

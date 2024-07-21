@@ -55,10 +55,10 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
             defaultValue: unwrapOptNode(defaultValueOpt)?.astOfExpression(),
         });
     },
-    Handler(_arg0, _arg1, eventParameter, _arg3, _arg4, statements, _arg6) {
+    Handler(_arg0, event, _arg4, statements, _arg6) {
         return createAstNode({
             kind: 'handler',
-            event: eventParameter.astOfParameter(),
+            event: event.astOfExpression(),
             statements: statements.children.map((statement) =>
                 statement.astOfStatement(),
             ),

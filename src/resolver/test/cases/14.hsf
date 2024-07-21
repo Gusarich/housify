@@ -1,7 +1,7 @@
 house MyHouse {
     player score: int = 100;
 
-    handle(event: BlockBreak) {
+    handle BlockBreak {
         player.score = player.score + 10;
     }
 }

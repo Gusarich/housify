@@ -29,7 +29,7 @@ Housify modules consist of one or more houses. Each house describes its stats an
 house Counter {
     global counter: int = 0;
 
-    handle(event: JoinEvent) {
+    handle JoinEvent {
         global.counter = global.counter + 1;
     }
 }
