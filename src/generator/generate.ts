@@ -290,13 +290,28 @@ export function writeExpression(
                     break;
                 }
                 case '==':
+                case '!=':
+                case '<':
+                case '<=':
+                case '>':
+                case '>=':
                     wctx.actions.push({
                         kind: ActionKind.CONDITIONAL,
                         conditions: [
                             {
                                 kind: ConditionKind.PLAYER_STAT,
                                 stat: left,
-                                mode: Comparator.EQUAL,
+                                mode:
+                                    expression.op === '==' ||
+                                    expression.op === '!='
+                                        ? Comparator.EQUAL
+                                        : expression.op === '>'
+                                          ? Comparator.GREATER_THAN
+                                          : expression.op === '>='
+                                            ? Comparator.GREATER_THAN_OR_EQUAL
+                                            : expression.op === '<'
+                                              ? Comparator.LESS_THAN
+                                              : Comparator.LESS_THAN_OR_EQUAL,
                                 value: wrapAsPlayerStat(right),
                             },
                         ],
@@ -306,7 +321,7 @@ export function writeExpression(
                                 kind: ActionKind.CHANGE_PLAYER_STAT,
                                 stat: tempStat,
                                 mode: StatMode.SET,
-                                value: '1',
+                                value: expression.op === '!=' ? '0' : '1',
                             },
                         ],
                         else: [
@@ -314,7 +329,7 @@ export function writeExpression(
                                 kind: ActionKind.CHANGE_PLAYER_STAT,
                                 stat: tempStat,
                                 mode: StatMode.SET,
-                                value: '0',
+                                value: expression.op === '!=' ? '1' : '0',
                             },
                         ],
                     });
