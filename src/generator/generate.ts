@@ -6,8 +6,9 @@ import {
     AstStatement,
 } from '../grammar/ast';
 import { Action, ActionKind } from '../housing/actions';
+import { ConditionKind } from '../housing/conditions';
 import { EventType } from '../housing/events';
-import { StatMode } from '../housing/util';
+import { Comparator, StatMode } from '../housing/util';
 import { CompilerContext } from '../resolver/context';
 import { resolveStructPath } from '../resolver/resolve';
 import { camelToSnake } from '../utils/letterCases';
@@ -89,31 +90,54 @@ export function writeExpression(
 ): string {
     try {
         const result = evaluateConstantExpression(expression);
-        return result;
+        const tempStat = '$$' + getNextTempId();
+        wctx.playerStats.set(tempStat, wctx.playerStats.size);
+        wctx.actions.push({
+            kind: ActionKind.CHANGE_PLAYER_STAT,
+            mode: StatMode.SET,
+            stat: tempStat,
+            value: result,
+        });
+        return tempStat;
     } catch {
         /* empty */
     }
 
     switch (expression.kind) {
-        case 'integerLiteral':
-            return expression.value;
-        case 'booleanLiteral':
-            return expression.value ? '1' : '0';
+        case 'integerLiteral': {
+            const tempStat = '$$' + getNextTempId();
+            wctx.playerStats.set(tempStat, wctx.playerStats.size);
+            wctx.actions.push({
+                kind: ActionKind.CHANGE_PLAYER_STAT,
+                mode: StatMode.SET,
+                stat: tempStat,
+                value: expression.value,
+            });
+            return tempStat;
+        }
+        case 'booleanLiteral': {
+            const tempStat = '$$' + getNextTempId();
+            wctx.playerStats.set(tempStat, wctx.playerStats.size);
+            wctx.actions.push({
+                kind: ActionKind.CHANGE_PLAYER_STAT,
+                mode: StatMode.SET,
+                stat: tempStat,
+                value: expression.value ? '1' : '0',
+            });
+            return tempStat;
+        }
         case 'expressionId':
-            return wrapAsPlayerStat('$' + expression.name.name);
+            return '$' + expression.name.name;
         case 'expressionField':
             if (expression.struct.kind === 'expressionId') {
                 if (expression.struct.name.name === 'global') {
-                    return wrapAsGlobalStat(expression.field.name);
+                    return expression.field.name;
                 } else if (expression.struct.name.name === 'player') {
-                    return wrapAsPlayerStat(
-                        resolveStructPath(expression).join('.'),
-                    );
+                    return resolveStructPath(expression).join('.');
                 }
             }
-            return wrapAsPlayerStat(
-                '$' + resolveStructPath(expression).join('.'),
-            );
+            return '$' + resolveStructPath(expression).join('.');
+
         case 'expressionUnary': {
             const operand = writeExpression(expression.operand, wctx);
             const tempStat = '$$' + getNextTempId();
@@ -125,13 +149,13 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: '0',
+                        value: '0',
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
-                        amount: operand,
+                        value: wrapAsPlayerStat(operand),
                     });
                     break;
                 }
@@ -140,18 +164,18 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: '1',
+                        value: '1',
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
-                        amount: operand,
+                        value: wrapAsPlayerStat(operand),
                     });
                     break;
                 }
             }
-            return wrapAsPlayerStat(tempStat);
+            return tempStat;
         }
         case 'expressionBinary': {
             const left = writeExpression(expression.left, wctx);
@@ -165,13 +189,13 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: left,
+                        value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.INCREMENT,
                         stat: tempStat,
-                        amount: right,
+                        value: wrapAsPlayerStat(right),
                     });
                     break;
                 case '-':
@@ -179,13 +203,13 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: left,
+                        value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
-                        amount: right,
+                        value: wrapAsPlayerStat(right),
                     });
                     break;
                 case '*':
@@ -193,13 +217,13 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: left,
+                        value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.MULTIPLY,
                         stat: tempStat,
-                        amount: right,
+                        value: wrapAsPlayerStat(right),
                     });
                     break;
                 case '/':
@@ -207,13 +231,13 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: left,
+                        value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DIVIDE,
                         stat: tempStat,
-                        amount: right,
+                        value: wrapAsPlayerStat(right),
                     });
                     break;
                 case '&&':
@@ -221,13 +245,13 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: left,
+                        value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.MULTIPLY,
                         stat: tempStat,
-                        amount: right,
+                        value: wrapAsPlayerStat(right),
                     });
                     break;
                 case '||': {
@@ -235,13 +259,13 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat,
-                        amount: left,
+                        value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.INCREMENT,
                         stat: tempStat,
-                        amount: right,
+                        value: wrapAsPlayerStat(right),
                     });
                     const tempStat2 = '$$' + getNextTempId();
                     wctx.playerStats.set(tempStat2, wctx.playerStats.size);
@@ -249,26 +273,53 @@ export function writeExpression(
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.SET,
                         stat: tempStat2,
-                        amount: left,
+                        value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.MULTIPLY,
                         stat: tempStat2,
-                        amount: right,
+                        value: wrapAsPlayerStat(right),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatMode.DECREMENT,
                         stat: tempStat,
-                        amount: tempStat2,
+                        value: wrapAsPlayerStat(tempStat2),
                     });
                     break;
                 }
-                default:
-                    throw new Error('Comparisons are not implemented yet');
+                case '==':
+                    wctx.actions.push({
+                        kind: ActionKind.CONDITIONAL,
+                        conditions: [
+                            {
+                                kind: ConditionKind.PLAYER_STAT,
+                                stat: left,
+                                mode: Comparator.EQUAL,
+                                value: wrapAsPlayerStat(right),
+                            },
+                        ],
+                        matchAny: false,
+                        then: [
+                            {
+                                kind: ActionKind.CHANGE_PLAYER_STAT,
+                                stat: tempStat,
+                                mode: StatMode.SET,
+                                value: '1',
+                            },
+                        ],
+                        else: [
+                            {
+                                kind: ActionKind.CHANGE_PLAYER_STAT,
+                                stat: tempStat,
+                                mode: StatMode.SET,
+                                value: '0',
+                            },
+                        ],
+                    });
             }
-            return wrapAsPlayerStat(tempStat);
+            return tempStat;
         }
     }
 }
@@ -284,7 +335,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatMode.SET,
                 stat: '$' + statement.name.name,
-                amount: writeExpression(statement.value, wctx),
+                value: wrapAsPlayerStat(writeExpression(statement.value, wctx)),
             });
             break;
         case 'statementAssign':
@@ -293,7 +344,9 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode: StatMode.SET,
                     stat: '$' + statement.lvalue.name.name,
-                    amount: writeExpression(statement.value, wctx),
+                    value: wrapAsPlayerStat(
+                        writeExpression(statement.value, wctx),
+                    ),
                 });
             } else if (statement.lvalue.kind === 'expressionField') {
                 if (statement.lvalue.struct.kind === 'expressionId') {
@@ -302,7 +355,9 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                             kind: ActionKind.CHANGE_GLOBAL_STAT,
                             mode: StatMode.SET,
                             stat: statement.lvalue.field.name,
-                            amount: writeExpression(statement.value, wctx),
+                            value: wrapAsGlobalStat(
+                                writeExpression(statement.value, wctx),
+                            ),
                         });
                         break;
                     }
@@ -311,7 +366,9 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                             kind: ActionKind.CHANGE_PLAYER_STAT,
                             mode: StatMode.SET,
                             stat: statement.lvalue.field.name,
-                            amount: writeExpression(statement.value, wctx),
+                            value: wrapAsPlayerStat(
+                                writeExpression(statement.value, wctx),
+                            ),
                         });
                         break;
                     }
@@ -320,7 +377,9 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode: StatMode.SET,
                     stat: '$' + resolveStructPath(statement.lvalue).join('.'),
-                    amount: writeExpression(statement.value, wctx),
+                    value: wrapAsPlayerStat(
+                        writeExpression(statement.value, wctx),
+                    ),
                 });
             } else {
                 // must never happen
@@ -331,23 +390,45 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             writeExpression(statement.expression, wctx);
             break;
         case 'statementIf': {
-            // TODO: Implement
-            // const condition = writeExpression(
-            //     statement.condition,
-            //     actions,
-            //     ctx,
-            // );
-            // actions.push({
-            //     kind: ActionKind.CONDITIONAL,
-            //     conditions: [
-            //         {
-            //             kind: ConditionKind.PLAYER_STAT,
-            //             stat: condition,
-            //             mode: mode
-            //         },
-            //     ],
-            // });
-            throw new Error('If statements are not implemented yet');
+            const condition = writeExpression(statement.condition, wctx);
+
+            const thenWctx: WriterContext = {
+                actions: [],
+                globalStats: wctx.globalStats,
+                playerStats: wctx.playerStats,
+                ctx: wctx.ctx,
+            };
+            for (const thenStatement of statement.then) {
+                writeStatement(thenStatement, thenWctx);
+            }
+
+            const elseWctx: WriterContext = {
+                actions: [],
+                globalStats: wctx.globalStats,
+                playerStats: wctx.playerStats,
+                ctx: wctx.ctx,
+            };
+            if (statement.else) {
+                for (const elseStatement of statement.else) {
+                    writeStatement(elseStatement, elseWctx);
+                }
+            }
+
+            wctx.actions.push({
+                kind: ActionKind.CONDITIONAL,
+                conditions: [
+                    {
+                        kind: ConditionKind.PLAYER_STAT,
+                        stat: condition,
+                        mode: Comparator.EQUAL,
+                        value: '1',
+                    },
+                ],
+                matchAny: false,
+                then: thenWctx.actions,
+                else: elseWctx.actions,
+            });
+            break;
         }
     }
 }
