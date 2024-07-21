@@ -22,11 +22,11 @@ type WriterContext = {
 };
 
 export function wrapAsPlayerStat(stat: string) {
-    return '%player.' + stat + '%';
+    return '%stat.player/' + stat + '%';
 }
 
 export function wrapAsGlobalStat(stat: string) {
-    return '%global.' + stat + '%';
+    return '%stat.global/' + stat + '%';
 }
 
 let tempId = 0;
