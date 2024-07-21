@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   All missing Housing types have been added, and the names and fields have been fixed: PR [#17](https://github.com/Gusarich/housify/pull/17)
+-   Support for `if` statements: PR [#19](https://github.com/Gusarich/housify/pull/19)
 
 ### Changed
 
