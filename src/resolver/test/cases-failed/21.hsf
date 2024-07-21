@@ -1,0 +1,5 @@
+house MyHouse {
+    handle(event: BlockBreak) {
+        1 + 2 + 3;
+    }
+}

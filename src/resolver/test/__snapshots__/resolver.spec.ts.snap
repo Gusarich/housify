@@ -40,6 +40,8 @@ exports[`Resolver should fail 19 1`] = `"Cannot assign 'bool' to 'int'"`;
 
 exports[`Resolver should fail 20 1`] = `"Cannot assign 'int' to 'bool'"`;
 
+exports[`Resolver should fail 21 1`] = `"Expression of type int cannot be used as a statement"`;
+
 exports[`Resolver should resolve 1 1`] = `
 CompilerContext {
   "expressions": Map {

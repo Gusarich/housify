@@ -215,7 +215,12 @@ export function processStatement(
             break;
         }
         case 'statementExpression': {
-            resolveExpression(statement.expression, ctx, sctx);
+            const type = resolveExpression(statement.expression, ctx, sctx);
+            if (type.type !== 'void') {
+                throw new Error(
+                    `Expression of type ${type.type} cannot be used as a statement`,
+                );
+            }
             break;
         }
     }
