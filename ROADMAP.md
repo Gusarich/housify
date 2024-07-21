@@ -12,7 +12,8 @@ This is the initial version of the project that can be used for development in H
 -   [x] AST resolver with type checking
 -   [x] Generator for the JSON output
 -   [x] Constant evaluation in simple cases
--   [ ] Necessary actions, conditions, events, and functions from Hypixel Housing
+-   [x] Necessary actions, conditions, events, and functions from Hypixel Housing
+-   [x] Basic support for conditions
 -   [x] Minimal tests for all parts of the compiler
 
 ### Command Line Interface
