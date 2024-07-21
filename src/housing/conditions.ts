@@ -1,8 +1,4 @@
-import { GameMode, StatMode } from './util';
-
-//
-// TODO: COMPLETE AND ENSURE TO MATCH ACTUAL TYPES
-//
+import { Comparator, Gamemode } from './util';
 
 export type Condition =
     | RequiredGroupCondition
@@ -52,27 +48,27 @@ export enum ConditionType {
 
 export type RequiredGroupCondition = {
     type: ConditionType.REQUIRED_GROUP;
-    required_group: string;
-    include_higher_groups: boolean;
+    group: string;
+    includeHigher: boolean;
 };
 
 export type PlayerStatCondition = {
     type: ConditionType.PLAYER_STAT;
     stat: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
 export type GlobalStatCondition = {
     type: ConditionType.GLOBAL_STAT;
     stat: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
 export type RequiredPermissionCondition = {
     type: ConditionType.REQUIRED_PERMISSION;
-    required_permission: string;
+    permission: string; // TODO: make an enum with all permissions
 };
 
 export type WithinRegionCondition = {
@@ -83,9 +79,9 @@ export type WithinRegionCondition = {
 export type HasItemCondition = {
     type: ConditionType.HAS_ITEM;
     item: string;
-    what_to_check: 'Metadata' | 'AnotherOption'; // Adjust with actual options
-    where_to_check: 'Anywhere' | 'AnotherOption'; // Adjust with actual options
-    required_amount: 'Any' | number; // Adjust if there are more specific types
+    what: 'ItemType' | 'Metadata';
+    where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
+    amount: 'Any' | 'GreaterOrEqual';
 };
 
 export type DoingParkourCondition = {
@@ -94,7 +90,7 @@ export type DoingParkourCondition = {
 
 export type HasPotionEffectCondition = {
     type: ConditionType.HAS_POTION_EFFECT;
-    effect: number;
+    effect: string; // TODO: make an enum with all effects
 };
 
 export type SneakingCondition = {
@@ -107,43 +103,82 @@ export type FlyingCondition = {
 
 export type HealthCondition = {
     type: ConditionType.HEALTH;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
 export type MaxHealthCondition = {
     type: ConditionType.MAX_HEALTH;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
 export type HungerCondition = {
     type: ConditionType.HUNGER;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
 export type RequiredGamemodeCondition = {
     type: ConditionType.REQUIRED_GAMEMODE;
-    required_gamemode: GameMode;
+    gamemode: Gamemode;
 };
 
 export type PlaceholderNumberCondition = {
     type: ConditionType.PLACEHOLDER_NUMBER;
     placeholder: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
 };
 
 export type RequiredTeamCondition = {
     type: ConditionType.REQUIRED_TEAM;
-    required_team: string;
+    team: string;
 };
 
 export type TeamStatCondition = {
     type: ConditionType.TEAM_STAT;
     stat: string;
     team: string;
-    mode: StatMode;
-    amount: number;
+    mode: Comparator;
+    value: string;
+};
+
+export type PvpEnabledCondition = {
+    type: ConditionType.PVP_ENABLED;
+};
+
+export type FishingEnvironmentCondition = {
+    type: ConditionType.FISHING_ENVIRONMENT;
+    environment: 'Water' | 'Lava';
+};
+
+export type PortalTypeCondition = {
+    type: ConditionType.PORTAL_TYPE;
+    portal: 'Nether' | 'End';
+};
+
+export type DamageCauseCondition = {
+    type: ConditionType.DAMAGE_CAUSE;
+    cause: string; // TODO: make an enum with all causes
+};
+
+export type DamageAmountCondition = {
+    type: ConditionType.DAMAGE_AMOUNT;
+    mode: Comparator;
+    value: string;
+};
+
+export type BlockTypeCondition = {
+    type: ConditionType.BLOCK_TYPE;
+    item: string;
+    matchTypeOnly: boolean;
+};
+
+export type IsItemCondition = {
+    type: ConditionType.IS_ITEM;
+    item: string;
+    what: 'ItemType' | 'Metadata';
+    where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
+    amount: 'Any' | 'GreaterOrEqual';
 };

@@ -1,5 +1,5 @@
 import { Condition } from './conditions';
-import { Coordinates, GameMode, StatMode } from './util';
+import { Coordinates, Gamemode, StatMode } from './util';
 
 //
 // TODO: COMPLETE AND ENSURE TO MATCH ACTUAL TYPES
@@ -31,7 +31,7 @@ export type Action =
     | FailParkourAction
     | PlaySoundAction
     | SetCompassTargetAction
-    | SetGameModeAction
+    | SetGamemodeAction
     | ChangeHealthAction
     | ChangeHungerLevelAction
     | RandomAction
@@ -224,9 +224,9 @@ export type SetCompassTargetAction = {
     location: Coordinates;
 };
 
-export type SetGameModeAction = {
+export type SetGamemodeAction = {
     type: ActionType.SET_GAME_MODE;
-    gamemode: GameMode;
+    gamemode: Gamemode;
 };
 
 export type ChangeHealthAction = {

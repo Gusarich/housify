@@ -21,8 +21,16 @@ export enum StatMode {
     DIVIDE = 'DIVIDE',
 }
 
-export enum GameMode {
+export enum Gamemode {
     ADVENTURE = 'ADVENTURE',
     SURVIVAL = 'SURVIVAL',
     CREATIVE = 'CREATIVE',
+}
+
+export enum Comparator {
+    LESS_THAN = 'LESS_THAN',
+    LESS_THAN_OR_EQUAL = 'LESS_THAN_OR_EQUAL',
+    EQUAL = 'EQUAL',
+    GREATER_THAN_OR_EQUAL = 'GREATER_THAN_OR_EQUAL',
+    GREATER_THAN = 'GREATER_THAN',
 }
