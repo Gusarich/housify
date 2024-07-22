@@ -2,54 +2,16 @@
 
 Housify is a programming language and compiler specifically designed to enhance and simplify development within Hypixel Housing.
 
-> **⚠️ WARNING: This repository is currently under active development and is not yet usable. Please check back later for updates.**
-
 Check out the documentation for a quick start guide, examples, and more information:
 
 -   [Housify Docs](https://housify.dev)
 
 ## Table of Contents
 
--   [Installation](#installation)
--   [Usage](#usage)
 -   [Contributing](#contributing)
 -   [Changelog](#changelog)
 -   [Roadmap](#roadmap)
 -   [License](#license)
-
-## Installation
-
-Housify is now available as an npm package. To install Housify, ensure you have Node.js and npm installed. Then, you can install Housify using the following command:
-
-```bash
-npm install -g housify
-```
-
-## Usage
-
-Housify modules consist of one or more houses. Each house describes its stats and event handlers. Below is an example of a simple counter house:
-
-```housify
-house Counter {
-    global counter: int = 0;
-
-    handle JOIN {
-        global.counter = global.counter + 1;
-    }
-}
-```
-
-A house can have multiple handlers for different events.
-
-After writing your Housify module, compile it using the CLI:
-
-```bash
-housify my-module.hsf
-```
-
-This command compiles your module into a JSON file containing a formal description of all houses, including the stat names and a list of actions for each handler.
-
-You can then pass the generated JSON to the Housing Writer (currently in progress) to automatically import all actions into the game without manually writing everything.
 
 ## Contributing
 
