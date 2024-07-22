@@ -1,0 +1,7 @@
+house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}

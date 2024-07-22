@@ -1,0 +1,11 @@
+house MyHouse {
+    global xg: int = 10;
+    global yg: int;
+    player xp: int = 123;
+
+    handle BLOCK_BREAK {
+        
+    }
+
+    player yp: int;
+}

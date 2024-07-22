@@ -1,0 +1,6 @@
+house MyHouse {
+    handle JOIN {
+        let x: int = 123;
+        let y: void = x;
+    }
+}

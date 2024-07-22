@@ -1,7 +1,0 @@
-house MyHouse {
-    global x: int = 10;
-
-    handle BlockBreak {
-        let y: int = global.nonExistentField;
-    }
-}

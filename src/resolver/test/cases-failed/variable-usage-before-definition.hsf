@@ -1,0 +1,6 @@
+house MyHouse {
+    handle BLOCK_BREAK {
+        x = 10;
+        let x: int = 5;
+    }
+}

@@ -1,0 +1,6 @@
+house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: int = x + 1;
+    }
+}

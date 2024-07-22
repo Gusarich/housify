@@ -11,7 +11,6 @@ import { EventType } from '../housing/events';
 import { StatCompareMode, StatChangeMode } from '../housing/util';
 import { CompilerContext } from '../resolver/context';
 import { resolveStructPath } from '../resolver/resolve';
-import { camelToSnake } from '../utils/letterCases';
 import { evaluateConstantExpression } from './evaluate';
 
 type WriterContext = {
@@ -452,12 +451,9 @@ export function writeHandler(
     ast: AstHandler,
     wctx: WriterContext,
 ): CompiledHandler {
-    const eventName = ast.event.name;
-    const eventNameSnake = camelToSnake(eventName.slice(0, -5)).toUpperCase();
-
-    if (!(eventNameSnake in EventType)) {
+    if (!(ast.event.name in EventType)) {
         // must never happen
-        throw new Error(`Unknown event type: ${eventName}`);
+        throw new Error(`Unknown event type: ${ast.event.name}`);
     }
 
     for (const item of ast.statements) {
@@ -466,7 +462,7 @@ export function writeHandler(
 
     return {
         kind: 'handler',
-        event: eventNameSnake as EventType,
+        event: ast.event.name as EventType,
         actions: wctx.actions,
     };
 }

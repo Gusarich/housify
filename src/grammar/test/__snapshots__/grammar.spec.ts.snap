@@ -1,6 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Grammar should fail 1 1`] = `
+exports[`Grammar should fail id-identical-to-keyword 1`] = `
+"Line 2, col 12:
+  1 | house MyHouse {
+> 2 |     global handle: int = 1;
+                 ^
+  3 | }
+Expected not a keyword"
+`;
+
+exports[`Grammar should fail id-starts-with-digit 1`] = `
+"Line 2, col 12:
+  1 | house MyHouse {
+> 2 |     global 1x: int = 1;
+                 ^
+  3 | }
+Expected "_", "A".."Z", or "a".."z""
+`;
+
+exports[`Grammar should fail invalid-integer-literal 1`] = `
+"Line 3, col 15:
+  2 |     handle BLOCK_BREAK {
+> 3 |         x = 42a;
+                    ^
+  4 |     }
+Expected ";""
+`;
+
+exports[`Grammar should fail no-colon-in-stat-definition 1`] = `
 "Line 5, col 15:
   4 |     player xp: int = 123;
 > 5 |     player yp int;
@@ -9,34 +36,7 @@ exports[`Grammar should fail 1 1`] = `
 Expected ":""
 `;
 
-exports[`Grammar should fail 2 1`] = `
-"Line 3, col 13:
-  2 |     handle BlockBreak {
-> 3 |         x = ;
-                  ^
-  4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
-`;
-
-exports[`Grammar should fail 3 1`] = `
-"Line 3, col 22:
-  2 |     handle BlockBreak {
-> 3 |         let x: int = ;
-                           ^
-  4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
-`;
-
-exports[`Grammar should fail 4 1`] = `
-"Line 4, col 5:
-  3 |         5
-> 4 |     }
-          ^
-  5 | }
-Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", or "=""
-`;
-
-exports[`Grammar should fail 5 1`] = `
+exports[`Grammar should fail no-else-body 1`] = `
 "Line 6, col 5:
   5 |         } else
 > 6 |     }
@@ -45,34 +45,61 @@ exports[`Grammar should fail 5 1`] = `
 Expected "if" or "{""
 `;
 
-exports[`Grammar should fail 6 1`] = `
-"Line 3, col 17:
-  2 |     handle BlockBreak {
-> 3 |         x = 5 + ;
-                      ^
+exports[`Grammar should fail no-expression-in-assignment 1`] = `
+"Line 3, col 13:
+  2 |     handle BLOCK_BREAK {
+> 3 |         x = ;
+                  ^
   4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
-exports[`Grammar should fail 7 1`] = `
+exports[`Grammar should fail no-expression-in-let-statement 1`] = `
+"Line 3, col 22:
+  2 |     handle BLOCK_BREAK {
+> 3 |         let x: int = ;
+                           ^
+  4 |     }
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+`;
+
+exports[`Grammar should fail no-operand-in-arithmetics 1`] = `
+"Line 3, col 19:
+  2 |     handle BLOCK_BREAK {
+> 3 |         (x + y) * ;
+                        ^
+  4 |     }
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+`;
+
+exports[`Grammar should fail no-operand-in-unary-operation 1`] = `
 "Line 3, col 14:
-  2 |     handle BlockBreak {
+  2 |     handle BLOCK_BREAK {
 > 3 |         x = -;
                    ^
   4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
-exports[`Grammar should fail 8 1`] = `
-"Line 3, col 15:
-  2 |     handle BlockBreak {
-> 3 |         x = 42a;
-                    ^
+exports[`Grammar should fail no-right-operand-in-binary-operation 1`] = `
+"Line 3, col 17:
+  2 |     handle BLOCK_BREAK {
+> 3 |         x = 5 + ;
+                      ^
   4 |     }
-Expected ";""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
-exports[`Grammar should fail 9 1`] = `
+exports[`Grammar should fail no-semicolon 1`] = `
+"Line 4, col 5:
+  3 |         5
+> 4 |     }
+          ^
+  5 | }
+Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", or "=""
+`;
+
+exports[`Grammar should fail no-semicolon2 1`] = `
 "Line 4, col 5:
   3 |         myVar
 > 4 |     }
@@ -81,16 +108,7 @@ exports[`Grammar should fail 9 1`] = `
 Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", or "=""
 `;
 
-exports[`Grammar should fail 10 1`] = `
-"Line 3, col 19:
-  2 |     handle BlockBreak {
-> 3 |         (x + y) * ;
-                        ^
-  4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
-`;
-
-exports[`Grammar should fail 11 1`] = `
+exports[`Grammar should fail stat-definition-after-handler 1`] = `
 "Line 10, col 5:
    9 | 
 > 10 |     player yp: int;
@@ -99,244 +117,7 @@ exports[`Grammar should fail 11 1`] = `
 Expected "}" or "handle""
 `;
 
-exports[`Grammar should parse 1 1`] = `
-{
-  "id": 19,
-  "items": [
-    {
-      "id": 18,
-      "items": [
-        {
-          "defaultValue": {
-            "id": 4,
-            "kind": "integerLiteral",
-            "value": "10",
-          },
-          "id": 5,
-          "kind": "globalStat",
-          "name": {
-            "id": 2,
-            "kind": "id",
-            "name": "xg",
-          },
-          "type": {
-            "id": 3,
-            "kind": "id",
-            "name": "int",
-          },
-        },
-        {
-          "defaultValue": undefined,
-          "id": 8,
-          "kind": "globalStat",
-          "name": {
-            "id": 6,
-            "kind": "id",
-            "name": "yg",
-          },
-          "type": {
-            "id": 7,
-            "kind": "id",
-            "name": "int",
-          },
-        },
-        {
-          "defaultValue": {
-            "id": 11,
-            "kind": "integerLiteral",
-            "value": "123",
-          },
-          "id": 12,
-          "kind": "playerStat",
-          "name": {
-            "id": 9,
-            "kind": "id",
-            "name": "xp",
-          },
-          "type": {
-            "id": 10,
-            "kind": "id",
-            "name": "int",
-          },
-        },
-        {
-          "defaultValue": undefined,
-          "id": 15,
-          "kind": "playerStat",
-          "name": {
-            "id": 13,
-            "kind": "id",
-            "name": "yp",
-          },
-          "type": {
-            "id": 14,
-            "kind": "id",
-            "name": "int",
-          },
-        },
-        {
-          "event": {
-            "id": 16,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 17,
-          "kind": "handler",
-          "statements": [],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 2 1`] = `
-{
-  "id": 9,
-  "items": [
-    {
-      "id": 8,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 7,
-          "kind": "handler",
-          "statements": [
-            {
-              "id": 6,
-              "kind": "statementAssign",
-              "lvalue": {
-                "id": 4,
-                "kind": "expressionId",
-                "name": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "x",
-                },
-              },
-              "value": {
-                "id": 5,
-                "kind": "integerLiteral",
-                "value": "5",
-              },
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 3 1`] = `
-{
-  "id": 9,
-  "items": [
-    {
-      "id": 8,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 7,
-          "kind": "handler",
-          "statements": [
-            {
-              "id": 6,
-              "kind": "statementLet",
-              "name": {
-                "id": 3,
-                "kind": "id",
-                "name": "x",
-              },
-              "type": {
-                "id": 4,
-                "kind": "id",
-                "name": "int",
-              },
-              "value": {
-                "id": 5,
-                "kind": "integerLiteral",
-                "value": "5",
-              },
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 4 1`] = `
-{
-  "id": 7,
-  "items": [
-    {
-      "id": 6,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 5,
-          "kind": "handler",
-          "statements": [
-            {
-              "expression": {
-                "id": 3,
-                "kind": "integerLiteral",
-                "value": "5",
-              },
-              "id": 4,
-              "kind": "statementExpression",
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 5 1`] = `
+exports[`Grammar should parse arithmetics 1`] = `
 {
   "id": 14,
   "items": [
@@ -347,287 +128,7 @@ exports[`Grammar should parse 5 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 12,
-          "kind": "handler",
-          "statements": [
-            {
-              "condition": {
-                "id": 6,
-                "kind": "expressionBinary",
-                "left": {
-                  "id": 4,
-                  "kind": "expressionId",
-                  "name": {
-                    "id": 3,
-                    "kind": "id",
-                    "name": "x",
-                  },
-                },
-                "op": "==",
-                "right": {
-                  "id": 5,
-                  "kind": "integerLiteral",
-                  "value": "5",
-                },
-              },
-              "id": 11,
-              "kind": "statementIf",
-              "then": [
-                {
-                  "id": 10,
-                  "kind": "statementAssign",
-                  "lvalue": {
-                    "id": 8,
-                    "kind": "expressionId",
-                    "name": {
-                      "id": 7,
-                      "kind": "id",
-                      "name": "y",
-                    },
-                  },
-                  "value": {
-                    "id": 9,
-                    "kind": "integerLiteral",
-                    "value": "10",
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 6 1`] = `
-{
-  "id": 11,
-  "items": [
-    {
-      "id": 10,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 9,
-          "kind": "handler",
-          "statements": [
-            {
-              "id": 8,
-              "kind": "statementAssign",
-              "lvalue": {
-                "id": 4,
-                "kind": "expressionId",
-                "name": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "x",
-                },
-              },
-              "value": {
-                "id": 7,
-                "kind": "expressionBinary",
-                "left": {
-                  "id": 5,
-                  "kind": "integerLiteral",
-                  "value": "5",
-                },
-                "op": "+",
-                "right": {
-                  "id": 6,
-                  "kind": "integerLiteral",
-                  "value": "3",
-                },
-              },
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 7 1`] = `
-{
-  "id": 10,
-  "items": [
-    {
-      "id": 9,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 8,
-          "kind": "handler",
-          "statements": [
-            {
-              "id": 7,
-              "kind": "statementAssign",
-              "lvalue": {
-                "id": 4,
-                "kind": "expressionId",
-                "name": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "x",
-                },
-              },
-              "value": {
-                "id": 6,
-                "kind": "expressionUnary",
-                "op": "-",
-                "operand": {
-                  "id": 5,
-                  "kind": "integerLiteral",
-                  "value": "5",
-                },
-              },
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 8 1`] = `
-{
-  "id": 9,
-  "items": [
-    {
-      "id": 8,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 7,
-          "kind": "handler",
-          "statements": [
-            {
-              "id": 6,
-              "kind": "statementAssign",
-              "lvalue": {
-                "id": 4,
-                "kind": "expressionId",
-                "name": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "x",
-                },
-              },
-              "value": {
-                "id": 5,
-                "kind": "integerLiteral",
-                "value": "42",
-              },
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 9 1`] = `
-{
-  "id": 8,
-  "items": [
-    {
-      "id": 7,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 6,
-          "kind": "handler",
-          "statements": [
-            {
-              "expression": {
-                "id": 4,
-                "kind": "expressionId",
-                "name": {
-                  "id": 3,
-                  "kind": "id",
-                  "name": "myVar",
-                },
-              },
-              "id": 5,
-              "kind": "statementExpression",
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 10 1`] = `
-{
-  "id": 14,
-  "items": [
-    {
-      "id": 13,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 12,
           "kind": "handler",
@@ -688,7 +189,231 @@ exports[`Grammar should parse 10 1`] = `
 }
 `;
 
-exports[`Grammar should parse 11 1`] = `
+exports[`Grammar should parse assignment 1`] = `
+{
+  "id": 9,
+  "items": [
+    {
+      "id": 8,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 7,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 6,
+              "kind": "statementAssign",
+              "lvalue": {
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "value": {
+                "id": 5,
+                "kind": "integerLiteral",
+                "value": "5",
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse binary-operator 1`] = `
+{
+  "id": 11,
+  "items": [
+    {
+      "id": 10,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 9,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 8,
+              "kind": "statementAssign",
+              "lvalue": {
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "value": {
+                "id": 7,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 5,
+                  "kind": "integerLiteral",
+                  "value": "5",
+                },
+                "op": "+",
+                "right": {
+                  "id": 6,
+                  "kind": "integerLiteral",
+                  "value": "3",
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse booleans 1`] = `
+{
+  "id": 23,
+  "items": [
+    {
+      "id": 22,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 21,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 6,
+              "kind": "statementLet",
+              "name": {
+                "id": 3,
+                "kind": "id",
+                "name": "x",
+              },
+              "type": {
+                "id": 4,
+                "kind": "id",
+                "name": "bool",
+              },
+              "value": {
+                "id": 5,
+                "kind": "booleanLiteral",
+                "value": true,
+              },
+            },
+            {
+              "id": 10,
+              "kind": "statementLet",
+              "name": {
+                "id": 7,
+                "kind": "id",
+                "name": "y",
+              },
+              "type": {
+                "id": 8,
+                "kind": "id",
+                "name": "bool",
+              },
+              "value": {
+                "id": 9,
+                "kind": "booleanLiteral",
+                "value": false,
+              },
+            },
+            {
+              "id": 20,
+              "kind": "statementLet",
+              "name": {
+                "id": 11,
+                "kind": "id",
+                "name": "z",
+              },
+              "type": {
+                "id": 12,
+                "kind": "id",
+                "name": "bool",
+              },
+              "value": {
+                "id": 19,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 17,
+                  "kind": "expressionBinary",
+                  "left": {
+                    "id": 14,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 13,
+                      "kind": "id",
+                      "name": "x",
+                    },
+                  },
+                  "op": "&&",
+                  "right": {
+                    "id": 16,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 15,
+                      "kind": "id",
+                      "name": "y",
+                    },
+                  },
+                },
+                "op": "&&",
+                "right": {
+                  "id": 18,
+                  "kind": "booleanLiteral",
+                  "value": true,
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse field-access 1`] = `
 {
   "id": 29,
   "items": [
@@ -699,7 +424,7 @@ exports[`Grammar should parse 11 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 27,
           "kind": "handler",
@@ -827,7 +552,7 @@ exports[`Grammar should parse 11 1`] = `
 }
 `;
 
-exports[`Grammar should parse 12 1`] = `
+exports[`Grammar should parse field-access2 1`] = `
 {
   "id": 11,
   "items": [
@@ -838,7 +563,7 @@ exports[`Grammar should parse 12 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 9,
           "kind": "handler",
@@ -885,20 +610,187 @@ exports[`Grammar should parse 12 1`] = `
 }
 `;
 
-exports[`Grammar should parse 13 1`] = `
+exports[`Grammar should parse id 1`] = `
 {
-  "id": 23,
+  "id": 8,
   "items": [
     {
-      "id": 22,
+      "id": 7,
       "items": [
         {
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
-          "id": 21,
+          "id": 6,
+          "kind": "handler",
+          "statements": [
+            {
+              "expression": {
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "myVar",
+                },
+              },
+              "id": 5,
+              "kind": "statementExpression",
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse if-statement 1`] = `
+{
+  "id": 14,
+  "items": [
+    {
+      "id": 13,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 12,
+          "kind": "handler",
+          "statements": [
+            {
+              "condition": {
+                "id": 6,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 4,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 3,
+                    "kind": "id",
+                    "name": "x",
+                  },
+                },
+                "op": "==",
+                "right": {
+                  "id": 5,
+                  "kind": "integerLiteral",
+                  "value": "5",
+                },
+              },
+              "id": 11,
+              "kind": "statementIf",
+              "then": [
+                {
+                  "id": 10,
+                  "kind": "statementAssign",
+                  "lvalue": {
+                    "id": 8,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 7,
+                      "kind": "id",
+                      "name": "y",
+                    },
+                  },
+                  "value": {
+                    "id": 9,
+                    "kind": "integerLiteral",
+                    "value": "10",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse integer-literal 1`] = `
+{
+  "id": 9,
+  "items": [
+    {
+      "id": 8,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 7,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 6,
+              "kind": "statementAssign",
+              "lvalue": {
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "value": {
+                "id": 5,
+                "kind": "integerLiteral",
+                "value": "42",
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse let-statement 1`] = `
+{
+  "id": 9,
+  "items": [
+    {
+      "id": 8,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 7,
           "kind": "handler",
           "statements": [
             {
@@ -912,78 +804,12 @@ exports[`Grammar should parse 13 1`] = `
               "type": {
                 "id": 4,
                 "kind": "id",
-                "name": "bool",
+                "name": "int",
               },
               "value": {
                 "id": 5,
-                "kind": "booleanLiteral",
-                "value": true,
-              },
-            },
-            {
-              "id": 10,
-              "kind": "statementLet",
-              "name": {
-                "id": 7,
-                "kind": "id",
-                "name": "y",
-              },
-              "type": {
-                "id": 8,
-                "kind": "id",
-                "name": "bool",
-              },
-              "value": {
-                "id": 9,
-                "kind": "booleanLiteral",
-                "value": false,
-              },
-            },
-            {
-              "id": 20,
-              "kind": "statementLet",
-              "name": {
-                "id": 11,
-                "kind": "id",
-                "name": "z",
-              },
-              "type": {
-                "id": 12,
-                "kind": "id",
-                "name": "bool",
-              },
-              "value": {
-                "id": 19,
-                "kind": "expressionBinary",
-                "left": {
-                  "id": 17,
-                  "kind": "expressionBinary",
-                  "left": {
-                    "id": 14,
-                    "kind": "expressionId",
-                    "name": {
-                      "id": 13,
-                      "kind": "id",
-                      "name": "x",
-                    },
-                  },
-                  "op": "&&",
-                  "right": {
-                    "id": 16,
-                    "kind": "expressionId",
-                    "name": {
-                      "id": 15,
-                      "kind": "id",
-                      "name": "y",
-                    },
-                  },
-                },
-                "op": "&&",
-                "right": {
-                  "id": 18,
-                  "kind": "booleanLiteral",
-                  "value": true,
-                },
+                "kind": "integerLiteral",
+                "value": "5",
               },
             },
           ],
@@ -1001,92 +827,7 @@ exports[`Grammar should parse 13 1`] = `
 }
 `;
 
-exports[`Grammar should parse 14 1`] = `
-{
-  "id": 17,
-  "items": [
-    {
-      "id": 16,
-      "items": [
-        {
-          "event": {
-            "id": 2,
-            "kind": "id",
-            "name": "BlockBreak",
-          },
-          "id": 15,
-          "kind": "handler",
-          "statements": [
-            {
-              "id": 8,
-              "kind": "statementAssign",
-              "lvalue": {
-                "field": {
-                  "id": 5,
-                  "kind": "id",
-                  "name": "x",
-                },
-                "id": 6,
-                "kind": "expressionField",
-                "struct": {
-                  "id": 4,
-                  "kind": "expressionId",
-                  "name": {
-                    "id": 3,
-                    "kind": "id",
-                    "name": "global",
-                  },
-                },
-              },
-              "value": {
-                "id": 7,
-                "kind": "integerLiteral",
-                "value": "123",
-              },
-            },
-            {
-              "id": 14,
-              "kind": "statementAssign",
-              "lvalue": {
-                "field": {
-                  "id": 11,
-                  "kind": "id",
-                  "name": "y",
-                },
-                "id": 12,
-                "kind": "expressionField",
-                "struct": {
-                  "id": 10,
-                  "kind": "expressionId",
-                  "name": {
-                    "id": 9,
-                    "kind": "id",
-                    "name": "global",
-                  },
-                },
-              },
-              "value": {
-                "id": 13,
-                "kind": "integerLiteral",
-                "value": "456",
-              },
-            },
-          ],
-        },
-      ],
-      "kind": "house",
-      "name": {
-        "id": 1,
-        "kind": "id",
-        "name": "MyHouse",
-      },
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Grammar should parse 15 1`] = `
+exports[`Grammar should parse multi-line-comments 1`] = `
 {
   "id": 23,
   "items": [
@@ -1097,7 +838,7 @@ exports[`Grammar should parse 15 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 21,
           "kind": "handler",
@@ -1184,6 +925,415 @@ exports[`Grammar should parse 15 1`] = `
               },
             },
           ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse multiple-houses 1`] = `
+{
+  "id": 7,
+  "items": [
+    {
+      "id": 2,
+      "items": [],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "House1",
+      },
+    },
+    {
+      "id": 4,
+      "items": [],
+      "kind": "house",
+      "name": {
+        "id": 3,
+        "kind": "id",
+        "name": "House2",
+      },
+    },
+    {
+      "id": 6,
+      "items": [],
+      "kind": "house",
+      "name": {
+        "id": 5,
+        "kind": "id",
+        "name": "House3",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse single-line-comments 1`] = `
+{
+  "id": 17,
+  "items": [
+    {
+      "id": 16,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 15,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 8,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 5,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 6,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 4,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 3,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "value": {
+                "id": 7,
+                "kind": "integerLiteral",
+                "value": "123",
+              },
+            },
+            {
+              "id": 14,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 11,
+                  "kind": "id",
+                  "name": "y",
+                },
+                "id": 12,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 10,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 9,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "value": {
+                "id": 13,
+                "kind": "integerLiteral",
+                "value": "456",
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse statement-expression 1`] = `
+{
+  "id": 7,
+  "items": [
+    {
+      "id": 6,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 5,
+          "kind": "handler",
+          "statements": [
+            {
+              "expression": {
+                "id": 3,
+                "kind": "integerLiteral",
+                "value": "5",
+              },
+              "id": 4,
+              "kind": "statementExpression",
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse stats 1`] = `
+{
+  "id": 19,
+  "items": [
+    {
+      "id": 18,
+      "items": [
+        {
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "10",
+          },
+          "id": 5,
+          "kind": "globalStat",
+          "name": {
+            "id": 2,
+            "kind": "id",
+            "name": "xg",
+          },
+          "type": {
+            "id": 3,
+            "kind": "id",
+            "name": "int",
+          },
+        },
+        {
+          "defaultValue": undefined,
+          "id": 8,
+          "kind": "globalStat",
+          "name": {
+            "id": 6,
+            "kind": "id",
+            "name": "yg",
+          },
+          "type": {
+            "id": 7,
+            "kind": "id",
+            "name": "int",
+          },
+        },
+        {
+          "defaultValue": {
+            "id": 11,
+            "kind": "integerLiteral",
+            "value": "123",
+          },
+          "id": 12,
+          "kind": "playerStat",
+          "name": {
+            "id": 9,
+            "kind": "id",
+            "name": "xp",
+          },
+          "type": {
+            "id": 10,
+            "kind": "id",
+            "name": "int",
+          },
+        },
+        {
+          "defaultValue": undefined,
+          "id": 15,
+          "kind": "playerStat",
+          "name": {
+            "id": 13,
+            "kind": "id",
+            "name": "yp",
+          },
+          "type": {
+            "id": 14,
+            "kind": "id",
+            "name": "int",
+          },
+        },
+        {
+          "event": {
+            "id": 16,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 17,
+          "kind": "handler",
+          "statements": [],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse unary-operator 1`] = `
+{
+  "id": 10,
+  "items": [
+    {
+      "id": 9,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+          },
+          "id": 8,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 7,
+              "kind": "statementAssign",
+              "lvalue": {
+                "id": 4,
+                "kind": "expressionId",
+                "name": {
+                  "id": 3,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "value": {
+                "id": 6,
+                "kind": "expressionUnary",
+                "op": "-",
+                "operand": {
+                  "id": 5,
+                  "kind": "integerLiteral",
+                  "value": "5",
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse unary-with-literals 1`] = `
+{
+  "id": 18,
+  "items": [
+    {
+      "id": 17,
+      "items": [
+        {
+          "defaultValue": {
+            "id": 7,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 5,
+              "kind": "expressionUnary",
+              "op": "-",
+              "operand": {
+                "id": 4,
+                "kind": "integerLiteral",
+                "value": "123",
+              },
+            },
+            "op": "-",
+            "right": {
+              "id": 6,
+              "kind": "integerLiteral",
+              "value": "123",
+            },
+          },
+          "id": 8,
+          "kind": "globalStat",
+          "name": {
+            "id": 2,
+            "kind": "id",
+            "name": "x",
+          },
+          "type": {
+            "id": 3,
+            "kind": "id",
+            "name": "int",
+          },
+        },
+        {
+          "defaultValue": {
+            "id": 15,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 12,
+              "kind": "expressionUnary",
+              "op": "!",
+              "operand": {
+                "id": 11,
+                "kind": "booleanLiteral",
+                "value": true,
+              },
+            },
+            "op": "||",
+            "right": {
+              "id": 14,
+              "kind": "expressionUnary",
+              "op": "!",
+              "operand": {
+                "id": 13,
+                "kind": "booleanLiteral",
+                "value": false,
+              },
+            },
+          },
+          "id": 16,
+          "kind": "globalStat",
+          "name": {
+            "id": 9,
+            "kind": "id",
+            "name": "y",
+          },
+          "type": {
+            "id": 10,
+            "kind": "id",
+            "name": "bool",
+          },
         },
       ],
       "kind": "house",

@@ -80,19 +80,17 @@ Housify {
 
     integerLiteral = digit+
 
-    booleanLiteral = true | false
+    booleanLiteral = "true" | "false"
 
     letterAsciiLC = "a".."z"
     letterAsciiUC = "A".."Z"
     letterAscii = letterAsciiLC | letterAsciiUC
     letterComment = letterAsciiLC | letterAsciiUC | digit | "_"
 
-    id = idRegular | idExceptions
+    id = ~keyword #idStart #(idPart*)
 
     idStart = letterAscii | "_"
     idPart = letterAscii | digit | "_"
-    idRegular = ~keyword #idStart #(idPart*)
-    idExceptions = global | player
 
     house = "house" ~idPart
     global = "global" ~idPart
@@ -101,10 +99,8 @@ Housify {
     let = "let" ~idPart
     if = "if" ~idPart
     else = "else" ~idPart
-    true = "true" ~idPart
-    false = "false" ~idPart
 
-    keyword = house | global | player | handle | let | if | else
+    keyword = house | handle | let | if | else
 
     // Comments
     space += comment | lineTerminator

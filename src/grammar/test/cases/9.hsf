@@ -1,5 +1,0 @@
-house MyHouse {
-    handle BlockBreak {
-        myVar;
-    }
-}

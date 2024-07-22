@@ -11,10 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
--   Handlers grammar has been changed to `handle Event { Statements }`: PR [#35](https://github.com/Gusarich/housify/pull/35)
+-   The handler grammar has been changed to `handle EVENT { Statements }`: PR [#35](https://github.com/Gusarich/housify/pull/35)
 -   All required Housing types have been added: PR [#36](https://github.com/Gusarich/housify/pull/36)
+-   Event types in handlers must now accurately match the uppercase snake case event names from Housing types: PR [#37](https://github.com/Gusarich/housify/pull/37)
 
 ### Fixed
+
+-   The variable names `global` and `player` are now forbidden: PR [#37](https://github.com/Gusarich/housify/pull/37)
+-   Variables and stats of type `void` are now forbidden: PR [#37](https://github.com/Gusarich/housify/pull/37)
+-   Handled events are now correctly checked during resolving and added to the result: PR [#37](https://github.com/Gusarich/housify/pull/37)
 
 ## [0.0.3-alpha] - 2024-07-21
 

@@ -1,0 +1,9 @@
+house MyHouse {
+    handle JOIN {
+
+    }
+
+    handle SOMETHING_ELSE {
+        
+    }
+}

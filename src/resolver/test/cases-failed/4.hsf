@@ -1,6 +1,0 @@
-house MyHouse {
-    handle BlockBreak {
-        x = 10;
-        let x: int = 5;
-    }
-}

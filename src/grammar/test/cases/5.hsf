@@ -1,7 +1,0 @@
-house MyHouse {
-    handle BlockBreak {
-        if (x == 5) {
-            y = 10;
-        }
-    }
-}

@@ -1,0 +1,7 @@
+house MyHouse {
+    handle JOIN {
+        if (123) {
+            let x: int = 123;
+        }
+    }
+}

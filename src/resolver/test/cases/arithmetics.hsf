@@ -1,0 +1,33 @@
+house MyHouse {
+    global x: int = 10;
+    global y: int = 20;
+    player z: int = 30;
+
+    handle BLOCK_BREAK {
+        let a: int = global.x + global.y;
+        let b: int = a * player.z;
+        let c: int = b - 5;
+        let d: int = c / 2;
+        let e: int = d + 3;
+        let f: bool = e == 1;
+        let g: bool = f && true;
+        let h: bool = !g;
+        let i: int = -d;
+        let j: int = i;
+        let k: int = (j + 2) * (a - 1);
+        let l: int = k / (b + 3);
+        let m: int = l + (c - 4);
+        let n: bool = m != 0;
+        let o: bool = n || false;
+        let p: bool = !o;
+        let q: int = -m;
+        let r: int = q;
+        let s: int = (r + 5) * (d - 2);
+        let t: int = s / (e + 4);
+        let u: int = t + 123;
+        let v: bool = u == 1;
+        let w: bool = v && true;
+        let x: bool = !w;
+        let y: int = -u;
+    }
+}

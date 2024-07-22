@@ -1,0 +1,10 @@
+house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 10;
+        if (x == 10) {
+            x = 20;
+        } else if (x == 20) {
+            x = true;
+        }
+    }
+}

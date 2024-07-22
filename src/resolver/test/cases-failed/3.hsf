@@ -1,7 +1,0 @@
-house MyHouse {
-    global x: bool = true;
-
-    handle BlockBreak {
-        global.x = 10;
-    }
-}

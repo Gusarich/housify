@@ -294,7 +294,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             field: field.astOfExpression(),
         });
     },
-    id(_arg0) {
+    id(_arg0, _arg1) {
         return createAstNode({
             kind: 'id',
             name: this.sourceString,

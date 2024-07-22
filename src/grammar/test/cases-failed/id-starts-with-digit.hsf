@@ -1,0 +1,3 @@
+house MyHouse {
+    global 1x: int = 1;
+}

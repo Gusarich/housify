@@ -1,0 +1,5 @@
+house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}

@@ -1,0 +1,9 @@
+house TestHouse {
+    global counter: int = 0;
+
+    handle JOIN {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = (x && !y) && false || true;
+    }
+}

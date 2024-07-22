@@ -1,7 +1,0 @@
-house MyHouse {
-    handle BlockBreak {
-        let x: bool = true;
-        let y: bool = false;
-        let z: bool = x && y && true;
-    }
-}
