@@ -13,6 +13,21 @@ import { CompilerContext } from '../resolver/context';
 import { resolveStructPath } from '../resolver/resolve';
 import { evaluateConstantExpression } from './evaluate';
 
+export function isStatReference(s: string) {
+    return s.startsWith('%stat.global/') || s.startsWith('%stat.player/');
+}
+
+export function unwrapStatReference(s: string): {
+    kind: 'global' | 'player';
+    stat: string;
+} {
+    const parts = s.slice(6, -1).split('/');
+    return {
+        kind: parts[0] === 'global' ? 'global' : 'player',
+        stat: parts[1]!,
+    };
+}
+
 type WriterContext = {
     actions: Action[];
     globalStats: Map<string, number>;
