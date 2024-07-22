@@ -8,7 +8,7 @@ import {
 import { Action, ActionKind } from '../housing/actions';
 import { ConditionKind } from '../housing/conditions';
 import { EventType } from '../housing/events';
-import { Comparator, StatMode } from '../housing/util';
+import { StatCompareMode, StatChangeMode } from '../housing/util';
 import { CompilerContext } from '../resolver/context';
 import { resolveStructPath } from '../resolver/resolve';
 import { camelToSnake } from '../utils/letterCases';
@@ -94,7 +94,7 @@ export function writeExpression(
         wctx.playerStats.set(tempStat, wctx.playerStats.size);
         wctx.actions.push({
             kind: ActionKind.CHANGE_PLAYER_STAT,
-            mode: StatMode.SET,
+            mode: StatChangeMode.SET,
             stat: tempStat,
             value: result,
         });
@@ -109,7 +109,7 @@ export function writeExpression(
             wctx.playerStats.set(tempStat, wctx.playerStats.size);
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
-                mode: StatMode.SET,
+                mode: StatChangeMode.SET,
                 stat: tempStat,
                 value: expression.value,
             });
@@ -120,7 +120,7 @@ export function writeExpression(
             wctx.playerStats.set(tempStat, wctx.playerStats.size);
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
-                mode: StatMode.SET,
+                mode: StatChangeMode.SET,
                 stat: tempStat,
                 value: expression.value ? '1' : '0',
             });
@@ -147,13 +147,13 @@ export function writeExpression(
                 case '-': {
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: '0',
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.DECREMENT,
+                        mode: StatChangeMode.DECREMENT,
                         stat: tempStat,
                         value: wrapAsPlayerStat(operand),
                     });
@@ -162,13 +162,13 @@ export function writeExpression(
                 case '!': {
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: '1',
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.DECREMENT,
+                        mode: StatChangeMode.DECREMENT,
                         stat: tempStat,
                         value: wrapAsPlayerStat(operand),
                     });
@@ -187,13 +187,13 @@ export function writeExpression(
                 case '+':
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.INCREMENT,
+                        mode: StatChangeMode.INCREMENT,
                         stat: tempStat,
                         value: wrapAsPlayerStat(right),
                     });
@@ -201,13 +201,13 @@ export function writeExpression(
                 case '-':
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.DECREMENT,
+                        mode: StatChangeMode.DECREMENT,
                         stat: tempStat,
                         value: wrapAsPlayerStat(right),
                     });
@@ -215,13 +215,13 @@ export function writeExpression(
                 case '*':
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.MULTIPLY,
+                        mode: StatChangeMode.MULTIPLY,
                         stat: tempStat,
                         value: wrapAsPlayerStat(right),
                     });
@@ -229,13 +229,13 @@ export function writeExpression(
                 case '/':
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.DIVIDE,
+                        mode: StatChangeMode.DIVIDE,
                         stat: tempStat,
                         value: wrapAsPlayerStat(right),
                     });
@@ -243,13 +243,13 @@ export function writeExpression(
                 case '&&':
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.MULTIPLY,
+                        mode: StatChangeMode.MULTIPLY,
                         stat: tempStat,
                         value: wrapAsPlayerStat(right),
                     });
@@ -257,13 +257,13 @@ export function writeExpression(
                 case '||': {
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat,
                         value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.INCREMENT,
+                        mode: StatChangeMode.INCREMENT,
                         stat: tempStat,
                         value: wrapAsPlayerStat(right),
                     });
@@ -271,19 +271,19 @@ export function writeExpression(
                     wctx.playerStats.set(tempStat2, wctx.playerStats.size);
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.SET,
+                        mode: StatChangeMode.SET,
                         stat: tempStat2,
                         value: wrapAsPlayerStat(left),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.MULTIPLY,
+                        mode: StatChangeMode.MULTIPLY,
                         stat: tempStat2,
                         value: wrapAsPlayerStat(right),
                     });
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
-                        mode: StatMode.DECREMENT,
+                        mode: StatChangeMode.DECREMENT,
                         stat: tempStat,
                         value: wrapAsPlayerStat(tempStat2),
                     });
@@ -304,14 +304,14 @@ export function writeExpression(
                                 mode:
                                     expression.op === '==' ||
                                     expression.op === '!='
-                                        ? Comparator.EQUAL
+                                        ? StatCompareMode.EQUAL
                                         : expression.op === '>'
-                                          ? Comparator.GREATER_THAN
+                                          ? StatCompareMode.GREATER_THAN
                                           : expression.op === '>='
-                                            ? Comparator.GREATER_THAN_OR_EQUAL
+                                            ? StatCompareMode.GREATER_THAN_OR_EQUAL
                                             : expression.op === '<'
-                                              ? Comparator.LESS_THAN
-                                              : Comparator.LESS_THAN_OR_EQUAL,
+                                              ? StatCompareMode.LESS_THAN
+                                              : StatCompareMode.LESS_THAN_OR_EQUAL,
                                 value: wrapAsPlayerStat(right),
                             },
                         ],
@@ -320,7 +320,7 @@ export function writeExpression(
                             {
                                 kind: ActionKind.CHANGE_PLAYER_STAT,
                                 stat: tempStat,
-                                mode: StatMode.SET,
+                                mode: StatChangeMode.SET,
                                 value: expression.op === '!=' ? '0' : '1',
                             },
                         ],
@@ -328,7 +328,7 @@ export function writeExpression(
                             {
                                 kind: ActionKind.CHANGE_PLAYER_STAT,
                                 stat: tempStat,
-                                mode: StatMode.SET,
+                                mode: StatChangeMode.SET,
                                 value: expression.op === '!=' ? '1' : '0',
                             },
                         ],
@@ -348,7 +348,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             );
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
-                mode: StatMode.SET,
+                mode: StatChangeMode.SET,
                 stat: '$' + statement.name.name,
                 value: wrapAsPlayerStat(writeExpression(statement.value, wctx)),
             });
@@ -357,7 +357,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             if (statement.lvalue.kind === 'expressionId') {
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
-                    mode: StatMode.SET,
+                    mode: StatChangeMode.SET,
                     stat: '$' + statement.lvalue.name.name,
                     value: wrapAsPlayerStat(
                         writeExpression(statement.value, wctx),
@@ -368,7 +368,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     if (statement.lvalue.struct.name.name === 'global') {
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_GLOBAL_STAT,
-                            mode: StatMode.SET,
+                            mode: StatChangeMode.SET,
                             stat: statement.lvalue.field.name,
                             value: wrapAsGlobalStat(
                                 writeExpression(statement.value, wctx),
@@ -379,7 +379,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     if (statement.lvalue.struct.name.name === 'player') {
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_PLAYER_STAT,
-                            mode: StatMode.SET,
+                            mode: StatChangeMode.SET,
                             stat: statement.lvalue.field.name,
                             value: wrapAsPlayerStat(
                                 writeExpression(statement.value, wctx),
@@ -390,7 +390,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 }
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
-                    mode: StatMode.SET,
+                    mode: StatChangeMode.SET,
                     stat: '$' + resolveStructPath(statement.lvalue).join('.'),
                     value: wrapAsPlayerStat(
                         writeExpression(statement.value, wctx),
@@ -435,7 +435,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     {
                         kind: ConditionKind.PLAYER_STAT,
                         stat: condition,
-                        mode: Comparator.EQUAL,
+                        mode: StatCompareMode.EQUAL,
                         value: '1',
                     },
                 ],

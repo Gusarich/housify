@@ -6,7 +6,7 @@ export type Coordinates = {
     yaw: number;
 };
 
-export enum StatMode {
+export enum StatChangeMode {
     INCREMENT = 'INCREMENT',
     DECREMENT = 'DECREMENT',
     SET = 'SET',
@@ -20,7 +20,7 @@ export enum Gamemode {
     CREATIVE = 'CREATIVE',
 }
 
-export enum Comparator {
+export enum StatCompareMode {
     LESS_THAN = 'LESS_THAN',
     LESS_THAN_OR_EQUAL = 'LESS_THAN_OR_EQUAL',
     EQUAL = 'EQUAL',

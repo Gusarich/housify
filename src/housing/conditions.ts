@@ -1,5 +1,5 @@
 import {
-    Comparator,
+    StatCompareMode,
     DamageCause,
     FishingEnvironment,
     Gamemode,
@@ -73,14 +73,14 @@ export type RequiredGroupCondition = {
 export type PlayerStatCondition = {
     kind: ConditionKind.PLAYER_STAT;
     stat: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
 export type GlobalStatCondition = {
     kind: ConditionKind.GLOBAL_STAT;
     stat: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -121,19 +121,19 @@ export type FlyingCondition = {
 
 export type HealthCondition = {
     kind: ConditionKind.HEALTH;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
 export type MaxHealthCondition = {
     kind: ConditionKind.MAX_HEALTH;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
 export type HungerCondition = {
     kind: ConditionKind.HUNGER;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -145,7 +145,7 @@ export type RequiredGamemodeCondition = {
 export type PlaceholderNumberCondition = {
     kind: ConditionKind.PLACEHOLDER_NUMBER;
     placeholder: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -158,7 +158,7 @@ export type TeamStatCondition = {
     kind: ConditionKind.TEAM_STAT;
     stat: string;
     team: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -183,7 +183,7 @@ export type DamageCauseCondition = {
 
 export type DamageAmountCondition = {
     kind: ConditionKind.DAMAGE_AMOUNT;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 

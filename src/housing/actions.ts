@@ -4,7 +4,7 @@ import {
     Gamemode,
     LobbyLocation,
     PotionEffect,
-    StatMode,
+    StatChangeMode,
 } from './util';
 
 export type Action =
@@ -143,7 +143,7 @@ export type ResetInventoryAction = {
 export type ChangeMaxHealthAction = {
     kind: ActionKind.CHANGE_MAX_HEALTH;
     value: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     healOnChange: boolean;
 };
 
@@ -194,14 +194,14 @@ export type SendToLobbyAction = {
 export type ChangePlayerStatAction = {
     kind: ActionKind.CHANGE_PLAYER_STAT;
     stat: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     value: string;
 };
 
 export type ChangeGlobalStatAction = {
     kind: ActionKind.CHANGE_GLOBAL_STAT;
     stat: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     value: string;
 };
 
@@ -236,13 +236,13 @@ export type SetGamemodeAction = {
 export type ChangeHealthAction = {
     kind: ActionKind.CHANGE_HEALTH;
     value: string;
-    mode: StatMode;
+    mode: StatChangeMode;
 };
 
 export type ChangeHungerLevelAction = {
     kind: ActionKind.CHANGE_HUNGER_LEVEL;
     value: string;
-    mode: StatMode;
+    mode: StatChangeMode;
 };
 
 export type RandomAction = {
@@ -284,7 +284,7 @@ export type SetPlayerTeamAction = {
 export type ChangeTeamStatAction = {
     kind: ActionKind.CHANGE_TEAM_STAT;
     stat: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     value: string;
     team: string;
 };
