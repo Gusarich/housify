@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+### Fixed
+
+## [0.1.0] - 2024-07-22
+
+### Changed
+
 -   The handler grammar has been changed to `handle EVENT { Statements }`: PR [#35](https://github.com/Gusarich/housify/pull/35)
 -   All required Housing types have been added: PR [#36](https://github.com/Gusarich/housify/pull/36)
 -   Event types in handlers must now accurately match the uppercase snake case event names from Housing types: PR [#37](https://github.com/Gusarich/housify/pull/37)
@@ -48,7 +54,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   The initial version of the compiler
 
-[unreleased]: https://github.com/Gusarich/housify/compare/v0.0.3-alpha...HEAD
+[unreleased]: https://github.com/Gusarich/housify/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Gusarich/housify/releases/tag/v0.1.0
 [0.0.3-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.3-alpha
 [0.0.2-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.2-alpha
 [0.0.1-alpha]: https://github.com/Gusarich/housify/releases/tag/v0.0.1-alpha

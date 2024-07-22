@@ -22,17 +22,17 @@ This is the initial version of the project that can be used for development in H
 
 ### Documentation
 
--   [ ] Language syntax
--   [ ] Explanation of the structure of the Housify module
--   [ ] Installation guide
--   [ ] Usage guide
--   [ ] Basic examples of Housify modules
+-   [x] Language syntax
+-   [x] Explanation of the structure of the Housify module
+-   [x] Installation guide
+-   [x] Usage guide
+-   [x] Basic examples of Housify modules
 
 ### Meta
 
 -   [x] npm package
 -   [x] Contributing guidelines
--   [ ] Issue and pull request templates
+-   [x] Issue and pull request templates
 -   [x] Complete README, CHANGELOG, LICENSE, and ROADMAP
 -   [x] CI pipeline for project testing
 -   [x] Formatter, linter, spellchecking, and pre-commit hooks for the project
