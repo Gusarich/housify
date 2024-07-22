@@ -4,7 +4,7 @@ house MyHouse {
     player xp: int = 123;
     player yp: int;
 
-    handle BlockBreak {
+    handle BLOCK_BREAK {
         
     }
 }

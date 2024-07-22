@@ -8,6 +8,7 @@ import {
     AstPlayerStat,
     AstStatement,
 } from '../grammar/ast';
+import { EventType } from '../housing/events';
 import { CompilerContext, StatementContext } from './context';
 import { Type } from './type';
 
@@ -205,6 +206,9 @@ export function processStatement(
                     `Variable '${statement.name.name}' already exists`,
                 );
             }
+            if (statement.type.name === 'void') {
+                throw new Error("Cannot declare a variable of type 'void'");
+            }
             const valueType = resolveExpression(statement.value, ctx, sctx);
             if (statement.type.name !== valueType.type) {
                 throw new Error(
@@ -243,6 +247,11 @@ export function processStatDefinition(
     // Check if the stat already exists
     if (statStruct.fields.find((field) => field.name === stat.name.name)) {
         throw new Error(`Global stat '${stat.name.name}' already exists`);
+    }
+
+    // Check for `void` type
+    if (stat.type.name === 'void') {
+        throw new Error("Cannot declare a stat of type 'void'");
     }
 
     // Check if the specified type matches the default value
@@ -305,6 +314,13 @@ export function processHouse(
                 processStatDefinition(item, house.name.name, ctx, sctx);
                 break;
             case 'handler': {
+                if (!(item.event.name in EventType)) {
+                    throw new Error(`Event '${item.event.name}' not found`);
+                }
+                ctx.getHouse(house.name.name)!.handlers.push(
+                    item.event.name as EventType,
+                );
+
                 const sctxHandler = sctx.clone();
                 for (const statement of item.statements) {
                     processStatement(statement, ctx, sctxHandler);

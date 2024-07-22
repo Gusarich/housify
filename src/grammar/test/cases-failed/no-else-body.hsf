@@ -1,5 +1,5 @@
 house MyHouse {
-    handle BlockBreak {
+    handle BLOCK_BREAK {
         if (x == 5) {
             y = 10;
         } else

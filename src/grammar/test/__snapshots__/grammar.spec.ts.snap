@@ -6,7 +6,7 @@ exports[`Grammar should fail id-identical-to-keyword 1`] = `
 > 2 |     global handle: int = 1;
                  ^
   3 | }
-Expected "player", "global", or not a keyword"
+Expected not a keyword"
 `;
 
 exports[`Grammar should fail id-starts-with-digit 1`] = `
@@ -15,12 +15,12 @@ exports[`Grammar should fail id-starts-with-digit 1`] = `
 > 2 |     global 1x: int = 1;
                  ^
   3 | }
-Expected "player", "global", "_", "A".."Z", or "a".."z""
+Expected "_", "A".."Z", or "a".."z""
 `;
 
 exports[`Grammar should fail invalid-integer-literal 1`] = `
 "Line 3, col 15:
-  2 |     handle BlockBreak {
+  2 |     handle BLOCK_BREAK {
 > 3 |         x = 42a;
                     ^
   4 |     }
@@ -47,47 +47,47 @@ Expected "if" or "{""
 
 exports[`Grammar should fail no-expression-in-assignment 1`] = `
 "Line 3, col 13:
-  2 |     handle BlockBreak {
+  2 |     handle BLOCK_BREAK {
 > 3 |         x = ;
                   ^
   4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
 exports[`Grammar should fail no-expression-in-let-statement 1`] = `
 "Line 3, col 22:
-  2 |     handle BlockBreak {
+  2 |     handle BLOCK_BREAK {
 > 3 |         let x: int = ;
                            ^
   4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
 exports[`Grammar should fail no-operand-in-arithmetics 1`] = `
 "Line 3, col 19:
-  2 |     handle BlockBreak {
+  2 |     handle BLOCK_BREAK {
 > 3 |         (x + y) * ;
                         ^
   4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
 exports[`Grammar should fail no-operand-in-unary-operation 1`] = `
 "Line 3, col 14:
-  2 |     handle BlockBreak {
+  2 |     handle BLOCK_BREAK {
 > 3 |         x = -;
                    ^
   4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
 exports[`Grammar should fail no-right-operand-in-binary-operation 1`] = `
 "Line 3, col 17:
-  2 |     handle BlockBreak {
+  2 |     handle BLOCK_BREAK {
 > 3 |         x = 5 + ;
                       ^
   4 |     }
-Expected "player", "global", "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
+Expected "_", "A".."Z", "a".."z", "false", "true", a digit, "(", "!", or "-""
 `;
 
 exports[`Grammar should fail no-semicolon 1`] = `
@@ -128,7 +128,7 @@ exports[`Grammar should parse arithmetics 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 12,
           "kind": "handler",
@@ -200,7 +200,7 @@ exports[`Grammar should parse assignment 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 7,
           "kind": "handler",
@@ -249,7 +249,7 @@ exports[`Grammar should parse binary-operator 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 9,
           "kind": "handler",
@@ -308,7 +308,7 @@ exports[`Grammar should parse booleans 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 21,
           "kind": "handler",
@@ -424,7 +424,7 @@ exports[`Grammar should parse field-access 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 27,
           "kind": "handler",
@@ -563,7 +563,7 @@ exports[`Grammar should parse field-access2 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 9,
           "kind": "handler",
@@ -621,7 +621,7 @@ exports[`Grammar should parse id 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 6,
           "kind": "handler",
@@ -665,7 +665,7 @@ exports[`Grammar should parse if-statement 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 12,
           "kind": "handler",
@@ -739,7 +739,7 @@ exports[`Grammar should parse integer-literal 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 7,
           "kind": "handler",
@@ -788,7 +788,7 @@ exports[`Grammar should parse let-statement 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 7,
           "kind": "handler",
@@ -838,7 +838,7 @@ exports[`Grammar should parse multi-line-comments 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 21,
           "kind": "handler",
@@ -989,7 +989,7 @@ exports[`Grammar should parse single-line-comments 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 15,
           "kind": "handler",
@@ -1074,7 +1074,7 @@ exports[`Grammar should parse statement-expression 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 5,
           "kind": "handler",
@@ -1182,7 +1182,7 @@ exports[`Grammar should parse stats 1`] = `
           "event": {
             "id": 16,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 17,
           "kind": "handler",
@@ -1212,7 +1212,7 @@ exports[`Grammar should parse unary-operator 1`] = `
           "event": {
             "id": 2,
             "kind": "id",
-            "name": "BlockBreak",
+            "name": "BLOCK_BREAK",
           },
           "id": 8,
           "kind": "handler",

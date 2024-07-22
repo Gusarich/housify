@@ -1,0 +1,5 @@
+house MyHouse {
+    global x: int = 123;
+    player x: int = 123;
+    global x: int = 1;
+}

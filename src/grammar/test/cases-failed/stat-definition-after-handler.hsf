@@ -3,7 +3,7 @@ house MyHouse {
     global yg: int;
     player xp: int = 123;
 
-    handle BlockBreak {
+    handle BLOCK_BREAK {
         
     }
 

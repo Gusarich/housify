@@ -1,0 +1,3 @@
+house MyHouse {
+    global x: void = 123;
+}

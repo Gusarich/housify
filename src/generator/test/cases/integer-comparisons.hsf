@@ -1,7 +1,7 @@
 house TestHouse {
     global counter: int = 0;
 
-    handle JoinEvent {
+    handle JOIN {
         let x: int = 5;
         let y: int = 2;
         let z: bool = true;

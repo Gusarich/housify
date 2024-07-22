@@ -10,7 +10,13 @@ exports[`Resolver should fail assignment-type-mismatch-in-nested-if 1`] = `"Cann
 
 exports[`Resolver should fail binary-operation-between-boolean-and-integer 1`] = `"Operands must be integers"`;
 
+exports[`Resolver should fail condition-not-boolean 1`] = `"Condition must be a boolean"`;
+
 exports[`Resolver should fail default-value-type-mismatch 1`] = `"Cannot assign 'int' to 'bool'"`;
+
+exports[`Resolver should fail double-stat-definition 1`] = `"Global stat 'x' already exists"`;
+
+exports[`Resolver should fail field-access-not-struct 1`] = `"Expression must be a struct"`;
 
 exports[`Resolver should fail let-statement-value-type-mismatch 1`] = `"Cannot assign 'bool' to 'int'"`;
 
@@ -22,11 +28,25 @@ exports[`Resolver should fail stat-assignment-type-mismatch 1`] = `"Cannot assig
 
 exports[`Resolver should fail stat-assignment-type-mismatch2 1`] = `"Cannot assign 'bool' to 'int'"`;
 
+exports[`Resolver should fail unary-negation-of-bool 1`] = `"Operand must be an integer"`;
+
+exports[`Resolver should fail unary-not-of-integer 1`] = `"Operand must be a boolean"`;
+
+exports[`Resolver should fail unassignable-lvalue 1`] = `"'expressionBinary' cannot be assigned"`;
+
+exports[`Resolver should fail unknown-event 1`] = `"Event 'SOMETHING_ELSE' not found"`;
+
+exports[`Resolver should fail unknown-type 1`] = `"Type 'qwerty' not found"`;
+
 exports[`Resolver should fail unused-statement-expression 1`] = `"Expression of type int cannot be used as a statement"`;
 
 exports[`Resolver should fail variable-double-definition 1`] = `"Variable 'x' already exists"`;
 
 exports[`Resolver should fail variable-usage-before-definition 1`] = `"Variable 'x' not found"`;
+
+exports[`Resolver should fail void-stat 1`] = `"Cannot declare a stat of type 'void'"`;
+
+exports[`Resolver should fail void-variable 1`] = `"Cannot declare a variable of type 'void'"`;
 
 exports[`Resolver should resolve arithmetics 1`] = `
 CompilerContext {
@@ -377,7 +397,9 @@ CompilerContext {
           },
         },
       ],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [
         {
           "defaultValue": {
@@ -461,6 +483,53 @@ CompilerContext {
           },
         },
       ],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
+      "playerStats": [],
+    },
+  },
+}
+`;
+
+exports[`Resolver should resolve boolean-equality-comparison 1`] = `
+CompilerContext {
+  "expressions": Map {
+    4 => {
+      "type": "bool",
+    },
+    5 => {
+      "type": "bool",
+    },
+    6 => {
+      "type": "bool",
+    },
+  },
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [
+        {
+          "defaultValue": {
+            "id": 6,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 4,
+              "kind": "booleanLiteral",
+              "value": true,
+            },
+            "op": "==",
+            "right": {
+              "id": 5,
+              "kind": "booleanLiteral",
+              "value": true,
+            },
+          },
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
       "handlers": [],
       "playerStats": [],
     },
@@ -533,7 +602,9 @@ CompilerContext {
           },
         },
       ],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -585,7 +656,9 @@ CompilerContext {
           },
         },
       ],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -648,7 +721,9 @@ CompilerContext {
   "houses": Map {
     "MyHouse" => {
       "globalStats": [],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [
         {
           "defaultValue": {
@@ -692,7 +767,9 @@ CompilerContext {
   "houses": Map {
     "MyHouse" => {
       "globalStats": [],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -736,7 +813,9 @@ CompilerContext {
   "houses": Map {
     "MyHouse" => {
       "globalStats": [],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -771,7 +850,9 @@ CompilerContext {
   "houses": Map {
     "MyHouse" => {
       "globalStats": [],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -849,7 +930,9 @@ CompilerContext {
           },
         },
       ],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -866,7 +949,264 @@ CompilerContext {
   "houses": Map {
     "MyHouse" => {
       "globalStats": [],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
+      "playerStats": [],
+    },
+  },
+}
+`;
+
+exports[`Resolver should resolve multiple-houses 1`] = `
+CompilerContext {
+  "expressions": Map {
+    4 => {
+      "type": "int",
+    },
+    9 => {
+      "type": "int",
+    },
+    12 => {
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    14 => {
+      "type": "int",
+    },
+    16 => {
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    18 => {
+      "type": "int",
+    },
+    20 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    28 => {
+      "type": "int",
+    },
+    32 => {
+      "type": "int",
+    },
+    37 => {
+      "type": "int",
+    },
+    40 => {
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 28,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "defaultValue": {
+            "id": 32,
+            "kind": "integerLiteral",
+            "value": "0",
+          },
+          "name": "y",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    42 => {
+      "type": "int",
+    },
+    44 => {
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 28,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "defaultValue": {
+            "id": 32,
+            "kind": "integerLiteral",
+            "value": "0",
+          },
+          "name": "y",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    46 => {
+      "type": "int",
+    },
+    48 => {
+      "type": "int",
+    },
+    49 => {
+      "type": "int",
+    },
+    52 => {
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 28,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "defaultValue": {
+            "id": 32,
+            "kind": "integerLiteral",
+            "value": "0",
+          },
+          "name": "y",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    54 => {
+      "type": "int",
+    },
+    56 => {
+      "fields": [
+        {
+          "defaultValue": {
+            "id": 28,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "defaultValue": {
+            "id": 32,
+            "kind": "integerLiteral",
+            "value": "0",
+          },
+          "name": "y",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    58 => {
+      "type": "int",
+    },
+    59 => {
+      "type": "int",
+    },
+    60 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "House1" => {
+      "globalStats": [
+        {
+          "defaultValue": {
+            "id": 4,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [],
+    },
+    "House2" => {
+      "globalStats": [
+        {
+          "defaultValue": {
+            "id": 28,
+            "kind": "integerLiteral",
+            "value": "1",
+          },
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "defaultValue": {
+            "id": 32,
+            "kind": "integerLiteral",
+            "value": "0",
+          },
+          "name": "y",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "handlers": [
+        "JOIN",
+      ],
       "playerStats": [],
     },
   },
@@ -929,7 +1269,9 @@ CompilerContext {
   "houses": Map {
     "MyHouse" => {
       "globalStats": [],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [
         {
           "defaultValue": {
@@ -993,7 +1335,9 @@ CompilerContext {
           },
         },
       ],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -1101,7 +1445,9 @@ CompilerContext {
           },
         },
       ],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },
@@ -1124,7 +1470,9 @@ CompilerContext {
   "houses": Map {
     "MyHouse" => {
       "globalStats": [],
-      "handlers": [],
+      "handlers": [
+        "BLOCK_BREAK",
+      ],
       "playerStats": [],
     },
   },

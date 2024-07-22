@@ -1,7 +1,7 @@
 house MyHouse {
     global isActive: bool = true;
 
-    handle BlockBreak {
+    handle BLOCK_BREAK {
         if (global.isActive) {
             global.isActive = false;
         }

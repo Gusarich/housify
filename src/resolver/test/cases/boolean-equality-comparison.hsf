@@ -1,0 +1,3 @@
+house MyHouse {
+    global x: bool = true == true;
+}
