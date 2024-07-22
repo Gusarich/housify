@@ -1,5 +1,11 @@
 import { Condition } from './conditions';
-import { Gamemode, StatMode } from './util';
+import {
+    Enchantment,
+    Gamemode,
+    LobbyLocation,
+    PotionEffect,
+    StatMode,
+} from './util';
 
 export type Action =
     | ConditionalAction
@@ -165,7 +171,7 @@ export type SendChatMessageAction = {
 
 export type ApplyPotionEffectAction = {
     kind: ActionKind.APPLY_POTION_EFFECT;
-    effect: string; // TODO: make an enum with all effects
+    effect: PotionEffect;
     duration: number;
     level: number;
     override: boolean;
@@ -182,7 +188,7 @@ export type GiveExpLevelsAction = {
 
 export type SendToLobbyAction = {
     kind: ActionKind.SEND_TO_LOBBY;
-    location: string; // TODO: make an enum with all locations
+    location: LobbyLocation;
 };
 
 export type ChangePlayerStatAction = {
@@ -261,7 +267,7 @@ export type ApplyInventoryLayoutAction = {
 
 export type EnchantHeldItemAction = {
     kind: ActionKind.ENCHANT_HELD_ITEM;
-    enchantment: string; // TODO: make an enum with all enchantments
+    enchantment: Enchantment;
     level: number;
 };
 
