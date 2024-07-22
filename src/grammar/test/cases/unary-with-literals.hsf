@@ -1,0 +1,4 @@
+house MyHouse {
+    global x: int = -123 - 123;
+    global y: bool = !true || !false;
+}
