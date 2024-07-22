@@ -10,7 +10,12 @@
         "fadein",
         "gamemode",
         "wctx",
-        "hotbar"
+        "hotbar",
+        "knockback",
+        "unbreaking",
+        "crims",
+        "gamerules",
+        "leaderboard"
     ],
     "ignorePaths": ["node_modules/**"]
 }

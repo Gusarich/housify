@@ -1,5 +1,11 @@
 import { Condition } from './conditions';
-import { Gamemode, StatMode } from './util';
+import {
+    Enchantment,
+    Gamemode,
+    LobbyLocation,
+    PotionEffect,
+    StatChangeMode,
+} from './util';
 
 export type Action =
     | ConditionalAction
@@ -137,7 +143,7 @@ export type ResetInventoryAction = {
 export type ChangeMaxHealthAction = {
     kind: ActionKind.CHANGE_MAX_HEALTH;
     value: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     healOnChange: boolean;
 };
 
@@ -165,7 +171,7 @@ export type SendChatMessageAction = {
 
 export type ApplyPotionEffectAction = {
     kind: ActionKind.APPLY_POTION_EFFECT;
-    effect: string; // TODO: make an enum with all effects
+    effect: PotionEffect;
     duration: number;
     level: number;
     override: boolean;
@@ -182,20 +188,20 @@ export type GiveExpLevelsAction = {
 
 export type SendToLobbyAction = {
     kind: ActionKind.SEND_TO_LOBBY;
-    location: string; // TODO: make an enum with all locations
+    location: LobbyLocation;
 };
 
 export type ChangePlayerStatAction = {
     kind: ActionKind.CHANGE_PLAYER_STAT;
     stat: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     value: string;
 };
 
 export type ChangeGlobalStatAction = {
     kind: ActionKind.CHANGE_GLOBAL_STAT;
     stat: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     value: string;
 };
 
@@ -230,13 +236,13 @@ export type SetGamemodeAction = {
 export type ChangeHealthAction = {
     kind: ActionKind.CHANGE_HEALTH;
     value: string;
-    mode: StatMode;
+    mode: StatChangeMode;
 };
 
 export type ChangeHungerLevelAction = {
     kind: ActionKind.CHANGE_HUNGER_LEVEL;
     value: string;
-    mode: StatMode;
+    mode: StatChangeMode;
 };
 
 export type RandomAction = {
@@ -261,7 +267,7 @@ export type ApplyInventoryLayoutAction = {
 
 export type EnchantHeldItemAction = {
     kind: ActionKind.ENCHANT_HELD_ITEM;
-    enchantment: string; // TODO: make an enum with all enchantments
+    enchantment: Enchantment;
     level: number;
 };
 
@@ -278,7 +284,7 @@ export type SetPlayerTeamAction = {
 export type ChangeTeamStatAction = {
     kind: ActionKind.CHANGE_TEAM_STAT;
     stat: string;
-    mode: StatMode;
+    mode: StatChangeMode;
     value: string;
     team: string;
 };

@@ -1,4 +1,15 @@
-import { Comparator, Gamemode } from './util';
+import {
+    StatCompareMode,
+    DamageCause,
+    FishingEnvironment,
+    Gamemode,
+    ItemAmount,
+    ItemLocation,
+    ItemProperty,
+    Permission,
+    PortalType,
+    PotionEffect,
+} from './util';
 
 export type Condition =
     | RequiredGroupCondition
@@ -62,20 +73,20 @@ export type RequiredGroupCondition = {
 export type PlayerStatCondition = {
     kind: ConditionKind.PLAYER_STAT;
     stat: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
 export type GlobalStatCondition = {
     kind: ConditionKind.GLOBAL_STAT;
     stat: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
 export type RequiredPermissionCondition = {
     kind: ConditionKind.REQUIRED_PERMISSION;
-    permission: string; // TODO: make an enum with all permissions
+    permission: Permission;
 };
 
 export type WithinRegionCondition = {
@@ -86,9 +97,9 @@ export type WithinRegionCondition = {
 export type HasItemCondition = {
     kind: ConditionKind.HAS_ITEM;
     item: string;
-    what: 'ItemType' | 'Metadata';
-    where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
-    amount: 'Any' | 'GreaterOrEqual';
+    what: ItemProperty;
+    where: ItemLocation;
+    amount: ItemAmount;
 };
 
 export type DoingParkourCondition = {
@@ -97,7 +108,7 @@ export type DoingParkourCondition = {
 
 export type HasPotionEffectCondition = {
     kind: ConditionKind.HAS_POTION_EFFECT;
-    effect: string; // TODO: make an enum with all effects
+    effect: PotionEffect;
 };
 
 export type SneakingCondition = {
@@ -110,19 +121,19 @@ export type FlyingCondition = {
 
 export type HealthCondition = {
     kind: ConditionKind.HEALTH;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
 export type MaxHealthCondition = {
     kind: ConditionKind.MAX_HEALTH;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
 export type HungerCondition = {
     kind: ConditionKind.HUNGER;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -134,7 +145,7 @@ export type RequiredGamemodeCondition = {
 export type PlaceholderNumberCondition = {
     kind: ConditionKind.PLACEHOLDER_NUMBER;
     placeholder: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -147,7 +158,7 @@ export type TeamStatCondition = {
     kind: ConditionKind.TEAM_STAT;
     stat: string;
     team: string;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -157,22 +168,22 @@ export type PvpEnabledCondition = {
 
 export type FishingEnvironmentCondition = {
     kind: ConditionKind.FISHING_ENVIRONMENT;
-    environment: 'Water' | 'Lava';
+    environment: FishingEnvironment;
 };
 
 export type PortalTypeCondition = {
     kind: ConditionKind.PORTAL_TYPE;
-    portal: 'Nether' | 'End';
+    portal: PortalType;
 };
 
 export type DamageCauseCondition = {
     kind: ConditionKind.DAMAGE_CAUSE;
-    cause: string; // TODO: make an enum with all causes
+    cause: DamageCause;
 };
 
 export type DamageAmountCondition = {
     kind: ConditionKind.DAMAGE_AMOUNT;
-    mode: Comparator;
+    mode: StatCompareMode;
     value: string;
 };
 
@@ -185,7 +196,7 @@ export type BlockTypeCondition = {
 export type IsItemCondition = {
     kind: ConditionKind.IS_ITEM;
     item: string;
-    what: 'ItemType' | 'Metadata';
-    where: 'Hand' | 'Armor' | 'Hotbar' | 'Inventory' | 'Anywhere';
-    amount: 'Any' | 'GreaterOrEqual';
+    what: ItemProperty;
+    where: ItemLocation;
+    amount: ItemAmount;
 };
