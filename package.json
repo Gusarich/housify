@@ -17,7 +17,7 @@
         "build": "ohm generateBundles --withTypes src/grammar/*.ohm && tsc && cp ./src/grammar/grammar.ohm* ./dist/grammar/",
         "lint": "eslint .",
         "format": "prettier --write .",
-        "format:check": "prettier --check .",
+        "format:check": "prettier --check . --end-of-line auto",
         "spell": "cspell src --no-progress",
         "all": "yarn format:check && yarn lint && yarn spell",
         "test": "jest",
