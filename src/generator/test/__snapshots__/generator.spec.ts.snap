@@ -1,6 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Generator should generate 1 1`] = `
+exports[`Generator should generate booleans 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$y",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$2",
+              "value": "%stat.player/$y%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$3",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$4",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$5",
+              "value": "%stat.player/$$3%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$5",
+              "value": "%stat.player/$$4%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$6",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$7",
+              "value": "%stat.player/$$5%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$7",
+              "value": "%stat.player/$$6%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$8",
+              "value": "%stat.player/$$5%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$8",
+              "value": "%stat.player/$$6%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$7",
+              "value": "%stat.player/$$8%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$z",
+              "value": "%stat.player/$$7%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$x",
+        "$$0",
+        "$y",
+        "$$1",
+        "$z",
+        "$$2",
+        "$$3",
+        "$$4",
+        "$$5",
+        "$$6",
+        "$$7",
+        "$$8",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Generator should generate counter 1`] = `
 {
   "houses": [
     {
@@ -51,91 +196,7 @@ exports[`Generator should generate 1 1`] = `
 }
 `;
 
-exports[`Generator should generate 2 1`] = `
-{
-  "houses": [
-    {
-      "globalStats": [
-        "joinCounter",
-        "quitCounter",
-      ],
-      "handlers": [
-        {
-          "actions": [
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$0",
-              "value": "1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$1",
-              "value": "%stat.player/joinCounter%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$1",
-              "value": "%stat.player/$$0%",
-            },
-            {
-              "kind": "CHANGE_GLOBAL_STAT",
-              "mode": "SET",
-              "stat": "joinCounter",
-              "value": "%stat.global/$$1%",
-            },
-          ],
-          "event": "JOIN",
-          "kind": "handler",
-        },
-        {
-          "actions": [
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$2",
-              "value": "1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$3",
-              "value": "%stat.player/quitCounter%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$3",
-              "value": "%stat.player/$$2%",
-            },
-            {
-              "kind": "CHANGE_GLOBAL_STAT",
-              "mode": "SET",
-              "stat": "quitCounter",
-              "value": "%stat.global/$$3%",
-            },
-          ],
-          "event": "QUIT",
-          "kind": "handler",
-        },
-      ],
-      "kind": "house",
-      "name": "TestHouse",
-      "playerStats": [
-        "$$0",
-        "$$1",
-        "$$2",
-        "$$3",
-      ],
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Generator should generate 3 1`] = `
+exports[`Generator should generate counter-arithmetics 1`] = `
 {
   "houses": [
     {
@@ -246,229 +307,7 @@ exports[`Generator should generate 3 1`] = `
 }
 `;
 
-exports[`Generator should generate 4 1`] = `
-{
-  "houses": [
-    {
-      "globalStats": [
-        "counter",
-      ],
-      "handlers": [
-        {
-          "actions": [
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$0",
-              "value": "1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$1",
-              "value": "%stat.player/counter%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$1",
-              "value": "%stat.player/$$0%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$2",
-              "value": "-1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$3",
-              "value": "%stat.player/$$1%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$3",
-              "value": "%stat.player/$$2%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$4",
-              "value": "4",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$5",
-              "value": "%stat.player/$$3%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$5",
-              "value": "%stat.player/$$4%",
-            },
-            {
-              "kind": "CHANGE_GLOBAL_STAT",
-              "mode": "SET",
-              "stat": "counter",
-              "value": "%stat.global/$$5%",
-            },
-          ],
-          "event": "JOIN",
-          "kind": "handler",
-        },
-      ],
-      "kind": "house",
-      "name": "TestHouse",
-      "playerStats": [
-        "$$0",
-        "$$1",
-        "$$2",
-        "$$3",
-        "$$4",
-        "$$5",
-      ],
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Generator should generate 5 1`] = `
-{
-  "houses": [
-    {
-      "globalStats": [
-        "counter",
-      ],
-      "handlers": [
-        {
-          "actions": [
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$0",
-              "value": "3",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$1",
-              "value": "2",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$2",
-              "value": "%stat.player/counter%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "MULTIPLY",
-              "stat": "$$2",
-              "value": "%stat.player/$$1%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$3",
-              "value": "%stat.player/$$0%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$3",
-              "value": "%stat.player/$$2%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$4",
-              "value": "1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$5",
-              "value": "%stat.player/$$3%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "DECREMENT",
-              "stat": "$$5",
-              "value": "%stat.player/$$4%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$6",
-              "value": "4",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$7",
-              "value": "%stat.player/$$5%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$7",
-              "value": "%stat.player/$$6%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$8",
-              "value": "5",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$9",
-              "value": "%stat.player/$$7%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$9",
-              "value": "%stat.player/$$8%",
-            },
-            {
-              "kind": "CHANGE_GLOBAL_STAT",
-              "mode": "SET",
-              "stat": "counter",
-              "value": "%stat.global/$$9%",
-            },
-          ],
-          "event": "JOIN",
-          "kind": "handler",
-        },
-      ],
-      "kind": "house",
-      "name": "TestHouse",
-      "playerStats": [
-        "$$0",
-        "$$1",
-        "$$2",
-        "$$3",
-        "$$4",
-        "$$5",
-        "$$6",
-        "$$7",
-        "$$8",
-        "$$9",
-      ],
-    },
-  ],
-  "kind": "module",
-}
-`;
-
-exports[`Generator should generate 6 1`] = `
+exports[`Generator should generate counter-arithmetics-with-var 1`] = `
 {
   "houses": [
     {
@@ -646,7 +485,7 @@ exports[`Generator should generate 6 1`] = `
 }
 `;
 
-exports[`Generator should generate 7 1`] = `
+exports[`Generator should generate counter-arithmetics2 1`] = `
 {
   "houses": [
     {
@@ -665,42 +504,30 @@ exports[`Generator should generate 7 1`] = `
             {
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
-              "stat": "$x",
+              "stat": "$$1",
+              "value": "%stat.player/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$1",
               "value": "%stat.player/$$0%",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
-              "stat": "$$1",
-              "value": "0",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$y",
-              "value": "%stat.player/$$1%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
               "stat": "$$2",
-              "value": "1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "DECREMENT",
-              "stat": "$$2",
-              "value": "%stat.player/$y%",
+              "value": "-1",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
               "stat": "$$3",
-              "value": "%stat.player/$x%",
+              "value": "%stat.player/$$1%",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
-              "mode": "MULTIPLY",
+              "mode": "INCREMENT",
               "stat": "$$3",
               "value": "%stat.player/$$2%",
             },
@@ -708,7 +535,7 @@ exports[`Generator should generate 7 1`] = `
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
               "stat": "$$4",
-              "value": "0",
+              "value": "4",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
@@ -718,51 +545,15 @@ exports[`Generator should generate 7 1`] = `
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
-              "mode": "MULTIPLY",
+              "mode": "INCREMENT",
               "stat": "$$5",
               "value": "%stat.player/$$4%",
             },
             {
-              "kind": "CHANGE_PLAYER_STAT",
+              "kind": "CHANGE_GLOBAL_STAT",
               "mode": "SET",
-              "stat": "$$6",
-              "value": "1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$7",
-              "value": "%stat.player/$$5%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "INCREMENT",
-              "stat": "$$7",
-              "value": "%stat.player/$$6%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$$8",
-              "value": "%stat.player/$$5%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "MULTIPLY",
-              "stat": "$$8",
-              "value": "%stat.player/$$6%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "DECREMENT",
-              "stat": "$$7",
-              "value": "%stat.player/$$8%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$z",
-              "value": "%stat.player/$$7%",
+              "stat": "counter",
+              "value": "%stat.global/$$5%",
             },
           ],
           "event": "JOIN",
@@ -772,18 +563,12 @@ exports[`Generator should generate 7 1`] = `
       "kind": "house",
       "name": "TestHouse",
       "playerStats": [
-        "$x",
         "$$0",
-        "$y",
         "$$1",
-        "$z",
         "$$2",
         "$$3",
         "$$4",
         "$$5",
-        "$$6",
-        "$$7",
-        "$$8",
       ],
     },
   ],
@@ -791,7 +576,7 @@ exports[`Generator should generate 7 1`] = `
 }
 `;
 
-exports[`Generator should generate 8 1`] = `
+exports[`Generator should generate counter-arithmetics3 1`] = `
 {
   "houses": [
     {
@@ -805,13 +590,7 @@ exports[`Generator should generate 8 1`] = `
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
               "stat": "$$0",
-              "value": "5",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$x",
-              "value": "%stat.player/$$0%",
+              "value": "3",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
@@ -822,106 +601,86 @@ exports[`Generator should generate 8 1`] = `
             {
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
-              "stat": "$y",
+              "stat": "$$2",
+              "value": "%stat.player/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$2",
               "value": "%stat.player/$$1%",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
-              "stat": "$$2",
-              "value": "1",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
-              "stat": "$z",
-              "value": "%stat.player/$$2%",
-            },
-            {
-              "kind": "CHANGE_PLAYER_STAT",
-              "mode": "SET",
               "stat": "$$3",
-              "value": "%stat.player/$x%",
+              "value": "%stat.player/$$0%",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "INCREMENT",
               "stat": "$$3",
-              "value": "%stat.player/$y%",
+              "value": "%stat.player/$$2%",
             },
             {
               "kind": "CHANGE_PLAYER_STAT",
               "mode": "SET",
               "stat": "$$4",
-              "value": "7",
+              "value": "1",
             },
             {
-              "conditions": [
-                {
-                  "kind": "PLAYER_STAT",
-                  "mode": "EQUAL",
-                  "stat": "$$3",
-                  "value": "%stat.player/$$4%",
-                },
-              ],
-              "else": [
-                {
-                  "kind": "CHANGE_PLAYER_STAT",
-                  "mode": "SET",
-                  "stat": "$$5",
-                  "value": "0",
-                },
-              ],
-              "kind": "CONDITIONAL",
-              "matchAny": false,
-              "then": [
-                {
-                  "kind": "CHANGE_PLAYER_STAT",
-                  "mode": "SET",
-                  "stat": "$$5",
-                  "value": "1",
-                },
-              ],
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$5",
+              "value": "%stat.player/$$3%",
             },
             {
-              "conditions": [
-                {
-                  "kind": "PLAYER_STAT",
-                  "mode": "EQUAL",
-                  "stat": "$$5",
-                  "value": "1",
-                },
-              ],
-              "else": [
-                {
-                  "kind": "CHANGE_PLAYER_STAT",
-                  "mode": "SET",
-                  "stat": "$$7",
-                  "value": "20",
-                },
-                {
-                  "kind": "CHANGE_GLOBAL_STAT",
-                  "mode": "SET",
-                  "stat": "counter",
-                  "value": "%stat.global/$$7%",
-                },
-              ],
-              "kind": "CONDITIONAL",
-              "matchAny": false,
-              "then": [
-                {
-                  "kind": "CHANGE_PLAYER_STAT",
-                  "mode": "SET",
-                  "stat": "$$6",
-                  "value": "10",
-                },
-                {
-                  "kind": "CHANGE_GLOBAL_STAT",
-                  "mode": "SET",
-                  "stat": "counter",
-                  "value": "%stat.global/$$6%",
-                },
-              ],
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$5",
+              "value": "%stat.player/$$4%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$6",
+              "value": "4",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$7",
+              "value": "%stat.player/$$5%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$7",
+              "value": "%stat.player/$$6%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$8",
+              "value": "5",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$9",
+              "value": "%stat.player/$$7%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$9",
+              "value": "%stat.player/$$8%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.global/$$9%",
             },
           ],
           "event": "JOIN",
@@ -931,17 +690,16 @@ exports[`Generator should generate 8 1`] = `
       "kind": "house",
       "name": "TestHouse",
       "playerStats": [
-        "$x",
         "$$0",
-        "$y",
         "$$1",
-        "$z",
         "$$2",
         "$$3",
         "$$4",
         "$$5",
         "$$6",
         "$$7",
+        "$$8",
+        "$$9",
       ],
     },
   ],
@@ -949,7 +707,7 @@ exports[`Generator should generate 8 1`] = `
 }
 `;
 
-exports[`Generator should generate 9 1`] = `
+exports[`Generator should generate if-elseif-elseif-else 1`] = `
 {
   "houses": [
     {
@@ -1188,7 +946,165 @@ exports[`Generator should generate 9 1`] = `
 }
 `;
 
-exports[`Generator should generate 10 1`] = `
+exports[`Generator should generate if-statements 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "5",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$y",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$z",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "value": "%stat.player/$y%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$4",
+              "value": "7",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$3",
+                  "value": "%stat.player/$$4%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$5",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$5",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$5",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$7",
+                  "value": "20",
+                },
+                {
+                  "kind": "CHANGE_GLOBAL_STAT",
+                  "mode": "SET",
+                  "stat": "counter",
+                  "value": "%stat.global/$$7%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$6",
+                  "value": "10",
+                },
+                {
+                  "kind": "CHANGE_GLOBAL_STAT",
+                  "mode": "SET",
+                  "stat": "counter",
+                  "value": "%stat.global/$$6%",
+                },
+              ],
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$x",
+        "$$0",
+        "$y",
+        "$$1",
+        "$z",
+        "$$2",
+        "$$3",
+        "$$4",
+        "$$5",
+        "$$6",
+        "$$7",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Generator should generate integer-comparisons 1`] = `
 {
   "houses": [
     {
@@ -1624,6 +1540,90 @@ exports[`Generator should generate 10 1`] = `
         "$$19",
         "$$20",
         "$$21",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Generator should generate two-counters 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "joinCounter",
+        "quitCounter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.player/joinCounter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "joinCounter",
+              "value": "%stat.global/$$1%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/quitCounter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "quitCounter",
+              "value": "%stat.global/$$3%",
+            },
+          ],
+          "event": "QUIT",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [
+        "$$0",
+        "$$1",
+        "$$2",
+        "$$3",
       ],
     },
   ],
