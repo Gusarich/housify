@@ -4,6 +4,10 @@ Housify is a programming language and compiler specifically designed to enhance 
 
 > **⚠️ WARNING: This repository is currently under active development and is not yet usable. Please check back later for updates.**
 
+Check out the documentation for a quick start guide, examples, and more information:
+
+-   [Housify Docs](https://housify.dev)
+
 ## Table of Contents
 
 -   [Installation](#installation)
