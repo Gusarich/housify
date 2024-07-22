@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 -   Handlers grammar has been changed to `handle Event { Statements }`: PR [#35](https://github.com/Gusarich/housify/pull/35)
+-   All required Housing types have been added: PR [#36](https://github.com/Gusarich/housify/pull/36)
 
 ### Fixed
 
@@ -19,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   All missing Housing types have been added, and the names and fields have been fixed: PR [#17](https://github.com/Gusarich/housify/pull/17)
+-   Most of the Housing types have been added, and the names and fields have been fixed: PR [#17](https://github.com/Gusarich/housify/pull/17)
 -   Support for `if` statements and all binary comparisons: PR [#20](https://github.com/Gusarich/housify/pull/20)
 
 ### Changed
