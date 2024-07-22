@@ -106,7 +106,7 @@ export type Enchantment =
     | 'Punch'
     | 'Flame'
     | 'Infinity'
-    | 'LuckoftheSea'
+    | 'LuckOfTheSea'
     | 'Lure';
 
 export type LobbyLocation =
