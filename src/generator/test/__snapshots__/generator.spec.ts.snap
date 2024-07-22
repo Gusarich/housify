@@ -1547,6 +1547,100 @@ exports[`Generator should generate integer-comparisons 1`] = `
 }
 `;
 
+exports[`Generator should generate multiple-houses 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "x",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.player/x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "x",
+              "value": "%stat.global/$$1%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "House1",
+      "playerStats": [
+        "$$0",
+        "$$1",
+      ],
+    },
+    {
+      "globalStats": [
+        "y",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/y%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$3",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "y",
+              "value": "%stat.global/$$3%",
+            },
+          ],
+          "event": "QUIT",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "House2",
+      "playerStats": [
+        "$$2",
+        "$$3",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
 exports[`Generator should generate two-counters 1`] = `
 {
   "houses": [
