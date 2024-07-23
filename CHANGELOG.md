@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 -   Temporary stats are now excluded from the compilation result: PR [#50](https://github.com/Gusarich/housify/pull/50)
+-   Placeholder for player stats are now correctly generated: PR [#51](https://github.com/Gusarich/housify/pull/50)
 
 ## [0.1.0] - 2024-07-22
 
