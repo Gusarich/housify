@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Grammar should fail augmented-assignment-invalid-op 1`] = `
+"Line 4, col 11:
+  3 |         let x: int = 0;
+> 4 |         x |= 1;
+                ^
+  5 |     }
+Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
+`;
+
 exports[`Grammar should fail id-identical-to-keyword 1`] = `
 "Line 2, col 12:
   1 | house MyHouse {
@@ -221,6 +230,258 @@ exports[`Grammar should parse assignment 1`] = `
                 "id": 5,
                 "kind": "integerLiteral",
                 "value": "5",
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+      },
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Grammar should parse augmented-assignment 1`] = `
+{
+  "id": 52,
+  "items": [
+    {
+      "id": 51,
+      "items": [
+        {
+          "id": 4,
+          "kind": "globalStat",
+          "name": {
+            "id": 2,
+            "kind": "id",
+            "name": "x",
+          },
+          "type": {
+            "id": 3,
+            "kind": "id",
+            "name": "int",
+          },
+        },
+        {
+          "event": {
+            "id": 5,
+            "kind": "id",
+            "name": "JOIN",
+          },
+          "id": 50,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 9,
+              "kind": "statementLet",
+              "name": {
+                "id": 6,
+                "kind": "id",
+                "name": "x",
+              },
+              "type": {
+                "id": 7,
+                "kind": "id",
+                "name": "int",
+              },
+              "value": {
+                "id": 8,
+                "kind": "integerLiteral",
+                "value": "0",
+              },
+            },
+            {
+              "id": 13,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "id": 11,
+                "kind": "expressionId",
+                "name": {
+                  "id": 10,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "op": "+",
+              "value": {
+                "id": 12,
+                "kind": "integerLiteral",
+                "value": "1",
+              },
+            },
+            {
+              "id": 17,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "id": 15,
+                "kind": "expressionId",
+                "name": {
+                  "id": 14,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "op": "-",
+              "value": {
+                "id": 16,
+                "kind": "integerLiteral",
+                "value": "1",
+              },
+            },
+            {
+              "id": 21,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "id": 19,
+                "kind": "expressionId",
+                "name": {
+                  "id": 18,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "op": "*",
+              "value": {
+                "id": 20,
+                "kind": "integerLiteral",
+                "value": "1",
+              },
+            },
+            {
+              "id": 25,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "id": 23,
+                "kind": "expressionId",
+                "name": {
+                  "id": 22,
+                  "kind": "id",
+                  "name": "x",
+                },
+              },
+              "op": "/",
+              "value": {
+                "id": 24,
+                "kind": "integerLiteral",
+                "value": "1",
+              },
+            },
+            {
+              "id": 31,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "field": {
+                  "id": 28,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 29,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 27,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 26,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "op": "+",
+              "value": {
+                "id": 30,
+                "kind": "integerLiteral",
+                "value": "1",
+              },
+            },
+            {
+              "id": 37,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "field": {
+                  "id": 34,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 35,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 33,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 32,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "op": "-",
+              "value": {
+                "id": 36,
+                "kind": "integerLiteral",
+                "value": "1",
+              },
+            },
+            {
+              "id": 43,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "field": {
+                  "id": 40,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 41,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 39,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 38,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "op": "*",
+              "value": {
+                "id": 42,
+                "kind": "integerLiteral",
+                "value": "1",
+              },
+            },
+            {
+              "id": 49,
+              "kind": "statementAugmentedAssign",
+              "lvalue": {
+                "field": {
+                  "id": 46,
+                  "kind": "id",
+                  "name": "x",
+                },
+                "id": 47,
+                "kind": "expressionField",
+                "struct": {
+                  "id": 45,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 44,
+                    "kind": "id",
+                    "name": "global",
+                  },
+                },
+              },
+              "op": "/",
+              "value": {
+                "id": 48,
+                "kind": "integerLiteral",
+                "value": "1",
               },
             },
           ],
