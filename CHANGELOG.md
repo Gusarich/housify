@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+-   Temporary stat names scoping moved from expressions to expressions in statements which fixes problem with nested expressions: PR [#61](https://github.com/Gusarich/housify/pull/61)
+
 ## [0.1.1] - 2024-07-23
 
 ### Changed
