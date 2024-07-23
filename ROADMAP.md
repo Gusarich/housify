@@ -1,16 +1,16 @@
 # Roadmap
 
-This document outlines the roadmap for the project. It is a living document and will be updated as the project progresses.
+This document outlines the project's roadmap. It is a dynamic document that will be updated as the project progresses.
 
-## The First Usable Version
+## MVP (Minimum Viable Product)
 
-This is the initial version of the project that can be used for development in Hypixel Housing. It includes the basic functionality of the language and the compiler. It serves as a starting point for the project.
+This is the initial version of the compiler. It includes the basic functionality of the language and the compiler, serving as a starting point for Housify. Although it is not yet suitable for real projects, it lays the foundation for future development.
 
 ### Compiler
 
 -   [x] Basic grammar for the language
 -   [x] AST resolver with type checking
--   [x] Generator for the JSON output
+-   [x] JSON output generator
 -   [x] Constant evaluation in simple cases
 -   [x] Necessary actions, conditions, events, and functions from Hypixel Housing
 -   [x] Basic support for conditions
@@ -23,7 +23,7 @@ This is the initial version of the project that can be used for development in H
 ### Documentation
 
 -   [x] Language syntax
--   [x] Explanation of the structure of the Housify module
+-   [x] Structure of the Housify module
 -   [x] Installation guide
 -   [x] Usage guide
 -   [x] Basic examples of Housify modules
@@ -35,37 +35,64 @@ This is the initial version of the project that can be used for development in H
 -   [x] Issue and pull request templates
 -   [x] Complete README, CHANGELOG, LICENSE, and ROADMAP
 -   [x] CI pipeline for project testing
--   [x] Formatter, linter, spellchecking, and pre-commit hooks for the project
+-   [x] Formatter, linter, spellchecker, and pre-commit hooks
 
-## The 1.0.0 Release
+## Beta
 
-This is the first version of the project that can be used for production development in Hypixel Housing. It will include all the basic functionality of the language and the compiler. It is a stable version of the project that includes all necessary features for the development process and is ready for public use.
+This version of the compiler is ready for publication and testing. It includes most basic features of the language and the compiler but is not yet suitable for actual Housing development due to the missing deployment tool. It is intended for initial testing and feedback.
 
 ### Compiler
 
--   [ ] Housing Functions and Inline Functions
+-   [ ] Inline functions
 -   [ ] Full support for conditions
 -   [ ] All actions, conditions, events, and functions from Hypixel Housing
--   [ ] Full tests for all parts of the compiler
--   [ ] Simple optimizations
--   [ ] Better error messages
+-   [ ] Comprehensive tests for all parts of the compiler
+-   [ ] Improved error messages
+-   [ ] Actions Emulator MVP
 
 ### Command Line Interface
 
--   [ ] More CLI options for the compiler
+-   [ ] Additional CLI options for the compiler
 
 ### Documentation
 
--   [ ] Full documentation of the language syntax
+-   [ ] Complete documentation of the language syntax
 -   [ ] Detailed explanation of the structure of the Housify module
--   [ ] Complete installation and usage guide
+-   [ ] Comprehensive installation and usage guide
 -   [ ] More examples of Housify modules
 
 ### Meta
 
--   [ ] Labels and milestones
--   [ ] Website for the project
+-   [x] Labels and milestones
 -   [ ] Release checklist template
+
+## Release
+
+This is the **1.0.0** version of the compiler, ready for production development in Hypixel Housing. It includes all the necessary functionality of the language and the compiler. This stable version is fully equipped for the development process and public use.
+
+### Compiler
+
+-   [ ] Housing functions
+-   [ ] Basic optimizations
+-   [ ] Support for commands, NPCs, action buttons, and other features from Hypixel Housing
+-   [ ] Imports
+-   [ ] Loops
+-   [ ] Traits
+-   [ ] Full support for all actions and conditions in the Actions Emulator
+
+### Command Line Interface
+
+-   [ ] Additional CLI options for the compiler
+
+### Documentation
+
+-   [ ] New guides and tutorials
+-   [ ] More examples of Housify modules
+
+### Meta
+
+-   [ ] Website
+-   [ ] VSCode extension
 
 ## Future Versions
 
@@ -73,16 +100,16 @@ This section outlines the features planned for future versions of the project. T
 
 ### Compiler
 
--   TO BE FILLED
+-   To be filled
 
 ### Command Line Interface
 
--   TO BE FILLED
+-   To be filled
 
 ### Documentation
 
--   TO BE FILLED
+-   To be filled
 
 ### Meta
 
--   TO BE FILLED
+-   To be filled
