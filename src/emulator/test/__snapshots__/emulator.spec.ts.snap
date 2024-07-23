@@ -162,6 +162,228 @@ exports[`Emulator should emulate arithmetics 1`] = `
 }
 `;
 
+exports[`Emulator should emulate conditions 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "0",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "GLOBAL_STAT",
+                  "mode": "EQUAL",
+                  "stat": "counter",
+                  "value": "%stat.player/$$0%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$1",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$1",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$1",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$0",
+                  "value": "123",
+                },
+                {
+                  "conditions": [
+                    {
+                      "kind": "GLOBAL_STAT",
+                      "mode": "EQUAL",
+                      "stat": "counter",
+                      "value": "%stat.player/$$0%",
+                    },
+                  ],
+                  "else": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$1",
+                      "value": "0",
+                    },
+                  ],
+                  "kind": "CONDITIONAL",
+                  "matchAny": false,
+                  "then": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$1",
+                      "value": "1",
+                    },
+                  ],
+                },
+                {
+                  "conditions": [
+                    {
+                      "kind": "PLAYER_STAT",
+                      "mode": "EQUAL",
+                      "stat": "$$1",
+                      "value": "1",
+                    },
+                  ],
+                  "else": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$0",
+                      "value": "456",
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "kind": "GLOBAL_STAT",
+                          "mode": "EQUAL",
+                          "stat": "counter",
+                          "value": "%stat.player/$$0%",
+                        },
+                      ],
+                      "else": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$1",
+                          "value": "0",
+                        },
+                      ],
+                      "kind": "CONDITIONAL",
+                      "matchAny": false,
+                      "then": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$1",
+                          "value": "1",
+                        },
+                      ],
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "kind": "PLAYER_STAT",
+                          "mode": "EQUAL",
+                          "stat": "$$1",
+                          "value": "1",
+                        },
+                      ],
+                      "else": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$0",
+                          "value": "0",
+                        },
+                        {
+                          "kind": "CHANGE_GLOBAL_STAT",
+                          "mode": "SET",
+                          "stat": "counter",
+                          "value": "%stat.player/$$0%",
+                        },
+                      ],
+                      "kind": "CONDITIONAL",
+                      "matchAny": false,
+                      "then": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$0",
+                          "value": "789",
+                        },
+                        {
+                          "kind": "CHANGE_GLOBAL_STAT",
+                          "mode": "SET",
+                          "stat": "counter",
+                          "value": "%stat.player/$$0%",
+                        },
+                      ],
+                    },
+                  ],
+                  "kind": "CONDITIONAL",
+                  "matchAny": false,
+                  "then": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$0",
+                      "value": "456",
+                    },
+                    {
+                      "kind": "CHANGE_GLOBAL_STAT",
+                      "mode": "SET",
+                      "stat": "counter",
+                      "value": "%stat.player/$$0%",
+                    },
+                  ],
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$0",
+                  "value": "123",
+                },
+                {
+                  "kind": "CHANGE_GLOBAL_STAT",
+                  "mode": "SET",
+                  "stat": "counter",
+                  "value": "%stat.player/$$0%",
+                },
+              ],
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "MyHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
 exports[`Emulator should emulate counter 1`] = `
 {
   "houses": [

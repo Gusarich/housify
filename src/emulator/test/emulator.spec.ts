@@ -57,4 +57,40 @@ describe('Emulator', () => {
         const actions = house.collect();
         expect(actions).toHaveLength(0);
     });
+
+    it('should emulate conditions', () => {
+        const module = compile(
+            cases.find((c) => c.name === 'conditions')!.code,
+            false,
+        );
+        expect(module).toMatchSnapshot();
+        const house = new EmulatedHouse(module.houses[0]!);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(123);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(456);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(789);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(0);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(123);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(456);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(789);
+
+        house.emit(EventType.JOIN, 'player');
+        expect(house.globalStat('counter')).toBe(0);
+
+        const actions = house.collect();
+        expect(actions).toHaveLength(0);
+    });
 });

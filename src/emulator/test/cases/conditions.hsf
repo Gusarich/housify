@@ -1,0 +1,15 @@
+house MyHouse {
+    global counter: int;
+
+    handle JOIN {
+        if (global.counter == 0) {
+            global.counter = 123;
+        } else if (global.counter == 123) {
+            global.counter = 456;
+        } else if (global.counter == 456) {
+            global.counter = 789;
+        } else {
+            global.counter = 0;
+        }
+    }
+}
