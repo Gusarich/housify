@@ -363,11 +363,24 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             });
             break;
         case 'statementAssign':
+        case 'statementAugmentedAssign': {
+            const mode =
+                statement.kind === 'statementAssign'
+                    ? StatChangeMode.SET
+                    : statement.op === '+'
+                      ? StatChangeMode.INCREMENT
+                      : statement.op === '-'
+                        ? StatChangeMode.DECREMENT
+                        : statement.op === '*'
+                          ? StatChangeMode.MULTIPLY
+                          : statement.op === '/'
+                            ? StatChangeMode.DIVIDE
+                            : StatChangeMode.SET;
             if (statement.lvalue.kind === 'expressionId') {
                 resetTempId();
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
-                    mode: StatChangeMode.SET,
+                    mode,
                     stat: '$' + statement.lvalue.name.name,
                     value: writeExpression(statement.value, wctx),
                 });
@@ -377,7 +390,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                         resetTempId();
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_GLOBAL_STAT,
-                            mode: StatChangeMode.SET,
+                            mode,
                             stat: statement.lvalue.field.name,
                             value: writeExpression(statement.value, wctx),
                         });
@@ -387,7 +400,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                         resetTempId();
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_PLAYER_STAT,
-                            mode: StatChangeMode.SET,
+                            mode,
                             stat: statement.lvalue.field.name,
                             value: writeExpression(statement.value, wctx),
                         });
@@ -397,7 +410,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 resetTempId();
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
-                    mode: StatChangeMode.SET,
+                    mode,
                     stat: '$' + resolveStructPath(statement.lvalue).join('.'),
                     value: writeExpression(statement.value, wctx),
                 });
@@ -406,6 +419,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 throw new Error('Invalid lvalue');
             }
             break;
+        }
         case 'statementExpression':
             resetTempId();
             writeExpression(statement.expression, wctx);
