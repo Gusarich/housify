@@ -102,8 +102,6 @@ export function writeExpression(
     expression: AstExpression,
     wctx: WriterContext,
 ): string {
-    resetTempId();
-
     try {
         const result = evaluateConstantExpression(expression);
         const tempStat = '$$' + getNextTempId();
@@ -356,6 +354,7 @@ export function writeExpression(
 export function writeStatement(statement: AstStatement, wctx: WriterContext) {
     switch (statement.kind) {
         case 'statementLet':
+            resetTempId();
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
@@ -365,6 +364,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             break;
         case 'statementAssign':
             if (statement.lvalue.kind === 'expressionId') {
+                resetTempId();
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode: StatChangeMode.SET,
@@ -374,6 +374,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             } else if (statement.lvalue.kind === 'expressionField') {
                 if (statement.lvalue.struct.kind === 'expressionId') {
                     if (statement.lvalue.struct.name.name === 'global') {
+                        resetTempId();
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_GLOBAL_STAT,
                             mode: StatChangeMode.SET,
@@ -383,6 +384,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                         break;
                     }
                     if (statement.lvalue.struct.name.name === 'player') {
+                        resetTempId();
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_PLAYER_STAT,
                             mode: StatChangeMode.SET,
@@ -392,6 +394,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                         break;
                     }
                 }
+                resetTempId();
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode: StatChangeMode.SET,
@@ -404,9 +407,11 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             }
             break;
         case 'statementExpression':
+            resetTempId();
             writeExpression(statement.expression, wctx);
             break;
         case 'statementIf': {
+            resetTempId();
             const condition = writeExpression(statement.condition, wctx);
 
             const thenWctx: WriterContext = {
