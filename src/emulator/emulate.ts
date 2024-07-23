@@ -1,5 +1,6 @@
 import {
     CompiledHouse,
+    isGlobalStatReference,
     isStatReference,
     unwrapStatReference,
 } from '../generator/generate';
@@ -24,7 +25,6 @@ export class EmulatedHouse {
         if (!this.handlers.has(event)) {
             return;
         }
-        console.log(this.#globalStats, this.#playerStats);
         const actions = this.handlers.get(event)!;
         for (const action of actions) {
             this.processAction(action, player);
@@ -48,11 +48,10 @@ export class EmulatedHouse {
     getValue(value: string, player: string) {
         if (isStatReference(value)) {
             const unwrapped = unwrapStatReference(value);
-            console.log(unwrapped);
-            if (unwrapped.kind === 'global') {
-                return this.globalStat(unwrapped.stat).toString();
+            if (isGlobalStatReference(value)) {
+                return this.globalStat(unwrapped).toString();
             } else {
-                return this.playerStat(player, unwrapped.stat).toString();
+                return this.playerStat(player, unwrapped).toString();
             }
         }
         return value;
@@ -130,11 +129,7 @@ export class EmulatedHouse {
             this.#globalStats.set(stat, 0);
         }
 
-        console.log(stat, mode, value);
-
         value = this.getValue(value, player);
-
-        console.log(stat, mode, value);
 
         switch (mode) {
             case StatChangeMode.INCREMENT:
@@ -151,7 +146,6 @@ export class EmulatedHouse {
                 break;
             case StatChangeMode.SET:
                 this.#globalStats.set(stat, parseInt(value));
-                console.log(this.#globalStats);
                 break;
             case StatChangeMode.MULTIPLY:
                 this.#globalStats.set(
