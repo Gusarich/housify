@@ -1,0 +1,7 @@
+house TestHouse {
+    player counter: int = 0;
+
+    handle JOIN {
+        player.counter = player.counter + 1;
+    }
+}

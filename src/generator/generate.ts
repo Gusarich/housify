@@ -90,7 +90,6 @@ export function writeExpression(
     try {
         const result = evaluateConstantExpression(expression);
         const tempStat = '$$' + getNextTempId();
-        wctx.playerStats.set(tempStat, wctx.playerStats.size);
         wctx.actions.push({
             kind: ActionKind.CHANGE_PLAYER_STAT,
             mode: StatChangeMode.SET,
@@ -105,7 +104,6 @@ export function writeExpression(
     switch (expression.kind) {
         case 'integerLiteral': {
             const tempStat = '$$' + getNextTempId();
-            wctx.playerStats.set(tempStat, wctx.playerStats.size);
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
@@ -116,7 +114,6 @@ export function writeExpression(
         }
         case 'booleanLiteral': {
             const tempStat = '$$' + getNextTempId();
-            wctx.playerStats.set(tempStat, wctx.playerStats.size);
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
@@ -140,7 +137,6 @@ export function writeExpression(
         case 'expressionUnary': {
             const operand = writeExpression(expression.operand, wctx);
             const tempStat = '$$' + getNextTempId();
-            wctx.playerStats.set(tempStat, wctx.playerStats.size);
 
             switch (expression.op) {
                 case '-': {
@@ -180,7 +176,6 @@ export function writeExpression(
             const left = writeExpression(expression.left, wctx);
             const right = writeExpression(expression.right, wctx);
             const tempStat = '$$' + getNextTempId();
-            wctx.playerStats.set(tempStat, wctx.playerStats.size);
 
             switch (expression.op) {
                 case '+':
@@ -267,7 +262,6 @@ export function writeExpression(
                         value: wrapAsPlayerStat(right),
                     });
                     const tempStat2 = '$$' + getNextTempId();
-                    wctx.playerStats.set(tempStat2, wctx.playerStats.size);
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatChangeMode.SET,
@@ -341,10 +335,6 @@ export function writeExpression(
 export function writeStatement(statement: AstStatement, wctx: WriterContext) {
     switch (statement.kind) {
         case 'statementLet':
-            wctx.playerStats.set(
-                '$' + statement.name.name,
-                wctx.playerStats.size,
-            );
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
