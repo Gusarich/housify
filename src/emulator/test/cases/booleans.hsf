@@ -1,0 +1,38 @@
+house MyHouse {
+    global x: bool;
+    global y: bool;
+    global z: bool;
+    global a: bool;
+    global b: bool;
+    global c: bool;
+    global d: bool;
+    global e: bool;
+    global f: bool;
+    global g: bool;
+
+    handle JOIN {
+        let x: bool = true;
+        let y: bool = 3 > 2;
+        let z: bool = 3 < 2;
+
+        let a: bool = x && y;
+        let b: bool = x && z;
+        let c: bool = x || y;
+        let d: bool = x || z;
+
+        let e: bool = !x;
+        let f: bool = !z;
+        let g: bool = (x && y) || (x && z);
+
+        global.x = x;
+        global.y = y;
+        global.z = z;
+        global.a = a;
+        global.b = b;
+        global.c = c;
+        global.d = d;
+        global.e = e;
+        global.f = f;
+        global.g = g;
+    }
+}

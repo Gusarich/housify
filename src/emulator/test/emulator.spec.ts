@@ -123,4 +123,29 @@ describe('Emulator', () => {
         const actions = house.collect();
         expect(actions).toHaveLength(0);
     });
+
+    it('should emulate booleans', async () => {
+        const module = compile(
+            cases.find((c) => c.name === 'booleans')!.code,
+            false,
+        );
+        expect(module).toMatchSnapshot();
+        const house = new EmulatedHouse(module.houses[0]!);
+
+        house.emit(EventType.JOIN, 'player');
+
+        expect(house.globalStat('x')).toBe(1);
+        expect(house.globalStat('y')).toBe(1);
+        expect(house.globalStat('z')).toBe(0);
+        expect(house.globalStat('a')).toBe(1);
+        expect(house.globalStat('b')).toBe(0);
+        expect(house.globalStat('c')).toBe(1);
+        expect(house.globalStat('d')).toBe(1);
+        expect(house.globalStat('e')).toBe(0);
+        expect(house.globalStat('f')).toBe(1);
+        expect(house.globalStat('g')).toBe(1);
+
+        const actions = house.collect();
+        expect(actions).toHaveLength(0);
+    });
 });
