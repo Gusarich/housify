@@ -96,7 +96,7 @@ exports[`Grammar should fail no-semicolon 1`] = `
 > 4 |     }
           ^
   5 | }
-Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", or "=""
+Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
 `;
 
 exports[`Grammar should fail no-semicolon2 1`] = `
@@ -105,7 +105,7 @@ exports[`Grammar should fail no-semicolon2 1`] = `
 > 4 |     }
           ^
   5 | }
-Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", or "=""
+Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
 `;
 
 exports[`Grammar should fail stat-definition-after-handler 1`] = `

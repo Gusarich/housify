@@ -20,7 +20,7 @@ Housify {
               | StatementExpression
               | StatementIf
     
-    StatementAssign = Expression "=" Expression ";"
+    StatementAssign = Expression ("=" | "+=" | "-=" | "*=" | "/=") Expression ";"
 
     StatementLet = let id ":" Type "=" Expression ";"
 

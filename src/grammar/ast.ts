@@ -45,6 +45,7 @@ export type AstParameter = {
 
 export type AstStatement =
     | AstStatementAssign
+    | AstStatementAugmentedAssign
     | AstStatementLet
     | AstStatementExpression
     | AstStatementIf;
@@ -121,6 +122,16 @@ export type AstExpressionUnary = {
     kind: 'expressionUnary';
     op: AstUnaryOp;
     operand: AstExpression;
+    id: number;
+};
+
+export type AstAugmentedAssignOp = '+' | '-' | '*' | '/';
+
+export type AstStatementAugmentedAssign = {
+    kind: 'statementAugmentedAssign';
+    lvalue: AstExpression;
+    op: AstAugmentedAssignOp;
+    value: AstExpression;
     id: number;
 };
 
