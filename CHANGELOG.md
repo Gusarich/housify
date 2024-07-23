@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   Actions emulator has been implemented: PR [#45](https://github.com/Gusarich/housify/pull/45)
+-   Actions emulator MVP has been implemented: PR [#45](https://github.com/Gusarich/housify/pull/45)
 
 ### Changed
 
