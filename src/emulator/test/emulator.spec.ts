@@ -36,4 +36,25 @@ describe('Emulator', () => {
         expect(house.playerStat('player3', 'counter')).toBe(2);
         expect(house.playerStat('player4', 'counter')).toBe(0);
     });
+
+    it('should emulate arithmetics', () => {
+        const module = compile(
+            cases.find((c) => c.name === 'arithmetics')!.code,
+            false,
+        );
+        expect(module).toMatchSnapshot();
+        const house = new EmulatedHouse(module.houses[0]!);
+
+        house.emit(EventType.JOIN, 'player1');
+        expect(house.globalStat('counter')).toBe(23);
+
+        house.emit(EventType.JOIN, 'player2');
+        expect(house.globalStat('counter')).toBe(115);
+
+        house.emit(EventType.JOIN, 'player3');
+        expect(house.globalStat('counter')).toBe(483);
+
+        const actions = house.collect();
+        expect(actions).toHaveLength(0);
+    });
 });
