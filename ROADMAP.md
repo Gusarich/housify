@@ -93,6 +93,7 @@ This is the **1.0.0** version of the compiler, ready for production development 
 
 -   [ ] Website
 -   [ ] VSCode extension
+-   [ ] Deployment tool
 
 ## Future Versions
 
