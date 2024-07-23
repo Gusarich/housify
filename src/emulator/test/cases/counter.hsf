@@ -1,0 +1,9 @@
+house Counter {
+    global counter: int;
+    player counter: int;
+
+    handle JOIN {
+        global.counter = global.counter + 1;
+        player.counter = player.counter + 1;
+    }
+}

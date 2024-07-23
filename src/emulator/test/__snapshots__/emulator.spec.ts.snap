@@ -1,0 +1,870 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Emulator should emulate arithmetics 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "3",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "%stat.global/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$2",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$4",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$5",
+              "value": "%stat.player/$$3%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$5",
+              "value": "%stat.player/$$4%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$6",
+              "value": "4",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$7",
+              "value": "%stat.player/$$5%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$7",
+              "value": "%stat.player/$$6%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$8",
+              "value": "5",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$9",
+              "value": "%stat.player/$$7%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$9",
+              "value": "%stat.player/$$8%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$x",
+              "value": "%stat.player/$$9%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$2",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$3",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.player/$$3%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Emulator should emulate booleans 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "x",
+        "y",
+        "z",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$y",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$z",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$0",
+              "value": "%stat.player/$y%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$a",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$0",
+              "value": "%stat.player/$z%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$b",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$0",
+              "value": "%stat.player/$y%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$1",
+              "value": "%stat.player/$y%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$0",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$c",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$0",
+              "value": "%stat.player/$z%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$1",
+              "value": "%stat.player/$z%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$0",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$d",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$0",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$e",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$0",
+              "value": "%stat.player/$z%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$f",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$0",
+              "value": "%stat.player/$y%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$1",
+              "value": "%stat.player/$z%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$2",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$3",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$2",
+              "value": "%stat.player/$$3%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$g",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "x",
+              "value": "%stat.player/$x%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "y",
+              "value": "%stat.player/$y%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "z",
+              "value": "%stat.player/$z%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "a",
+              "value": "%stat.player/$a%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "b",
+              "value": "%stat.player/$b%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "c",
+              "value": "%stat.player/$c%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "d",
+              "value": "%stat.player/$d%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "e",
+              "value": "%stat.player/$e%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "f",
+              "value": "%stat.player/$f%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "g",
+              "value": "%stat.player/$g%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "MyHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Emulator should emulate conditions 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "0",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "GLOBAL_STAT",
+                  "mode": "EQUAL",
+                  "stat": "counter",
+                  "value": "%stat.player/$$0%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$1",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$1",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$1",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$0",
+                  "value": "123",
+                },
+                {
+                  "conditions": [
+                    {
+                      "kind": "GLOBAL_STAT",
+                      "mode": "EQUAL",
+                      "stat": "counter",
+                      "value": "%stat.player/$$0%",
+                    },
+                  ],
+                  "else": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$1",
+                      "value": "0",
+                    },
+                  ],
+                  "kind": "CONDITIONAL",
+                  "matchAny": false,
+                  "then": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$1",
+                      "value": "1",
+                    },
+                  ],
+                },
+                {
+                  "conditions": [
+                    {
+                      "kind": "PLAYER_STAT",
+                      "mode": "EQUAL",
+                      "stat": "$$1",
+                      "value": "1",
+                    },
+                  ],
+                  "else": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$0",
+                      "value": "456",
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "kind": "GLOBAL_STAT",
+                          "mode": "EQUAL",
+                          "stat": "counter",
+                          "value": "%stat.player/$$0%",
+                        },
+                      ],
+                      "else": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$1",
+                          "value": "0",
+                        },
+                      ],
+                      "kind": "CONDITIONAL",
+                      "matchAny": false,
+                      "then": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$1",
+                          "value": "1",
+                        },
+                      ],
+                    },
+                    {
+                      "conditions": [
+                        {
+                          "kind": "PLAYER_STAT",
+                          "mode": "EQUAL",
+                          "stat": "$$1",
+                          "value": "1",
+                        },
+                      ],
+                      "else": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$0",
+                          "value": "0",
+                        },
+                        {
+                          "kind": "CHANGE_GLOBAL_STAT",
+                          "mode": "SET",
+                          "stat": "counter",
+                          "value": "%stat.player/$$0%",
+                        },
+                      ],
+                      "kind": "CONDITIONAL",
+                      "matchAny": false,
+                      "then": [
+                        {
+                          "kind": "CHANGE_PLAYER_STAT",
+                          "mode": "SET",
+                          "stat": "$$0",
+                          "value": "789",
+                        },
+                        {
+                          "kind": "CHANGE_GLOBAL_STAT",
+                          "mode": "SET",
+                          "stat": "counter",
+                          "value": "%stat.player/$$0%",
+                        },
+                      ],
+                    },
+                  ],
+                  "kind": "CONDITIONAL",
+                  "matchAny": false,
+                  "then": [
+                    {
+                      "kind": "CHANGE_PLAYER_STAT",
+                      "mode": "SET",
+                      "stat": "$$0",
+                      "value": "456",
+                    },
+                    {
+                      "kind": "CHANGE_GLOBAL_STAT",
+                      "mode": "SET",
+                      "stat": "counter",
+                      "value": "%stat.player/$$0%",
+                    },
+                  ],
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$0",
+                  "value": "123",
+                },
+                {
+                  "kind": "CHANGE_GLOBAL_STAT",
+                  "mode": "SET",
+                  "stat": "counter",
+                  "value": "%stat.player/$$0%",
+                },
+              ],
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "MyHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Emulator should emulate counter 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.global/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.player/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.player/$$1%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "Counter",
+      "playerStats": [
+        "counter",
+      ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Emulator should emulate multiple handlers 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.global/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.player/$$1%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.global/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.player/$$1%",
+            },
+          ],
+          "event": "QUIT",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "MyHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
