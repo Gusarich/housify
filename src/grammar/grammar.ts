@@ -1,10 +1,5 @@
-import { IterationNode } from 'ohm-js';
 import { AstModule, AstNode, createAstNode } from './ast';
 import grammar from './grammar.ohm-bundle';
-
-function unwrapOptNode(node: IterationNode): IterationNode | undefined {
-    return node.children.length === 0 ? undefined : node.children[0];
-}
 
 const semantics = grammar.createSemantics();
 
@@ -39,20 +34,18 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
     HouseItemTop(arg0) {
         return arg0.astOfHouseItem();
     },
-    GlobalStat(_arg0, name, _arg2, type, _arg4, defaultValueOpt, _arg6) {
+    GlobalStat(_arg0, name, _arg2, type, _arg4) {
         return createAstNode({
             kind: 'globalStat',
             name: name.astOfExpression(),
             type: type.astOfType(),
-            defaultValue: unwrapOptNode(defaultValueOpt)?.astOfExpression(),
         });
     },
-    PlayerStat(_arg0, name, _arg2, type, _arg4, defaultValueOpt, _arg6) {
+    PlayerStat(_arg0, name, _arg2, type, _arg4) {
         return createAstNode({
             kind: 'playerStat',
             name: name.astOfExpression(),
             type: type.astOfType(),
-            defaultValue: unwrapOptNode(defaultValueOpt)?.astOfExpression(),
         });
     },
     Handler(_arg0, event, _arg4, statements, _arg6) {

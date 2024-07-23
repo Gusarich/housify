@@ -1,6 +1,6 @@
 house TestHouse {
-    global joinCounter: int = 0;
-    global quitCounter: int = 0;
+    global joinCounter: int;
+    global quitCounter: int;
 
     handle JOIN {
         global.joinCounter = global.joinCounter + 1;

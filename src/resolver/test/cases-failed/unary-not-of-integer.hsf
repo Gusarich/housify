@@ -1,3 +1,5 @@
 house MyHouse {
-    global x: int = !123;
+    handle JOIN {
+        let x: int = !123;
+    }
 }

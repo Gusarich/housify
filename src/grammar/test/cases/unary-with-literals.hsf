@@ -1,4 +1,6 @@
 house MyHouse {
-    global x: int = -123 - 123;
-    global y: bool = !true || !false;
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
 }

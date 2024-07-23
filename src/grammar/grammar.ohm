@@ -8,8 +8,8 @@ Housify {
     HouseItemTop = GlobalStat | PlayerStat
     HouseItem = Handler
 
-    GlobalStat = global id ":" Type ("=" Expression)? ";"
-    PlayerStat = player id ":" Type ("=" Expression)? ";"
+    GlobalStat = global id ":" Type ";"
+    PlayerStat = player id ":" Type ";"
 
     Handler = handle id "{" Statement* "}"
 

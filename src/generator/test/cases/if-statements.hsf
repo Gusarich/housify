@@ -1,5 +1,5 @@
 house TestHouse {
-    global counter: int = 0;
+    global counter: int;
 
     handle JOIN {
         let x: int = 5;

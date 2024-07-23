@@ -1,5 +1,5 @@
 house TestHouse {
-    global counter: int = 0;
+    global counter: int;
 
     handle JOIN {
         global.counter = (3 + global.counter * 2 - 1 + 4) + 5;

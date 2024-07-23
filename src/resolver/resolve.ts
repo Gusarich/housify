@@ -254,16 +254,6 @@ export function processStatDefinition(
         throw new Error("Cannot declare a stat of type 'void'");
     }
 
-    // Check if the specified type matches the default value
-    if (stat.defaultValue) {
-        const valueType = resolveExpression(stat.defaultValue, ctx, sctx);
-        if (stat.type.name !== valueType.type) {
-            throw new Error(
-                `Cannot assign '${valueType.type}' to '${stat.type.name}'`,
-            );
-        }
-    }
-
     // Check if there are already 20 stats
     if (statStruct.fields.length >= 20) {
         throw new Error(
@@ -277,19 +267,16 @@ export function processStatDefinition(
     statStruct.fields.push({
         name: stat.name.name,
         type,
-        defaultValue: stat.defaultValue,
     });
     if (stat.kind === 'globalStat') {
         ctx.houses.get(houseName)!.globalStats.push({
             name: stat.name.name,
             type,
-            defaultValue: stat.defaultValue,
         });
     } else {
         ctx.houses.get(houseName)!.playerStats.push({
             name: stat.name.name,
             type,
-            defaultValue: stat.defaultValue,
         });
     }
 }

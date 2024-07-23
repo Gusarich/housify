@@ -1,5 +1,5 @@
 house House1 {
-    global x: int = 1;
+    global x: int;
 
     handle JOIN {
         let x: int = 1;
@@ -8,8 +8,8 @@ house House1 {
 }
 
 house House2 {
-    global x: int = 1;
-    global y: int = 0;
+    global x: int;
+    global y: int;
 
     handle JOIN {
         let x: int = 1;

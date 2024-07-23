@@ -1,3 +1,5 @@
 house MyHouse {
-    global x: bool = true == true;
+    handle JOIN {
+        let x: bool = true != false;
+    }
 }

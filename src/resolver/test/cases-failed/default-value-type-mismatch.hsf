@@ -1,5 +1,5 @@
 house MyHouse {
-    global x: bool = 10;
+    global x: bool;
 
     handle BLOCK_BREAK {
         global.x = 123;

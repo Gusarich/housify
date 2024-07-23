@@ -3,7 +3,7 @@
 exports[`Grammar should fail id-identical-to-keyword 1`] = `
 "Line 2, col 12:
   1 | house MyHouse {
-> 2 |     global handle: int = 1;
+> 2 |     global handle: int;
                  ^
   3 | }
 Expected not a keyword"
@@ -12,7 +12,7 @@ Expected not a keyword"
 exports[`Grammar should fail id-starts-with-digit 1`] = `
 "Line 2, col 12:
   1 | house MyHouse {
-> 2 |     global 1x: int = 1;
+> 2 |     global 1x: int;
                  ^
   3 | }
 Expected "_", "A".."Z", or "a".."z""
@@ -29,7 +29,7 @@ Expected ";""
 
 exports[`Grammar should fail no-colon-in-stat-definition 1`] = `
 "Line 5, col 15:
-  4 |     player xp: int = 123;
+  4 |     player xp: int;
 > 5 |     player yp int;
                     ^
   6 | 
@@ -1105,18 +1105,13 @@ exports[`Grammar should parse statement-expression 1`] = `
 
 exports[`Grammar should parse stats 1`] = `
 {
-  "id": 19,
+  "id": 17,
   "items": [
     {
-      "id": 18,
+      "id": 16,
       "items": [
         {
-          "defaultValue": {
-            "id": 4,
-            "kind": "integerLiteral",
-            "value": "10",
-          },
-          "id": 5,
+          "id": 4,
           "kind": "globalStat",
           "name": {
             "id": 2,
@@ -1130,61 +1125,54 @@ exports[`Grammar should parse stats 1`] = `
           },
         },
         {
-          "defaultValue": undefined,
-          "id": 8,
+          "id": 7,
           "kind": "globalStat",
           "name": {
-            "id": 6,
+            "id": 5,
             "kind": "id",
             "name": "yg",
           },
           "type": {
-            "id": 7,
+            "id": 6,
             "kind": "id",
             "name": "int",
           },
         },
         {
-          "defaultValue": {
-            "id": 11,
-            "kind": "integerLiteral",
-            "value": "123",
-          },
-          "id": 12,
+          "id": 10,
           "kind": "playerStat",
           "name": {
-            "id": 9,
+            "id": 8,
             "kind": "id",
             "name": "xp",
           },
           "type": {
-            "id": 10,
+            "id": 9,
             "kind": "id",
             "name": "int",
           },
         },
         {
-          "defaultValue": undefined,
-          "id": 15,
+          "id": 13,
           "kind": "playerStat",
           "name": {
-            "id": 13,
+            "id": 11,
             "kind": "id",
             "name": "yp",
           },
           "type": {
-            "id": 14,
+            "id": 12,
             "kind": "id",
             "name": "int",
           },
         },
         {
           "event": {
-            "id": 16,
+            "id": 14,
             "kind": "id",
             "name": "BLOCK_BREAK",
           },
-          "id": 17,
+          "id": 15,
           "kind": "handler",
           "statements": [],
         },
@@ -1257,83 +1245,94 @@ exports[`Grammar should parse unary-operator 1`] = `
 
 exports[`Grammar should parse unary-with-literals 1`] = `
 {
-  "id": 18,
+  "id": 20,
   "items": [
     {
-      "id": 17,
+      "id": 19,
       "items": [
         {
-          "defaultValue": {
-            "id": 7,
-            "kind": "expressionBinary",
-            "left": {
-              "id": 5,
-              "kind": "expressionUnary",
-              "op": "-",
-              "operand": {
-                "id": 4,
-                "kind": "integerLiteral",
-                "value": "123",
-              },
-            },
-            "op": "-",
-            "right": {
-              "id": 6,
-              "kind": "integerLiteral",
-              "value": "123",
-            },
-          },
-          "id": 8,
-          "kind": "globalStat",
-          "name": {
+          "event": {
             "id": 2,
             "kind": "id",
-            "name": "x",
+            "name": "JOIN",
           },
-          "type": {
-            "id": 3,
-            "kind": "id",
-            "name": "int",
-          },
-        },
-        {
-          "defaultValue": {
-            "id": 15,
-            "kind": "expressionBinary",
-            "left": {
-              "id": 12,
-              "kind": "expressionUnary",
-              "op": "!",
-              "operand": {
+          "id": 18,
+          "kind": "handler",
+          "statements": [
+            {
+              "id": 9,
+              "kind": "statementLet",
+              "name": {
+                "id": 3,
+                "kind": "id",
+                "name": "x",
+              },
+              "type": {
+                "id": 4,
+                "kind": "id",
+                "name": "int",
+              },
+              "value": {
+                "id": 8,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 6,
+                  "kind": "expressionUnary",
+                  "op": "-",
+                  "operand": {
+                    "id": 5,
+                    "kind": "integerLiteral",
+                    "value": "123",
+                  },
+                },
+                "op": "-",
+                "right": {
+                  "id": 7,
+                  "kind": "integerLiteral",
+                  "value": "123",
+                },
+              },
+            },
+            {
+              "id": 17,
+              "kind": "statementLet",
+              "name": {
+                "id": 10,
+                "kind": "id",
+                "name": "y",
+              },
+              "type": {
                 "id": 11,
-                "kind": "booleanLiteral",
-                "value": true,
+                "kind": "id",
+                "name": "bool",
+              },
+              "value": {
+                "id": 16,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 13,
+                  "kind": "expressionUnary",
+                  "op": "!",
+                  "operand": {
+                    "id": 12,
+                    "kind": "booleanLiteral",
+                    "value": true,
+                  },
+                },
+                "op": "||",
+                "right": {
+                  "id": 15,
+                  "kind": "expressionUnary",
+                  "op": "!",
+                  "operand": {
+                    "id": 14,
+                    "kind": "booleanLiteral",
+                    "value": false,
+                  },
+                },
               },
             },
-            "op": "||",
-            "right": {
-              "id": 14,
-              "kind": "expressionUnary",
-              "op": "!",
-              "operand": {
-                "id": 13,
-                "kind": "booleanLiteral",
-                "value": false,
-              },
-            },
-          },
-          "id": 16,
-          "kind": "globalStat",
-          "name": {
-            "id": 9,
-            "kind": "id",
-            "name": "y",
-          },
-          "type": {
-            "id": 10,
-            "kind": "id",
-            "name": "bool",
-          },
+          ],
         },
       ],
       "kind": "house",
