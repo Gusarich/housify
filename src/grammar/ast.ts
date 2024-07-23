@@ -19,7 +19,6 @@ export type AstGlobalStat = {
     kind: 'globalStat';
     name: AstId;
     type: AstId;
-    defaultValue?: AstExpression;
     id: number;
 };
 
@@ -27,7 +26,6 @@ export type AstPlayerStat = {
     kind: 'playerStat';
     name: AstId;
     type: AstId;
-    defaultValue?: AstExpression;
     id: number;
 };
 

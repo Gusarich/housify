@@ -1,6 +1,6 @@
 house MyHouse {
-    global x: int = 10;
-    global y: int = 20;
+    global x: int;
+    global y: int;
 
     handle BLOCK_BREAK {
         let z: int = global.x + global.y;

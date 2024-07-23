@@ -11,13 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+-   Default stat value definition syntax has been removed due to impossibility of implementation: PR [#57](https://github.com/Gusarich/housify/pull/57)
+
 ### Fixed
 
 -   Temporary stats are now excluded from the compilation result: PR [#50](https://github.com/Gusarich/housify/pull/50)
 -   Placeholder for player stats are now correctly generated: PR [#51](https://github.com/Gusarich/housify/pull/51)
 -   Temporary stat names are now generated independently for each handler: PR [#52](https://github.com/Gusarich/housify/pull/52)
 -   There is now a limit of 20 persistent stats of each kind: PR [#53](https://github.com/Gusarich/housify/pull/53)
--   Global and player stat placeholders in expressions are now correctly generated: PR [#54](https://github.com/Gusarich/housify/pull/54)
+-   Global and player stat placeholders in expressions are now correctly generated: PR [#56](https://github.com/Gusarich/housify/pull/56)
 
 ## [0.1.0] - 2024-07-22
 

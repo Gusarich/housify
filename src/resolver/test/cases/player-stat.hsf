@@ -1,5 +1,5 @@
 house MyHouse {
-    player score: int = 100;
+    player score: int;
 
     handle BLOCK_BREAK {
         player.score = player.score + 10;

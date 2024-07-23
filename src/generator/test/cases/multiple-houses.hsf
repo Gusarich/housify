@@ -1,5 +1,5 @@
 house House1 {
-    global x: int = 123;
+    global x: int;
 
     handle JOIN {
         global.x = global.x + 1;
@@ -7,7 +7,7 @@ house House1 {
 }
 
 house House2 {
-    global y: int = 1;
+    global y: int;
 
     handle QUIT {
         global.y = global.y * 2;
