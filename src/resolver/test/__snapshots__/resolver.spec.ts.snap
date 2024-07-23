@@ -18,11 +18,15 @@ exports[`Resolver should fail double-stat-definition 1`] = `"Global stat 'x' alr
 
 exports[`Resolver should fail field-access-not-struct 1`] = `"Expression must be a struct"`;
 
+exports[`Resolver should fail global-stats-limit 1`] = `"Cannot have more than 20 persistent global stats"`;
+
 exports[`Resolver should fail let-statement-value-type-mismatch 1`] = `"Cannot assign 'bool' to 'int'"`;
 
 exports[`Resolver should fail let-statement-value-type-mismatch2 1`] = `"Cannot assign 'bool' to 'int'"`;
 
 exports[`Resolver should fail non-existing-field 1`] = `"Field 'nonExistentField' not found"`;
+
+exports[`Resolver should fail player-stats-limit 1`] = `"Cannot have more than 20 persistent player stats"`;
 
 exports[`Resolver should fail stat-assignment-type-mismatch 1`] = `"Cannot assign 'int' to 'bool'"`;
 

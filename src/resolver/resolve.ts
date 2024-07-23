@@ -264,6 +264,13 @@ export function processStatDefinition(
         }
     }
 
+    // Check if there are already 20 stats
+    if (statStruct.fields.length >= 20) {
+        throw new Error(
+            `Cannot have more than 20 persistent ${statKind} stats`,
+        );
+    }
+
     // Add the stat
     const type = resolveType(stat.type, sctx);
 

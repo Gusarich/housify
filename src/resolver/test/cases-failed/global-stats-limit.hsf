@@ -1,0 +1,23 @@
+house MyHouse {
+    global x1: int;
+    global x2: int;
+    global x3: int;
+    global x4: int;
+    global x5: int;
+    global x6: int;
+    global x7: int;
+    global x8: int;
+    global x9: int;
+    global x10: int;
+    global x11: int;
+    global x12: int;
+    global x13: int;
+    global x14: int;
+    global x15: int;
+    global x16: int;
+    global x17: int;
+    global x18: int;
+    global x19: int;
+    global x20: int;
+    global x21: int;
+}
