@@ -1,0 +1,15 @@
+house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}

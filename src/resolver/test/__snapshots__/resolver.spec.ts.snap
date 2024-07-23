@@ -8,6 +8,10 @@ exports[`Resolver should fail assignment-type-mismatch-in-if 1`] = `"Cannot assi
 
 exports[`Resolver should fail assignment-type-mismatch-in-nested-if 1`] = `"Cannot assign 'bool' to 'int'"`;
 
+exports[`Resolver should fail augmented-assignment-between-int-and-bool 1`] = `"Operands must be integers"`;
+
+exports[`Resolver should fail augmented-assignment-on-bool 1`] = `"Operands must be integers"`;
+
 exports[`Resolver should fail binary-operation-between-boolean-and-integer 1`] = `"Operands must be integers"`;
 
 exports[`Resolver should fail condition-not-boolean 1`] = `"Condition must be a boolean"`;
@@ -368,6 +372,128 @@ CompilerContext {
           },
         },
       ],
+    },
+  },
+}
+`;
+
+exports[`Resolver should resolve augmented-assignment 1`] = `
+CompilerContext {
+  "expressions": Map {
+    8 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "int",
+    },
+    12 => {
+      "type": "int",
+    },
+    15 => {
+      "type": "int",
+    },
+    16 => {
+      "type": "int",
+    },
+    19 => {
+      "type": "int",
+    },
+    20 => {
+      "type": "int",
+    },
+    23 => {
+      "type": "int",
+    },
+    24 => {
+      "type": "int",
+    },
+    27 => {
+      "fields": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    29 => {
+      "type": "int",
+    },
+    30 => {
+      "type": "int",
+    },
+    33 => {
+      "fields": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    35 => {
+      "type": "int",
+    },
+    36 => {
+      "type": "int",
+    },
+    39 => {
+      "fields": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    41 => {
+      "type": "int",
+    },
+    42 => {
+      "type": "int",
+    },
+    45 => {
+      "fields": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "global",
+      "type": "struct",
+    },
+    47 => {
+      "type": "int",
+    },
+    48 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [],
     },
   },
 }

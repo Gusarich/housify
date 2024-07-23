@@ -1,5 +1,137 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Generator should generate augmented-assignment 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "x",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DIVIDE",
+              "stat": "$x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "INCREMENT",
+              "stat": "x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "DECREMENT",
+              "stat": "x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "MULTIPLY",
+              "stat": "x",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "DIVIDE",
+              "stat": "x",
+              "value": "%stat.player/$$0%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "MyHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
 exports[`Generator should generate booleans 1`] = `
 {
   "houses": [

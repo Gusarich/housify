@@ -4,5 +4,10 @@ house TestHouse {
     handle JOIN {
         let x: int = (3 + global.counter * 2 - 1 + 4) + 5;
         global.counter = 1 + x * 2;
+
+        global.counter += 1 + 2;
+        global.counter -= 1 + 2;
+        global.counter *= 1 + 2;
+        global.counter /= 1 + 2;
     }
 }

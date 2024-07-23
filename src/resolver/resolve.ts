@@ -157,7 +157,8 @@ export function processStatement(
     sctx: StatementContext,
 ) {
     switch (statement.kind) {
-        case 'statementAssign': {
+        case 'statementAssign':
+        case 'statementAugmentedAssign': {
             if (
                 statement.lvalue.kind !== 'expressionId' &&
                 statement.lvalue.kind !== 'expressionField'
@@ -172,10 +173,20 @@ export function processStatement(
                 ctx,
                 sctx,
             );
-            if (variableType.type !== expressionType.type) {
-                throw new Error(
-                    `Cannot assign '${expressionType.type}' to '${variableType.type}'`,
-                );
+
+            if (statement.kind === 'statementAssign') {
+                if (variableType.type !== expressionType.type) {
+                    throw new Error(
+                        `Cannot assign '${expressionType.type}' to '${variableType.type}'`,
+                    );
+                }
+            } else {
+                if (
+                    variableType.type !== 'int' ||
+                    expressionType.type !== 'int'
+                ) {
+                    throw new Error('Operands must be integers');
+                }
             }
             break;
         }

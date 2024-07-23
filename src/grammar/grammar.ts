@@ -1,4 +1,4 @@
-import { AstModule, AstNode, createAstNode } from './ast';
+import { AstAugmentedAssignOp, AstModule, AstNode, createAstNode } from './ast';
 import grammar from './grammar.ohm-bundle';
 
 const semantics = grammar.createSemantics();
@@ -82,12 +82,39 @@ semantics.addOperation<AstNode>('astOfStatement', {
     Statement(arg0) {
         return arg0.astOfStatement();
     },
-    StatementAssign(lvalue, _arg1, expression, _arg3) {
-        return createAstNode({
-            kind: 'statementAssign',
-            lvalue: lvalue.astOfExpression(),
-            value: expression.astOfExpression(),
-        });
+    StatementAssign(lvalue, operator, expression, _arg3) {
+        if (operator.sourceString === '=') {
+            return createAstNode({
+                kind: 'statementAssign',
+                lvalue: lvalue.astOfExpression(),
+                value: expression.astOfExpression(),
+            });
+        } else {
+            let op: AstAugmentedAssignOp;
+            switch (operator.sourceString) {
+                case '+=':
+                    op = '+';
+                    break;
+                case '-=':
+                    op = '-';
+                    break;
+                case '*=':
+                    op = '*';
+                    break;
+                case '/=':
+                    op = '/';
+                    break;
+                default:
+                    // should never happen
+                    throw Error(`Unknown operator ${operator.sourceString}`);
+            }
+            return createAstNode({
+                kind: 'statementAugmentedAssign',
+                lvalue: lvalue.astOfExpression(),
+                op,
+                value: expression.astOfExpression(),
+            });
+        }
     },
     StatementLet(_arg0, name, _arg2, type, _arg4, expression, _arg6) {
         return createAstNode({
