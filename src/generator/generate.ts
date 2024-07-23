@@ -476,6 +476,7 @@ export function writeHouse(ast: AstHouse, ctx: CompilerContext): CompiledHouse {
 
     for (const item of ast.items) {
         if (item.kind === 'handler') {
+            resetTempId();
             handlers.push(
                 writeHandler(item, {
                     globalStats,
@@ -507,6 +508,7 @@ export function writeModule(
     const houses: CompiledHouse[] = [];
 
     for (const item of ast.items) {
+        resetTempId();
         houses.push(writeHouse(item, ctx));
     }
 
