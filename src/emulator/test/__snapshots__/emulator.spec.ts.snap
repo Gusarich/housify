@@ -457,3 +457,81 @@ exports[`Emulator should emulate counter 1`] = `
   "kind": "module",
 }
 `;
+
+exports[`Emulator should emulate multiple handlers 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "counter",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.global/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "INCREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.player/$$1%",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "%stat.global/counter%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "DECREMENT",
+              "stat": "$$1",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "counter",
+              "value": "%stat.player/$$1%",
+            },
+          ],
+          "event": "QUIT",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "MyHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;

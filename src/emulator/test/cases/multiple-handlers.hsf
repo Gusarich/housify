@@ -1,0 +1,11 @@
+house MyHouse {
+    global counter: int;
+
+    handle JOIN {
+        global.counter = global.counter + 1;
+    }
+
+    handle QUIT {
+        global.counter = global.counter - 1;
+    }
+}

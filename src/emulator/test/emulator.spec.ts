@@ -93,4 +93,34 @@ describe('Emulator', () => {
         const actions = house.collect();
         expect(actions).toHaveLength(0);
     });
+
+    it('should emulate multiple handlers', async () => {
+        const module = compile(
+            cases.find((c) => c.name === 'multiple-handlers')!.code,
+            false,
+        );
+        expect(module).toMatchSnapshot();
+        const house = new EmulatedHouse(module.houses[0]!);
+
+        house.emit(EventType.JOIN, 'player1');
+        expect(house.globalStat('counter')).toBe(1);
+
+        house.emit(EventType.JOIN, 'player2');
+        expect(house.globalStat('counter')).toBe(2);
+
+        house.emit(EventType.JOIN, 'player3');
+        expect(house.globalStat('counter')).toBe(3);
+
+        house.emit(EventType.QUIT, 'player1');
+        expect(house.globalStat('counter')).toBe(2);
+
+        house.emit(EventType.QUIT, 'player2');
+        expect(house.globalStat('counter')).toBe(1);
+
+        house.emit(EventType.QUIT, 'player3');
+        expect(house.globalStat('counter')).toBe(0);
+
+        const actions = house.collect();
+        expect(actions).toHaveLength(0);
+    });
 });
