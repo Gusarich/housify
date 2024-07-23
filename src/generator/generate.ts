@@ -129,7 +129,7 @@ export function writeExpression(
                 if (expression.struct.name.name === 'global') {
                     return expression.field.name;
                 } else if (expression.struct.name.name === 'player') {
-                    return resolveStructPath(expression).join('.');
+                    return expression.field.name;
                 }
             }
             return '$' + resolveStructPath(expression).join('.');
