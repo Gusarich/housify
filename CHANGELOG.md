@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+-   Default stat value definition syntax has been removed due to impossibility of implementation: PR [#55](https://github.com/Gusarich/housify/pull/55)
+
 ### Fixed
 
 -   Temporary stats are now excluded from the compilation result: PR [#50](https://github.com/Gusarich/housify/pull/50)
