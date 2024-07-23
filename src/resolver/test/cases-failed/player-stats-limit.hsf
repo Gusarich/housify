@@ -1,0 +1,23 @@
+house MyHouse {
+    player x1: int;
+    player x2: int;
+    player x3: int;
+    player x4: int;
+    player x5: int;
+    player x6: int;
+    player x7: int;
+    player x8: int;
+    player x9: int;
+    player x10: int;
+    player x11: int;
+    player x12: int;
+    player x13: int;
+    player x14: int;
+    player x15: int;
+    player x16: int;
+    player x17: int;
+    player x18: int;
+    player x19: int;
+    player x20: int;
+    player x21: int;
+}
