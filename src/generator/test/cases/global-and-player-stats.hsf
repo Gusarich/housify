@@ -1,0 +1,22 @@
+house MyHouse {
+    global x: int = 1;
+    global y: int = 2;
+    global z: int = 3;
+    player x: int = 4;
+    player y: int = 5;
+    player z: int = 6;
+
+    handle JOIN {
+        let a: int = global.x + global.y + global.z + player.x + player.y + player.z;
+        let b: int = global.x + global.y + global.z;
+        let c: int = player.x + player.y + player.z;
+        let d: int = global.x + player.x;
+
+        global.x = global.x + global.y;
+        global.y = global.y + player.y;
+        global.z = player.x + player.y;
+
+        global.x = 123;
+        player.x = 123;
+    }
+}
