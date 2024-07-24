@@ -18,11 +18,12 @@ describe('Grammar', () => {
         it('should fail ' + r.name, () => {
             try {
                 parse(r.code);
-                fail('should throw error');
             } catch (e) {
                 expect(e).toBeInstanceOf(ParseError);
                 expect((e as ParseError).toString()).toMatchSnapshot();
+                return;
             }
+            throw new Error('Expected to fail');
         });
     }
 });

@@ -25,11 +25,12 @@ describe('Resolver', () => {
             const ctx = new CompilerContext();
             try {
                 resolveModule(moduleAst, ctx);
-                fail('Expected an error');
             } catch (e) {
                 expect(e).toBeInstanceOf(ResolveError);
                 expect((e as ResolveError).toString()).toMatchSnapshot();
+                return;
             }
+            throw new Error('Expected to fail');
         });
     }
 });
