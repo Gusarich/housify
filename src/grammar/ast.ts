@@ -1,7 +1,15 @@
+import { Interval } from 'ohm-js';
+
+export type SourceLocation = {
+    interval: Interval;
+    // made it a separate type for future addition of file name
+};
+
 export type AstModule = {
     kind: 'module';
     items: AstModuleItem[];
     id: number;
+    source: SourceLocation;
 };
 
 export type AstModuleItem = AstHouse;
@@ -11,6 +19,7 @@ export type AstHouse = {
     name: AstId;
     items: AstHouseItem[];
     id: number;
+    source: SourceLocation;
 };
 
 export type AstHouseItem = AstGlobalStat | AstPlayerStat | AstHandler;
@@ -20,6 +29,7 @@ export type AstGlobalStat = {
     name: AstId;
     type: AstId;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstPlayerStat = {
@@ -27,6 +37,7 @@ export type AstPlayerStat = {
     name: AstId;
     type: AstId;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstHandler = {
@@ -34,6 +45,7 @@ export type AstHandler = {
     event: AstId;
     statements: AstStatement[];
     id: number;
+    source: SourceLocation;
 };
 
 export type AstParameter = {
@@ -41,6 +53,7 @@ export type AstParameter = {
     name: AstId;
     type: AstId;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstStatement =
@@ -55,6 +68,7 @@ export type AstStatementAssign = {
     lvalue: AstExpression;
     value: AstExpression;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstStatementLet = {
@@ -63,12 +77,14 @@ export type AstStatementLet = {
     type: AstId;
     value: AstExpression;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstStatementExpression = {
     kind: 'statementExpression';
     expression: AstExpression;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstStatementIf = {
@@ -77,6 +93,7 @@ export type AstStatementIf = {
     then: AstStatement[];
     else?: AstStatement[];
     id: number;
+    source: SourceLocation;
 };
 
 export type AstExpression =
@@ -92,6 +109,7 @@ export type AstExpressionField = {
     struct: AstExpression;
     field: AstId;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstBinaryOp =
@@ -114,6 +132,7 @@ export type AstExpressionBinary = {
     left: AstExpression;
     right: AstExpression;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstUnaryOp = '-' | '!';
@@ -123,6 +142,7 @@ export type AstExpressionUnary = {
     op: AstUnaryOp;
     operand: AstExpression;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstAugmentedAssignOp = '+' | '-' | '*' | '/';
@@ -133,30 +153,35 @@ export type AstStatementAugmentedAssign = {
     op: AstAugmentedAssignOp;
     value: AstExpression;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstIntegerLiteral = {
     kind: 'integerLiteral';
     value: string;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstBooleanLiteral = {
     kind: 'booleanLiteral';
     value: boolean;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstExpressionId = {
     kind: 'expressionId';
     name: AstId;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstId = {
     kind: 'id';
     name: string;
     id: number;
+    source: SourceLocation;
 };
 
 export type AstNode =

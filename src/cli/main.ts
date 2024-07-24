@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import * as fs from 'fs';
 import * as path from 'path';
 import { compile } from '../compile';
+import { CompilationError } from '../errors';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pkg = require('../../package.json');
 
@@ -37,8 +38,16 @@ function processFile(inputPath: string, outputPath: string) {
 
     const source = fs.readFileSync(inputPath, 'utf8');
 
-    const module = compile(source);
-
-    fs.writeFileSync(outputPath, JSON.stringify(module, null, 4));
-    console.log(`Result written to: ${outputPath}`);
+    try {
+        const module = compile(source);
+        fs.writeFileSync(outputPath, JSON.stringify(module, null, 4));
+        console.log(`Result written to: ${outputPath}`);
+    } catch (e) {
+        if (e instanceof CompilationError) {
+            console.error(e.toString());
+        } else {
+            console.error(e);
+        }
+        process.exit(1);
+    }
 }

@@ -1,6 +1,7 @@
 import { parse } from '../grammar';
 import { loadCases } from '../../utils/loadCases';
 import { resetNodeId } from '../ast';
+import { ParseError } from '../../errors';
 
 describe('Grammar', () => {
     beforeEach(() => {
@@ -15,7 +16,13 @@ describe('Grammar', () => {
 
     for (const r of loadCases(__dirname + '/cases-failed/')) {
         it('should fail ' + r.name, () => {
-            expect(() => parse(r.code)).toThrowErrorMatchingSnapshot();
+            try {
+                parse(r.code);
+                fail('should throw error');
+            } catch (e) {
+                expect(e).toBeInstanceOf(ParseError);
+                expect((e as ParseError).toString()).toMatchSnapshot();
+            }
         });
     }
 });

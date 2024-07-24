@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Constant Evaluator should fail division-by-zero 1`] = `
+"Line 3, col 22:
+  2 |     handle JOIN {
+> 3 |         let x: int = 1 / 0;
+                           ^~~~~
+  4 |     }
+
+ConstantEvaluationError: Division by zero"
+`;
+
 exports[`Generator should generate augmented-assignment 1`] = `
 {
   "houses": [

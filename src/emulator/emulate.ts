@@ -1,3 +1,4 @@
+import { EmulationError } from '../errors';
 import {
     CompiledHouse,
     isGlobalStatReference,
@@ -115,7 +116,9 @@ export class EmulatedHouse {
                     condition.value,
                 );
             default:
-                throw new Error('Unsupported condition');
+                throw new EmulationError(
+                    `Unsupported condition: '${condition.kind}'`,
+                );
         }
     }
 

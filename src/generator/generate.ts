@@ -1,9 +1,11 @@
+import { ConstantEvaluationError, InternalError } from '../errors';
 import {
     AstExpression,
     AstHandler,
     AstHouse,
     AstModule,
     AstStatement,
+    SourceLocation,
 } from '../grammar/ast';
 import { Action, ActionKind } from '../housing/actions';
 import { ConditionKind } from '../housing/conditions';
@@ -36,9 +38,9 @@ export function isGlobalStatReference(stat: string) {
     return stat.startsWith('%stat.global/');
 }
 
-export function unwrapStatReference(stat: string) {
+export function unwrapStatReference(stat: string, location?: SourceLocation) {
     if (!isStatReference(stat)) {
-        throw new Error('Not a stat reference');
+        throw new InternalError('Not a stat reference', location);
     }
     return stat.slice(13, -1);
 }
@@ -112,8 +114,10 @@ export function writeExpression(
             value: result,
         });
         return wrapAsPlayerStat(tempStat);
-    } catch {
-        /* empty */
+    } catch (e) {
+        if (e instanceof ConstantEvaluationError && e.fatal) {
+            throw e;
+        }
     }
 
     switch (expression.kind) {
@@ -312,7 +316,10 @@ export function writeExpression(
                                 kind: isGlobalStatReference(left)
                                     ? ConditionKind.GLOBAL_STAT
                                     : ConditionKind.PLAYER_STAT,
-                                stat: unwrapStatReference(left),
+                                stat: unwrapStatReference(
+                                    left,
+                                    expression.left.source,
+                                ),
                                 mode:
                                     expression.op === '==' ||
                                     expression.op === '!='
@@ -415,8 +422,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     value: writeExpression(statement.value, wctx),
                 });
             } else {
-                // must never happen
-                throw new Error('Invalid lvalue');
+                throw new InternalError('Invalid lvalue', statement.source);
             }
             break;
         }
@@ -457,7 +463,10 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                         kind: isGlobalStatReference(condition)
                             ? ConditionKind.GLOBAL_STAT
                             : ConditionKind.PLAYER_STAT,
-                        stat: unwrapStatReference(condition),
+                        stat: unwrapStatReference(
+                            condition,
+                            statement.condition.source,
+                        ),
                         mode: StatCompareMode.EQUAL,
                         value: '1',
                     },
@@ -476,8 +485,10 @@ export function writeHandler(
     wctx: WriterContext,
 ): CompiledHandler {
     if (!(ast.event.name in EventType)) {
-        // must never happen
-        throw new Error(`Unknown event type: ${ast.event.name}`);
+        throw new InternalError(
+            `Invalid event type: ${ast.event.name}`,
+            ast.event.source,
+        );
     }
 
     for (const item of ast.statements) {
@@ -494,8 +505,10 @@ export function writeHandler(
 export function writeHouse(ast: AstHouse, ctx: CompilerContext): CompiledHouse {
     const house = ctx.getHouse(ast.name.name);
     if (!house) {
-        // must never happen
-        throw new Error(`House not found: ${ast.name.name}`);
+        throw new InternalError(
+            `House not found: ${ast.name.name}`,
+            ast.name.source,
+        );
     }
 
     const globalStats: Map<string, number> = new Map();

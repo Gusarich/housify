@@ -1,8 +1,16 @@
+import { ConstantEvaluationError } from '../errors';
 import { AstExpression } from '../grammar/ast';
 
 export function evaluateConstantExpression(expression: AstExpression): string {
     switch (expression.kind) {
         case 'integerLiteral':
+            if (!/^-?\d+$/.test(expression.value)) {
+                throw new ConstantEvaluationError(
+                    `Invalid integer literal '${expression.value}'`,
+                    expression.source,
+                    true,
+                );
+            }
             return expression.value;
         case 'booleanLiteral':
             return expression.value ? '1' : '0';
@@ -19,6 +27,13 @@ export function evaluateConstantExpression(expression: AstExpression): string {
                 case '*':
                     return (left * right).toString();
                 case '/':
+                    if (right === 0) {
+                        throw new ConstantEvaluationError(
+                            'Division by zero',
+                            expression.source,
+                            true,
+                        );
+                    }
                     return (left / right).toString();
                 case '==':
                     return left === right ? '1' : '0';
@@ -52,6 +67,9 @@ export function evaluateConstantExpression(expression: AstExpression): string {
             break;
         }
         default:
-            throw new Error(`Cannot evaluate ${expression.kind}`);
+            throw new ConstantEvaluationError(
+                `Cannot evaluate ${expression.kind}`,
+                expression.source,
+            );
     }
 }

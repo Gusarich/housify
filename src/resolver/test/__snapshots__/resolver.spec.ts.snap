@@ -1,60 +1,284 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Resolver should fail assignment-type-mismatch-in-else 1`] = `"Cannot assign 'bool' to 'int'"`;
+exports[`Resolver should fail assignment-type-mismatch-in-else 1`] = `
+"Line 7, col 13:
+  6 |         } else {
+> 7 |             x = true;
+                  ^~~~~~~~~
+  8 |         }
 
-exports[`Resolver should fail assignment-type-mismatch-in-elseif 1`] = `"Cannot assign 'bool' to 'int'"`;
+ResolveError: Cannot assign 'bool' to 'int'"
+`;
 
-exports[`Resolver should fail assignment-type-mismatch-in-if 1`] = `"Cannot assign 'bool' to 'int'"`;
+exports[`Resolver should fail assignment-type-mismatch-in-elseif 1`] = `
+"Line 7, col 13:
+  6 |         } else if (x == 20) {
+> 7 |             x = true;
+                  ^~~~~~~~~
+  8 |         }
 
-exports[`Resolver should fail assignment-type-mismatch-in-nested-if 1`] = `"Cannot assign 'bool' to 'int'"`;
+ResolveError: Cannot assign 'bool' to 'int'"
+`;
 
-exports[`Resolver should fail augmented-assignment-between-int-and-bool 1`] = `"Operands must be integers"`;
+exports[`Resolver should fail assignment-type-mismatch-in-if 1`] = `
+"Line 5, col 13:
+  4 |         if (x == 10) {
+> 5 |             x = true;
+                  ^~~~~~~~~
+  6 |         }
 
-exports[`Resolver should fail augmented-assignment-on-bool 1`] = `"Operands must be integers"`;
+ResolveError: Cannot assign 'bool' to 'int'"
+`;
 
-exports[`Resolver should fail binary-operation-between-boolean-and-integer 1`] = `"Operands must be integers"`;
+exports[`Resolver should fail assignment-type-mismatch-in-nested-if 1`] = `
+"Line 6, col 17:
+  5 |             if (x == 20) {
+> 6 |                 x = true;
+                      ^~~~~~~~~
+  7 |             }
 
-exports[`Resolver should fail condition-not-boolean 1`] = `"Condition must be a boolean"`;
+ResolveError: Cannot assign 'bool' to 'int'"
+`;
 
-exports[`Resolver should fail default-value-type-mismatch 1`] = `"Cannot assign 'int' to 'bool'"`;
+exports[`Resolver should fail augmented-assignment-between-int-and-bool 1`] = `
+"Line 5, col 9:
+  4 |         x += 1;
+> 5 |         x -= true;
+              ^~~~~~~~~~
+  6 |     }
 
-exports[`Resolver should fail double-stat-definition 1`] = `"Global stat 'x' already exists"`;
+ResolveError: Operands must be integers, got 'bool'"
+`;
 
-exports[`Resolver should fail field-access-not-struct 1`] = `"Expression must be a struct"`;
+exports[`Resolver should fail augmented-assignment-on-bool 1`] = `
+"Line 4, col 9:
+  3 |         let x: bool = false;
+> 4 |         x += true;
+              ^~~~~~~~~~
+  5 |     }
 
-exports[`Resolver should fail global-stats-limit 1`] = `"Cannot have more than 20 persistent global stats"`;
+ResolveError: Operands must be integers, got 'bool'"
+`;
 
-exports[`Resolver should fail let-statement-value-type-mismatch 1`] = `"Cannot assign 'bool' to 'int'"`;
+exports[`Resolver should fail binary-operation-between-boolean-and-integer 1`] = `
+"Line 4, col 22:
+  3 |         let x: bool = true;
+> 4 |         let y: int = x + 1;
+                           ^
+  5 |     }
 
-exports[`Resolver should fail let-statement-value-type-mismatch2 1`] = `"Cannot assign 'bool' to 'int'"`;
+ResolveError: Operands must be integers, got 'bool'"
+`;
 
-exports[`Resolver should fail non-existing-field 1`] = `"Field 'nonExistentField' not found"`;
+exports[`Resolver should fail condition-not-boolean 1`] = `
+"Line 3, col 13:
+  2 |     handle JOIN {
+> 3 |         if (123) {
+                  ^~~
+  4 |             let x: int = 123;
 
-exports[`Resolver should fail player-stats-limit 1`] = `"Cannot have more than 20 persistent player stats"`;
+ResolveError: Condition must be a boolean expression, got 'int'"
+`;
 
-exports[`Resolver should fail stat-assignment-type-mismatch 1`] = `"Cannot assign 'int' to 'bool'"`;
+exports[`Resolver should fail default-value-type-mismatch 1`] = `
+"Line 5, col 9:
+  4 |     handle BLOCK_BREAK {
+> 5 |         global.x = 123;
+              ^~~~~~~~~~~~~~~
+  6 |         let y: int = global.x + 1;
 
-exports[`Resolver should fail stat-assignment-type-mismatch2 1`] = `"Cannot assign 'bool' to 'int'"`;
+ResolveError: Cannot assign 'int' to 'bool'"
+`;
 
-exports[`Resolver should fail unary-negation-of-bool 1`] = `"Operand must be an integer"`;
+exports[`Resolver should fail double-stat-definition 1`] = `
+"Line 4, col 5:
+  3 |     player x: int;
+> 4 |     global x: int;
+          ^~~~~~~~~~~~~~
+  5 | }
 
-exports[`Resolver should fail unary-not-of-integer 1`] = `"Operand must be a boolean"`;
+ResolveError: Global stat 'x' already exists"
+`;
 
-exports[`Resolver should fail unassignable-lvalue 1`] = `"'expressionBinary' cannot be assigned"`;
+exports[`Resolver should fail field-access-not-struct 1`] = `
+"Line 4, col 22:
+  3 |         let x: int = 123;
+> 4 |         let y: int = x.field;
+                           ^
+  5 |     }
 
-exports[`Resolver should fail unknown-event 1`] = `"Event 'SOMETHING_ELSE' not found"`;
+ResolveError: Expected a struct, got 'int'"
+`;
 
-exports[`Resolver should fail unknown-type 1`] = `"Type 'qwerty' not found"`;
+exports[`Resolver should fail global-stats-limit 1`] = `
+"Line 22, col 5:
+  21 |     global x20: int;
+> 22 |     global x21: int;
+           ^~~~~~~~~~~~~~~~
+  23 | }
 
-exports[`Resolver should fail unused-statement-expression 1`] = `"Expression of type int cannot be used as a statement"`;
+ResolveError: Cannot have more than 20 persistent global stats"
+`;
 
-exports[`Resolver should fail variable-double-definition 1`] = `"Variable 'x' already exists"`;
+exports[`Resolver should fail let-statement-value-type-mismatch 1`] = `
+"Line 3, col 9:
+  2 |     handle BLOCK_BREAK {
+> 3 |         let x: int = true;
+              ^~~~~~~~~~~~~~~~~~
+  4 |     }
 
-exports[`Resolver should fail variable-usage-before-definition 1`] = `"Variable 'x' not found"`;
+ResolveError: Cannot assign 'bool' to 'int'"
+`;
 
-exports[`Resolver should fail void-stat 1`] = `"Cannot declare a stat of type 'void'"`;
+exports[`Resolver should fail let-statement-value-type-mismatch2 1`] = `
+"Line 3, col 9:
+  2 |     handle BLOCK_BREAK {
+> 3 |         let x: int = 10 < 5;
+              ^~~~~~~~~~~~~~~~~~~~
+  4 |     }
 
-exports[`Resolver should fail void-variable 1`] = `"Cannot declare a variable of type 'void'"`;
+ResolveError: Cannot assign 'bool' to 'int'"
+`;
+
+exports[`Resolver should fail non-existing-field 1`] = `
+"Line 5, col 29:
+  4 |     handle BLOCK_BREAK {
+> 5 |         let y: int = global.nonExistentField;
+                                  ^~~~~~~~~~~~~~~~
+  6 |     }
+
+ResolveError: Field 'nonExistentField' not found in struct 'global'"
+`;
+
+exports[`Resolver should fail player-stats-limit 1`] = `
+"Line 22, col 5:
+  21 |     player x20: int;
+> 22 |     player x21: int;
+           ^~~~~~~~~~~~~~~~
+  23 | }
+
+ResolveError: Cannot have more than 20 persistent player stats"
+`;
+
+exports[`Resolver should fail stat-assignment-type-mismatch 1`] = `
+"Line 5, col 9:
+  4 |     handle BLOCK_BREAK {
+> 5 |         global.x = 10;
+              ^~~~~~~~~~~~~~
+  6 |     }
+
+ResolveError: Cannot assign 'int' to 'bool'"
+`;
+
+exports[`Resolver should fail stat-assignment-type-mismatch2 1`] = `
+"Line 5, col 9:
+  4 |     handle BLOCK_BREAK {
+> 5 |         global.x = true;
+              ^~~~~~~~~~~~~~~~
+  6 |     }
+
+ResolveError: Cannot assign 'bool' to 'int'"
+`;
+
+exports[`Resolver should fail unary-negation-of-bool 1`] = `
+"Line 3, col 24:
+  2 |     handle JOIN {
+> 3 |         let x: bool = -true;
+                             ^~~~
+  4 |     }
+
+ResolveError: Operand must be an integer, got 'bool'"
+`;
+
+exports[`Resolver should fail unary-not-of-integer 1`] = `
+"Line 3, col 23:
+  2 |     handle JOIN {
+> 3 |         let x: int = !123;
+                            ^~~
+  4 |     }
+
+ResolveError: Operand must be a boolean, got 'int'"
+`;
+
+exports[`Resolver should fail unassignable-lvalue 1`] = `
+"Line 3, col 9:
+  2 |     handle JOIN {
+> 3 |         1 + 2 = 3;
+              ^~~~~~~~~~
+  4 |     }
+
+ResolveError: 'expressionBinary' cannot be assigned"
+`;
+
+exports[`Resolver should fail unknown-event 1`] = `
+"Line 6, col 12:
+  5 | 
+> 6 |     handle SOMETHING_ELSE {
+                 ^~~~~~~~~~~~~~
+  7 |         
+
+ResolveError: Event 'SOMETHING_ELSE' not found"
+`;
+
+exports[`Resolver should fail unknown-type 1`] = `
+"Line 2, col 18:
+  1 | house MyHouse {
+> 2 |     global test: qwerty;
+                       ^~~~~~
+  3 | }
+
+ResolveError: Type 'qwerty' not found"
+`;
+
+exports[`Resolver should fail unused-statement-expression 1`] = `
+"Line 3, col 9:
+  2 |     handle BLOCK_BREAK {
+> 3 |         1 + 2 + 3;
+              ^~~~~~~~~~
+  4 |     }
+
+ResolveError: Expression of type 'int' cannot be used as a statement"
+`;
+
+exports[`Resolver should fail variable-double-definition 1`] = `
+"Line 4, col 13:
+  3 |         let x: int = 5;
+> 4 |         let x: int = 10;
+                  ^
+  5 |     }
+
+ResolveError: Variable 'x' already exists"
+`;
+
+exports[`Resolver should fail variable-usage-before-definition 1`] = `
+"Line 3, col 9:
+  2 |     handle BLOCK_BREAK {
+> 3 |         x = 10;
+              ^
+  4 |         let x: int = 5;
+
+ResolveError: Variable 'x' not found"
+`;
+
+exports[`Resolver should fail void-stat 1`] = `
+"Line 2, col 15:
+  1 | house MyHouse {
+> 2 |     global x: void;
+                    ^~~~
+  3 | }
+
+ResolveError: Cannot declare a stat of type 'void'"
+`;
+
+exports[`Resolver should fail void-variable 1`] = `
+"Line 4, col 16:
+  3 |         let x: int = 123;
+> 4 |         let y: void = x;
+                     ^~~~
+  5 |     }
+
+ResolveError: Cannot declare a variable of type 'void'"
+`;
 
 exports[`Resolver should resolve arithmetics 1`] = `
 CompilerContext {

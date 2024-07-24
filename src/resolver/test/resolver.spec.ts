@@ -3,6 +3,7 @@ import { loadCases } from '../../utils/loadCases';
 import { resetNodeId } from '../../grammar/ast';
 import { parse } from '../../grammar/grammar';
 import { CompilerContext } from '../context';
+import { ResolveError } from '../../errors';
 
 describe('Resolver', () => {
     beforeEach(() => {
@@ -22,9 +23,13 @@ describe('Resolver', () => {
         it('should fail ' + r.name, () => {
             const moduleAst = parse(r.code);
             const ctx = new CompilerContext();
-            expect(() => {
+            try {
                 resolveModule(moduleAst, ctx);
-            }).toThrowErrorMatchingSnapshot();
+                fail('Expected an error');
+            } catch (e) {
+                expect(e).toBeInstanceOf(ResolveError);
+                expect((e as ResolveError).toString()).toMatchSnapshot();
+            }
         });
     }
 });
