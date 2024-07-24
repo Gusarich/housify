@@ -47,8 +47,8 @@ This version of the compiler is ready for publication and testing. It includes m
 -   [ ] Full support for conditions
 -   [ ] All actions, conditions, events, and functions from Hypixel Housing
 -   [ ] Comprehensive tests for all parts of the compiler
--   [ ] Improved error messages
--   [ ] Actions Emulator MVP
+-   [x] Improved error messages
+-   [x] Actions Emulator MVP
 
 ### Command Line Interface
 
