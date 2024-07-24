@@ -1,13 +1,27 @@
-import { AstAugmentedAssignOp, AstModule, AstNode, createAstNode } from './ast';
+import {
+    AstAugmentedAssignOp,
+    AstModule,
+    AstNode,
+    createAstNode,
+    SourceLocation,
+} from './ast';
 import grammar from './grammar.ohm-bundle';
+import { Node } from 'ohm-js';
 
 const semantics = grammar.createSemantics();
+
+function getSourceLocation(s: Node): SourceLocation {
+    return {
+        interval: s.source,
+    };
+}
 
 semantics.addOperation<AstNode>('astOfModule', {
     Module(items) {
         return createAstNode({
             kind: 'module',
             items: items.children.map((item) => item.astOfModuleItem()),
+            source: getSourceLocation(this),
         });
     },
 });
@@ -23,6 +37,7 @@ semantics.addOperation<AstNode>('astOfModuleItem', {
             items: itemsTop.children
                 .map((item) => item.astOfHouseItem())
                 .concat(items.children.map((item) => item.astOfHouseItem())),
+            source: getSourceLocation(this),
         });
     },
 });
@@ -39,6 +54,7 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
             kind: 'globalStat',
             name: name.astOfExpression(),
             type: type.astOfType(),
+            source: getSourceLocation(this),
         });
     },
     PlayerStat(_arg0, name, _arg2, type, _arg4) {
@@ -46,6 +62,7 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
             kind: 'playerStat',
             name: name.astOfExpression(),
             type: type.astOfType(),
+            source: getSourceLocation(this),
         });
     },
     Handler(_arg0, event, _arg4, statements, _arg6) {
@@ -55,6 +72,7 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
             statements: statements.children.map((statement) =>
                 statement.astOfStatement(),
             ),
+            source: getSourceLocation(this),
         });
     },
 });
@@ -65,6 +83,7 @@ semantics.addOperation<AstNode>('astOfParameter', {
             kind: 'parameter',
             name: arg0.astOfExpression(),
             type: arg2.astOfType(),
+            source: getSourceLocation(this),
         });
     },
 });
@@ -88,6 +107,7 @@ semantics.addOperation<AstNode>('astOfStatement', {
                 kind: 'statementAssign',
                 lvalue: lvalue.astOfExpression(),
                 value: expression.astOfExpression(),
+                source: getSourceLocation(this),
             });
         } else {
             let op: AstAugmentedAssignOp;
@@ -113,6 +133,7 @@ semantics.addOperation<AstNode>('astOfStatement', {
                 lvalue: lvalue.astOfExpression(),
                 op,
                 value: expression.astOfExpression(),
+                source: getSourceLocation(this),
             });
         }
     },
@@ -122,12 +143,14 @@ semantics.addOperation<AstNode>('astOfStatement', {
             name: name.astOfExpression(),
             type: type.astOfType(),
             value: expression.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     StatementExpression(expression, _arg1) {
         return createAstNode({
             kind: 'statementExpression',
             expression: expression.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     StatementIf(arg0) {
@@ -140,6 +163,7 @@ semantics.addOperation<AstNode>('astOfStatement', {
             then: statements.children.map((statement) =>
                 statement.astOfStatement(),
             ),
+            source: getSourceLocation(this),
         });
     },
     StatementIf_withElse(
@@ -162,6 +186,7 @@ semantics.addOperation<AstNode>('astOfStatement', {
             else: elseStatements.children.map((statement) =>
                 statement.astOfStatement(),
             ),
+            source: getSourceLocation(this),
         });
     },
     StatementIf_withElseIf(
@@ -180,6 +205,7 @@ semantics.addOperation<AstNode>('astOfStatement', {
                 statement.astOfStatement(),
             ),
             else: [elseif.astOfStatement()],
+            source: getSourceLocation(this),
         });
     },
 });
@@ -194,6 +220,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '+',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionAdd_sub(left, op, right) {
@@ -202,6 +229,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '-',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionAnd_and(left, op, right) {
@@ -210,6 +238,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '&&',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionCompare_gt(left, op, right) {
@@ -218,6 +247,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '>',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionCompare_gte(left, op, right) {
@@ -226,6 +256,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '>=',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionCompare_lt(left, op, right) {
@@ -234,6 +265,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '<',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionCompare_lte(left, op, right) {
@@ -242,6 +274,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '<=',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionEquality_eq(left, op, right) {
@@ -250,6 +283,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '==',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionEquality_not(left, op, right) {
@@ -258,6 +292,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '!=',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionMul_div(left, op, right) {
@@ -266,6 +301,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '/',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionMul_mul(left, op, right) {
@@ -274,6 +310,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '*',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionOr_or(left, op, right) {
@@ -282,6 +319,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             op: '||',
             left: left.astOfExpression(),
             right: right.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionUnary_minus(op, operand) {
@@ -289,6 +327,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             kind: 'expressionUnary',
             op: '-',
             operand: operand.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionUnary_not(op, operand) {
@@ -296,6 +335,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
             kind: 'expressionUnary',
             op: '!',
             operand: operand.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionLiteral(arg0) {
@@ -305,6 +345,7 @@ semantics.addOperation<AstNode>('astOfExpression', {
         return createAstNode({
             kind: 'expressionId',
             name: arg0.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     ExpressionField(struct, _arg1, field) {
@@ -312,24 +353,28 @@ semantics.addOperation<AstNode>('astOfExpression', {
             kind: 'expressionField',
             struct: struct.astOfExpression(),
             field: field.astOfExpression(),
+            source: getSourceLocation(this),
         });
     },
     id(_arg0, _arg1) {
         return createAstNode({
             kind: 'id',
             name: this.sourceString,
+            source: getSourceLocation(this),
         });
     },
     integerLiteral(_arg0) {
         return createAstNode({
             kind: 'integerLiteral',
             value: this.sourceString,
+            source: getSourceLocation(this),
         });
     },
     booleanLiteral(_arg0) {
         return createAstNode({
             kind: 'booleanLiteral',
             value: this.sourceString === 'true',
+            source: getSourceLocation(this),
         });
     },
     ExpressionParens(_arg0, expression, _arg2) {

@@ -138,9 +138,34 @@ exports[`Grammar should parse arithmetics 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 12,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 67,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "expression": {
@@ -156,6 +181,31 @@ exports[`Grammar should parse arithmetics 1`] = `
                       "id": 3,
                       "kind": "id",
                       "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 51,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                          "startIdx": 50,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 51,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                        "startIdx": 50,
+                      },
                     },
                   },
                   "op": "+",
@@ -166,6 +216,43 @@ exports[`Grammar should parse arithmetics 1`] = `
                       "id": 5,
                       "kind": "id",
                       "name": "y",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "y",
+                          "endIdx": 55,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                          "startIdx": 54,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 55,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                        "startIdx": 54,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 55,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                      "startIdx": 50,
                     },
                   },
                 },
@@ -177,11 +264,60 @@ exports[`Grammar should parse arithmetics 1`] = `
                     "id": 8,
                     "kind": "id",
                     "name": "z",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "z",
+                        "endIdx": 60,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                        "startIdx": 59,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 60,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                      "startIdx": 59,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 60,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                    "startIdx": 49,
                   },
                 },
               },
               "id": 11,
               "kind": "statementExpression",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 61,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+                  "startIdx": 49,
+                },
+              },
             },
           ],
         },
@@ -191,10 +327,47 @@ exports[`Grammar should parse arithmetics 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 69,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 70,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        (x + y) * z;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -210,9 +383,34 @@ exports[`Grammar should parse assignment 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 7,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 61,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 6,
@@ -224,11 +422,61 @@ exports[`Grammar should parse assignment 1`] = `
                   "id": 3,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 50,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 50,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 55,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
                 "id": 5,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "5",
+                    "endIdx": 54,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+                    "startIdx": 53,
+                  },
+                },
                 "value": "5",
               },
             },
@@ -240,10 +488,47 @@ exports[`Grammar should parse assignment 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 63,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 64,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -261,11 +546,76 @@ exports[`Grammar should parse augmented-assignment 1`] = `
             "id": 2,
             "kind": "id",
             "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 28,
+                "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                "startIdx": 27,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 34,
+              "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+              "startIdx": 20,
+            },
           },
           "type": {
             "id": 3,
             "kind": "id",
             "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 33,
+                "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                "startIdx": 30,
+              },
+            },
           },
         },
         {
@@ -273,9 +623,52 @@ exports[`Grammar should parse augmented-assignment 1`] = `
             "id": 5,
             "kind": "id",
             "name": "JOIN",
+            "source": {
+              "interval": Interval {
+                "_contents": "JOIN",
+                "endIdx": 51,
+                "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                "startIdx": 47,
+              },
+            },
           },
           "id": 50,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 239,
+              "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+              "startIdx": 40,
+            },
+          },
           "statements": [
             {
               "id": 9,
@@ -284,15 +677,102 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                 "id": 6,
                 "kind": "id",
                 "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 67,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 66,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 77,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 62,
+                },
               },
               "type": {
                 "id": 7,
                 "kind": "id",
                 "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 72,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 69,
+                  },
+                },
               },
               "value": {
                 "id": 8,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "0",
+                    "endIdx": 76,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 75,
+                  },
+                },
                 "value": "0",
               },
             },
@@ -306,12 +786,98 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 10,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 87,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 86,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 87,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 86,
+                  },
                 },
               },
               "op": "+",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 93,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 86,
+                },
+              },
               "value": {
                 "id": 12,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 92,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 91,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -325,12 +891,98 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 14,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 103,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 102,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 103,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 102,
+                  },
                 },
               },
               "op": "-",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 109,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 102,
+                },
+              },
               "value": {
                 "id": 16,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 108,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 107,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -344,12 +996,98 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 18,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 119,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 118,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 119,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 118,
+                  },
                 },
               },
               "op": "*",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 125,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 118,
+                },
+              },
               "value": {
                 "id": 20,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 124,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 123,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -363,12 +1101,98 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 22,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 135,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 134,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 135,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 134,
+                  },
                 },
               },
               "op": "/",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 141,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 134,
+                },
+              },
               "value": {
                 "id": 24,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 140,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 139,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -380,9 +1204,52 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 28,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 158,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 157,
+                    },
+                  },
                 },
                 "id": 29,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 158,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 150,
+                  },
+                },
                 "struct": {
                   "id": 27,
                   "kind": "expressionId",
@@ -390,13 +1257,99 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                     "id": 26,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 156,
+                        "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                        "startIdx": 150,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 156,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 150,
+                    },
                   },
                 },
               },
               "op": "+",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 164,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 150,
+                },
+              },
               "value": {
                 "id": 30,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 163,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 162,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -408,9 +1361,52 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 34,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 181,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 180,
+                    },
+                  },
                 },
                 "id": 35,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 181,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 173,
+                  },
+                },
                 "struct": {
                   "id": 33,
                   "kind": "expressionId",
@@ -418,13 +1414,99 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                     "id": 32,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 179,
+                        "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                        "startIdx": 173,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 179,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 173,
+                    },
                   },
                 },
               },
               "op": "-",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 187,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 173,
+                },
+              },
               "value": {
                 "id": 36,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 186,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 185,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -436,9 +1518,52 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 40,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 204,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 203,
+                    },
+                  },
                 },
                 "id": 41,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 204,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 196,
+                  },
+                },
                 "struct": {
                   "id": 39,
                   "kind": "expressionId",
@@ -446,13 +1571,99 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                     "id": 38,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 202,
+                        "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                        "startIdx": 196,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 202,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 196,
+                    },
                   },
                 },
               },
               "op": "*",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 210,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 196,
+                },
+              },
               "value": {
                 "id": 42,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 209,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 208,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -464,9 +1675,52 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                   "id": 46,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 227,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 226,
+                    },
+                  },
                 },
                 "id": 47,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 227,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 219,
+                  },
+                },
                 "struct": {
                   "id": 45,
                   "kind": "expressionId",
@@ -474,13 +1728,99 @@ exports[`Grammar should parse augmented-assignment 1`] = `
                     "id": 44,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 225,
+                        "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                        "startIdx": 219,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 225,
+                      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                      "startIdx": 219,
+                    },
                   },
                 },
               },
               "op": "/",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 233,
+                  "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                  "startIdx": 219,
+                },
+              },
               "value": {
                 "id": 48,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 232,
+                    "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+                    "startIdx": 231,
+                  },
+                },
                 "value": "1",
               },
             },
@@ -492,10 +1832,74 @@ exports[`Grammar should parse augmented-assignment 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 241,
+          "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 241,
+      "sourceString": "house MyHouse {
+    global x: int;
+
+    handle JOIN {
+        let x: int = 0;
+        x += 1;
+        x -= 1;
+        x *= 1;
+        x /= 1;
+        global.x += 1;
+        global.x -= 1;
+        global.x *= 1;
+        global.x /= 1;
+    }
+}",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -511,9 +1915,34 @@ exports[`Grammar should parse binary-operator 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 9,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 65,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 8,
@@ -525,6 +1954,43 @@ exports[`Grammar should parse binary-operator 1`] = `
                   "id": 3,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 50,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 50,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 59,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
@@ -533,13 +1999,51 @@ exports[`Grammar should parse binary-operator 1`] = `
                 "left": {
                   "id": 5,
                   "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "5",
+                      "endIdx": 54,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+                      "startIdx": 53,
+                    },
+                  },
                   "value": "5",
                 },
                 "op": "+",
                 "right": {
                   "id": 6,
                   "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "3",
+                      "endIdx": 58,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+                      "startIdx": 57,
+                    },
+                  },
                   "value": "3",
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 58,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+                    "startIdx": 53,
+                  },
                 },
               },
             },
@@ -551,10 +2055,47 @@ exports[`Grammar should parse binary-operator 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 67,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 68,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 5 + 3;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -570,9 +2111,38 @@ exports[`Grammar should parse booleans 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 21,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 141,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 6,
@@ -581,15 +2151,74 @@ exports[`Grammar should parse booleans 1`] = `
                 "id": 3,
                 "kind": "id",
                 "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 54,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 53,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 68,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                  "startIdx": 49,
+                },
               },
               "type": {
                 "id": 4,
                 "kind": "id",
                 "name": "bool",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "bool",
+                    "endIdx": 60,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 56,
+                  },
+                },
               },
               "value": {
                 "id": 5,
                 "kind": "booleanLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "true",
+                    "endIdx": 67,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 63,
+                  },
+                },
                 "value": true,
               },
             },
@@ -600,15 +2229,74 @@ exports[`Grammar should parse booleans 1`] = `
                 "id": 7,
                 "kind": "id",
                 "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 82,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 81,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 97,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                  "startIdx": 77,
+                },
               },
               "type": {
                 "id": 8,
                 "kind": "id",
                 "name": "bool",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "bool",
+                    "endIdx": 88,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 84,
+                  },
+                },
               },
               "value": {
                 "id": 9,
                 "kind": "booleanLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "false",
+                    "endIdx": 96,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 91,
+                  },
+                },
                 "value": false,
               },
             },
@@ -619,11 +2307,55 @@ exports[`Grammar should parse booleans 1`] = `
                 "id": 11,
                 "kind": "id",
                 "name": "z",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "z",
+                    "endIdx": 111,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 110,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 135,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                  "startIdx": 106,
+                },
               },
               "type": {
                 "id": 12,
                 "kind": "id",
                 "name": "bool",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "bool",
+                    "endIdx": 117,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 113,
+                  },
+                },
               },
               "value": {
                 "id": 19,
@@ -638,6 +2370,35 @@ exports[`Grammar should parse booleans 1`] = `
                       "id": 13,
                       "kind": "id",
                       "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 121,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                          "startIdx": 120,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 121,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                        "startIdx": 120,
+                      },
                     },
                   },
                   "op": "&&",
@@ -648,6 +2409,49 @@ exports[`Grammar should parse booleans 1`] = `
                       "id": 15,
                       "kind": "id",
                       "name": "y",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "y",
+                          "endIdx": 126,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                          "startIdx": 125,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 126,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                        "startIdx": 125,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 126,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                      "startIdx": 120,
                     },
                   },
                 },
@@ -655,7 +2459,36 @@ exports[`Grammar should parse booleans 1`] = `
                 "right": {
                   "id": 18,
                   "kind": "booleanLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "true",
+                      "endIdx": 134,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                      "startIdx": 130,
+                    },
+                  },
                   "value": true,
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 134,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+                    "startIdx": 120,
+                  },
                 },
               },
             },
@@ -667,10 +2500,53 @@ exports[`Grammar should parse booleans 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 143,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 144,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: bool = true;
+        let y: bool = false;
+        let z: bool = x && y && true;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -686,9 +2562,38 @@ exports[`Grammar should parse field-access 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 27,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 115,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 8,
@@ -698,9 +2603,38 @@ exports[`Grammar should parse field-access 1`] = `
                   "id": 5,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 55,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                      "startIdx": 54,
+                    },
+                  },
                 },
                 "id": 6,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 55,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
                 "struct": {
                   "id": 4,
                   "kind": "expressionId",
@@ -708,12 +2642,70 @@ exports[`Grammar should parse field-access 1`] = `
                     "id": 3,
                     "kind": "id",
                     "name": "self",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "self",
+                        "endIdx": 53,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                        "startIdx": 49,
+                      },
+                    },
                   },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 53,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 61,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
                 "id": 7,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "10",
+                    "endIdx": 60,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                    "startIdx": 58,
+                  },
+                },
                 "value": "10",
               },
             },
@@ -725,17 +2717,75 @@ exports[`Grammar should parse field-access 1`] = `
                   "id": 13,
                   "kind": "id",
                   "name": "y",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "y",
+                      "endIdx": 78,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                      "startIdx": 77,
+                    },
+                  },
                 },
                 "id": 14,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 78,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                    "startIdx": 70,
+                  },
+                },
                 "struct": {
                   "field": {
                     "id": 11,
                     "kind": "id",
                     "name": "x",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "x",
+                        "endIdx": 76,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                        "startIdx": 75,
+                      },
+                    },
                   },
                   "id": 12,
                   "kind": "expressionField",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 76,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                      "startIdx": 70,
+                    },
+                  },
                   "struct": {
                     "id": 10,
                     "kind": "expressionId",
@@ -743,13 +2793,71 @@ exports[`Grammar should parse field-access 1`] = `
                       "id": 9,
                       "kind": "id",
                       "name": "self",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "self",
+                          "endIdx": 74,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                          "startIdx": 70,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 74,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                        "startIdx": 70,
+                      },
                     },
                   },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 84,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                  "startIdx": 70,
                 },
               },
               "value": {
                 "id": 15,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "10",
+                    "endIdx": 83,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                    "startIdx": 81,
+                  },
+                },
                 "value": "10",
               },
             },
@@ -761,25 +2869,112 @@ exports[`Grammar should parse field-access 1`] = `
                   "id": 23,
                   "kind": "id",
                   "name": "z",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "z",
+                      "endIdx": 103,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                      "startIdx": 102,
+                    },
+                  },
                 },
                 "id": 24,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 103,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                    "startIdx": 93,
+                  },
+                },
                 "struct": {
                   "field": {
                     "id": 21,
                     "kind": "id",
                     "name": "y",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "y",
+                        "endIdx": 101,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                        "startIdx": 100,
+                      },
+                    },
                   },
                   "id": 22,
                   "kind": "expressionField",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 101,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                      "startIdx": 93,
+                    },
+                  },
                   "struct": {
                     "field": {
                       "id": 19,
                       "kind": "id",
                       "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 99,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                          "startIdx": 98,
+                        },
+                      },
                     },
                     "id": 20,
                     "kind": "expressionField",
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 99,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                        "startIdx": 93,
+                      },
+                    },
                     "struct": {
                       "id": 18,
                       "kind": "expressionId",
@@ -787,14 +2982,72 @@ exports[`Grammar should parse field-access 1`] = `
                         "id": 17,
                         "kind": "id",
                         "name": "self",
+                        "source": {
+                          "interval": Interval {
+                            "_contents": "self",
+                            "endIdx": 97,
+                            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                            "startIdx": 93,
+                          },
+                        },
+                      },
+                      "source": {
+                        "interval": Interval {
+                          "endIdx": 97,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                          "startIdx": 93,
+                        },
                       },
                     },
                   },
                 },
               },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 109,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                  "startIdx": 93,
+                },
+              },
               "value": {
                 "id": 25,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "10",
+                    "endIdx": 108,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+                    "startIdx": 106,
+                  },
+                },
                 "value": "10",
               },
             },
@@ -806,10 +3059,53 @@ exports[`Grammar should parse field-access 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 117,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 118,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        self.x = 10;
+        self.x.y = 10;
+        self.x.y.z = 10;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -825,9 +3121,34 @@ exports[`Grammar should parse field-access2 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 9,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 70,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 8,
@@ -837,9 +3158,34 @@ exports[`Grammar should parse field-access2 1`] = `
                   "id": 5,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 57,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+                      "startIdx": 56,
+                    },
+                  },
                 },
                 "id": 6,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 57,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
                 "struct": {
                   "id": 4,
                   "kind": "expressionId",
@@ -847,12 +3193,62 @@ exports[`Grammar should parse field-access2 1`] = `
                     "id": 3,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 55,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+                        "startIdx": 49,
+                      },
+                    },
                   },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 55,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 64,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
                 "id": 7,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "123",
+                    "endIdx": 63,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+                    "startIdx": 60,
+                  },
+                },
                 "value": "123",
               },
             },
@@ -864,10 +3260,47 @@ exports[`Grammar should parse field-access2 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 72,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 73,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -883,9 +3316,34 @@ exports[`Grammar should parse id 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 6,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 61,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "expression": {
@@ -895,10 +3353,47 @@ exports[`Grammar should parse id 1`] = `
                   "id": 3,
                   "kind": "id",
                   "name": "myVar",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "myVar",
+                      "endIdx": 54,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 54,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
                 },
               },
               "id": 5,
               "kind": "statementExpression",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 55,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+                  "startIdx": 49,
+                },
+              },
             },
           ],
         },
@@ -908,10 +3403,47 @@ exports[`Grammar should parse id 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 63,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 64,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        myVar;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -927,9 +3459,38 @@ exports[`Grammar should parse if-statement 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 12,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 98,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "condition": {
@@ -942,17 +3503,89 @@ exports[`Grammar should parse if-statement 1`] = `
                     "id": 3,
                     "kind": "id",
                     "name": "x",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "x",
+                        "endIdx": 54,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                        "startIdx": 53,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 54,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                      "startIdx": 53,
+                    },
                   },
                 },
                 "op": "==",
                 "right": {
                   "id": 5,
                   "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "5",
+                      "endIdx": 59,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                      "startIdx": 58,
+                    },
+                  },
                   "value": "5",
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 59,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                    "startIdx": 53,
+                  },
                 },
               },
               "id": 11,
               "kind": "statementIf",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 92,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                  "startIdx": 49,
+                },
+              },
               "then": [
                 {
                   "id": 10,
@@ -964,11 +3597,69 @@ exports[`Grammar should parse if-statement 1`] = `
                       "id": 7,
                       "kind": "id",
                       "name": "y",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "y",
+                          "endIdx": 76,
+                          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                          "startIdx": 75,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 76,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                        "startIdx": 75,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 82,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                      "startIdx": 75,
                     },
                   },
                   "value": {
                     "id": 9,
                     "kind": "integerLiteral",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "10",
+                        "endIdx": 81,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+                        "startIdx": 79,
+                      },
+                    },
                     "value": "10",
                   },
                 },
@@ -982,10 +3673,53 @@ exports[`Grammar should parse if-statement 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 100,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 101,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        if (x == 5) {
+            y = 10;
+        }
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1001,9 +3735,34 @@ exports[`Grammar should parse integer-literal 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 7,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 62,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 6,
@@ -1015,11 +3774,61 @@ exports[`Grammar should parse integer-literal 1`] = `
                   "id": 3,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 50,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 50,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 56,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
                 "id": 5,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "42",
+                    "endIdx": 55,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+                    "startIdx": 53,
+                  },
+                },
                 "value": "42",
               },
             },
@@ -1031,10 +3840,47 @@ exports[`Grammar should parse integer-literal 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 64,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 65,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = 42;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1050,9 +3896,34 @@ exports[`Grammar should parse let-statement 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 7,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 70,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 6,
@@ -1061,15 +3932,66 @@ exports[`Grammar should parse let-statement 1`] = `
                 "id": 3,
                 "kind": "id",
                 "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 54,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+                    "startIdx": 53,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 64,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+                  "startIdx": 49,
+                },
               },
               "type": {
                 "id": 4,
                 "kind": "id",
                 "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 59,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+                    "startIdx": 56,
+                  },
+                },
               },
               "value": {
                 "id": 5,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "5",
+                    "endIdx": 63,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+                    "startIdx": 62,
+                  },
+                },
                 "value": "5",
               },
             },
@@ -1081,10 +4003,47 @@ exports[`Grammar should parse let-statement 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 72,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 73,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1100,9 +4059,58 @@ exports[`Grammar should parse multi-line-comments 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 21,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 230,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 8,
@@ -1112,9 +4120,58 @@ exports[`Grammar should parse multi-line-comments 1`] = `
                   "id": 5,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 57,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                      "startIdx": 56,
+                    },
+                  },
                 },
                 "id": 6,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 57,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
                 "struct": {
                   "id": 4,
                   "kind": "expressionId",
@@ -1122,12 +4179,110 @@ exports[`Grammar should parse multi-line-comments 1`] = `
                     "id": 3,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 55,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                        "startIdx": 49,
+                      },
+                    },
                   },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 55,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 64,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
                 "id": 7,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "123",
+                    "endIdx": 63,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                    "startIdx": 60,
+                  },
+                },
                 "value": "123",
               },
             },
@@ -1139,9 +4294,58 @@ exports[`Grammar should parse multi-line-comments 1`] = `
                   "id": 11,
                   "kind": "id",
                   "name": "y",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "y",
+                      "endIdx": 114,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                      "startIdx": 113,
+                    },
+                  },
                 },
                 "id": 12,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 114,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                    "startIdx": 106,
+                  },
+                },
                 "struct": {
                   "id": 10,
                   "kind": "expressionId",
@@ -1149,12 +4353,110 @@ exports[`Grammar should parse multi-line-comments 1`] = `
                     "id": 9,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 112,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                        "startIdx": 106,
+                      },
+                    },
                   },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 112,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                      "startIdx": 106,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 121,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                  "startIdx": 106,
                 },
               },
               "value": {
                 "id": 13,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "456",
+                    "endIdx": 120,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                    "startIdx": 117,
+                  },
+                },
                 "value": "456",
               },
             },
@@ -1166,9 +4468,58 @@ exports[`Grammar should parse multi-line-comments 1`] = `
                   "id": 17,
                   "kind": "id",
                   "name": "y",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "y",
+                      "endIdx": 206,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                      "startIdx": 205,
+                    },
+                  },
                 },
                 "id": 18,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 206,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                    "startIdx": 198,
+                  },
+                },
                 "struct": {
                   "id": 16,
                   "kind": "expressionId",
@@ -1176,12 +4527,110 @@ exports[`Grammar should parse multi-line-comments 1`] = `
                     "id": 15,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 204,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                        "startIdx": 198,
+                      },
+                    },
                   },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 204,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                      "startIdx": 198,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 224,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                  "startIdx": 198,
                 },
               },
               "value": {
                 "id": 19,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "456",
+                    "endIdx": 223,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+                    "startIdx": 220,
+                  },
+                },
                 "value": "456",
               },
             },
@@ -1193,10 +4642,83 @@ exports[`Grammar should parse multi-line-comments 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 232,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 233,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        /* comment */
+        global.y = 456; /*
+        // comment */
+
+        /*
+
+
+        comment
+
+        */
+
+        global.y /* test */ = 456;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1212,6 +4734,41 @@ exports[`Grammar should parse multiple-houses 1`] = `
         "id": 1,
         "kind": "id",
         "name": "House1",
+        "source": {
+          "interval": Interval {
+            "_contents": "House1",
+            "endIdx": 12,
+            "sourceString": "house House1 {
+
+}
+
+house House2 {
+
+}
+
+house House3 {
+
+}",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 17,
+          "sourceString": "house House1 {
+
+}
+
+house House2 {
+
+}
+
+house House3 {
+
+}",
+          "startIdx": 0,
+        },
       },
     },
     {
@@ -1222,6 +4779,41 @@ exports[`Grammar should parse multiple-houses 1`] = `
         "id": 3,
         "kind": "id",
         "name": "House2",
+        "source": {
+          "interval": Interval {
+            "_contents": "House2",
+            "endIdx": 31,
+            "sourceString": "house House1 {
+
+}
+
+house House2 {
+
+}
+
+house House3 {
+
+}",
+            "startIdx": 25,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 36,
+          "sourceString": "house House1 {
+
+}
+
+house House2 {
+
+}
+
+house House3 {
+
+}",
+          "startIdx": 19,
+        },
       },
     },
     {
@@ -1232,10 +4824,62 @@ exports[`Grammar should parse multiple-houses 1`] = `
         "id": 5,
         "kind": "id",
         "name": "House3",
+        "source": {
+          "interval": Interval {
+            "_contents": "House3",
+            "endIdx": 50,
+            "sourceString": "house House1 {
+
+}
+
+house House2 {
+
+}
+
+house House3 {
+
+}",
+            "startIdx": 44,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 55,
+          "sourceString": "house House1 {
+
+}
+
+house House2 {
+
+}
+
+house House3 {
+
+}",
+          "startIdx": 38,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 55,
+      "sourceString": "house House1 {
+
+}
+
+house House2 {
+
+}
+
+house House3 {
+
+}",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1251,9 +4895,40 @@ exports[`Grammar should parse single-line-comments 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 15,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 147,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 8,
@@ -1263,9 +4938,40 @@ exports[`Grammar should parse single-line-comments 1`] = `
                   "id": 5,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 57,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                      "startIdx": 56,
+                    },
+                  },
                 },
                 "id": 6,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 57,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
                 "struct": {
                   "id": 4,
                   "kind": "expressionId",
@@ -1273,12 +4979,74 @@ exports[`Grammar should parse single-line-comments 1`] = `
                     "id": 3,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 55,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                        "startIdx": 49,
+                      },
+                    },
                   },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 55,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 64,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
                 "id": 7,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "123",
+                    "endIdx": 63,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                    "startIdx": 60,
+                  },
+                },
                 "value": "123",
               },
             },
@@ -1290,9 +5058,40 @@ exports[`Grammar should parse single-line-comments 1`] = `
                   "id": 11,
                   "kind": "id",
                   "name": "y",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "y",
+                      "endIdx": 111,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                      "startIdx": 110,
+                    },
+                  },
                 },
                 "id": 12,
                 "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 111,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                    "startIdx": 103,
+                  },
+                },
                 "struct": {
                   "id": 10,
                   "kind": "expressionId",
@@ -1300,12 +5099,74 @@ exports[`Grammar should parse single-line-comments 1`] = `
                     "id": 9,
                     "kind": "id",
                     "name": "global",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "global",
+                        "endIdx": 109,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                        "startIdx": 103,
+                      },
+                    },
                   },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 109,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                      "startIdx": 103,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 118,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                  "startIdx": 103,
                 },
               },
               "value": {
                 "id": 13,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "456",
+                    "endIdx": 117,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+                    "startIdx": 114,
+                  },
+                },
                 "value": "456",
               },
             },
@@ -1317,10 +5178,56 @@ exports[`Grammar should parse single-line-comments 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 149,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 150,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        global.x = 123; // comment
+        // comment
+        global.y = 456;
+        // comment    
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1336,18 +5243,68 @@ exports[`Grammar should parse statement-expression 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        5;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 5,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 57,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        5;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "expression": {
                 "id": 3,
                 "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "5",
+                    "endIdx": 50,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        5;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
                 "value": "5",
               },
               "id": 4,
               "kind": "statementExpression",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 51,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        5;
+    }
+}
+",
+                  "startIdx": 49,
+                },
+              },
             },
           ],
         },
@@ -1357,10 +5314,47 @@ exports[`Grammar should parse statement-expression 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        5;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 59,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        5;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 60,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        5;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1378,11 +5372,61 @@ exports[`Grammar should parse stats 1`] = `
             "id": 2,
             "kind": "id",
             "name": "xg",
+            "source": {
+              "interval": Interval {
+                "_contents": "xg",
+                "endIdx": 29,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 27,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 35,
+              "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+              "startIdx": 20,
+            },
           },
           "type": {
             "id": 3,
             "kind": "id",
             "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 34,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 31,
+              },
+            },
           },
         },
         {
@@ -1392,11 +5436,61 @@ exports[`Grammar should parse stats 1`] = `
             "id": 5,
             "kind": "id",
             "name": "yg",
+            "source": {
+              "interval": Interval {
+                "_contents": "yg",
+                "endIdx": 49,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 47,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 55,
+              "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+              "startIdx": 40,
+            },
           },
           "type": {
             "id": 6,
             "kind": "id",
             "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 54,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 51,
+              },
+            },
           },
         },
         {
@@ -1406,11 +5500,61 @@ exports[`Grammar should parse stats 1`] = `
             "id": 8,
             "kind": "id",
             "name": "xp",
+            "source": {
+              "interval": Interval {
+                "_contents": "xp",
+                "endIdx": 69,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 67,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 75,
+              "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+              "startIdx": 60,
+            },
           },
           "type": {
             "id": 9,
             "kind": "id",
             "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 74,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 71,
+              },
+            },
           },
         },
         {
@@ -1420,11 +5564,61 @@ exports[`Grammar should parse stats 1`] = `
             "id": 11,
             "kind": "id",
             "name": "yp",
+            "source": {
+              "interval": Interval {
+                "_contents": "yp",
+                "endIdx": 89,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 87,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 95,
+              "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+              "startIdx": 80,
+            },
           },
           "type": {
             "id": 12,
             "kind": "id",
             "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 94,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 91,
+              },
+            },
           },
         },
         {
@@ -1432,9 +5626,42 @@ exports[`Grammar should parse stats 1`] = `
             "id": 14,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 119,
+                "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+                "startIdx": 108,
+              },
+            },
           },
           "id": 15,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 136,
+              "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+              "startIdx": 101,
+            },
+          },
           "statements": [],
         },
       ],
@@ -1443,10 +5670,59 @@ exports[`Grammar should parse stats 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 138,
+          "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 138,
+      "sourceString": "house MyHouse {
+    global xg: int;
+    global yg: int;
+    player xp: int;
+    player yp: int;
+
+    handle BLOCK_BREAK {
+        
+    }
+}",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1462,9 +5738,34 @@ exports[`Grammar should parse unary-operator 1`] = `
             "id": 2,
             "kind": "id",
             "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 8,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 62,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 7,
@@ -1476,6 +5777,43 @@ exports[`Grammar should parse unary-operator 1`] = `
                   "id": 3,
                   "kind": "id",
                   "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 50,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+                      "startIdx": 49,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 50,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+                    "startIdx": 49,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 56,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+                  "startIdx": 49,
                 },
               },
               "value": {
@@ -1485,7 +5823,32 @@ exports[`Grammar should parse unary-operator 1`] = `
                 "operand": {
                   "id": 5,
                   "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "5",
+                      "endIdx": 55,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+                      "startIdx": 54,
+                    },
+                  },
                   "value": "5",
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 55,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+                    "startIdx": 53,
+                  },
                 },
               },
             },
@@ -1497,10 +5860,47 @@ exports[`Grammar should parse unary-operator 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 64,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 65,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        x = -5;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
 }
 `;
 
@@ -1516,9 +5916,34 @@ exports[`Grammar should parse unary-with-literals 1`] = `
             "id": 2,
             "kind": "id",
             "name": "JOIN",
+            "source": {
+              "interval": Interval {
+                "_contents": "JOIN",
+                "endIdx": 31,
+                "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                "startIdx": 27,
+              },
+            },
           },
           "id": 18,
           "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 111,
+              "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+              "startIdx": 20,
+            },
+          },
           "statements": [
             {
               "id": 9,
@@ -1527,11 +5952,49 @@ exports[`Grammar should parse unary-with-literals 1`] = `
                 "id": 3,
                 "kind": "id",
                 "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 47,
+                    "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                    "startIdx": 46,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 66,
+                  "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                  "startIdx": 42,
+                },
               },
               "type": {
                 "id": 4,
                 "kind": "id",
                 "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 52,
+                    "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                    "startIdx": 49,
+                  },
+                },
               },
               "value": {
                 "id": 8,
@@ -1543,14 +6006,64 @@ exports[`Grammar should parse unary-with-literals 1`] = `
                   "operand": {
                     "id": 5,
                     "kind": "integerLiteral",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "123",
+                        "endIdx": 59,
+                        "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                        "startIdx": 56,
+                      },
+                    },
                     "value": "123",
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 59,
+                      "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                      "startIdx": 55,
+                    },
                   },
                 },
                 "op": "-",
                 "right": {
                   "id": 7,
                   "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "123",
+                      "endIdx": 65,
+                      "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                      "startIdx": 62,
+                    },
+                  },
                   "value": "123",
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 65,
+                    "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                    "startIdx": 55,
+                  },
                 },
               },
             },
@@ -1561,11 +6074,49 @@ exports[`Grammar should parse unary-with-literals 1`] = `
                 "id": 10,
                 "kind": "id",
                 "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 80,
+                    "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                    "startIdx": 79,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 105,
+                  "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                  "startIdx": 75,
+                },
               },
               "type": {
                 "id": 11,
                 "kind": "id",
                 "name": "bool",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "bool",
+                    "endIdx": 86,
+                    "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                    "startIdx": 82,
+                  },
+                },
               },
               "value": {
                 "id": 16,
@@ -1577,7 +6128,32 @@ exports[`Grammar should parse unary-with-literals 1`] = `
                   "operand": {
                     "id": 12,
                     "kind": "booleanLiteral",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "true",
+                        "endIdx": 94,
+                        "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                        "startIdx": 90,
+                      },
+                    },
                     "value": true,
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 94,
+                      "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                      "startIdx": 89,
+                    },
                   },
                 },
                 "op": "||",
@@ -1588,7 +6164,44 @@ exports[`Grammar should parse unary-with-literals 1`] = `
                   "operand": {
                     "id": 14,
                     "kind": "booleanLiteral",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "false",
+                        "endIdx": 104,
+                        "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                        "startIdx": 99,
+                      },
+                    },
                     "value": false,
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 104,
+                      "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                      "startIdx": 98,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 104,
+                    "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+                    "startIdx": 89,
                   },
                 },
               },
@@ -1601,9 +6214,46 @@ exports[`Grammar should parse unary-with-literals 1`] = `
         "id": 1,
         "kind": "id",
         "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 113,
+          "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+          "startIdx": 0,
+        },
       },
     },
   ],
   "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 113,
+      "sourceString": "house MyHouse {
+    handle JOIN {
+        let x: int = -123 - 123;
+        let y: bool = !true || !false;
+    }
+}",
+      "startIdx": 0,
+    },
+  },
 }
 `;
