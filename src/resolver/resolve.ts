@@ -1,3 +1,4 @@
+import { InternalError, ResolveError } from '../errors';
 import {
     AstExpression,
     AstExpressionField,
@@ -31,7 +32,10 @@ export function resolveType(type: AstId, sctx: StatementContext): Type {
             return { type: 'bool' };
         default:
             if (!sctx.hasType(type.name)) {
-                throw new Error(`Type '${type.name}' not found`);
+                throw new ResolveError(
+                    `Type '${type.name}' not found`,
+                    type.source,
+                );
             }
             return sctx.getType(type.name)!;
     }
@@ -43,8 +47,7 @@ export function resolveStructPath(path: AstExpressionField): string[] {
     } else if (path.struct.kind === 'expressionField') {
         return resolveStructPath(path.struct).concat(path.field.name);
     } else {
-        // must never happen
-        throw new Error('Invalid struct path');
+        throw new InternalError('Invalid struct path', path.source);
     }
 }
 
@@ -60,7 +63,10 @@ export function resolveExpression(
     switch (expression.kind) {
         case 'expressionId': {
             if (!sctx.hasVariable(expression.name.name)) {
-                throw new Error(`Variable '${expression.name.name}' not found`);
+                throw new ResolveError(
+                    `Variable '${expression.name.name}' not found`,
+                    expression.name.source,
+                );
             }
             return registerExpression(
                 ctx,
@@ -80,8 +86,17 @@ export function resolveExpression(
                 case '-':
                 case '*':
                 case '/':
-                    if (left.type !== 'int' || right.type !== 'int') {
-                        throw new Error('Operands must be integers');
+                    if (left.type !== 'int') {
+                        throw new ResolveError(
+                            `Operands must be integers, got '${left.type}'`,
+                            expression.left.source,
+                        );
+                    }
+                    if (right.type !== 'int') {
+                        throw new ResolveError(
+                            `Operands must be integers, got '${right.type}'`,
+                            expression.right.source,
+                        );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'int',
@@ -90,8 +105,17 @@ export function resolveExpression(
                 case '<=':
                 case '>':
                 case '>=':
-                    if (left.type !== 'int' || right.type !== 'int') {
-                        throw new Error('Operands must be integers');
+                    if (left.type !== 'int') {
+                        throw new ResolveError(
+                            `Operands must be integers, got '${left.type}'`,
+                            expression.left.source,
+                        );
+                    }
+                    if (right.type !== 'int') {
+                        throw new ResolveError(
+                            `Operands must be integers, got '${right.type}'`,
+                            expression.right.source,
+                        );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'bool',
@@ -99,15 +123,27 @@ export function resolveExpression(
                 case '==':
                 case '!=':
                     if (left.type !== right.type) {
-                        throw new Error('Operands must be of the same type');
+                        throw new ResolveError(
+                            `Operands must be of the same type, got '${left.type}' and '${right.type}'`,
+                            expression.source,
+                        );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'bool',
                     });
                 case '&&':
                 case '||':
-                    if (left.type !== 'bool' || right.type !== 'bool') {
-                        throw new Error('Operands must be booleans');
+                    if (left.type !== 'bool') {
+                        throw new ResolveError(
+                            `Operands must be booleans, got '${left.type}'`,
+                            expression.left.source,
+                        );
+                    }
+                    if (right.type !== 'bool') {
+                        throw new ResolveError(
+                            `Operands must be booleans, got '${right.type}'`,
+                            expression.right.source,
+                        );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'bool',
@@ -120,14 +156,20 @@ export function resolveExpression(
             switch (expression.op) {
                 case '-':
                     if (operand.type !== 'int') {
-                        throw new Error('Operand must be an integer');
+                        throw new ResolveError(
+                            `Operand must be an integer, got '${operand.type}'`,
+                            expression.operand.source,
+                        );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'int',
                     });
                 case '!':
                     if (operand.type !== 'bool') {
-                        throw new Error('Operand must be a boolean');
+                        throw new ResolveError(
+                            `Operand must be a boolean, got '${operand.type}'`,
+                            expression.operand.source,
+                        );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'bool',
@@ -138,13 +180,19 @@ export function resolveExpression(
         case 'expressionField': {
             const struct = resolveExpression(expression.struct, ctx, sctx);
             if (struct.type !== 'struct') {
-                throw new Error('Expression must be a struct');
+                throw new ResolveError(
+                    `Expected a struct, got '${struct.type}'`,
+                    expression.struct.source,
+                );
             }
             const field = struct.fields.find(
                 (field) => field.name === expression.field.name,
             );
             if (!field) {
-                throw new Error(`Field '${expression.field.name}' not found`);
+                throw new ResolveError(
+                    `Field '${expression.field.name}' not found in struct '${struct.name}'`,
+                    expression.field.source,
+                );
             }
             return registerExpression(ctx, expression.id, field.type);
         }
@@ -163,8 +211,9 @@ export function processStatement(
                 statement.lvalue.kind !== 'expressionId' &&
                 statement.lvalue.kind !== 'expressionField'
             ) {
-                throw new Error(
+                throw new ResolveError(
                     `'${statement.lvalue.kind}' cannot be assigned`,
+                    statement.source,
                 );
             }
             const variableType = resolveExpression(statement.lvalue, ctx, sctx);
@@ -176,16 +225,23 @@ export function processStatement(
 
             if (statement.kind === 'statementAssign') {
                 if (variableType.type !== expressionType.type) {
-                    throw new Error(
+                    throw new ResolveError(
                         `Cannot assign '${expressionType.type}' to '${variableType.type}'`,
+                        statement.source,
                     );
                 }
             } else {
-                if (
-                    variableType.type !== 'int' ||
-                    expressionType.type !== 'int'
-                ) {
-                    throw new Error('Operands must be integers');
+                if (variableType.type !== 'int') {
+                    throw new ResolveError(
+                        `Operands must be integers, got '${variableType.type}'`,
+                        statement.source,
+                    );
+                }
+                if (expressionType.type !== 'int') {
+                    throw new ResolveError(
+                        `Operands must be integers, got '${expressionType.type}'`,
+                        statement.source,
+                    );
                 }
             }
             break;
@@ -197,7 +253,10 @@ export function processStatement(
                 sctx,
             );
             if (conditionType.type !== 'bool') {
-                throw new Error('Condition must be a boolean');
+                throw new ResolveError(
+                    `Condition must be a boolean expression, got '${conditionType.type}'`,
+                    statement.condition.source,
+                );
             }
             const sctxThen = sctx.clone();
             for (const thenStatement of statement.then) {
@@ -213,17 +272,22 @@ export function processStatement(
         }
         case 'statementLet': {
             if (sctx.hasVariable(statement.name.name)) {
-                throw new Error(
+                throw new ResolveError(
                     `Variable '${statement.name.name}' already exists`,
+                    statement.name.source,
                 );
             }
             if (statement.type.name === 'void') {
-                throw new Error("Cannot declare a variable of type 'void'");
+                throw new ResolveError(
+                    "Cannot declare a variable of type 'void'",
+                    statement.type.source,
+                );
             }
             const valueType = resolveExpression(statement.value, ctx, sctx);
             if (statement.type.name !== valueType.type) {
-                throw new Error(
+                throw new ResolveError(
                     `Cannot assign '${valueType.type}' to '${statement.type.name}'`,
+                    statement.source,
                 );
             }
             sctx.addVariable(statement.name.name, valueType);
@@ -232,8 +296,9 @@ export function processStatement(
         case 'statementExpression': {
             const type = resolveExpression(statement.expression, ctx, sctx);
             if (type.type !== 'void') {
-                throw new Error(
-                    `Expression of type ${type.type} cannot be used as a statement`,
+                throw new ResolveError(
+                    `Expression of type '${type.type}' cannot be used as a statement`,
+                    statement.source,
                 );
             }
             break;
@@ -251,24 +316,30 @@ export function processStatDefinition(
 
     const statStruct = sctx.getVariable(statKind)!;
     if (statStruct.type !== 'struct') {
-        // must never happen
-        throw new Error('Global must be a struct');
+        throw new InternalError('Global must be a struct', stat.source);
     }
 
     // Check if the stat already exists
     if (statStruct.fields.find((field) => field.name === stat.name.name)) {
-        throw new Error(`Global stat '${stat.name.name}' already exists`);
+        throw new ResolveError(
+            `Global stat '${stat.name.name}' already exists`,
+            stat.source,
+        );
     }
 
     // Check for `void` type
     if (stat.type.name === 'void') {
-        throw new Error("Cannot declare a stat of type 'void'");
+        throw new ResolveError(
+            "Cannot declare a stat of type 'void'",
+            stat.type.source,
+        );
     }
 
     // Check if there are already 20 stats
     if (statStruct.fields.length >= 20) {
-        throw new Error(
+        throw new ResolveError(
             `Cannot have more than 20 persistent ${statKind} stats`,
+            stat.source,
         );
     }
 
@@ -320,7 +391,10 @@ export function processHouse(
                 break;
             case 'handler': {
                 if (!(item.event.name in EventType)) {
-                    throw new Error(`Event '${item.event.name}' not found`);
+                    throw new ResolveError(
+                        `Event '${item.event.name}' not found`,
+                        item.event.source,
+                    );
                 }
                 ctx.getHouse(house.name.name)!.handlers.push(
                     item.event.name as EventType,
