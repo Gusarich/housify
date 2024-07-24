@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   `EmulatedHouse.reset` method: PR [#72](https://github.com/Gusarich/housify/pull/72)
+-   The `EmulatedHouse.reset` method: PR [#72](https://github.com/Gusarich/housify/pull/72)
 -   Housing types such as `ActionKind` are now available in the module exports: PR [#72](https://github.com/Gusarich/housify/pull/72)
 
 ## [0.2.0] - 2024-07-24
