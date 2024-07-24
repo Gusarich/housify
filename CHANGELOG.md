@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Actions emulator MVP has been implemented: PR [#45](https://github.com/Gusarich/housify/pull/45)
 -   Augmented assignment operators: PR [#63](https://github.com/Gusarich/housify/pull/63)
+-   Constants via `const` statement: PR [#65](https://github.com/Gusarich/housify/pull/65)
 
 ### Changed
 
