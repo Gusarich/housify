@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+-   Compilation errors now include source location, as well as more meaningful error messages: PR [#64](https://github.com/Gusarich/housify/pull/64)
+
 ### Fixed
 
 -   Temporary stat names scoping moved from expressions to expressions in statements which fixes problem with nested expressions: PR [#62](https://github.com/Gusarich/housify/pull/62)
