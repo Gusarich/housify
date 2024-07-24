@@ -22,6 +22,12 @@ export class EmulatedHouse {
         }
     }
 
+    reset() {
+        this.#globalStats.clear();
+        this.#playerStats.clear();
+        this.#uncollectedActions = [];
+    }
+
     emit(event: EventType, player: string) {
         if (!this.handlers.has(event)) {
             return;

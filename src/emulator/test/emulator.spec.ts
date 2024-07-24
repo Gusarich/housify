@@ -35,6 +35,14 @@ describe('Emulator', () => {
         expect(house.playerStat('player2', 'counter')).toBe(2);
         expect(house.playerStat('player3', 'counter')).toBe(2);
         expect(house.playerStat('player4', 'counter')).toBe(0);
+
+        house.reset();
+
+        house.emit(EventType.JOIN, 'player1');
+        const actions2 = house.collect();
+        expect(actions2).toHaveLength(0);
+        expect(house.globalStat('counter')).toBe(1);
+        expect(house.playerStat('player1', 'counter')).toBe(1);
     });
 
     it('should emulate arithmetics', () => {
