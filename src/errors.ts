@@ -10,7 +10,7 @@ export class CompilationError extends Error {
     }
 
     toString(): string {
-        return `${this.name}: ${this.message}\n${this.location.interval.getLineAndColumnMessage()}`;
+        return `${this.location.interval.getLineAndColumnMessage()}\n${this.name}: ${this.message}`;
     }
 }
 
@@ -20,6 +20,12 @@ export class InternalError extends CompilationError {
 
 export class ParseError extends CompilationError {
     name: string = 'ParseError';
+
+    toString(): string {
+        // errors from ohm-js already include the location
+        // we might want to handle this differently in the future
+        return this.message;
+    }
 }
 
 export class ResolveError extends CompilationError {

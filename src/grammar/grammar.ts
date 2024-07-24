@@ -1,3 +1,4 @@
+import { InternalError, ParseError } from '../errors';
 import {
     AstAugmentedAssignOp,
     AstModule,
@@ -126,7 +127,10 @@ semantics.addOperation<AstNode>('astOfStatement', {
                     break;
                 default:
                     // should never happen
-                    throw Error(`Unknown operator ${operator.sourceString}`);
+                    throw new InternalError(
+                        `Unknown operator`,
+                        getSourceLocation(this),
+                    );
             }
             return createAstNode({
                 kind: 'statementAugmentedAssign',
@@ -385,7 +389,9 @@ semantics.addOperation<AstNode>('astOfExpression', {
 export function parse(src: string): AstModule {
     const matchResult = grammar.match(src);
     if (matchResult.failed()) {
-        throw Error(matchResult.message);
+        throw new ParseError(matchResult.message ?? '', {
+            interval: matchResult.getInterval(),
+        });
     }
     return semantics(matchResult).astOfModule();
 }
