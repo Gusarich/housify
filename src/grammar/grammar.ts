@@ -150,6 +150,15 @@ semantics.addOperation<AstNode>('astOfStatement', {
             source: getSourceLocation(this),
         });
     },
+    StatementConst(_arg0, name, _arg2, type, _arg4, expression, _arg6) {
+        return createAstNode({
+            kind: 'statementConst',
+            name: name.astOfExpression(),
+            type: type.astOfType(),
+            value: expression.astOfExpression(),
+            source: getSourceLocation(this),
+        });
+    },
     StatementExpression(expression, _arg1) {
         return createAstNode({
             kind: 'statementExpression',

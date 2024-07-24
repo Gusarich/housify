@@ -2550,6 +2550,418 @@ exports[`Grammar should parse booleans 1`] = `
 }
 `;
 
+exports[`Grammar should parse constants 1`] = `
+{
+  "id": 21,
+  "items": [
+    {
+      "id": 20,
+      "items": [
+        {
+          "event": {
+            "id": 2,
+            "kind": "id",
+            "name": "BLOCK_BREAK",
+            "source": {
+              "interval": Interval {
+                "_contents": "BLOCK_BREAK",
+                "endIdx": 38,
+                "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                "startIdx": 27,
+              },
+            },
+          },
+          "id": 19,
+          "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 127,
+              "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+              "startIdx": 20,
+            },
+          },
+          "statements": [
+            {
+              "id": 6,
+              "kind": "statementLet",
+              "name": {
+                "id": 3,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 54,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 53,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 64,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                  "startIdx": 49,
+                },
+              },
+              "type": {
+                "id": 4,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 59,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 56,
+                  },
+                },
+              },
+              "value": {
+                "id": 5,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "5",
+                    "endIdx": 63,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 62,
+                  },
+                },
+                "value": "5",
+              },
+            },
+            {
+              "id": 10,
+              "kind": "statementConst",
+              "name": {
+                "id": 7,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 80,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 79,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 91,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                  "startIdx": 73,
+                },
+              },
+              "type": {
+                "id": 8,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 85,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 82,
+                  },
+                },
+              },
+              "value": {
+                "id": 9,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "10",
+                    "endIdx": 90,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 88,
+                  },
+                },
+                "value": "10",
+              },
+            },
+            {
+              "id": 18,
+              "kind": "statementConst",
+              "name": {
+                "id": 11,
+                "kind": "id",
+                "name": "z",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "z",
+                    "endIdx": 107,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 106,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 121,
+                  "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                  "startIdx": 100,
+                },
+              },
+              "type": {
+                "id": 12,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 112,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 109,
+                  },
+                },
+              },
+              "value": {
+                "id": 17,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 14,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 13,
+                    "kind": "id",
+                    "name": "x",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "x",
+                        "endIdx": 116,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                        "startIdx": 115,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 116,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                      "startIdx": 115,
+                    },
+                  },
+                },
+                "op": "+",
+                "right": {
+                  "id": 16,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 15,
+                    "kind": "id",
+                    "name": "y",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "y",
+                        "endIdx": 120,
+                        "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                        "startIdx": 119,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 120,
+                      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                      "startIdx": 119,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 120,
+                    "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+                    "startIdx": 115,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 13,
+            "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 129,
+          "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+          "startIdx": 0,
+        },
+      },
+    },
+  ],
+  "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 130,
+      "sourceString": "house MyHouse {
+    handle BLOCK_BREAK {
+        let x: int = 5;
+        const y: int = 10;
+        const z: int = x + y;
+    }
+}
+",
+      "startIdx": 0,
+    },
+  },
+}
+`;
+
 exports[`Grammar should parse field-access 1`] = `
 {
   "id": 29,

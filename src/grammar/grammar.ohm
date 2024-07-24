@@ -17,12 +17,15 @@ Housify {
 
     Statement = StatementAssign
               | StatementLet
+              | StatementConst
               | StatementExpression
               | StatementIf
     
     StatementAssign = Expression ("=" | "+=" | "-=" | "*=" | "/=") Expression ";"
 
     StatementLet = let id ":" Type "=" Expression ";"
+
+    StatementConst = "const" id ":" Type "=" Expression ";"
 
     StatementExpression = Expression ";"
 

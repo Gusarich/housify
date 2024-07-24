@@ -60,6 +60,7 @@ export type AstStatement =
     | AstStatementAssign
     | AstStatementAugmentedAssign
     | AstStatementLet
+    | AstStatementConst
     | AstStatementExpression
     | AstStatementIf;
 
@@ -73,6 +74,15 @@ export type AstStatementAssign = {
 
 export type AstStatementLet = {
     kind: 'statementLet';
+    name: AstId;
+    type: AstId;
+    value: AstExpression;
+    id: number;
+    source: SourceLocation;
+};
+
+export type AstStatementConst = {
+    kind: 'statementConst';
     name: AstId;
     type: AstId;
     value: AstExpression;
