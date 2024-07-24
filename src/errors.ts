@@ -14,6 +14,10 @@ export class CompilationError extends Error {
     }
 }
 
+export class InternalError extends CompilationError {
+    name: string = 'InternalError';
+}
+
 export class ParseError extends CompilationError {
     name: string = 'ParseError';
 }
