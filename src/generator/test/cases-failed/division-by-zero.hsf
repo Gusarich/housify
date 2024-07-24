@@ -1,0 +1,5 @@
+house MyHouse {
+    handle JOIN {
+        let x: int = 1 / 0;
+    }
+}
