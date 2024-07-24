@@ -39,7 +39,9 @@ describe('Constant Evaluator', () => {
                 expect(
                     (e as ConstantEvaluationError).toString(),
                 ).toMatchSnapshot();
+                return;
             }
+            throw new Error('Expected to fail');
         });
     }
 });

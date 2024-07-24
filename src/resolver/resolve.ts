@@ -71,7 +71,7 @@ export function resolveExpression(
             return registerExpression(
                 ctx,
                 expression.id,
-                sctx.getVariable(expression.name.name)!,
+                sctx.getVariable(expression.name.name)!.type,
             );
         }
         case 'integerLiteral':
@@ -216,12 +216,32 @@ export function processStatement(
                     statement.source,
                 );
             }
+
             const variableType = resolveExpression(statement.lvalue, ctx, sctx);
             const expressionType = resolveExpression(
                 statement.value,
                 ctx,
                 sctx,
             );
+
+            if (statement.lvalue.kind === 'expressionId') {
+                const variable = sctx.getVariable(statement.lvalue.name.name)!;
+                if (variable.constant) {
+                    throw new ResolveError(
+                        `Cannot assign to constant '${statement.lvalue.name.name}'`,
+                        statement.source,
+                    );
+                }
+            } else if (statement.lvalue.kind === 'expressionField') {
+                const path = resolveStructPath(statement.lvalue);
+                const struct = sctx.getVariable(path[0]!)!;
+                if (struct.constant) {
+                    throw new ResolveError(
+                        `Cannot assign to a field of a constant struct '${path[0]}'`,
+                        statement.source,
+                    );
+                }
+            }
 
             if (statement.kind === 'statementAssign') {
                 if (variableType.type !== expressionType.type) {
@@ -270,7 +290,8 @@ export function processStatement(
             }
             break;
         }
-        case 'statementLet': {
+        case 'statementLet':
+        case 'statementConst': {
             if (sctx.hasVariable(statement.name.name)) {
                 throw new ResolveError(
                     `Variable '${statement.name.name}' already exists`,
@@ -290,7 +311,10 @@ export function processStatement(
                     statement.source,
                 );
             }
-            sctx.addVariable(statement.name.name, valueType);
+            sctx.addVariable(statement.name.name, {
+                type: valueType,
+                constant: statement.kind === 'statementConst',
+            });
             break;
         }
         case 'statementExpression': {
@@ -314,7 +338,7 @@ export function processStatDefinition(
 ) {
     const statKind = stat.kind === 'globalStat' ? 'global' : 'player';
 
-    const statStruct = sctx.getVariable(statKind)!;
+    const statStruct = sctx.getVariable(statKind)!.type;
     if (statStruct.type !== 'struct') {
         throw new InternalError('Global must be a struct', stat.source);
     }
@@ -374,14 +398,20 @@ export function processHouse(
         handlers: [],
     });
     sctx.addVariable('global', {
-        type: 'struct',
-        name: 'global',
-        fields: [],
+        type: {
+            type: 'struct',
+            name: 'global',
+            fields: [],
+        },
+        constant: false,
     });
     sctx.addVariable('player', {
-        type: 'struct',
-        name: 'player',
-        fields: [],
+        type: {
+            type: 'struct',
+            name: 'player',
+            fields: [],
+        },
+        constant: false,
     });
     for (const item of house.items) {
         switch (item.kind) {

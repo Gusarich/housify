@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Resolver should fail assign-constant 1`] = `
+"Line 6, col 9:
+  5 |         x = 10;
+> 6 |         y = 20;
+              ^~~~~~~
+  7 |     }
+
+ResolveError: Cannot assign to constant 'y'"
+`;
+
 exports[`Resolver should fail assignment-type-mismatch-in-else 1`] = `
 "Line 7, col 13:
   6 |         } else {

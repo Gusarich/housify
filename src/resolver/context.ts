@@ -2,8 +2,13 @@ import { AstExpression } from '../grammar/ast';
 import { EventType } from '../housing/events';
 import { Type } from './type';
 
+export type Variable = {
+    type: Type;
+    constant: boolean;
+};
+
 export class StatementContext {
-    variables: Map<string, Type>;
+    variables: Map<string, Variable>;
     types: Map<string, Type>;
 
     constructor() {
@@ -13,8 +18,8 @@ export class StatementContext {
 
     clone() {
         const sctx = new StatementContext();
-        for (const [name, type] of this.variables) {
-            sctx.addVariable(name, type);
+        for (const [name, variable] of this.variables) {
+            sctx.addVariable(name, variable);
         }
         for (const [name, type] of this.types) {
             sctx.addType(name, type);
@@ -22,7 +27,7 @@ export class StatementContext {
         return sctx;
     }
 
-    addVariable(name: string, type: Type) {
+    addVariable(name: string, type: Variable) {
         this.variables.set(name, type);
     }
 
