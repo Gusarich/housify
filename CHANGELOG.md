@@ -9,17 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--   Actions emulator MVP has been implemented: PR [#45](https://github.com/Gusarich/housify/pull/45)
--   Augmented assignment operators: PR [#63](https://github.com/Gusarich/housify/pull/63)
+### Changed
+
+### Fixed
+
+## [0.2.0] - 2024-07-24
+
+### Added
+
+-   Actions Emulator MVP: PR [#45](https://github.com/Gusarich/housify/pull/45)
+-   Augmented Assignment: PR [#63](https://github.com/Gusarich/housify/pull/63)
 -   Constants via `const` statement: PR [#65](https://github.com/Gusarich/housify/pull/65)
 
 ### Changed
 
--   Compilation errors now include source location, as well as more meaningful error messages: PR [#64](https://github.com/Gusarich/housify/pull/64)
+-   Compilation errors now include source location and provide more meaningful error messages: PR [#64](https://github.com/Gusarich/housify/pull/64)
 
 ### Fixed
 
--   Temporary stat names scoping moved from expressions to expressions in statements which fixes problem with nested expressions: PR [#62](https://github.com/Gusarich/housify/pull/62)
+-   Temporary stat names scoping moved from expressions to statements, fixing issues with nested expressions: PR [#62](https://github.com/Gusarich/housify/pull/62)
 
 ## [0.1.1] - 2024-07-23
 
