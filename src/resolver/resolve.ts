@@ -64,6 +64,13 @@ export function resolveExpression(
 
     switch (expression.kind) {
         case 'expressionId': {
+            if (ctx.hasStaticConstant(expression.name.name)) {
+                return registerExpression(
+                    ctx,
+                    expression.id,
+                    ctx.getStaticConstant(expression.name.name)!.type,
+                );
+            }
             if (!sctx.hasVariable(expression.name.name)) {
                 throw new ResolveError(
                     `Variable '${expression.name.name}' not found`,
