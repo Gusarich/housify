@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+-   Static constants that are calculated at compile time: PR [#78](https://github.com/Gusarich/housify/pull/78)
+
 ### Changed
 
 ### Fixed
