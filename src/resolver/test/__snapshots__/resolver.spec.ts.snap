@@ -200,6 +200,16 @@ exports[`Resolver should fail static-constants-cannot-evaluate 1`] = `
 ConstantEvaluationError: Division by zero"
 `;
 
+exports[`Resolver should fail static-constants-cannot-evaluate2 1`] = `
+"Line 2, col 17:
+  1 | const x: int = 123 + 456;
+> 2 | const y: bool = a + 1;
+                      ^
+  3 | 
+
+ConstantEvaluationError: No static constant 'a' found"
+`;
+
 exports[`Resolver should fail unary-negation-of-bool 1`] = `
 "Line 3, col 24:
   2 |     handle JOIN {

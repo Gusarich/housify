@@ -1,0 +1,8 @@
+const x: int = 123 + 456;
+const y: bool = a + 1;
+
+house MyHouse {
+
+}
+
+const z: int = 12 * 3 + 1;
