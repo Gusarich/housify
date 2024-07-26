@@ -1991,6 +1991,119 @@ exports[`Generator should generate player-stat 1`] = `
 }
 `;
 
+exports[`Generator should generate static-constants 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "100",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "GREATER_THAN",
+                  "stat": "$z",
+                  "value": "%stat.player/$$0%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$1",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$1",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$3",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$3",
+                  "value": "1",
+                },
+              ],
+              "else": [],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$0",
+                  "value": "100",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$1",
+                  "value": "%stat.player/$$0%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$1",
+                  "value": "%stat.player/$z%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$a",
+                  "value": "%stat.player/$$1%",
+                },
+              ],
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "MyHouse",
+      "playerStats": [],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
 exports[`Generator should generate two-counters 1`] = `
 {
   "houses": [
