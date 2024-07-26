@@ -1,4 +1,5 @@
 import { InternalError, ResolveError } from '../errors';
+import { evaluateConstantExpression } from '../generator/evaluate';
 import {
     AstExpression,
     AstExpressionField,
@@ -8,6 +9,7 @@ import {
     AstModule,
     AstPlayerStat,
     AstStatement,
+    AstStatementConst,
 } from '../grammar/ast';
 import { EventType } from '../housing/events';
 import { CompilerContext, StatementContext } from './context';
@@ -22,7 +24,7 @@ export function registerExpression(
     return type;
 }
 
-export function resolveType(type: AstId, sctx: StatementContext): Type {
+export function resolveType(type: AstId, ctx: CompilerContext): Type {
     switch (type.name) {
         case 'void':
             return { type: 'void' };
@@ -31,13 +33,13 @@ export function resolveType(type: AstId, sctx: StatementContext): Type {
         case 'bool':
             return { type: 'bool' };
         default:
-            if (!sctx.hasType(type.name)) {
+            if (!ctx.hasType(type.name)) {
                 throw new ResolveError(
                     `Type '${type.name}' not found`,
                     type.source,
                 );
             }
-            return sctx.getType(type.name)!;
+            return ctx.getType(type.name)!;
     }
 }
 
@@ -368,7 +370,7 @@ export function processStatDefinition(
     }
 
     // Add the stat
-    const type = resolveType(stat.type, sctx);
+    const type = resolveType(stat.type, ctx);
 
     statStruct.fields.push({
         name: stat.name.name,
@@ -387,11 +389,9 @@ export function processStatDefinition(
     }
 }
 
-export function processHouse(
-    house: AstHouse,
-    ctx: CompilerContext,
-    sctx: StatementContext,
-) {
+export function processHouse(house: AstHouse, ctx: CompilerContext) {
+    const sctx = new StatementContext();
+
     ctx.addHouse(house.name.name, {
         globalStats: [],
         playerStats: [],
@@ -413,6 +413,7 @@ export function processHouse(
         },
         constant: false,
     });
+
     for (const item of house.items) {
         switch (item.kind) {
             case 'playerStat':
@@ -440,9 +441,42 @@ export function processHouse(
     }
 }
 
+export function processStaticConstant(
+    constant: AstStatementConst,
+    ctx: CompilerContext,
+) {
+    if (ctx.hasStaticConstant(constant.name.name)) {
+        throw new ResolveError(
+            `Static constant '${constant.name.name}' already exists`,
+            constant.source,
+        );
+    }
+
+    if (constant.type.name === 'void') {
+        throw new ResolveError(
+            "Cannot declare a constant of type 'void'",
+            constant.type.source,
+        );
+    }
+
+    const value = evaluateConstantExpression(constant.value, ctx);
+    const type = resolveType(constant.type, ctx);
+
+    ctx.addStaticConstant(constant.name.name, {
+        type,
+        value,
+    });
+}
+
 export function resolveModule(module: AstModule, ctx: CompilerContext) {
-    const sctx = new StatementContext();
     for (const item of module.items) {
-        processHouse(item, ctx, sctx.clone());
+        switch (item.kind) {
+            case 'house':
+                processHouse(item, ctx);
+                break;
+            case 'statementConst':
+                processStaticConstant(item, ctx);
+                break;
+        }
     }
 }
