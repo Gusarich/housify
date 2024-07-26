@@ -12,7 +12,7 @@ export type AstModule = {
     source: SourceLocation;
 };
 
-export type AstModuleItem = AstHouse;
+export type AstModuleItem = AstHouse | AstStatementConst;
 
 export type AstHouse = {
     kind: 'house';
