@@ -190,6 +190,16 @@ exports[`Resolver should fail stat-assignment-type-mismatch2 1`] = `
 ResolveError: Cannot assign 'bool' to 'int'"
 `;
 
+exports[`Resolver should fail static-constants-cannot-evaluate 1`] = `
+"Line 2, col 17:
+  1 | const x: int = 123 + 456;
+> 2 | const y: bool = 3 / 0;
+                      ^~~~~
+  3 | 
+
+ConstantEvaluationError: Division by zero"
+`;
+
 exports[`Resolver should fail unary-negation-of-bool 1`] = `
 "Line 3, col 24:
   2 |     handle JOIN {
@@ -608,6 +618,8 @@ CompilerContext {
       ],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -730,6 +742,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -786,6 +800,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -811,6 +827,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -867,6 +885,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -908,6 +928,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -967,6 +989,8 @@ CompilerContext {
       ],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1001,6 +1025,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1047,6 +1073,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1084,6 +1112,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1146,6 +1176,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1165,6 +1197,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1346,6 +1380,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1405,6 +1441,8 @@ CompilerContext {
       ],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1446,6 +1484,134 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve static-constants 1`] = `
+CompilerContext {
+  "expressions": Map {},
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [],
+      "handlers": [],
+      "playerStats": [],
+    },
+  },
+  "staticConstants": Map {
+    "x" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "579",
+    },
+    "y" => {
+      "type": {
+        "type": "bool",
+      },
+      "value": "1",
+    },
+    "z" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "37",
+    },
+  },
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve static-constants-dependencies 1`] = `
+CompilerContext {
+  "expressions": Map {},
+  "houses": Map {},
+  "staticConstants": Map {
+    "x" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "579",
+    },
+    "y" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "6949",
+    },
+    "z" => {
+      "type": {
+        "type": "bool",
+      },
+      "value": "0",
+    },
+  },
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve static-constants-usage 1`] = `
+CompilerContext {
+  "expressions": Map {
+    12 => {
+      "type": "int",
+    },
+    13 => {
+      "type": "int",
+    },
+    14 => {
+      "type": "int",
+    },
+    19 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    22 => {
+      "type": "int",
+    },
+    23 => {
+      "type": "int",
+    },
+    24 => {
+      "type": "int",
+    },
+    29 => {
+      "type": "int",
+    },
+    31 => {
+      "type": "int",
+    },
+    32 => {
+      "type": "int",
+    },
+    34 => {
+      "type": "int",
+    },
+    35 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [],
+    },
+  },
+  "staticConstants": Map {
+    "x" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "1000",
+    },
+  },
+  "types": Map {},
 }
 `;
 
@@ -1520,6 +1686,8 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;
 
@@ -1545,5 +1713,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "staticConstants": Map {},
+  "types": Map {},
 }
 `;

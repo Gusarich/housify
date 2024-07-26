@@ -1,0 +1,9 @@
+const x: int = 100 * 10;
+
+house MyHouse {
+    handle JOIN {
+        const y: int = x + 1;
+        const z: int = x + y + 1;
+        let a: int = x + y + z;
+    }
+}

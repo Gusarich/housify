@@ -3,7 +3,11 @@ import { loadCases } from '../../utils/loadCases';
 import { resetNodeId } from '../../grammar/ast';
 import { parse } from '../../grammar/grammar';
 import { CompilerContext } from '../context';
-import { ResolveError } from '../../errors';
+import {
+    CompilationError,
+    ConstantEvaluationError,
+    ResolveError,
+} from '../../errors';
 
 describe('Resolver', () => {
     beforeEach(() => {
@@ -26,8 +30,12 @@ describe('Resolver', () => {
             try {
                 resolveModule(moduleAst, ctx);
             } catch (e) {
-                expect(e).toBeInstanceOf(ResolveError);
-                expect((e as ResolveError).toString()).toMatchSnapshot();
+                try {
+                    expect(e).toBeInstanceOf(ResolveError);
+                } catch {
+                    expect(e).toBeInstanceOf(ConstantEvaluationError);
+                }
+                expect((e as CompilationError).toString()).toMatchSnapshot();
                 return;
             }
             throw new Error('Expected to fail');
