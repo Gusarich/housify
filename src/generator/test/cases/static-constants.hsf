@@ -1,0 +1,11 @@
+const x: int = 100;
+const y: bool = x > 50;
+
+house MyHouse {
+    handle JOIN {
+        const z: int = x + 1;
+        if (z > x && y) {
+            let a: int = x + z;
+        }
+    }
+}

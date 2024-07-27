@@ -41,6 +41,15 @@ semantics.addOperation<AstNode>('astOfModuleItem', {
             source: getSourceLocation(this),
         });
     },
+    StatementConst(_arg0, name, _arg2, type, _arg4, expression, _arg6) {
+        return createAstNode({
+            kind: 'statementConst',
+            name: name.astOfExpression(),
+            type: type.astOfType(),
+            value: expression.astOfExpression(),
+            source: getSourceLocation(this),
+        });
+    },
 });
 
 semantics.addOperation<AstNode>('astOfHouseItem', {

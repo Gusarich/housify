@@ -126,6 +126,15 @@ exports[`Grammar should fail stat-definition-after-handler 1`] = `
 Expected "}" or "handle""
 `;
 
+exports[`Grammar should fail static-constant-no-value 1`] = `
+"Line 2, col 13:
+  1 | const x: int = 123;
+> 2 | const y: int;
+                  ^
+  3 | 
+Expected "=""
+`;
+
 exports[`Grammar should parse arithmetics 1`] = `
 {
   "id": 14,
@@ -5764,6 +5773,302 @@ exports[`Grammar should parse statement-expression 1`] = `
     }
 }
 ",
+      "startIdx": 0,
+    },
+  },
+}
+`;
+
+exports[`Grammar should parse static-constants 1`] = `
+{
+  "id": 15,
+  "items": [
+    {
+      "id": 4,
+      "kind": "statementConst",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "x",
+        "source": {
+          "interval": Interval {
+            "_contents": "x",
+            "endIdx": 7,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 6,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 19,
+          "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+          "startIdx": 0,
+        },
+      },
+      "type": {
+        "id": 2,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 12,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 9,
+          },
+        },
+      },
+      "value": {
+        "id": 3,
+        "kind": "integerLiteral",
+        "source": {
+          "interval": Interval {
+            "_contents": "123",
+            "endIdx": 18,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 15,
+          },
+        },
+        "value": "123",
+      },
+    },
+    {
+      "id": 8,
+      "kind": "statementConst",
+      "name": {
+        "id": 5,
+        "kind": "id",
+        "name": "y",
+        "source": {
+          "interval": Interval {
+            "_contents": "y",
+            "endIdx": 27,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 26,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 39,
+          "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+          "startIdx": 20,
+        },
+      },
+      "type": {
+        "id": 6,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 32,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 29,
+          },
+        },
+      },
+      "value": {
+        "id": 7,
+        "kind": "integerLiteral",
+        "source": {
+          "interval": Interval {
+            "_contents": "456",
+            "endIdx": 38,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 35,
+          },
+        },
+        "value": "456",
+      },
+    },
+    {
+      "id": 10,
+      "items": [],
+      "kind": "house",
+      "name": {
+        "id": 9,
+        "kind": "id",
+        "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 54,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 47,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 59,
+          "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+          "startIdx": 41,
+        },
+      },
+    },
+    {
+      "id": 14,
+      "kind": "statementConst",
+      "name": {
+        "id": 11,
+        "kind": "id",
+        "name": "z",
+        "source": {
+          "interval": Interval {
+            "_contents": "z",
+            "endIdx": 68,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 67,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 80,
+          "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+          "startIdx": 61,
+        },
+      },
+      "type": {
+        "id": 12,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 73,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 70,
+          },
+        },
+      },
+      "value": {
+        "id": 13,
+        "kind": "integerLiteral",
+        "source": {
+          "interval": Interval {
+            "_contents": "789",
+            "endIdx": 79,
+            "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
+            "startIdx": 76,
+          },
+        },
+        "value": "789",
+      },
+    },
+  ],
+  "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 80,
+      "sourceString": "const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;",
       "startIdx": 0,
     },
   },

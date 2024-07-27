@@ -1,7 +1,7 @@
 Housify {
     Module = ModuleItem*
 
-    ModuleItem = House
+    ModuleItem = House | StatementConst
     
     House = house id "{" HouseItemTop* HouseItem* "}"
 

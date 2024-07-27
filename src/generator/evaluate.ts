@@ -1,7 +1,11 @@
 import { ConstantEvaluationError } from '../errors';
 import { AstExpression } from '../grammar/ast';
+import { CompilerContext } from '../resolver/context';
 
-export function evaluateConstantExpression(expression: AstExpression): string {
+export function evaluateConstantExpression(
+    expression: AstExpression,
+    ctx: CompilerContext,
+): string {
     switch (expression.kind) {
         case 'integerLiteral':
             if (!/^-?\d+$/.test(expression.value)) {
@@ -15,9 +19,11 @@ export function evaluateConstantExpression(expression: AstExpression): string {
         case 'booleanLiteral':
             return expression.value ? '1' : '0';
         case 'expressionBinary': {
-            const left = parseInt(evaluateConstantExpression(expression.left));
+            const left = parseInt(
+                evaluateConstantExpression(expression.left, ctx),
+            );
             const right = parseInt(
-                evaluateConstantExpression(expression.right),
+                evaluateConstantExpression(expression.right, ctx),
             );
             switch (expression.op) {
                 case '+':
@@ -56,7 +62,7 @@ export function evaluateConstantExpression(expression: AstExpression): string {
         }
         case 'expressionUnary': {
             const operand = parseInt(
-                evaluateConstantExpression(expression.operand),
+                evaluateConstantExpression(expression.operand, ctx),
             );
             switch (expression.op) {
                 case '-':
@@ -66,6 +72,15 @@ export function evaluateConstantExpression(expression: AstExpression): string {
             }
             break;
         }
+        case 'expressionId':
+            if (!ctx.hasStaticConstant(expression.name.name)) {
+                throw new ConstantEvaluationError(
+                    `No static constant '${expression.name.name}' found`,
+                    expression.source,
+                    false,
+                );
+            }
+            return ctx.getStaticConstant(expression.name.name)!.value;
         default:
             throw new ConstantEvaluationError(
                 `Cannot evaluate ${expression.kind}`,

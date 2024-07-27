@@ -102,10 +102,11 @@ export function cloneCompiledPiece(
 
 export function writeExpression(
     expression: AstExpression,
+    ctx: CompilerContext,
     wctx: WriterContext,
 ): string {
     try {
-        const result = evaluateConstantExpression(expression);
+        const result = evaluateConstantExpression(expression, ctx);
         const tempStat = '$$' + getNextTempId();
         wctx.actions.push({
             kind: ActionKind.CHANGE_PLAYER_STAT,
@@ -156,7 +157,7 @@ export function writeExpression(
             );
 
         case 'expressionUnary': {
-            const operand = writeExpression(expression.operand, wctx);
+            const operand = writeExpression(expression.operand, ctx, wctx);
             const tempStat = '$$' + getNextTempId();
 
             switch (expression.op) {
@@ -194,8 +195,8 @@ export function writeExpression(
             return wrapAsPlayerStat(tempStat);
         }
         case 'expressionBinary': {
-            const left = writeExpression(expression.left, wctx);
-            const right = writeExpression(expression.right, wctx);
+            const left = writeExpression(expression.left, ctx, wctx);
+            const right = writeExpression(expression.right, ctx, wctx);
             const tempStat = '$$' + getNextTempId();
 
             switch (expression.op) {
@@ -358,7 +359,11 @@ export function writeExpression(
     }
 }
 
-export function writeStatement(statement: AstStatement, wctx: WriterContext) {
+export function writeStatement(
+    statement: AstStatement,
+    ctx: CompilerContext,
+    wctx: WriterContext,
+) {
     switch (statement.kind) {
         case 'statementLet':
             resetTempId();
@@ -366,7 +371,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
                 stat: '$' + statement.name.name,
-                value: writeExpression(statement.value, wctx),
+                value: writeExpression(statement.value, ctx, wctx),
             });
             break;
         case 'statementAssign':
@@ -389,7 +394,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode,
                     stat: '$' + statement.lvalue.name.name,
-                    value: writeExpression(statement.value, wctx),
+                    value: writeExpression(statement.value, ctx, wctx),
                 });
             } else if (statement.lvalue.kind === 'expressionField') {
                 if (statement.lvalue.struct.kind === 'expressionId') {
@@ -399,7 +404,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                             kind: ActionKind.CHANGE_GLOBAL_STAT,
                             mode,
                             stat: statement.lvalue.field.name,
-                            value: writeExpression(statement.value, wctx),
+                            value: writeExpression(statement.value, ctx, wctx),
                         });
                         break;
                     }
@@ -409,7 +414,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                             kind: ActionKind.CHANGE_PLAYER_STAT,
                             mode,
                             stat: statement.lvalue.field.name,
-                            value: writeExpression(statement.value, wctx),
+                            value: writeExpression(statement.value, ctx, wctx),
                         });
                         break;
                     }
@@ -419,7 +424,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode,
                     stat: '$' + resolveStructPath(statement.lvalue).join('.'),
-                    value: writeExpression(statement.value, wctx),
+                    value: writeExpression(statement.value, ctx, wctx),
                 });
             } else {
                 throw new InternalError('Invalid lvalue', statement.source);
@@ -428,11 +433,11 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
         }
         case 'statementExpression':
             resetTempId();
-            writeExpression(statement.expression, wctx);
+            writeExpression(statement.expression, ctx, wctx);
             break;
         case 'statementIf': {
             resetTempId();
-            const condition = writeExpression(statement.condition, wctx);
+            const condition = writeExpression(statement.condition, ctx, wctx);
 
             const thenWctx: WriterContext = {
                 actions: [],
@@ -441,7 +446,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
                 ctx: wctx.ctx,
             };
             for (const thenStatement of statement.then) {
-                writeStatement(thenStatement, thenWctx);
+                writeStatement(thenStatement, ctx, thenWctx);
             }
 
             const elseWctx: WriterContext = {
@@ -452,7 +457,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
             };
             if (statement.else) {
                 for (const elseStatement of statement.else) {
-                    writeStatement(elseStatement, elseWctx);
+                    writeStatement(elseStatement, ctx, elseWctx);
                 }
             }
 
@@ -482,6 +487,7 @@ export function writeStatement(statement: AstStatement, wctx: WriterContext) {
 
 export function writeHandler(
     ast: AstHandler,
+    ctx: CompilerContext,
     wctx: WriterContext,
 ): CompiledHandler {
     if (!(ast.event.name in EventType)) {
@@ -492,7 +498,7 @@ export function writeHandler(
     }
 
     for (const item of ast.statements) {
-        writeStatement(item, wctx);
+        writeStatement(item, ctx, wctx);
     }
 
     return {
@@ -524,7 +530,7 @@ export function writeHouse(ast: AstHouse, ctx: CompilerContext): CompiledHouse {
     for (const item of ast.items) {
         if (item.kind === 'handler') {
             handlers.push(
-                writeHandler(item, {
+                writeHandler(item, ctx, {
                     globalStats,
                     playerStats,
                     ctx,
@@ -554,7 +560,9 @@ export function writeModule(
     const houses: CompiledHouse[] = [];
 
     for (const item of ast.items) {
-        houses.push(writeHouse(item, ctx));
+        if (item.kind === 'house') {
+            houses.push(writeHouse(item, ctx));
+        }
     }
 
     return {

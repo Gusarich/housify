@@ -1,0 +1,8 @@
+const x: int = 123;
+const y: int = 456;
+
+house MyHouse {
+
+}
+
+const z: int = 789;

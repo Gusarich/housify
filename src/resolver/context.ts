@@ -9,20 +9,15 @@ export type Variable = {
 
 export class StatementContext {
     variables: Map<string, Variable>;
-    types: Map<string, Type>;
 
     constructor() {
         this.variables = new Map();
-        this.types = new Map();
     }
 
     clone() {
         const sctx = new StatementContext();
         for (const [name, variable] of this.variables) {
             sctx.addVariable(name, variable);
-        }
-        for (const [name, type] of this.types) {
-            sctx.addType(name, type);
         }
         return sctx;
     }
@@ -42,22 +37,6 @@ export class StatementContext {
     deleteVariable(name: string) {
         this.variables.delete(name);
     }
-
-    addType(name: string, type: Type) {
-        this.types.set(name, type);
-    }
-
-    getType(name: string) {
-        return this.types.get(name);
-    }
-
-    hasType(name: string) {
-        return this.types.has(name);
-    }
-
-    deleteType(name: string) {
-        this.types.delete(name);
-    }
 }
 
 export type House = {
@@ -74,13 +53,22 @@ export type House = {
     handlers: EventType[];
 };
 
+export type StaticConstant = {
+    type: Type;
+    value: string;
+};
+
 export class CompilerContext {
     expressions: Map<number, Type>;
     houses: Map<string, House>;
+    types: Map<string, Type>;
+    staticConstants: Map<string, StaticConstant>;
 
     constructor() {
         this.expressions = new Map();
         this.houses = new Map();
+        this.types = new Map();
+        this.staticConstants = new Map();
     }
 
     clone() {
@@ -90,6 +78,12 @@ export class CompilerContext {
         }
         for (const [name, house] of this.houses) {
             ctx.addHouse(name, house);
+        }
+        for (const [name, type] of this.types) {
+            ctx.types.set(name, type);
+        }
+        for (const [name, constant] of this.staticConstants) {
+            ctx.addStaticConstant(name, constant);
         }
         return ctx;
     }
@@ -124,5 +118,37 @@ export class CompilerContext {
 
     deleteHouse(name: string) {
         this.houses.delete(name);
+    }
+
+    addType(name: string, type: Type) {
+        this.types.set(name, type);
+    }
+
+    getType(name: string) {
+        return this.types.get(name);
+    }
+
+    hasType(name: string) {
+        return this.types.has(name);
+    }
+
+    deleteType(name: string) {
+        this.types.delete(name);
+    }
+
+    addStaticConstant(name: string, constant: StaticConstant) {
+        this.staticConstants.set(name, constant);
+    }
+
+    getStaticConstant(name: string) {
+        return this.staticConstants.get(name);
+    }
+
+    hasStaticConstant(name: string) {
+        return this.staticConstants.has(name);
+    }
+
+    deleteStaticConstant(name: string) {
+        this.staticConstants.delete(name);
     }
 }
