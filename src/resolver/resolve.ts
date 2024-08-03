@@ -205,6 +205,8 @@ export function resolveExpression(
             }
             return registerExpression(ctx, expression.id, field.type);
         }
+        case 'expressionCall':
+            throw new InternalError('Call expressions are not supported yet');
     }
 }
 

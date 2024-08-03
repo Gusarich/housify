@@ -1,18 +1,21 @@
 Housify {
     Module = ModuleItem*
 
-    ModuleItem = House | StatementConst
+    ModuleItem = House | StatementConst | Function
     
     House = house id "{" HouseItemTop* HouseItem* "}"
 
     HouseItemTop = GlobalStat | PlayerStat
-    HouseItem = Handler
+    HouseItem = Handler | Function
 
     GlobalStat = global id ":" Type ";"
     PlayerStat = player id ":" Type ";"
 
     Handler = handle id "{" Statement* "}"
 
+    Function = "fun" id "(" Parameters ","? ")" ":" Type "{" Statement* "}"
+
+    Parameters = ListOf<Parameter, ",">
     Parameter = id ":" Type
 
     Statement = StatementAssign
@@ -20,6 +23,7 @@ Housify {
               | StatementConst
               | StatementExpression
               | StatementIf
+              | StatementReturn
     
     StatementAssign = Expression ("=" | "+=" | "-=" | "*=" | "/=") Expression ";"
 
@@ -32,6 +36,8 @@ Housify {
     StatementIf = if Expression "{" Statement* "}" ~else --noElse
                 | if Expression "{" Statement* "}" else "{" Statement* "}" --withElse
                 | if Expression "{" Statement* "}" else StatementIf --withElseIf
+    
+    StatementReturn = "return" Expression? ";"
     
     // Expressions are ordered by precedence
     
@@ -67,6 +73,7 @@ Housify {
 
     // Order is important
     ExpressionPrimary = ExpressionField
+                      | ExpressionCall
                       | ExpressionParens
                       | ExpressionLiteral
                       | ExpressionId
@@ -75,6 +82,9 @@ Housify {
     ExpressionId = id
     ExpressionField = ExpressionPrimary "." id
     ExpressionParens = "(" Expression ")"
+    ExpressionCall = id "(" Arguments ","? ")"
+
+    Arguments = ListOf<Expression, ",">
 
     binaryOp = "+" | "-" | "*" | "/" | "==" | "!=" | "<" | "<=" | ">" | ">=" | "&&" | "||"
     unaryOp = "-" | "!"

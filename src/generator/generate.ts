@@ -356,6 +356,11 @@ export function writeExpression(
             }
             return wrapAsPlayerStat(tempStat);
         }
+        case 'expressionCall':
+            throw new InternalError(
+                'Function calls not supported',
+                expression.source,
+            );
     }
 }
 

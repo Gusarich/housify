@@ -6,7 +6,7 @@ exports[`Grammar should fail augmented-assignment-invalid-op 1`] = `
 > 4 |         x |= 1;
                 ^
   5 |     }
-Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
+Expected ";", "(", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
 `;
 
 exports[`Grammar should fail id-identical-to-keyword 1`] = `
@@ -114,7 +114,7 @@ exports[`Grammar should fail no-semicolon2 1`] = `
 > 4 |     }
           ^
   5 | }
-Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
+Expected ";", "(", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
 `;
 
 exports[`Grammar should fail stat-definition-after-handler 1`] = `
@@ -123,7 +123,7 @@ exports[`Grammar should fail stat-definition-after-handler 1`] = `
 > 10 |     player yp: int;
            ^
   11 | }
-Expected "}" or "handle""
+Expected "}", "fun", or "handle""
 `;
 
 exports[`Grammar should fail static-constant-no-value 1`] = `
@@ -4138,6 +4138,4001 @@ exports[`Grammar should parse if-statement 1`] = `
     }
 }
 ",
+      "startIdx": 0,
+    },
+  },
+}
+`;
+
+exports[`Grammar should parse inline-functions 1`] = `
+{
+  "id": 103,
+  "items": [
+    {
+      "id": 32,
+      "kind": "function",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "testFunction",
+        "source": {
+          "interval": Interval {
+            "_contents": "testFunction",
+            "endIdx": 16,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 4,
+          },
+        },
+      },
+      "parameters": [
+        {
+          "id": 4,
+          "kind": "parameter",
+          "name": {
+            "id": 2,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 18,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 17,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 23,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 17,
+            },
+          },
+          "type": {
+            "id": 3,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 23,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 20,
+              },
+            },
+          },
+        },
+        {
+          "id": 7,
+          "kind": "parameter",
+          "name": {
+            "id": 5,
+            "kind": "id",
+            "name": "y",
+            "source": {
+              "interval": Interval {
+                "_contents": "y",
+                "endIdx": 26,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 25,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 32,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 25,
+            },
+          },
+          "type": {
+            "id": 6,
+            "kind": "id",
+            "name": "bool",
+            "source": {
+              "interval": Interval {
+                "_contents": "bool",
+                "endIdx": 32,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 28,
+              },
+            },
+          },
+        },
+      ],
+      "returnType": {
+        "id": 8,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 38,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 35,
+          },
+        },
+      },
+      "statements": [
+        {
+          "id": 15,
+          "kind": "statementLet",
+          "name": {
+            "id": 9,
+            "kind": "id",
+            "name": "z",
+            "source": {
+              "interval": Interval {
+                "_contents": "z",
+                "endIdx": 50,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 49,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 64,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 45,
+            },
+          },
+          "type": {
+            "id": 10,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 55,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 52,
+              },
+            },
+          },
+          "value": {
+            "id": 14,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 12,
+              "kind": "expressionId",
+              "name": {
+                "id": 11,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 59,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 58,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 59,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 58,
+                },
+              },
+            },
+            "op": "+",
+            "right": {
+              "id": 13,
+              "kind": "integerLiteral",
+              "source": {
+                "interval": Interval {
+                  "_contents": "1",
+                  "endIdx": 63,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 62,
+                },
+              },
+              "value": "1",
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 63,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 58,
+              },
+            },
+          },
+        },
+        {
+          "condition": {
+            "id": 22,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 17,
+              "kind": "expressionId",
+              "name": {
+                "id": 16,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 74,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 73,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 74,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 73,
+                },
+              },
+            },
+            "op": "&&",
+            "right": {
+              "id": 21,
+              "kind": "expressionBinary",
+              "left": {
+                "id": 19,
+                "kind": "expressionId",
+                "name": {
+                  "id": 18,
+                  "kind": "id",
+                  "name": "z",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "z",
+                      "endIdx": 79,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 78,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 79,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 78,
+                  },
+                },
+              },
+              "op": ">",
+              "right": {
+                "id": 20,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "0",
+                    "endIdx": 83,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 82,
+                  },
+                },
+                "value": "0",
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 83,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 78,
+                },
+              },
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 83,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 73,
+              },
+            },
+          },
+          "else": [
+            {
+              "expression": {
+                "id": 29,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 27,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 26,
+                    "kind": "id",
+                    "name": "return",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "return",
+                        "endIdx": 132,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 126,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 132,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 126,
+                    },
+                  },
+                },
+                "op": "-",
+                "right": {
+                  "id": 28,
+                  "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "1",
+                      "endIdx": 135,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 134,
+                    },
+                  },
+                  "value": "1",
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 135,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 126,
+                  },
+                },
+              },
+              "id": 30,
+              "kind": "statementExpression",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 136,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 126,
+                },
+              },
+            },
+          ],
+          "id": 31,
+          "kind": "statementIf",
+          "source": {
+            "interval": Interval {
+              "endIdx": 142,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 69,
+            },
+          },
+          "then": [
+            {
+              "expression": {
+                "id": 24,
+                "kind": "expressionId",
+                "name": {
+                  "id": 23,
+                  "kind": "id",
+                  "name": "z",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "z",
+                      "endIdx": 103,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 102,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 103,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 102,
+                  },
+                },
+              },
+              "id": 25,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 104,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 95,
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      "id": 102,
+      "items": [
+        {
+          "id": 36,
+          "kind": "globalStat",
+          "name": {
+            "id": 34,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 174,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 173,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 180,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 166,
+            },
+          },
+          "type": {
+            "id": 35,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 179,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 176,
+              },
+            },
+          },
+        },
+        {
+          "id": 39,
+          "kind": "playerStat",
+          "name": {
+            "id": 37,
+            "kind": "id",
+            "name": "y",
+            "source": {
+              "interval": Interval {
+                "_contents": "y",
+                "endIdx": 193,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 192,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 200,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 185,
+            },
+          },
+          "type": {
+            "id": 38,
+            "kind": "id",
+            "name": "bool",
+            "source": {
+              "interval": Interval {
+                "_contents": "bool",
+                "endIdx": 199,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 195,
+              },
+            },
+          },
+        },
+        {
+          "id": 73,
+          "kind": "function",
+          "name": {
+            "id": 40,
+            "kind": "id",
+            "name": "testFunctionLocal",
+            "source": {
+              "interval": Interval {
+                "_contents": "testFunctionLocal",
+                "endIdx": 227,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 210,
+              },
+            },
+          },
+          "parameters": [
+            {
+              "id": 43,
+              "kind": "parameter",
+              "name": {
+                "id": 41,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 229,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 228,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 234,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 228,
+                },
+              },
+              "type": {
+                "id": 42,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 234,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 231,
+                  },
+                },
+              },
+            },
+            {
+              "id": 46,
+              "kind": "parameter",
+              "name": {
+                "id": 44,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 237,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 236,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 243,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 236,
+                },
+              },
+              "type": {
+                "id": 45,
+                "kind": "id",
+                "name": "bool",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "bool",
+                    "endIdx": 243,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 239,
+                  },
+                },
+              },
+            },
+          ],
+          "returnType": {
+            "id": 47,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 249,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 246,
+              },
+            },
+          },
+          "statements": [
+            {
+              "condition": {
+                "id": 64,
+                "kind": "expressionBinary",
+                "left": {
+                  "arguments": [
+                    {
+                      "id": 50,
+                      "kind": "expressionId",
+                      "name": {
+                        "id": 49,
+                        "kind": "id",
+                        "name": "x",
+                        "source": {
+                          "interval": Interval {
+                            "_contents": "x",
+                            "endIdx": 278,
+                            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                            "startIdx": 277,
+                          },
+                        },
+                      },
+                      "source": {
+                        "interval": Interval {
+                          "endIdx": 278,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 277,
+                        },
+                      },
+                    },
+                    {
+                      "id": 52,
+                      "kind": "expressionId",
+                      "name": {
+                        "id": 51,
+                        "kind": "id",
+                        "name": "y",
+                        "source": {
+                          "interval": Interval {
+                            "_contents": "y",
+                            "endIdx": 281,
+                            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                            "startIdx": 280,
+                          },
+                        },
+                      },
+                      "source": {
+                        "interval": Interval {
+                          "endIdx": 281,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 280,
+                        },
+                      },
+                    },
+                  ],
+                  "function": {
+                    "id": 48,
+                    "kind": "id",
+                    "name": "testFunction",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "testFunction",
+                        "endIdx": 276,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 264,
+                      },
+                    },
+                  },
+                  "id": 53,
+                  "kind": "expressionCall",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 282,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 264,
+                    },
+                  },
+                },
+                "op": "==",
+                "right": {
+                  "arguments": [
+                    {
+                      "field": {
+                        "id": 57,
+                        "kind": "id",
+                        "name": "x",
+                        "source": {
+                          "interval": Interval {
+                            "_contents": "x",
+                            "endIdx": 307,
+                            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                            "startIdx": 306,
+                          },
+                        },
+                      },
+                      "id": 58,
+                      "kind": "expressionField",
+                      "source": {
+                        "interval": Interval {
+                          "endIdx": 307,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 299,
+                        },
+                      },
+                      "struct": {
+                        "id": 56,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 55,
+                          "kind": "id",
+                          "name": "global",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "global",
+                              "endIdx": 305,
+                              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                              "startIdx": 299,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 305,
+                            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                            "startIdx": 299,
+                          },
+                        },
+                      },
+                    },
+                    {
+                      "field": {
+                        "id": 61,
+                        "kind": "id",
+                        "name": "y",
+                        "source": {
+                          "interval": Interval {
+                            "_contents": "y",
+                            "endIdx": 317,
+                            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                            "startIdx": 316,
+                          },
+                        },
+                      },
+                      "id": 62,
+                      "kind": "expressionField",
+                      "source": {
+                        "interval": Interval {
+                          "endIdx": 317,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 309,
+                        },
+                      },
+                      "struct": {
+                        "id": 60,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 59,
+                          "kind": "id",
+                          "name": "global",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "global",
+                              "endIdx": 315,
+                              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                              "startIdx": 309,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 315,
+                            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                            "startIdx": 309,
+                          },
+                        },
+                      },
+                    },
+                  ],
+                  "function": {
+                    "id": 54,
+                    "kind": "id",
+                    "name": "testFunction",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "testFunction",
+                        "endIdx": 298,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 286,
+                      },
+                    },
+                  },
+                  "id": 63,
+                  "kind": "expressionCall",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 318,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 286,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 318,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 264,
+                  },
+                },
+              },
+              "else": [
+                {
+                  "expression": {
+                    "id": 70,
+                    "kind": "expressionBinary",
+                    "left": {
+                      "id": 68,
+                      "kind": "expressionId",
+                      "name": {
+                        "id": 67,
+                        "kind": "id",
+                        "name": "return",
+                        "source": {
+                          "interval": Interval {
+                            "_contents": "return",
+                            "endIdx": 381,
+                            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                            "startIdx": 375,
+                          },
+                        },
+                      },
+                      "source": {
+                        "interval": Interval {
+                          "endIdx": 381,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 375,
+                        },
+                      },
+                    },
+                    "op": "-",
+                    "right": {
+                      "id": 69,
+                      "kind": "integerLiteral",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "123",
+                          "endIdx": 386,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 383,
+                        },
+                      },
+                      "value": "123",
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 386,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 375,
+                      },
+                    },
+                  },
+                  "id": 71,
+                  "kind": "statementExpression",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 387,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 375,
+                    },
+                  },
+                },
+              ],
+              "id": 72,
+              "kind": "statementIf",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 397,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 260,
+                },
+              },
+              "then": [
+                {
+                  "expression": {
+                    "id": 65,
+                    "kind": "integerLiteral",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "123",
+                        "endIdx": 344,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 341,
+                      },
+                    },
+                    "value": "123",
+                  },
+                  "id": 66,
+                  "kind": "statementReturn",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 345,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 334,
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          "event": {
+            "id": 74,
+            "kind": "id",
+            "name": "JOIN",
+            "source": {
+              "interval": Interval {
+                "_contents": "JOIN",
+                "endIdx": 420,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 416,
+              },
+            },
+          },
+          "id": 101,
+          "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 568,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 409,
+            },
+          },
+          "statements": [
+            {
+              "id": 78,
+              "kind": "statementLet",
+              "name": {
+                "id": 75,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 436,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 435,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 446,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 431,
+                },
+              },
+              "type": {
+                "id": 76,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 441,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 438,
+                  },
+                },
+              },
+              "value": {
+                "id": 77,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 445,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 444,
+                  },
+                },
+                "value": "1",
+              },
+            },
+            {
+              "id": 82,
+              "kind": "statementLet",
+              "name": {
+                "id": 79,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 460,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 459,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 474,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 455,
+                },
+              },
+              "type": {
+                "id": 80,
+                "kind": "id",
+                "name": "bool",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "bool",
+                    "endIdx": 466,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 462,
+                  },
+                },
+              },
+              "value": {
+                "id": 81,
+                "kind": "booleanLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "true",
+                    "endIdx": 473,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 469,
+                  },
+                },
+                "value": true,
+              },
+            },
+            {
+              "id": 91,
+              "kind": "statementLet",
+              "name": {
+                "id": 83,
+                "kind": "id",
+                "name": "z",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "z",
+                    "endIdx": 488,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 487,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 520,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 483,
+                },
+              },
+              "type": {
+                "id": 84,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 493,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 490,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 87,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 86,
+                      "kind": "id",
+                      "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 515,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 514,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 515,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 514,
+                      },
+                    },
+                  },
+                  {
+                    "id": 89,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 88,
+                      "kind": "id",
+                      "name": "y",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "y",
+                          "endIdx": 518,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 517,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 518,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 517,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 85,
+                  "kind": "id",
+                  "name": "testFunctionLocal",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "testFunctionLocal",
+                      "endIdx": 513,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 496,
+                    },
+                  },
+                },
+                "id": 90,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 519,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 496,
+                  },
+                },
+              },
+            },
+            {
+              "id": 100,
+              "kind": "statementLet",
+              "name": {
+                "id": 92,
+                "kind": "id",
+                "name": "z2",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "z2",
+                    "endIdx": 535,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 533,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 562,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 529,
+                },
+              },
+              "type": {
+                "id": 93,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 540,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 537,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 96,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 95,
+                      "kind": "id",
+                      "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 557,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 556,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 557,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 556,
+                      },
+                    },
+                  },
+                  {
+                    "id": 98,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 97,
+                      "kind": "id",
+                      "name": "y",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "y",
+                          "endIdx": 560,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 559,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 560,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 559,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 94,
+                  "kind": "id",
+                  "name": "testFunction",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "testFunction",
+                      "endIdx": 555,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 543,
+                    },
+                  },
+                },
+                "id": 99,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 561,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 543,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 33,
+        "kind": "id",
+        "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 159,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 152,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 570,
+          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+          "startIdx": 146,
+        },
+      },
+    },
+  ],
+  "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 570,
+      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    fun testFunctionLocal(x: int, y: bool): int {
+        if (testFunction(x, y) == testFunction(global.x, global.y)) {
+            return 123;
+        } else {
+            return -123;
+        }
+    }
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunctionLocal(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
       "startIdx": 0,
     },
   },

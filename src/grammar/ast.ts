@@ -12,7 +12,7 @@ export type AstModule = {
     source: SourceLocation;
 };
 
-export type AstModuleItem = AstHouse | AstStatementConst;
+export type AstModuleItem = AstHouse | AstStatementConst | AstFunction;
 
 export type AstHouse = {
     kind: 'house';
@@ -22,7 +22,11 @@ export type AstHouse = {
     source: SourceLocation;
 };
 
-export type AstHouseItem = AstGlobalStat | AstPlayerStat | AstHandler;
+export type AstHouseItem =
+    | AstGlobalStat
+    | AstPlayerStat
+    | AstHandler
+    | AstFunction;
 
 export type AstGlobalStat = {
     kind: 'globalStat';
@@ -56,13 +60,22 @@ export type AstParameter = {
     source: SourceLocation;
 };
 
+export type AstFunction = {
+    kind: 'function';
+    name: AstId;
+    parameters: AstParameter[];
+    returnType: AstId;
+    statements: AstStatement[];
+};
+
 export type AstStatement =
     | AstStatementAssign
     | AstStatementAugmentedAssign
     | AstStatementLet
     | AstStatementConst
     | AstStatementExpression
-    | AstStatementIf;
+    | AstStatementIf
+    | AstStatementReturn;
 
 export type AstStatementAssign = {
     kind: 'statementAssign';
@@ -106,13 +119,21 @@ export type AstStatementIf = {
     source: SourceLocation;
 };
 
+export type AstStatementReturn = {
+    kind: 'statementReturn';
+    expression?: AstExpression;
+    id: number;
+    source: SourceLocation;
+};
+
 export type AstExpression =
     | AstExpressionField
     | AstExpressionBinary
     | AstExpressionUnary
     | AstIntegerLiteral
     | AstBooleanLiteral
-    | AstExpressionId;
+    | AstExpressionId
+    | AstExpressionCall;
 
 export type AstExpressionField = {
     kind: 'expressionField';
@@ -183,6 +204,14 @@ export type AstBooleanLiteral = {
 export type AstExpressionId = {
     kind: 'expressionId';
     name: AstId;
+    id: number;
+    source: SourceLocation;
+};
+
+export type AstExpressionCall = {
+    kind: 'expressionCall';
+    function: AstId;
+    arguments: AstExpression[];
     id: number;
     source: SourceLocation;
 };
