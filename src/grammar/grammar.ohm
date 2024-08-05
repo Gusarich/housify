@@ -6,7 +6,7 @@ Housify {
     House = house id "{" HouseItemTop* HouseItem* "}"
 
     HouseItemTop = GlobalStat | PlayerStat
-    HouseItem = Handler | Function
+    HouseItem = Handler
 
     GlobalStat = global id ":" Type ";"
     PlayerStat = player id ":" Type ";"

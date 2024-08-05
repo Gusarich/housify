@@ -628,6 +628,7 @@ CompilerContext {
       ],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -752,6 +753,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -810,6 +812,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -837,6 +840,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -895,6 +899,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -936,6 +941,103 @@ CompilerContext {
         "BLOCK_BREAK",
       ],
       "playerStats": [],
+    },
+  },
+  "inlineFunctions": Map {},
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions 1`] = `
+CompilerContext {
+  "expressions": Map {
+    77 => {
+      "type": "int",
+    },
+    81 => {
+      "type": "bool",
+    },
+    87 => {
+      "type": "int",
+    },
+    89 => {
+      "type": "bool",
+    },
+    90 => {
+      "type": "int",
+    },
+    96 => {
+      "type": "int",
+    },
+    98 => {
+      "type": "bool",
+    },
+    99 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+    },
+  },
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testFunction2" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
     },
   },
   "staticConstants": Map {},
@@ -999,6 +1101,7 @@ CompilerContext {
       ],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1035,6 +1138,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1083,6 +1187,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1122,6 +1227,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1186,6 +1292,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1207,6 +1314,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1390,6 +1498,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1451,6 +1560,7 @@ CompilerContext {
       ],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1494,6 +1604,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1509,6 +1620,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {
     "x" => {
       "type": {
@@ -1537,6 +1649,7 @@ exports[`Resolver should resolve static-constants-dependencies 1`] = `
 CompilerContext {
   "expressions": Map {},
   "houses": Map {},
+  "inlineFunctions": Map {},
   "staticConstants": Map {
     "x" => {
       "type": {
@@ -1613,6 +1726,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {
     "x" => {
       "type": {
@@ -1696,6 +1810,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1723,6 +1838,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }

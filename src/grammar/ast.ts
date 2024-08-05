@@ -66,6 +66,8 @@ export type AstFunction = {
     parameters: AstParameter[];
     returnType: AstId;
     statements: AstStatement[];
+    id: number;
+    source: SourceLocation;
 };
 
 export type AstStatement =

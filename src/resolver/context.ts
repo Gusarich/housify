@@ -58,17 +58,27 @@ export type StaticConstant = {
     value: string;
 };
 
+export type InlineFunction = {
+    type: Type;
+    parameters: {
+        name: string;
+        type: Type;
+    }[];
+};
+
 export class CompilerContext {
     expressions: Map<number, Type>;
     houses: Map<string, House>;
     types: Map<string, Type>;
     staticConstants: Map<string, StaticConstant>;
+    inlineFunctions: Map<string, InlineFunction>;
 
     constructor() {
         this.expressions = new Map();
         this.houses = new Map();
         this.types = new Map();
         this.staticConstants = new Map();
+        this.inlineFunctions = new Map();
     }
 
     clone() {
@@ -84,6 +94,9 @@ export class CompilerContext {
         }
         for (const [name, constant] of this.staticConstants) {
             ctx.addStaticConstant(name, constant);
+        }
+        for (const [name, type] of this.inlineFunctions) {
+            ctx.inlineFunctions.set(name, type);
         }
         return ctx;
     }
@@ -150,5 +163,21 @@ export class CompilerContext {
 
     deleteStaticConstant(name: string) {
         this.staticConstants.delete(name);
+    }
+
+    addInlineFunction(name: string, func: InlineFunction) {
+        this.inlineFunctions.set(name, func);
+    }
+
+    getInlineFunction(name: string) {
+        return this.inlineFunctions.get(name);
+    }
+
+    hasInlineFunction(name: string) {
+        return this.inlineFunctions.has(name);
+    }
+
+    deleteInlineFunction(name: string) {
+        this.inlineFunctions.delete(name);
     }
 }

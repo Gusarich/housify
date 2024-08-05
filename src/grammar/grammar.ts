@@ -75,6 +75,7 @@ semantics.addOperation<AstNode>('astOfModuleItem', {
             statements: statements.children.map((statement) =>
                 statement.astOfStatement(),
             ),
+            source: getSourceLocation(this),
         });
     },
 });
@@ -110,29 +111,6 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
                 statement.astOfStatement(),
             ),
             source: getSourceLocation(this),
-        });
-    },
-    Function(
-        _arg0,
-        name,
-        _arg2,
-        parameters,
-        _arg4,
-        _arg5,
-        _arg6,
-        returnType,
-        _arg8,
-        statements,
-        _arg10,
-    ) {
-        return createAstNode({
-            kind: 'function',
-            name: name.astOfExpression(),
-            parameters: parameters.astsOfList(),
-            returnType: returnType.astOfType(),
-            statements: statements.children.map((statement) =>
-                statement.astOfStatement(),
-            ),
         });
     },
 });

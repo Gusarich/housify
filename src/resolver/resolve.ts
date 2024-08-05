@@ -3,6 +3,7 @@ import { evaluateConstantExpression } from '../generator/evaluate';
 import {
     AstExpression,
     AstExpressionField,
+    AstFunction,
     AstGlobalStat,
     AstHouse,
     AstId,
@@ -205,8 +206,32 @@ export function resolveExpression(
             }
             return registerExpression(ctx, expression.id, field.type);
         }
-        case 'expressionCall':
-            throw new InternalError('Call expressions are not supported yet');
+        case 'expressionCall': {
+            const func = ctx.getInlineFunction(expression.function.name);
+            if (!func) {
+                throw new ResolveError(
+                    `Function '${expression.function.name}' not found`,
+                    expression.function.source,
+                );
+            }
+            if (func.parameters.length !== expression.arguments.length) {
+                throw new ResolveError(
+                    `Expected ${func.parameters.length} arguments, got ${expression.arguments.length}`,
+                    expression.source,
+                );
+            }
+            for (const [i, argument] of expression.arguments.entries()) {
+                const parameter = func.parameters[i]!;
+                const argumentType = resolveExpression(argument, ctx, sctx);
+                if (parameter.type.type !== argumentType.type) {
+                    throw new ResolveError(
+                        `Argument ${i} must be of type '${parameter.type.type}', got '${argumentType.type}'`,
+                        argument.source,
+                    );
+                }
+            }
+            return registerExpression(ctx, expression.id, func.type);
+        }
     }
 }
 
@@ -477,6 +502,33 @@ export function processStaticConstant(
     });
 }
 
+export function processInlineFunction(func: AstFunction, ctx: CompilerContext) {
+    if (ctx.hasInlineFunction(func.name.name)) {
+        throw new ResolveError(
+            `Inline function '${func.name.name}' already exists`,
+            func.source,
+        );
+    }
+
+    const parameters = func.parameters.map((param) => ({
+        name: param.name.name,
+        type: resolveType(param.type, ctx),
+    }));
+    const type = resolveType(func.returnType, ctx);
+
+    if (func.returnType.name === 'void') {
+        throw new ResolveError(
+            "Cannot declare a function of type 'void'",
+            func.returnType.source,
+        );
+    }
+
+    ctx.addInlineFunction(func.name.name, {
+        type,
+        parameters,
+    });
+}
+
 export function resolveModule(module: AstModule, ctx: CompilerContext) {
     for (const item of module.items) {
         switch (item.kind) {
@@ -485,6 +537,9 @@ export function resolveModule(module: AstModule, ctx: CompilerContext) {
                 break;
             case 'statementConst':
                 processStaticConstant(item, ctx);
+                break;
+            case 'function':
+                processInlineFunction(item, ctx);
                 break;
         }
     }
