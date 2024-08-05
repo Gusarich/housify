@@ -43,7 +43,7 @@ This version of the compiler is ready for publication and testing. It includes m
 
 ### Compiler
 
--   [ ] Inline functions
+-   [x] Inline functions
 -   [ ] Full support for conditions
 -   [ ] All actions, conditions, events, and functions from Hypixel Housing
 -   [ ] Comprehensive tests for all parts of the compiler
