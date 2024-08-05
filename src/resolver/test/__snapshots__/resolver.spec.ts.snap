@@ -130,6 +130,33 @@ exports[`Resolver should fail global-stats-limit 1`] = `
 ResolveError: Cannot have more than 20 persistent global stats"
 `;
 
+exports[`Resolver should fail inline-functions-not-always-returns 1`] = `
+"Line 1, col 1:
+> 1 | fun testFunction(x: bool): int {
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  2 |     if (x) {
+
+ResolveError: Function 'testFunction' does not always return a value"
+`;
+
+exports[`Resolver should fail inline-functions-not-always-returns2 1`] = `
+"Line 1, col 1:
+> 1 | fun testFunction(x: bool): int {
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  2 |     if (x) {
+
+ResolveError: Function 'testFunction' does not always return a value"
+`;
+
+exports[`Resolver should fail inline-functions-not-always-returns3 1`] = `
+"Line 1, col 1:
+> 1 | fun testFunction(x: bool): int {
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  2 |     if (x) {
+
+ResolveError: Function 'testFunction' does not always return a value"
+`;
+
 exports[`Resolver should fail let-statement-value-type-mismatch 1`] = `
 "Line 3, col 9:
   2 |     handle BLOCK_BREAK {
@@ -1289,6 +1316,114 @@ CompilerContext {
       "value": "1",
     },
   },
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions-always-returns 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    10 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions-always-returns2 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions-always-returns3 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "bool",
+    },
+    12 => {
+      "type": "int",
+    },
+    14 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {},
   "types": Map {},
 }
 `;
