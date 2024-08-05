@@ -1,7 +1,7 @@
 Housify {
     Module = ModuleItem*
 
-    ModuleItem = House | StatementConst
+    ModuleItem = House | StatementConst | Function
     
     House = house id "{" HouseItemTop* HouseItem* "}"
 
@@ -13,11 +13,15 @@ Housify {
 
     Handler = handle id "{" Statement* "}"
 
+    Function = fun id "(" Parameters ","? ")" ":" Type "{" Statement* "}"
+
+    Parameters = ListOf<Parameter, ",">
     Parameter = id ":" Type
 
     Statement = StatementAssign
               | StatementLet
               | StatementConst
+              | StatementReturn
               | StatementExpression
               | StatementIf
     
@@ -25,13 +29,15 @@ Housify {
 
     StatementLet = let id ":" Type "=" Expression ";"
 
-    StatementConst = "const" id ":" Type "=" Expression ";"
+    StatementConst = const id ":" Type "=" Expression ";"
 
     StatementExpression = Expression ";"
 
     StatementIf = if Expression "{" Statement* "}" ~else --noElse
                 | if Expression "{" Statement* "}" else "{" Statement* "}" --withElse
                 | if Expression "{" Statement* "}" else StatementIf --withElseIf
+    
+    StatementReturn = return Expression? ";"
     
     // Expressions are ordered by precedence
     
@@ -67,6 +73,7 @@ Housify {
 
     // Order is important
     ExpressionPrimary = ExpressionField
+                      | ExpressionCall
                       | ExpressionParens
                       | ExpressionLiteral
                       | ExpressionId
@@ -75,6 +82,9 @@ Housify {
     ExpressionId = id
     ExpressionField = ExpressionPrimary "." id
     ExpressionParens = "(" Expression ")"
+    ExpressionCall = id "(" Arguments ","? ")"
+
+    Arguments = ListOf<Expression, ",">
 
     binaryOp = "+" | "-" | "*" | "/" | "==" | "!=" | "<" | "<=" | ">" | ">=" | "&&" | "||"
     unaryOp = "-" | "!"
@@ -102,6 +112,9 @@ Housify {
     let = "let" ~idPart
     if = "if" ~idPart
     else = "else" ~idPart
+    fun = "fun" ~idPart
+    const = "const" ~idPart
+    return = "return" ~idPart
 
     keyword = house | handle | let | if | else
 

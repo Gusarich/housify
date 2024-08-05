@@ -1,8 +1,10 @@
 import { InternalError, ResolveError } from '../errors';
 import { evaluateConstantExpression } from '../generator/evaluate';
+import { WriterContext } from '../generator/generate';
 import {
     AstExpression,
     AstExpressionField,
+    AstFunction,
     AstGlobalStat,
     AstHouse,
     AstId,
@@ -43,14 +45,52 @@ export function resolveType(type: AstId, ctx: CompilerContext): Type {
     }
 }
 
-export function resolveStructPath(path: AstExpressionField): string[] {
+export function resolveStructPath(
+    path: AstExpressionField,
+    wctx?: WriterContext,
+): string[] {
     if (path.struct.kind === 'expressionId') {
-        return [path.struct.name.name, path.field.name];
+        if (wctx) {
+            return [wctx.mapStatName(path.struct.name.name), path.field.name];
+        } else {
+            return [path.struct.name.name, path.field.name];
+        }
     } else if (path.struct.kind === 'expressionField') {
-        return resolveStructPath(path.struct).concat(path.field.name);
+        return resolveStructPath(path.struct, wctx).concat(path.field.name);
     } else {
         throw new InternalError('Invalid struct path', path.source);
     }
+}
+
+export function areTypesEqual(
+    left: Type,
+    right: Type,
+): {
+    equal: boolean;
+    first?: string;
+    second?: string;
+} {
+    if (left.type !== right.type) {
+        return {
+            equal: false,
+            first: left.type,
+            second: right.type,
+        };
+    }
+    if (
+        left.type === 'struct' &&
+        right.type === 'struct' &&
+        left.name !== right.name
+    ) {
+        return {
+            equal: false,
+            first: left.name,
+            second: right.name,
+        };
+    }
+    return {
+        equal: true,
+    };
 }
 
 export function resolveExpression(
@@ -130,16 +170,18 @@ export function resolveExpression(
                         type: 'bool',
                     });
                 case '==':
-                case '!=':
-                    if (left.type !== right.type) {
+                case '!=': {
+                    const typesEqual = areTypesEqual(left, right);
+                    if (!typesEqual.equal) {
                         throw new ResolveError(
-                            `Operands must be of the same type, got '${left.type}' and '${right.type}'`,
+                            `Operands must be of the same type, got '${typesEqual.first}' and '${typesEqual.second}'`,
                             expression.source,
                         );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'bool',
                     });
+                }
                 case '&&':
                 case '||':
                     if (left.type !== 'bool') {
@@ -205,6 +247,32 @@ export function resolveExpression(
             }
             return registerExpression(ctx, expression.id, field.type);
         }
+        case 'expressionCall': {
+            const func = ctx.getInlineFunction(expression.function.name);
+            if (!func) {
+                throw new ResolveError(
+                    `Function '${expression.function.name}' not found`,
+                    expression.function.source,
+                );
+            }
+            if (func.parameters.length !== expression.arguments.length) {
+                throw new ResolveError(
+                    `Expected ${func.parameters.length} arguments, got ${expression.arguments.length}`,
+                    expression.source,
+                );
+            }
+            for (const [i, argument] of expression.arguments.entries()) {
+                const parameter = func.parameters[i]!;
+                const argumentType = resolveExpression(argument, ctx, sctx);
+                if (parameter.type.type !== argumentType.type) {
+                    throw new ResolveError(
+                        `Argument ${i} must be of type '${parameter.type.type}', got '${argumentType.type}'`,
+                        argument.source,
+                    );
+                }
+            }
+            return registerExpression(ctx, expression.id, func.type);
+        }
     }
 }
 
@@ -213,6 +281,10 @@ export function processStatement(
     ctx: CompilerContext,
     sctx: StatementContext,
 ) {
+    if (sctx.alwaysReturns) {
+        throw new ResolveError('Unreachable code', statement.source);
+    }
+
     switch (statement.kind) {
         case 'statementAssign':
         case 'statementAugmentedAssign': {
@@ -296,6 +368,9 @@ export function processStatement(
                 for (const elseStatement of statement.else) {
                     processStatement(elseStatement, ctx, sctxElse);
                 }
+                if (sctxThen.alwaysReturns && sctxElse.alwaysReturns) {
+                    sctx.setAlwaysReturns();
+                }
             }
             break;
         }
@@ -335,6 +410,26 @@ export function processStatement(
                 );
             }
             break;
+        }
+        case 'statementReturn': {
+            if (statement.expression) {
+                const type = resolveExpression(statement.expression, ctx, sctx);
+                const typesEqual = areTypesEqual(type, sctx.expectedReturnType);
+                if (!typesEqual.equal) {
+                    throw new ResolveError(
+                        `Expected return type '${sctx.expectedReturnType.type}', got '${type.type}'`,
+                        statement.expression.source,
+                    );
+                }
+            } else {
+                if (sctx.expectedReturnType.type !== 'void') {
+                    throw new ResolveError(
+                        `Expected return type '${sctx.expectedReturnType.type}', got 'void'`,
+                        statement.source,
+                    );
+                }
+            }
+            sctx.setAlwaysReturns();
         }
     }
 }
@@ -475,7 +570,68 @@ export function processStaticConstant(
     });
 }
 
+export function prepareProcessInlineFunction(
+    func: AstFunction,
+    ctx: CompilerContext,
+) {
+    if (ctx.hasInlineFunction(func.name.name)) {
+        throw new ResolveError(
+            `Inline function '${func.name.name}' already exists`,
+            func.source,
+        );
+    }
+
+    const parameters = func.parameters.map((param) => ({
+        name: param.name.name,
+        type: resolveType(param.type, ctx),
+    }));
+    const type = resolveType(func.returnType, ctx);
+
+    if (func.returnType.name === 'void') {
+        throw new ResolveError(
+            "Cannot declare a function of type 'void'",
+            func.returnType.source,
+        );
+    }
+
+    ctx.addInlineFunction(func.name.name, {
+        type,
+        parameters,
+        astId: func.id,
+    });
+}
+
+export function processInlineFunction(func: AstFunction, ctx: CompilerContext) {
+    const resolvedFunc = ctx.getInlineFunction(func.name.name)!;
+
+    // Process statements
+    const sctx = new StatementContext(resolvedFunc.type);
+    for (const param of resolvedFunc.parameters) {
+        sctx.addVariable(param.name, {
+            type: param.type,
+            constant: false,
+        });
+    }
+    for (const statement of func.statements) {
+        processStatement(statement, ctx, sctx);
+    }
+    if (!sctx.alwaysReturns) {
+        throw new ResolveError(
+            `Function '${func.name.name}' does not always return a value`,
+            func.source,
+        );
+    }
+}
+
 export function resolveModule(module: AstModule, ctx: CompilerContext) {
+    // Go through function definitions first to allow for recursive calls
+    for (const item of module.items) {
+        if (item.kind === 'function') {
+            prepareProcessInlineFunction(item, ctx);
+        }
+    }
+
+    // Process all module items
     for (const item of module.items) {
         switch (item.kind) {
             case 'house':
@@ -483,6 +639,9 @@ export function resolveModule(module: AstModule, ctx: CompilerContext) {
                 break;
             case 'statementConst':
                 processStaticConstant(item, ctx);
+                break;
+            case 'function':
+                processInlineFunction(item, ctx);
                 break;
         }
     }

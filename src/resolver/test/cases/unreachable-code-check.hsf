@@ -1,0 +1,8 @@
+fun testFunction(x: int): int {
+    let y: int = x + x;
+    if (x > 0) {
+        return y;
+    }
+    y += 2;
+    return y;
+}

@@ -1,4 +1,3 @@
-import { AstExpression } from '../grammar/ast';
 import { EventType } from '../housing/events';
 import { Type } from './type';
 
@@ -9,9 +8,13 @@ export type Variable = {
 
 export class StatementContext {
     variables: Map<string, Variable>;
+    alwaysReturns: boolean;
+    expectedReturnType: Type;
 
-    constructor() {
+    constructor(expectedReturnType?: Type) {
         this.variables = new Map();
+        this.alwaysReturns = false;
+        this.expectedReturnType = expectedReturnType ?? { type: 'void' };
     }
 
     clone() {
@@ -19,6 +22,8 @@ export class StatementContext {
         for (const [name, variable] of this.variables) {
             sctx.addVariable(name, variable);
         }
+        sctx.alwaysReturns = this.alwaysReturns;
+        sctx.expectedReturnType = this.expectedReturnType;
         return sctx;
     }
 
@@ -37,18 +42,28 @@ export class StatementContext {
     deleteVariable(name: string) {
         this.variables.delete(name);
     }
+
+    setAlwaysReturns() {
+        this.alwaysReturns = true;
+    }
+
+    unsetAlwaysReturns() {
+        this.alwaysReturns = false;
+    }
+
+    isAlwaysReturns() {
+        return this.alwaysReturns;
+    }
 }
 
 export type House = {
     globalStats: {
         name: string;
         type: Type;
-        defaultValue?: AstExpression;
     }[];
     playerStats: {
         name: string;
         type: Type;
-        defaultValue?: AstExpression;
     }[];
     handlers: EventType[];
 };
@@ -58,17 +73,28 @@ export type StaticConstant = {
     value: string;
 };
 
+export type InlineFunction = {
+    type: Type;
+    parameters: {
+        name: string;
+        type: Type;
+    }[];
+    astId: number;
+};
+
 export class CompilerContext {
     expressions: Map<number, Type>;
     houses: Map<string, House>;
     types: Map<string, Type>;
     staticConstants: Map<string, StaticConstant>;
+    inlineFunctions: Map<string, InlineFunction>;
 
     constructor() {
         this.expressions = new Map();
         this.houses = new Map();
         this.types = new Map();
         this.staticConstants = new Map();
+        this.inlineFunctions = new Map();
     }
 
     clone() {
@@ -84,6 +110,9 @@ export class CompilerContext {
         }
         for (const [name, constant] of this.staticConstants) {
             ctx.addStaticConstant(name, constant);
+        }
+        for (const [name, type] of this.inlineFunctions) {
+            ctx.inlineFunctions.set(name, type);
         }
         return ctx;
     }
@@ -150,5 +179,21 @@ export class CompilerContext {
 
     deleteStaticConstant(name: string) {
         this.staticConstants.delete(name);
+    }
+
+    addInlineFunction(name: string, func: InlineFunction) {
+        this.inlineFunctions.set(name, func);
+    }
+
+    getInlineFunction(name: string) {
+        return this.inlineFunctions.get(name);
+    }
+
+    hasInlineFunction(name: string) {
+        return this.inlineFunctions.has(name);
+    }
+
+    deleteInlineFunction(name: string) {
+        this.inlineFunctions.delete(name);
     }
 }

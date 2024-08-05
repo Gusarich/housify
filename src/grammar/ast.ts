@@ -12,7 +12,7 @@ export type AstModule = {
     source: SourceLocation;
 };
 
-export type AstModuleItem = AstHouse | AstStatementConst;
+export type AstModuleItem = AstHouse | AstStatementConst | AstFunction;
 
 export type AstHouse = {
     kind: 'house';
@@ -22,7 +22,11 @@ export type AstHouse = {
     source: SourceLocation;
 };
 
-export type AstHouseItem = AstGlobalStat | AstPlayerStat | AstHandler;
+export type AstHouseItem =
+    | AstGlobalStat
+    | AstPlayerStat
+    | AstHandler
+    | AstFunction;
 
 export type AstGlobalStat = {
     kind: 'globalStat';
@@ -56,13 +60,24 @@ export type AstParameter = {
     source: SourceLocation;
 };
 
+export type AstFunction = {
+    kind: 'function';
+    name: AstId;
+    parameters: AstParameter[];
+    returnType: AstId;
+    statements: AstStatement[];
+    id: number;
+    source: SourceLocation;
+};
+
 export type AstStatement =
     | AstStatementAssign
     | AstStatementAugmentedAssign
     | AstStatementLet
     | AstStatementConst
     | AstStatementExpression
-    | AstStatementIf;
+    | AstStatementIf
+    | AstStatementReturn;
 
 export type AstStatementAssign = {
     kind: 'statementAssign';
@@ -106,13 +121,21 @@ export type AstStatementIf = {
     source: SourceLocation;
 };
 
+export type AstStatementReturn = {
+    kind: 'statementReturn';
+    expression?: AstExpression;
+    id: number;
+    source: SourceLocation;
+};
+
 export type AstExpression =
     | AstExpressionField
     | AstExpressionBinary
     | AstExpressionUnary
     | AstIntegerLiteral
     | AstBooleanLiteral
-    | AstExpressionId;
+    | AstExpressionId
+    | AstExpressionCall;
 
 export type AstExpressionField = {
     kind: 'expressionField';
@@ -187,6 +210,14 @@ export type AstExpressionId = {
     source: SourceLocation;
 };
 
+export type AstExpressionCall = {
+    kind: 'expressionCall';
+    function: AstId;
+    arguments: AstExpression[];
+    id: number;
+    source: SourceLocation;
+};
+
 export type AstId = {
     kind: 'id';
     name: string;
@@ -205,19 +236,30 @@ export type AstNode =
 
 let nextId = 1;
 
+const astNodes = new Map<number, AstNode>();
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type DistributiveOmit<T, K extends keyof any> = T extends any
     ? Omit<T, K>
     : never;
 
 export function createAstNode(src: DistributiveOmit<AstNode, 'id'>): AstNode {
-    return Object.freeze(Object.assign({ id: nextId++ }, src));
+    const node = Object.freeze(Object.assign({ id: nextId++ }, src));
+    astNodes.set(node.id, node);
+    return node;
 }
 
 export function cloneAstNode<T extends AstNode>(src: T): T {
-    return { ...src, id: nextId++ };
+    const node = { ...src, id: nextId++ };
+    astNodes.set(node.id, node);
+    return node;
 }
 
 export function resetNodeId() {
     nextId = 1;
+    astNodes.clear();
+}
+
+export function getAstNodeById(id: number) {
+    return astNodes.get(id);
 }

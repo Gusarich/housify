@@ -80,6 +80,26 @@ exports[`Resolver should fail binary-operation-between-boolean-and-integer 1`] =
 ResolveError: Operands must be integers, got 'bool'"
 `;
 
+exports[`Resolver should fail call-argument-type-mismatch 1`] = `
+"Line 10, col 20:
+   9 | fun test(x: int): int {
+> 10 |     return testInt(testInt(x));
+                          ^~~~~~~~~~
+  11 | }
+
+ResolveError: Argument 0 must be of type 'int', got 'bool'"
+`;
+
+exports[`Resolver should fail call-type-mismatch 1`] = `
+"Line 10, col 12:
+   9 | fun test(x: int): int {
+> 10 |     return testInt(x);
+                  ^~~~~~~~~~
+  11 | }
+
+ResolveError: Expected return type 'int', got 'bool'"
+`;
+
 exports[`Resolver should fail condition-not-boolean 1`] = `
 "Line 3, col 13:
   2 |     handle JOIN {
@@ -128,6 +148,62 @@ exports[`Resolver should fail global-stats-limit 1`] = `
   23 | }
 
 ResolveError: Cannot have more than 20 persistent global stats"
+`;
+
+exports[`Resolver should fail inline-functions-not-always-returns 1`] = `
+"Line 1, col 1:
+> 1 | fun testFunction(x: bool): int {
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  2 |     if (x) {
+
+ResolveError: Function 'testFunction' does not always return a value"
+`;
+
+exports[`Resolver should fail inline-functions-not-always-returns2 1`] = `
+"Line 1, col 1:
+> 1 | fun testFunction(x: bool): int {
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  2 |     if (x) {
+
+ResolveError: Function 'testFunction' does not always return a value"
+`;
+
+exports[`Resolver should fail inline-functions-not-always-returns3 1`] = `
+"Line 1, col 1:
+> 1 | fun testFunction(x: bool): int {
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  2 |     if (x) {
+
+ResolveError: Function 'testFunction' does not always return a value"
+`;
+
+exports[`Resolver should fail inline-functions-return-type-mismatch 1`] = `
+"Line 3, col 16:
+  2 |     if (x) {
+> 3 |         return true;
+                     ^~~~
+  4 |     } else {
+
+ResolveError: Expected return type 'int', got 'bool'"
+`;
+
+exports[`Resolver should fail inline-functions-void 1`] = `
+"Line 1, col 28:
+> 1 | fun testFunction(x: bool): void {
+                                 ^~~~
+  2 |     return;
+
+ResolveError: Cannot declare a function of type 'void'"
+`;
+
+exports[`Resolver should fail inline-functions-void-return 1`] = `
+"Line 2, col 5:
+  1 | fun testFunction(x: bool): int {
+> 2 |     return;
+          ^~~~~~~
+  3 | }
+
+ResolveError: Expected return type 'int', got 'void'"
 `;
 
 exports[`Resolver should fail let-statement-value-type-mismatch 1`] = `
@@ -258,6 +334,36 @@ exports[`Resolver should fail unknown-type 1`] = `
   3 | }
 
 ResolveError: Type 'qwerty' not found"
+`;
+
+exports[`Resolver should fail unreachable-code 1`] = `
+"Line 4, col 5:
+  3 |     return y;
+> 4 |     y += 2;
+          ^~~~~~~
+  5 | }
+
+ResolveError: Unreachable code"
+`;
+
+exports[`Resolver should fail unreachable-code2 1`] = `
+"Line 8, col 5:
+  7 |     }
+> 8 |     y += 2;
+          ^~~~~~~
+  9 | }
+
+ResolveError: Unreachable code"
+`;
+
+exports[`Resolver should fail unreachable-code3 1`] = `
+"Line 12, col 5:
+  11 |     }
+> 12 |     y += 2;
+           ^~~~~~~
+  13 | }
+
+ResolveError: Unreachable code"
 `;
 
 exports[`Resolver should fail unused-statement-expression 1`] = `
@@ -628,6 +734,7 @@ CompilerContext {
       ],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -752,6 +859,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -810,6 +918,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -837,6 +946,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -895,6 +1005,117 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve call-and-return-type 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    10 => {
+      "type": "int",
+    },
+    20 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    22 => {
+      "type": "bool",
+    },
+    23 => {
+      "type": "bool",
+    },
+    25 => {
+      "type": "bool",
+    },
+    37 => {
+      "type": "int",
+    },
+    38 => {
+      "type": "bool",
+    },
+    39 => {
+      "type": "int",
+    },
+    50 => {
+      "type": "bool",
+    },
+    51 => {
+      "type": "int",
+    },
+    52 => {
+      "type": "bool",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testInt" => {
+      "astId": 13,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testBool" => {
+      "astId": 28,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "bool",
+      },
+    },
+    "testIntBool" => {
+      "astId": 41,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testBoolInt" => {
+      "astId": 54,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "bool",
+      },
+    },
+  },
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -936,6 +1157,644 @@ CompilerContext {
         "BLOCK_BREAK",
       ],
       "playerStats": [],
+    },
+  },
+  "inlineFunctions": Map {},
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-function-calls 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "int",
+    },
+    8 => {
+      "type": "int",
+    },
+    9 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    23 => {
+      "type": "int",
+    },
+    24 => {
+      "type": "bool",
+    },
+    27 => {
+      "type": "int",
+    },
+    28 => {
+      "type": "int",
+    },
+    31 => {
+      "type": "int",
+    },
+    33 => {
+      "type": "int",
+    },
+    34 => {
+      "type": "int",
+    },
+    45 => {
+      "type": "int",
+    },
+    49 => {
+      "type": "int",
+    },
+    55 => {
+      "type": "int",
+    },
+    56 => {
+      "type": "int",
+    },
+    62 => {
+      "type": "int",
+    },
+    65 => {
+      "type": "int",
+    },
+    67 => {
+      "type": "int",
+    },
+    68 => {
+      "type": "int",
+    },
+    69 => {
+      "type": "int",
+    },
+    72 => {
+      "fields": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "player",
+      "type": "struct",
+    },
+    74 => {
+      "type": "int",
+    },
+    78 => {
+      "type": "int",
+    },
+    79 => {
+      "type": "int",
+    },
+    82 => {
+      "type": "int",
+    },
+    83 => {
+      "type": "int",
+    },
+    84 => {
+      "type": "int",
+    },
+    85 => {
+      "type": "int",
+    },
+    86 => {
+      "type": "int",
+    },
+    90 => {
+      "type": "int",
+    },
+    92 => {
+      "type": "int",
+    },
+    93 => {
+      "type": "int",
+    },
+    95 => {
+      "type": "int",
+    },
+    96 => {
+      "type": "int",
+    },
+    97 => {
+      "type": "int",
+    },
+    98 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "TestHouse" => {
+      "globalStats": [],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+    },
+  },
+  "inlineFunctions": Map {
+    "double" => {
+      "astId": 11,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "add" => {
+      "astId": 37,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-function-unordered-calls 1`] = `
+CompilerContext {
+  "expressions": Map {
+    19 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "bool",
+    },
+    22 => {
+      "type": "int",
+    },
+    25 => {
+      "type": "int",
+    },
+    27 => {
+      "type": "bool",
+    },
+    28 => {
+      "type": "int",
+    },
+    29 => {
+      "type": "bool",
+    },
+    30 => {
+      "type": "int",
+    },
+    32 => {
+      "type": "int",
+    },
+    33 => {
+      "type": "int",
+    },
+    48 => {
+      "type": "int",
+    },
+    49 => {
+      "type": "int",
+    },
+    50 => {
+      "type": "int",
+    },
+    53 => {
+      "type": "bool",
+    },
+    55 => {
+      "type": "int",
+    },
+    56 => {
+      "type": "int",
+    },
+    57 => {
+      "type": "bool",
+    },
+    58 => {
+      "type": "bool",
+    },
+    60 => {
+      "type": "int",
+    },
+    62 => {
+      "type": "int",
+    },
+    63 => {
+      "type": "int",
+    },
+    77 => {
+      "type": "int",
+    },
+    81 => {
+      "type": "bool",
+    },
+    87 => {
+      "type": "int",
+    },
+    89 => {
+      "type": "bool",
+    },
+    90 => {
+      "type": "int",
+    },
+    96 => {
+      "type": "int",
+    },
+    98 => {
+      "type": "bool",
+    },
+    99 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+    },
+  },
+  "inlineFunctions": Map {
+    "testFunction2" => {
+      "astId": 36,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testFunction" => {
+      "astId": 66,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {
+    "xx" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "1",
+    },
+    "yy" => {
+      "type": {
+        "type": "bool",
+      },
+      "value": "1",
+    },
+  },
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions 1`] = `
+CompilerContext {
+  "expressions": Map {
+    20 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    22 => {
+      "type": "int",
+    },
+    25 => {
+      "type": "bool",
+    },
+    27 => {
+      "type": "int",
+    },
+    28 => {
+      "type": "int",
+    },
+    29 => {
+      "type": "bool",
+    },
+    30 => {
+      "type": "bool",
+    },
+    32 => {
+      "type": "int",
+    },
+    34 => {
+      "type": "int",
+    },
+    35 => {
+      "type": "int",
+    },
+    49 => {
+      "type": "int",
+    },
+    51 => {
+      "type": "bool",
+    },
+    52 => {
+      "type": "int",
+    },
+    55 => {
+      "type": "int",
+    },
+    57 => {
+      "type": "bool",
+    },
+    58 => {
+      "type": "int",
+    },
+    59 => {
+      "type": "bool",
+    },
+    60 => {
+      "type": "int",
+    },
+    62 => {
+      "type": "int",
+    },
+    63 => {
+      "type": "int",
+    },
+    77 => {
+      "type": "int",
+    },
+    81 => {
+      "type": "bool",
+    },
+    87 => {
+      "type": "int",
+    },
+    89 => {
+      "type": "bool",
+    },
+    90 => {
+      "type": "int",
+    },
+    96 => {
+      "type": "int",
+    },
+    98 => {
+      "type": "bool",
+    },
+    99 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+    },
+  },
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "astId": 38,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testFunction2" => {
+      "astId": 66,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {
+    "xx" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "1",
+    },
+    "yy" => {
+      "type": {
+        "type": "bool",
+      },
+      "value": "1",
+    },
+  },
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions-always-returns 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    10 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "astId": 13,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions-always-returns2 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "astId": 13,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve inline-functions-always-returns3 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "bool",
+    },
+    12 => {
+      "type": "int",
+    },
+    14 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "astId": 18,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
     },
   },
   "staticConstants": Map {},
@@ -999,6 +1858,7 @@ CompilerContext {
       ],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1035,6 +1895,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1083,6 +1944,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1122,6 +1984,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1186,6 +2049,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1207,6 +2071,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1390,6 +2255,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1451,6 +2317,7 @@ CompilerContext {
       ],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1494,6 +2361,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1509,6 +2377,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {
     "x" => {
       "type": {
@@ -1537,6 +2406,7 @@ exports[`Resolver should resolve static-constants-dependencies 1`] = `
 CompilerContext {
   "expressions": Map {},
   "houses": Map {},
+  "inlineFunctions": Map {},
   "staticConstants": Map {
     "x" => {
       "type": {
@@ -1613,6 +2483,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {
     "x" => {
       "type": {
@@ -1696,6 +2567,7 @@ CompilerContext {
       "playerStats": [],
     },
   },
+  "inlineFunctions": Map {},
   "staticConstants": Map {},
   "types": Map {},
 }
@@ -1721,6 +2593,63 @@ CompilerContext {
         "BLOCK_BREAK",
       ],
       "playerStats": [],
+    },
+  },
+  "inlineFunctions": Map {},
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve unreachable-code-check 1`] = `
+CompilerContext {
+  "expressions": Map {
+    9 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "int",
+    },
+    12 => {
+      "type": "int",
+    },
+    15 => {
+      "type": "int",
+    },
+    16 => {
+      "type": "int",
+    },
+    17 => {
+      "type": "bool",
+    },
+    19 => {
+      "type": "int",
+    },
+    23 => {
+      "type": "int",
+    },
+    24 => {
+      "type": "int",
+    },
+    27 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "astId": 29,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
     },
   },
   "staticConstants": Map {},

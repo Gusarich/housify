@@ -1,0 +1,22 @@
+fun double(x: int): int {
+    return x + x;
+}
+
+fun divide(x: int, y: int): int {
+    return x / y;
+}
+
+house TestHouse {
+    player x: int;
+    global y: int;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: int = 2;
+        let z: int = double(x);
+        let z2: int = divide(y, x);
+
+        player.x = z;
+        global.y = z2;
+    }
+}

@@ -5,6 +5,7 @@ import {
     AstHouse,
     AstModule,
     AstStatement,
+    getAstNodeById,
     SourceLocation,
 } from '../grammar/ast';
 import { Action, ActionKind } from '../housing/actions';
@@ -15,12 +16,38 @@ import { CompilerContext } from '../resolver/context';
 import { resolveStructPath } from '../resolver/resolve';
 import { evaluateConstantExpression } from './evaluate';
 
-type WriterContext = {
+export class WriterContext {
     actions: Action[];
     globalStats: Map<string, number>;
     playerStats: Map<string, number>;
+    usedStats: Set<string>;
+    statsMapping: Map<string, string>;
     ctx: CompilerContext;
-};
+
+    constructor(ctx: CompilerContext) {
+        this.actions = [];
+        this.globalStats = new Map();
+        this.playerStats = new Map();
+        this.usedStats = new Set();
+        this.statsMapping = new Map();
+        this.ctx = ctx;
+    }
+
+    clone() {
+        const wctx = new WriterContext(this.ctx);
+        wctx.actions = [...this.actions];
+        wctx.globalStats = new Map(this.globalStats);
+        wctx.playerStats = new Map(this.playerStats);
+        wctx.usedStats = new Set(this.usedStats);
+        wctx.statsMapping = new Map(this.statsMapping);
+        return wctx;
+    }
+
+    mapStatName(stat: string) {
+        const mappedStat = this.statsMapping.get(stat);
+        return mappedStat ?? '$' + stat;
+    }
+}
 
 export function wrapAsPlayerStat(stat: string) {
     return '%stat.player/' + stat + '%';
@@ -108,6 +135,7 @@ export function writeExpression(
     try {
         const result = evaluateConstantExpression(expression, ctx);
         const tempStat = '$$' + getNextTempId();
+        wctx.usedStats.add(tempStat);
         wctx.actions.push({
             kind: ActionKind.CHANGE_PLAYER_STAT,
             mode: StatChangeMode.SET,
@@ -124,6 +152,7 @@ export function writeExpression(
     switch (expression.kind) {
         case 'integerLiteral': {
             const tempStat = '$$' + getNextTempId();
+            wctx.usedStats.add(tempStat);
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
@@ -134,6 +163,7 @@ export function writeExpression(
         }
         case 'booleanLiteral': {
             const tempStat = '$$' + getNextTempId();
+            wctx.usedStats.add(tempStat);
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
@@ -142,8 +172,9 @@ export function writeExpression(
             });
             return wrapAsPlayerStat(tempStat);
         }
-        case 'expressionId':
-            return wrapAsPlayerStat('$' + expression.name.name);
+        case 'expressionId': {
+            return wrapAsPlayerStat(wctx.mapStatName(expression.name.name));
+        }
         case 'expressionField':
             if (expression.struct.kind === 'expressionId') {
                 if (expression.struct.name.name === 'global') {
@@ -153,12 +184,13 @@ export function writeExpression(
                 }
             }
             return wrapAsPlayerStat(
-                '$' + resolveStructPath(expression).join('.'),
+                resolveStructPath(expression, wctx).join('.'),
             );
 
         case 'expressionUnary': {
             const operand = writeExpression(expression.operand, ctx, wctx);
             const tempStat = '$$' + getNextTempId();
+            wctx.usedStats.add(tempStat);
 
             switch (expression.op) {
                 case '-': {
@@ -198,6 +230,7 @@ export function writeExpression(
             const left = writeExpression(expression.left, ctx, wctx);
             const right = writeExpression(expression.right, ctx, wctx);
             const tempStat = '$$' + getNextTempId();
+            wctx.usedStats.add(tempStat);
 
             switch (expression.op) {
                 case '+':
@@ -284,6 +317,7 @@ export function writeExpression(
                         value: right,
                     });
                     const tempStat2 = '$$' + getNextTempId();
+                    wctx.usedStats.add(tempStat2);
                     wctx.actions.push({
                         kind: ActionKind.CHANGE_PLAYER_STAT,
                         mode: StatChangeMode.SET,
@@ -356,24 +390,75 @@ export function writeExpression(
             }
             return wrapAsPlayerStat(tempStat);
         }
+        case 'expressionCall': {
+            const func = ctx.getInlineFunction(expression.function.name);
+            if (!func) {
+                throw new InternalError(
+                    `Function not found: ${expression.function.name}`,
+                    expression.source,
+                );
+            }
+
+            const callWctx = wctx.clone();
+
+            const statsMapping = new Map(wctx.statsMapping);
+
+            for (const [index, arg] of expression.arguments.entries()) {
+                const argStat = '$$' + getNextTempId();
+                const value = writeExpression(arg, ctx, callWctx);
+                callWctx.usedStats.add(argStat);
+                statsMapping.set(func.parameters[index]!.name, argStat);
+                callWctx.actions.push({
+                    kind: ActionKind.CHANGE_PLAYER_STAT,
+                    mode: StatChangeMode.SET,
+                    stat: argStat,
+                    value,
+                });
+            }
+
+            callWctx.statsMapping = statsMapping;
+
+            const ast = getAstNodeById(func.astId);
+            if (!ast || ast.kind !== 'function') {
+                throw new InternalError(
+                    `Invalid function AST with ID ${func.astId}: ${ast?.kind}`,
+                    expression.source,
+                );
+            }
+
+            const returnStat = '$$' + getNextTempId();
+            callWctx.usedStats.add(returnStat);
+            for (const statement of ast.statements) {
+                writeStatement(statement, returnStat, ctx, callWctx);
+            }
+
+            wctx.actions = [...callWctx.actions];
+            wctx.usedStats = new Set(callWctx.usedStats);
+
+            return wrapAsPlayerStat(returnStat);
+        }
     }
 }
 
 export function writeStatement(
     statement: AstStatement,
+    returnStat: string | null,
     ctx: CompilerContext,
     wctx: WriterContext,
 ) {
     switch (statement.kind) {
-        case 'statementLet':
-            resetTempId();
+        case 'statementLet': {
+            const stat = '$' + statement.name.name;
+            wctx.usedStats.add(stat);
+            const value = writeExpression(statement.value, ctx, wctx);
             wctx.actions.push({
                 kind: ActionKind.CHANGE_PLAYER_STAT,
                 mode: StatChangeMode.SET,
-                stat: '$' + statement.name.name,
-                value: writeExpression(statement.value, ctx, wctx),
+                stat,
+                value,
             });
             break;
+        }
         case 'statementAssign':
         case 'statementAugmentedAssign': {
             const mode =
@@ -389,42 +474,50 @@ export function writeStatement(
                             ? StatChangeMode.DIVIDE
                             : StatChangeMode.SET;
             if (statement.lvalue.kind === 'expressionId') {
-                resetTempId();
+                const value = writeExpression(statement.value, ctx, wctx);
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode,
-                    stat: '$' + statement.lvalue.name.name,
-                    value: writeExpression(statement.value, ctx, wctx),
+                    stat: wctx.mapStatName(statement.lvalue.name.name),
+                    value,
                 });
             } else if (statement.lvalue.kind === 'expressionField') {
                 if (statement.lvalue.struct.kind === 'expressionId') {
                     if (statement.lvalue.struct.name.name === 'global') {
-                        resetTempId();
+                        const value = writeExpression(
+                            statement.value,
+                            ctx,
+                            wctx,
+                        );
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_GLOBAL_STAT,
                             mode,
                             stat: statement.lvalue.field.name,
-                            value: writeExpression(statement.value, ctx, wctx),
+                            value,
                         });
                         break;
                     }
                     if (statement.lvalue.struct.name.name === 'player') {
-                        resetTempId();
+                        const value = writeExpression(
+                            statement.value,
+                            ctx,
+                            wctx,
+                        );
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_PLAYER_STAT,
                             mode,
                             stat: statement.lvalue.field.name,
-                            value: writeExpression(statement.value, ctx, wctx),
+                            value,
                         });
                         break;
                     }
                 }
-                resetTempId();
+                const value = writeExpression(statement.value, ctx, wctx);
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode,
-                    stat: '$' + resolveStructPath(statement.lvalue).join('.'),
-                    value: writeExpression(statement.value, ctx, wctx),
+                    stat: resolveStructPath(statement.lvalue, wctx).join('.'),
+                    value,
                 });
             } else {
                 throw new InternalError('Invalid lvalue', statement.source);
@@ -432,34 +525,26 @@ export function writeStatement(
             break;
         }
         case 'statementExpression':
-            resetTempId();
             writeExpression(statement.expression, ctx, wctx);
             break;
         case 'statementIf': {
-            resetTempId();
             const condition = writeExpression(statement.condition, ctx, wctx);
 
-            const thenWctx: WriterContext = {
-                actions: [],
-                globalStats: wctx.globalStats,
-                playerStats: wctx.playerStats,
-                ctx: wctx.ctx,
-            };
+            const thenWctx = wctx.clone();
+            thenWctx.actions = [];
             for (const thenStatement of statement.then) {
-                writeStatement(thenStatement, ctx, thenWctx);
+                writeStatement(thenStatement, returnStat, ctx, thenWctx);
             }
+            wctx.usedStats = new Set(thenWctx.usedStats);
 
-            const elseWctx: WriterContext = {
-                actions: [],
-                globalStats: wctx.globalStats,
-                playerStats: wctx.playerStats,
-                ctx: wctx.ctx,
-            };
+            const elseWctx = wctx.clone();
+            elseWctx.actions = [];
             if (statement.else) {
                 for (const elseStatement of statement.else) {
-                    writeStatement(elseStatement, ctx, elseWctx);
+                    writeStatement(elseStatement, returnStat, ctx, elseWctx);
                 }
             }
+            wctx.usedStats = new Set(elseWctx.usedStats);
 
             wctx.actions.push({
                 kind: ActionKind.CONDITIONAL,
@@ -482,6 +567,17 @@ export function writeStatement(
             });
             break;
         }
+        case 'statementReturn':
+            if (returnStat && statement.expression) {
+                const value = writeExpression(statement.expression, ctx, wctx);
+                wctx.actions.push({
+                    kind: ActionKind.CHANGE_PLAYER_STAT,
+                    mode: StatChangeMode.SET,
+                    stat: returnStat,
+                    value,
+                });
+            }
+            break;
     }
 }
 
@@ -498,7 +594,17 @@ export function writeHandler(
     }
 
     for (const item of ast.statements) {
-        writeStatement(item, ctx, wctx);
+        writeStatement(item, null, ctx, wctx);
+    }
+
+    // Set all temp stats to 0
+    for (const stat of wctx.usedStats) {
+        wctx.actions.push({
+            kind: ActionKind.CHANGE_PLAYER_STAT,
+            mode: StatChangeMode.SET,
+            stat,
+            value: '0',
+        });
     }
 
     return {
@@ -529,14 +635,8 @@ export function writeHouse(ast: AstHouse, ctx: CompilerContext): CompiledHouse {
 
     for (const item of ast.items) {
         if (item.kind === 'handler') {
-            handlers.push(
-                writeHandler(item, ctx, {
-                    globalStats,
-                    playerStats,
-                    ctx,
-                    actions: [],
-                }),
-            );
+            resetTempId();
+            handlers.push(writeHandler(item, ctx, new WriterContext(ctx)));
         }
     }
 

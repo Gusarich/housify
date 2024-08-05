@@ -1,0 +1,23 @@
+fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}

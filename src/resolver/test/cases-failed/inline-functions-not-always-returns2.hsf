@@ -1,0 +1,5 @@
+fun testFunction(x: bool): int {
+    if (x) {
+        return 1;
+    }
+}

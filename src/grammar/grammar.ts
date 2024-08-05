@@ -7,7 +7,7 @@ import {
     SourceLocation,
 } from './ast';
 import grammar from './grammar.ohm-bundle';
-import { Node } from 'ohm-js';
+import { IterationNode, Node } from 'ohm-js';
 
 const semantics = grammar.createSemantics();
 
@@ -15,6 +15,10 @@ function getSourceLocation(s: Node): SourceLocation {
     return {
         interval: s.source,
     };
+}
+
+function unwrapOptNode(node: IterationNode): IterationNode | undefined {
+    return node.children.length === 0 ? undefined : node.children[0];
 }
 
 semantics.addOperation<AstNode>('astOfModule', {
@@ -47,6 +51,30 @@ semantics.addOperation<AstNode>('astOfModuleItem', {
             name: name.astOfExpression(),
             type: type.astOfType(),
             value: expression.astOfExpression(),
+            source: getSourceLocation(this),
+        });
+    },
+    Function(
+        _arg0,
+        name,
+        _arg2,
+        parameters,
+        _arg4,
+        _arg5,
+        _arg6,
+        returnType,
+        _arg8,
+        statements,
+        _arg10,
+    ) {
+        return createAstNode({
+            kind: 'function',
+            name: name.astOfExpression(),
+            parameters: parameters.astsOfList(),
+            returnType: returnType.astOfType(),
+            statements: statements.children.map((statement) =>
+                statement.astOfStatement(),
+            ),
             source: getSourceLocation(this),
         });
     },
@@ -87,7 +115,18 @@ semantics.addOperation<AstNode>('astOfHouseItem', {
     },
 });
 
-semantics.addOperation<AstNode>('astOfParameter', {
+semantics.addOperation<AstNode[]>('astsOfList', {
+    Parameters(params) {
+        return params
+            .asIteration()
+            .children.map((param) => param.astOfListItem());
+    },
+    Arguments(args) {
+        return args.asIteration().children.map((arg) => arg.astOfExpression());
+    },
+});
+
+semantics.addOperation<AstNode>('astOfListItem', {
     Parameter(arg0, _arg1, arg2) {
         return createAstNode({
             kind: 'parameter',
@@ -227,6 +266,13 @@ semantics.addOperation<AstNode>('astOfStatement', {
                 statement.astOfStatement(),
             ),
             else: [elseif.astOfStatement()],
+            source: getSourceLocation(this),
+        });
+    },
+    StatementReturn(_arg0, expression, _arg2) {
+        return createAstNode({
+            kind: 'statementReturn',
+            expression: unwrapOptNode(expression)?.astOfExpression(),
             source: getSourceLocation(this),
         });
     },
@@ -401,6 +447,14 @@ semantics.addOperation<AstNode>('astOfExpression', {
     },
     ExpressionParens(_arg0, expression, _arg2) {
         return expression.astOfExpression();
+    },
+    ExpressionCall(functionName, _arg1, functionArguments, _arg4, _arg5) {
+        return createAstNode({
+            kind: 'expressionCall',
+            function: functionName.astOfExpression(),
+            arguments: functionArguments.astsOfList(),
+            source: getSourceLocation(this),
+        });
     },
 });
 

@@ -6,7 +6,7 @@ exports[`Grammar should fail augmented-assignment-invalid-op 1`] = `
 > 4 |         x |= 1;
                 ^
   5 |     }
-Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
+Expected ";", "(", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
 `;
 
 exports[`Grammar should fail id-identical-to-keyword 1`] = `
@@ -114,7 +114,7 @@ exports[`Grammar should fail no-semicolon2 1`] = `
 > 4 |     }
           ^
   5 | }
-Expected ";", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
+Expected ";", "(", ".", "-", "+", "/", "*", "==", "!=", "<=", "<", ">=", ">", "||", "&&", "/=", "*=", "-=", "+=", or "=""
 `;
 
 exports[`Grammar should fail stat-definition-after-handler 1`] = `
@@ -3725,6 +3725,3525 @@ exports[`Grammar should parse field-access2 1`] = `
 }
 `;
 
+exports[`Grammar should parse function-calls 1`] = `
+{
+  "id": 102,
+  "items": [
+    {
+      "id": 11,
+      "kind": "function",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "double",
+        "source": {
+          "interval": Interval {
+            "_contents": "double",
+            "endIdx": 10,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 4,
+          },
+        },
+      },
+      "parameters": [
+        {
+          "id": 4,
+          "kind": "parameter",
+          "name": {
+            "id": 2,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 12,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 11,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 17,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 11,
+            },
+          },
+          "type": {
+            "id": 3,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 17,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 14,
+              },
+            },
+          },
+        },
+      ],
+      "returnType": {
+        "id": 5,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 23,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 20,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 45,
+          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+          "startIdx": 0,
+        },
+      },
+      "statements": [
+        {
+          "expression": {
+            "id": 9,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 7,
+              "kind": "expressionId",
+              "name": {
+                "id": 6,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 38,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 37,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 38,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 37,
+                },
+              },
+            },
+            "op": "*",
+            "right": {
+              "id": 8,
+              "kind": "integerLiteral",
+              "source": {
+                "interval": Interval {
+                  "_contents": "2",
+                  "endIdx": 42,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 41,
+                },
+              },
+              "value": "2",
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 42,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 37,
+              },
+            },
+          },
+          "id": 10,
+          "kind": "statementReturn",
+          "source": {
+            "interval": Interval {
+              "endIdx": 43,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 30,
+            },
+          },
+        },
+      ],
+    },
+    {
+      "id": 37,
+      "kind": "function",
+      "name": {
+        "id": 12,
+        "kind": "id",
+        "name": "add",
+        "source": {
+          "interval": Interval {
+            "_contents": "add",
+            "endIdx": 54,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 51,
+          },
+        },
+      },
+      "parameters": [
+        {
+          "id": 15,
+          "kind": "parameter",
+          "name": {
+            "id": 13,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 56,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 55,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 61,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 55,
+            },
+          },
+          "type": {
+            "id": 14,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 61,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 58,
+              },
+            },
+          },
+        },
+        {
+          "id": 18,
+          "kind": "parameter",
+          "name": {
+            "id": 16,
+            "kind": "id",
+            "name": "y",
+            "source": {
+              "interval": Interval {
+                "_contents": "y",
+                "endIdx": 64,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 63,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 69,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 63,
+            },
+          },
+          "type": {
+            "id": 17,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 69,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 66,
+              },
+            },
+          },
+        },
+      ],
+      "returnType": {
+        "id": 19,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 75,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 72,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 164,
+          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+          "startIdx": 47,
+        },
+      },
+      "statements": [
+        {
+          "condition": {
+            "id": 24,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 21,
+              "kind": "expressionId",
+              "name": {
+                "id": 20,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 87,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 86,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 87,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 86,
+                },
+              },
+            },
+            "op": "==",
+            "right": {
+              "id": 23,
+              "kind": "expressionId",
+              "name": {
+                "id": 22,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 92,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 91,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 92,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 91,
+                },
+              },
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 92,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 86,
+              },
+            },
+          },
+          "else": [
+            {
+              "expression": {
+                "id": 34,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 31,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 30,
+                    "kind": "id",
+                    "name": "x",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "x",
+                        "endIdx": 151,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 150,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 151,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 150,
+                    },
+                  },
+                },
+                "op": "+",
+                "right": {
+                  "id": 33,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 32,
+                    "kind": "id",
+                    "name": "y",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "y",
+                        "endIdx": 155,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 154,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 155,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 154,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 155,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 150,
+                  },
+                },
+              },
+              "id": 35,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 156,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 143,
+                },
+              },
+            },
+          ],
+          "id": 36,
+          "kind": "statementIf",
+          "source": {
+            "interval": Interval {
+              "endIdx": 162,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 82,
+            },
+          },
+          "then": [
+            {
+              "expression": {
+                "arguments": [
+                  {
+                    "id": 27,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 26,
+                      "kind": "id",
+                      "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 119,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 118,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 119,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 118,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 25,
+                  "kind": "id",
+                  "name": "double",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "double",
+                      "endIdx": 117,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 111,
+                    },
+                  },
+                },
+                "id": 28,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 120,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 111,
+                  },
+                },
+              },
+              "id": 29,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 121,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 104,
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      "id": 101,
+      "items": [
+        {
+          "id": 41,
+          "kind": "playerStat",
+          "name": {
+            "id": 39,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 196,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 195,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 202,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 188,
+            },
+          },
+          "type": {
+            "id": 40,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 201,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 198,
+              },
+            },
+          },
+        },
+        {
+          "event": {
+            "id": 42,
+            "kind": "id",
+            "name": "JOIN",
+            "source": {
+              "interval": Interval {
+                "_contents": "JOIN",
+                "endIdx": 219,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 215,
+              },
+            },
+          },
+          "id": 100,
+          "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 421,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 208,
+            },
+          },
+          "statements": [
+            {
+              "id": 46,
+              "kind": "statementLet",
+              "name": {
+                "id": 43,
+                "kind": "id",
+                "name": "a",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "a",
+                    "endIdx": 235,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 234,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 245,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 230,
+                },
+              },
+              "type": {
+                "id": 44,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 240,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 237,
+                  },
+                },
+              },
+              "value": {
+                "id": 45,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 244,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 243,
+                  },
+                },
+                "value": "1",
+              },
+            },
+            {
+              "id": 50,
+              "kind": "statementLet",
+              "name": {
+                "id": 47,
+                "kind": "id",
+                "name": "b",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "b",
+                    "endIdx": 259,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 258,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 269,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 254,
+                },
+              },
+              "type": {
+                "id": 48,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 264,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 261,
+                  },
+                },
+              },
+              "value": {
+                "id": 49,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "2",
+                    "endIdx": 268,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 267,
+                  },
+                },
+                "value": "2",
+              },
+            },
+            {
+              "id": 57,
+              "kind": "statementLet",
+              "name": {
+                "id": 51,
+                "kind": "id",
+                "name": "c",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "c",
+                    "endIdx": 283,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 282,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 301,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 278,
+                },
+              },
+              "type": {
+                "id": 52,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 288,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 285,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 55,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 54,
+                      "kind": "id",
+                      "name": "a",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "a",
+                          "endIdx": 299,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 298,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 299,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 298,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 53,
+                  "kind": "id",
+                  "name": "double",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "double",
+                      "endIdx": 297,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 291,
+                    },
+                  },
+                },
+                "id": 56,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 300,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 291,
+                  },
+                },
+              },
+            },
+            {
+              "id": 70,
+              "kind": "statementLet",
+              "name": {
+                "id": 58,
+                "kind": "id",
+                "name": "d",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "d",
+                    "endIdx": 315,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 314,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 341,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 310,
+                },
+              },
+              "type": {
+                "id": 59,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 320,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 317,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 62,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 61,
+                      "kind": "id",
+                      "name": "a",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "a",
+                          "endIdx": 328,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 327,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 328,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 327,
+                      },
+                    },
+                  },
+                  {
+                    "arguments": [
+                      {
+                        "id": 65,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 64,
+                          "kind": "id",
+                          "name": "b",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "b",
+                              "endIdx": 335,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 334,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 335,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 334,
+                          },
+                        },
+                      },
+                      {
+                        "id": 67,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 66,
+                          "kind": "id",
+                          "name": "c",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "c",
+                              "endIdx": 338,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 337,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 338,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 337,
+                          },
+                        },
+                      },
+                    ],
+                    "function": {
+                      "id": 63,
+                      "kind": "id",
+                      "name": "add",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "add",
+                          "endIdx": 333,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 330,
+                        },
+                      },
+                    },
+                    "id": 68,
+                    "kind": "expressionCall",
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 339,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 330,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 60,
+                  "kind": "id",
+                  "name": "add",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "add",
+                      "endIdx": 326,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 323,
+                    },
+                  },
+                },
+                "id": 69,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 340,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 323,
+                  },
+                },
+              },
+            },
+            {
+              "id": 99,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 73,
+                  "kind": "id",
+                  "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 358,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 357,
+                    },
+                  },
+                },
+                "id": 74,
+                "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 358,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 350,
+                  },
+                },
+                "struct": {
+                  "id": 72,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 71,
+                    "kind": "id",
+                    "name": "player",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "player",
+                        "endIdx": 356,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 350,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 356,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 350,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 415,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 350,
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "arguments": [
+                      {
+                        "id": 78,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 77,
+                          "kind": "id",
+                          "name": "a",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "a",
+                              "endIdx": 373,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 372,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 373,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 372,
+                          },
+                        },
+                      },
+                    ],
+                    "function": {
+                      "id": 76,
+                      "kind": "id",
+                      "name": "double",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "double",
+                          "endIdx": 371,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 365,
+                        },
+                      },
+                    },
+                    "id": 79,
+                    "kind": "expressionCall",
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 374,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 365,
+                      },
+                    },
+                  },
+                  {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 84,
+                            "kind": "expressionBinary",
+                            "left": {
+                              "id": 82,
+                              "kind": "integerLiteral",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "1",
+                                  "endIdx": 385,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 384,
+                                },
+                              },
+                              "value": "1",
+                            },
+                            "op": "+",
+                            "right": {
+                              "id": 83,
+                              "kind": "integerLiteral",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "2",
+                                  "endIdx": 389,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 388,
+                                },
+                              },
+                              "value": "2",
+                            },
+                            "source": {
+                              "interval": Interval {
+                                "endIdx": 389,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 384,
+                              },
+                            },
+                          },
+                          {
+                            "id": 85,
+                            "kind": "integerLiteral",
+                            "source": {
+                              "interval": Interval {
+                                "_contents": "3",
+                                "endIdx": 392,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 391,
+                              },
+                            },
+                            "value": "3",
+                          },
+                        ],
+                        "function": {
+                          "id": 81,
+                          "kind": "id",
+                          "name": "add",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "add",
+                              "endIdx": 383,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 380,
+                            },
+                          },
+                        },
+                        "id": 86,
+                        "kind": "expressionCall",
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 393,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 380,
+                          },
+                        },
+                      },
+                      {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "id": 90,
+                                "kind": "expressionId",
+                                "name": {
+                                  "id": 89,
+                                  "kind": "id",
+                                  "name": "b",
+                                  "source": {
+                                    "interval": Interval {
+                                      "_contents": "b",
+                                      "endIdx": 404,
+                                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                      "startIdx": 403,
+                                    },
+                                  },
+                                },
+                                "source": {
+                                  "interval": Interval {
+                                    "endIdx": 404,
+                                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                    "startIdx": 403,
+                                  },
+                                },
+                              },
+                              {
+                                "id": 92,
+                                "kind": "expressionId",
+                                "name": {
+                                  "id": 91,
+                                  "kind": "id",
+                                  "name": "c",
+                                  "source": {
+                                    "interval": Interval {
+                                      "_contents": "c",
+                                      "endIdx": 407,
+                                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                      "startIdx": 406,
+                                    },
+                                  },
+                                },
+                                "source": {
+                                  "interval": Interval {
+                                    "endIdx": 407,
+                                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                    "startIdx": 406,
+                                  },
+                                },
+                              },
+                            ],
+                            "function": {
+                              "id": 88,
+                              "kind": "id",
+                              "name": "add",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "add",
+                                  "endIdx": 402,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 399,
+                                },
+                              },
+                            },
+                            "id": 93,
+                            "kind": "expressionCall",
+                            "source": {
+                              "interval": Interval {
+                                "endIdx": 408,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 399,
+                              },
+                            },
+                          },
+                          {
+                            "id": 95,
+                            "kind": "expressionId",
+                            "name": {
+                              "id": 94,
+                              "kind": "id",
+                              "name": "d",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "d",
+                                  "endIdx": 411,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 410,
+                                },
+                              },
+                            },
+                            "source": {
+                              "interval": Interval {
+                                "endIdx": 411,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 410,
+                              },
+                            },
+                          },
+                        ],
+                        "function": {
+                          "id": 87,
+                          "kind": "id",
+                          "name": "add",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "add",
+                              "endIdx": 398,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 395,
+                            },
+                          },
+                        },
+                        "id": 96,
+                        "kind": "expressionCall",
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 412,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 395,
+                          },
+                        },
+                      },
+                    ],
+                    "function": {
+                      "id": 80,
+                      "kind": "id",
+                      "name": "add",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "add",
+                          "endIdx": 379,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 376,
+                        },
+                      },
+                    },
+                    "id": 97,
+                    "kind": "expressionCall",
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 413,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 376,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 75,
+                  "kind": "id",
+                  "name": "add",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "add",
+                      "endIdx": 364,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 361,
+                    },
+                  },
+                },
+                "id": 98,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 414,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 361,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 38,
+        "kind": "id",
+        "name": "TestHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "TestHouse",
+            "endIdx": 181,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 172,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 423,
+          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+          "startIdx": 166,
+        },
+      },
+    },
+  ],
+  "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 423,
+      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+      "startIdx": 0,
+    },
+  },
+}
+`;
+
 exports[`Grammar should parse id 1`] = `
 {
   "id": 8,
@@ -4138,6 +7657,3913 @@ exports[`Grammar should parse if-statement 1`] = `
     }
 }
 ",
+      "startIdx": 0,
+    },
+  },
+}
+`;
+
+exports[`Grammar should parse inline-functions 1`] = `
+{
+  "id": 99,
+  "items": [
+    {
+      "id": 30,
+      "kind": "function",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "testFunction",
+        "source": {
+          "interval": Interval {
+            "_contents": "testFunction",
+            "endIdx": 16,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 4,
+          },
+        },
+      },
+      "parameters": [
+        {
+          "id": 4,
+          "kind": "parameter",
+          "name": {
+            "id": 2,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 18,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 17,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 23,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 17,
+            },
+          },
+          "type": {
+            "id": 3,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 23,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 20,
+              },
+            },
+          },
+        },
+        {
+          "id": 7,
+          "kind": "parameter",
+          "name": {
+            "id": 5,
+            "kind": "id",
+            "name": "y",
+            "source": {
+              "interval": Interval {
+                "_contents": "y",
+                "endIdx": 26,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 25,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 32,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 25,
+            },
+          },
+          "type": {
+            "id": 6,
+            "kind": "id",
+            "name": "bool",
+            "source": {
+              "interval": Interval {
+                "_contents": "bool",
+                "endIdx": 32,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 28,
+              },
+            },
+          },
+        },
+      ],
+      "returnType": {
+        "id": 8,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 38,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 35,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 144,
+          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+          "startIdx": 0,
+        },
+      },
+      "statements": [
+        {
+          "id": 15,
+          "kind": "statementLet",
+          "name": {
+            "id": 9,
+            "kind": "id",
+            "name": "z",
+            "source": {
+              "interval": Interval {
+                "_contents": "z",
+                "endIdx": 50,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 49,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 64,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 45,
+            },
+          },
+          "type": {
+            "id": 10,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 55,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 52,
+              },
+            },
+          },
+          "value": {
+            "id": 14,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 12,
+              "kind": "expressionId",
+              "name": {
+                "id": 11,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 59,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 58,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 59,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 58,
+                },
+              },
+            },
+            "op": "+",
+            "right": {
+              "id": 13,
+              "kind": "integerLiteral",
+              "source": {
+                "interval": Interval {
+                  "_contents": "1",
+                  "endIdx": 63,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 62,
+                },
+              },
+              "value": "1",
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 63,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 58,
+              },
+            },
+          },
+        },
+        {
+          "condition": {
+            "id": 22,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 17,
+              "kind": "expressionId",
+              "name": {
+                "id": 16,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 74,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 73,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 74,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 73,
+                },
+              },
+            },
+            "op": "&&",
+            "right": {
+              "id": 21,
+              "kind": "expressionBinary",
+              "left": {
+                "id": 19,
+                "kind": "expressionId",
+                "name": {
+                  "id": 18,
+                  "kind": "id",
+                  "name": "z",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "z",
+                      "endIdx": 79,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 78,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 79,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 78,
+                  },
+                },
+              },
+              "op": ">",
+              "right": {
+                "id": 20,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "0",
+                    "endIdx": 83,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 82,
+                  },
+                },
+                "value": "0",
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 83,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 78,
+                },
+              },
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 83,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 73,
+              },
+            },
+          },
+          "else": [
+            {
+              "expression": {
+                "id": 27,
+                "kind": "expressionUnary",
+                "op": "-",
+                "operand": {
+                  "id": 26,
+                  "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "1",
+                      "endIdx": 135,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 134,
+                    },
+                  },
+                  "value": "1",
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 135,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 133,
+                  },
+                },
+              },
+              "id": 28,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 136,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 126,
+                },
+              },
+            },
+          ],
+          "id": 29,
+          "kind": "statementIf",
+          "source": {
+            "interval": Interval {
+              "endIdx": 142,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 69,
+            },
+          },
+          "then": [
+            {
+              "expression": {
+                "id": 24,
+                "kind": "expressionId",
+                "name": {
+                  "id": 23,
+                  "kind": "id",
+                  "name": "z",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "z",
+                      "endIdx": 103,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 102,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 103,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 102,
+                  },
+                },
+              },
+              "id": 25,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 104,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 95,
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      "id": 62,
+      "kind": "function",
+      "name": {
+        "id": 31,
+        "kind": "id",
+        "name": "testFunction2",
+        "source": {
+          "interval": Interval {
+            "_contents": "testFunction2",
+            "endIdx": 163,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 150,
+          },
+        },
+      },
+      "parameters": [
+        {
+          "id": 34,
+          "kind": "parameter",
+          "name": {
+            "id": 32,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 165,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 164,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 170,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 164,
+            },
+          },
+          "type": {
+            "id": 33,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 170,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 167,
+              },
+            },
+          },
+        },
+        {
+          "id": 37,
+          "kind": "parameter",
+          "name": {
+            "id": 35,
+            "kind": "id",
+            "name": "y",
+            "source": {
+              "interval": Interval {
+                "_contents": "y",
+                "endIdx": 173,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 172,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 179,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 172,
+            },
+          },
+          "type": {
+            "id": 36,
+            "kind": "id",
+            "name": "bool",
+            "source": {
+              "interval": Interval {
+                "_contents": "bool",
+                "endIdx": 179,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 175,
+              },
+            },
+          },
+        },
+      ],
+      "returnType": {
+        "id": 38,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 185,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 182,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 315,
+          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+          "startIdx": 146,
+        },
+      },
+      "statements": [
+        {
+          "condition": {
+            "id": 55,
+            "kind": "expressionBinary",
+            "left": {
+              "arguments": [
+                {
+                  "id": 41,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 40,
+                    "kind": "id",
+                    "name": "x",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "x",
+                        "endIdx": 210,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 209,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 210,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 209,
+                    },
+                  },
+                },
+                {
+                  "id": 43,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 42,
+                    "kind": "id",
+                    "name": "y",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "y",
+                        "endIdx": 213,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 212,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 213,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 212,
+                    },
+                  },
+                },
+              ],
+              "function": {
+                "id": 39,
+                "kind": "id",
+                "name": "testFunction",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "testFunction",
+                    "endIdx": 208,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 196,
+                  },
+                },
+              },
+              "id": 44,
+              "kind": "expressionCall",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 214,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 196,
+                },
+              },
+            },
+            "op": "==",
+            "right": {
+              "arguments": [
+                {
+                  "field": {
+                    "id": 48,
+                    "kind": "id",
+                    "name": "x",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "x",
+                        "endIdx": 239,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 238,
+                      },
+                    },
+                  },
+                  "id": 49,
+                  "kind": "expressionField",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 239,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 231,
+                    },
+                  },
+                  "struct": {
+                    "id": 47,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 46,
+                      "kind": "id",
+                      "name": "global",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "global",
+                          "endIdx": 237,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 231,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 237,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 231,
+                      },
+                    },
+                  },
+                },
+                {
+                  "field": {
+                    "id": 52,
+                    "kind": "id",
+                    "name": "y",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "y",
+                        "endIdx": 249,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 248,
+                      },
+                    },
+                  },
+                  "id": 53,
+                  "kind": "expressionField",
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 249,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 241,
+                    },
+                  },
+                  "struct": {
+                    "id": 51,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 50,
+                      "kind": "id",
+                      "name": "global",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "global",
+                          "endIdx": 247,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 241,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 247,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 241,
+                      },
+                    },
+                  },
+                },
+              ],
+              "function": {
+                "id": 45,
+                "kind": "id",
+                "name": "testFunction",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "testFunction",
+                    "endIdx": 230,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 218,
+                  },
+                },
+              },
+              "id": 54,
+              "kind": "expressionCall",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 250,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 218,
+                },
+              },
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 250,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 196,
+              },
+            },
+          },
+          "else": [
+            {
+              "expression": {
+                "id": 59,
+                "kind": "expressionUnary",
+                "op": "-",
+                "operand": {
+                  "id": 58,
+                  "kind": "integerLiteral",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "123",
+                      "endIdx": 306,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 303,
+                    },
+                  },
+                  "value": "123",
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 306,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 302,
+                  },
+                },
+              },
+              "id": 60,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 307,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 295,
+                },
+              },
+            },
+          ],
+          "id": 61,
+          "kind": "statementIf",
+          "source": {
+            "interval": Interval {
+              "endIdx": 313,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 192,
+            },
+          },
+          "then": [
+            {
+              "expression": {
+                "id": 56,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "123",
+                    "endIdx": 272,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 269,
+                  },
+                },
+                "value": "123",
+              },
+              "id": 57,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 273,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 262,
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      "id": 98,
+      "items": [
+        {
+          "id": 66,
+          "kind": "globalStat",
+          "name": {
+            "id": 64,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 345,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 344,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 351,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 337,
+            },
+          },
+          "type": {
+            "id": 65,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 350,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 347,
+              },
+            },
+          },
+        },
+        {
+          "id": 69,
+          "kind": "playerStat",
+          "name": {
+            "id": 67,
+            "kind": "id",
+            "name": "y",
+            "source": {
+              "interval": Interval {
+                "_contents": "y",
+                "endIdx": 364,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 363,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 371,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 356,
+            },
+          },
+          "type": {
+            "id": 68,
+            "kind": "id",
+            "name": "bool",
+            "source": {
+              "interval": Interval {
+                "_contents": "bool",
+                "endIdx": 370,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 366,
+              },
+            },
+          },
+        },
+        {
+          "event": {
+            "id": 70,
+            "kind": "id",
+            "name": "JOIN",
+            "source": {
+              "interval": Interval {
+                "_contents": "JOIN",
+                "endIdx": 388,
+                "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                "startIdx": 384,
+              },
+            },
+          },
+          "id": 97,
+          "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 532,
+              "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+              "startIdx": 377,
+            },
+          },
+          "statements": [
+            {
+              "id": 74,
+              "kind": "statementLet",
+              "name": {
+                "id": 71,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 404,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 403,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 414,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 399,
+                },
+              },
+              "type": {
+                "id": 72,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 409,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 406,
+                  },
+                },
+              },
+              "value": {
+                "id": 73,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 413,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 412,
+                  },
+                },
+                "value": "1",
+              },
+            },
+            {
+              "id": 78,
+              "kind": "statementLet",
+              "name": {
+                "id": 75,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 428,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 427,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 442,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 423,
+                },
+              },
+              "type": {
+                "id": 76,
+                "kind": "id",
+                "name": "bool",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "bool",
+                    "endIdx": 434,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 430,
+                  },
+                },
+              },
+              "value": {
+                "id": 77,
+                "kind": "booleanLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "true",
+                    "endIdx": 441,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 437,
+                  },
+                },
+                "value": true,
+              },
+            },
+            {
+              "id": 87,
+              "kind": "statementLet",
+              "name": {
+                "id": 79,
+                "kind": "id",
+                "name": "z",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "z",
+                    "endIdx": 456,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 455,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 484,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 451,
+                },
+              },
+              "type": {
+                "id": 80,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 461,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 458,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 83,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 82,
+                      "kind": "id",
+                      "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 479,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 478,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 479,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 478,
+                      },
+                    },
+                  },
+                  {
+                    "id": 85,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 84,
+                      "kind": "id",
+                      "name": "y",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "y",
+                          "endIdx": 482,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 481,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 482,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 481,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 81,
+                  "kind": "id",
+                  "name": "testFunction2",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "testFunction2",
+                      "endIdx": 477,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 464,
+                    },
+                  },
+                },
+                "id": 86,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 483,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 464,
+                  },
+                },
+              },
+            },
+            {
+              "id": 96,
+              "kind": "statementLet",
+              "name": {
+                "id": 88,
+                "kind": "id",
+                "name": "z2",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "z2",
+                    "endIdx": 499,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 497,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 526,
+                  "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                  "startIdx": 493,
+                },
+              },
+              "type": {
+                "id": 89,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 504,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 501,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 92,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 91,
+                      "kind": "id",
+                      "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 521,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 520,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 521,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 520,
+                      },
+                    },
+                  },
+                  {
+                    "id": 94,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 93,
+                      "kind": "id",
+                      "name": "y",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "y",
+                          "endIdx": 524,
+                          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                          "startIdx": 523,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 524,
+                        "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                        "startIdx": 523,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 90,
+                  "kind": "id",
+                  "name": "testFunction",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "testFunction",
+                      "endIdx": 519,
+                      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                      "startIdx": 507,
+                    },
+                  },
+                },
+                "id": 95,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 525,
+                    "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+                    "startIdx": 507,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 63,
+        "kind": "id",
+        "name": "MyHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "MyHouse",
+            "endIdx": 330,
+            "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+            "startIdx": 323,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 534,
+          "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
+          "startIdx": 317,
+        },
+      },
+    },
+  ],
+  "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 534,
+      "sourceString": "fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}",
       "startIdx": 0,
     },
   },

@@ -1,0 +1,31 @@
+const xx: int = 1;
+const yy: bool = true;
+
+fun testFunction(x: int, y: bool): int {
+    let z: int = x + 1;
+    if (y && z > 0) {
+        return z;
+    } else {
+        return -1;
+    }
+}
+
+fun testFunction2(x: int, y: bool): int {
+    if (testFunction(x, y) == testFunction(xx, yy)) {
+        return 123;
+    } else {
+        return -123;
+    }
+}
+
+house MyHouse {
+    global x: int;
+    player y: bool;
+
+    handle JOIN {
+        let x: int = 1;
+        let y: bool = true;
+        let z: int = testFunction2(x, y);
+        let z2: int = testFunction(x, y);
+    }
+}

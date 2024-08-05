@@ -1,0 +1,5 @@
+fun testFunction(x: int): int {
+    let y: int = x + x;
+    return y;
+    y += 2;
+}
