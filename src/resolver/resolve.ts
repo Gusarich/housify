@@ -54,6 +54,37 @@ export function resolveStructPath(path: AstExpressionField): string[] {
     }
 }
 
+export function areTypesEqual(
+    left: Type,
+    right: Type,
+): {
+    equal: boolean;
+    first?: string;
+    second?: string;
+} {
+    if (left.type !== right.type) {
+        return {
+            equal: false,
+            first: left.type,
+            second: right.type,
+        };
+    }
+    if (
+        left.type === 'struct' &&
+        right.type === 'struct' &&
+        left.name !== right.name
+    ) {
+        return {
+            equal: false,
+            first: left.name,
+            second: right.name,
+        };
+    }
+    return {
+        equal: true,
+    };
+}
+
 export function resolveExpression(
     expression: AstExpression,
     ctx: CompilerContext,
@@ -131,16 +162,18 @@ export function resolveExpression(
                         type: 'bool',
                     });
                 case '==':
-                case '!=':
-                    if (left.type !== right.type) {
+                case '!=': {
+                    const typesEqual = areTypesEqual(left, right);
+                    if (!typesEqual.equal) {
                         throw new ResolveError(
-                            `Operands must be of the same type, got '${left.type}' and '${right.type}'`,
+                            `Operands must be of the same type, got '${typesEqual.first}' and '${typesEqual.second}'`,
                             expression.source,
                         );
                     }
                     return registerExpression(ctx, expression.id, {
                         type: 'bool',
                     });
+                }
                 case '&&':
                 case '||':
                     if (left.type !== 'bool') {
@@ -363,6 +396,19 @@ export function processStatement(
             }
             break;
         }
+        case 'statementReturn': {
+            if (statement.expression) {
+                const type = resolveExpression(statement.expression, ctx, sctx);
+                const typesEqual = areTypesEqual(type, sctx.expectedReturnType);
+                if (!typesEqual.equal) {
+                    throw new ResolveError(
+                        `Expected return type '${sctx.expectedReturnType.type}', got '${type.type}'`,
+                        statement.expression.source,
+                    );
+                }
+                sctx.setAlwaysReturns();
+            }
+        }
     }
 }
 
@@ -502,7 +548,10 @@ export function processStaticConstant(
     });
 }
 
-export function processInlineFunction(func: AstFunction, ctx: CompilerContext) {
+export function prepareProcessInlineFunction(
+    func: AstFunction,
+    ctx: CompilerContext,
+) {
     if (ctx.hasInlineFunction(func.name.name)) {
         throw new ResolveError(
             `Inline function '${func.name.name}' already exists`,
@@ -529,7 +578,37 @@ export function processInlineFunction(func: AstFunction, ctx: CompilerContext) {
     });
 }
 
+export function processInlineFunction(func: AstFunction, ctx: CompilerContext) {
+    const resolvedFunc = ctx.getInlineFunction(func.name.name)!;
+
+    // Process statements
+    const sctx = new StatementContext(resolvedFunc.type);
+    for (const param of resolvedFunc.parameters) {
+        sctx.addVariable(param.name, {
+            type: param.type,
+            constant: false,
+        });
+    }
+    for (const statement of func.statements) {
+        processStatement(statement, ctx, sctx);
+    }
+    if (!sctx.alwaysReturns) {
+        throw new ResolveError(
+            `Function '${func.name.name}' does not always return a value`,
+            func.source,
+        );
+    }
+}
+
 export function resolveModule(module: AstModule, ctx: CompilerContext) {
+    // Go through function definitions first to allow for recursive calls
+    for (const item of module.items) {
+        if (item.kind === 'function') {
+            prepareProcessInlineFunction(item, ctx);
+        }
+    }
+
+    // Process all module items
     for (const item of module.items) {
         switch (item.kind) {
             case 'house':

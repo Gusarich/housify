@@ -4146,10 +4146,10 @@ exports[`Grammar should parse if-statement 1`] = `
 
 exports[`Grammar should parse inline-functions 1`] = `
 {
-  "id": 103,
+  "id": 99,
   "items": [
     {
-      "id": 32,
+      "id": 30,
       "kind": "function",
       "name": {
         "id": 1,
@@ -5057,89 +5057,11 @@ house MyHouse {
           "else": [
             {
               "expression": {
-                "id": 29,
-                "kind": "expressionBinary",
-                "left": {
-                  "id": 27,
-                  "kind": "expressionId",
-                  "name": {
-                    "id": 26,
-                    "kind": "id",
-                    "name": "return",
-                    "source": {
-                      "interval": Interval {
-                        "_contents": "return",
-                        "endIdx": 132,
-                        "sourceString": "fun testFunction(x: int, y: bool): int {
-    let z: int = x + 1;
-    if (y && z > 0) {
-        return z;
-    } else {
-        return -1;
-    }
-}
-
-fun testFunction2(x: int, y: bool): int {
-    if (testFunction(x, y) == testFunction(global.x, global.y)) {
-        return 123;
-    } else {
-        return -123;
-    }
-}
-
-house MyHouse {
-    global x: int;
-    player y: bool;
-
-    handle JOIN {
-        let x: int = 1;
-        let y: bool = true;
-        let z: int = testFunction2(x, y);
-        let z2: int = testFunction(x, y);
-    }
-}",
-                        "startIdx": 126,
-                      },
-                    },
-                  },
-                  "source": {
-                    "interval": Interval {
-                      "endIdx": 132,
-                      "sourceString": "fun testFunction(x: int, y: bool): int {
-    let z: int = x + 1;
-    if (y && z > 0) {
-        return z;
-    } else {
-        return -1;
-    }
-}
-
-fun testFunction2(x: int, y: bool): int {
-    if (testFunction(x, y) == testFunction(global.x, global.y)) {
-        return 123;
-    } else {
-        return -123;
-    }
-}
-
-house MyHouse {
-    global x: int;
-    player y: bool;
-
-    handle JOIN {
-        let x: int = 1;
-        let y: bool = true;
-        let z: int = testFunction2(x, y);
-        let z2: int = testFunction(x, y);
-    }
-}",
-                      "startIdx": 126,
-                    },
-                  },
-                },
+                "id": 27,
+                "kind": "expressionUnary",
                 "op": "-",
-                "right": {
-                  "id": 28,
+                "operand": {
+                  "id": 26,
                   "kind": "integerLiteral",
                   "source": {
                     "interval": Interval {
@@ -5209,12 +5131,12 @@ house MyHouse {
         let z2: int = testFunction(x, y);
     }
 }",
-                    "startIdx": 126,
+                    "startIdx": 133,
                   },
                 },
               },
-              "id": 30,
-              "kind": "statementExpression",
+              "id": 28,
+              "kind": "statementReturn",
               "source": {
                 "interval": Interval {
                   "endIdx": 136,
@@ -5251,7 +5173,7 @@ house MyHouse {
               },
             },
           ],
-          "id": 31,
+          "id": 29,
           "kind": "statementIf",
           "source": {
             "interval": Interval {
@@ -5409,10 +5331,10 @@ house MyHouse {
       ],
     },
     {
-      "id": 66,
+      "id": 62,
       "kind": "function",
       "name": {
-        "id": 33,
+        "id": 31,
         "kind": "id",
         "name": "testFunction2",
         "source": {
@@ -5453,10 +5375,10 @@ house MyHouse {
       },
       "parameters": [
         {
-          "id": 36,
+          "id": 34,
           "kind": "parameter",
           "name": {
-            "id": 34,
+            "id": 32,
             "kind": "id",
             "name": "x",
             "source": {
@@ -5530,7 +5452,7 @@ house MyHouse {
             },
           },
           "type": {
-            "id": 35,
+            "id": 33,
             "kind": "id",
             "name": "int",
             "source": {
@@ -5571,10 +5493,10 @@ house MyHouse {
           },
         },
         {
-          "id": 39,
+          "id": 37,
           "kind": "parameter",
           "name": {
-            "id": 37,
+            "id": 35,
             "kind": "id",
             "name": "y",
             "source": {
@@ -5648,7 +5570,7 @@ house MyHouse {
             },
           },
           "type": {
-            "id": 38,
+            "id": 36,
             "kind": "id",
             "name": "bool",
             "source": {
@@ -5690,7 +5612,7 @@ house MyHouse {
         },
       ],
       "returnType": {
-        "id": 40,
+        "id": 38,
         "kind": "id",
         "name": "int",
         "source": {
@@ -5766,15 +5688,15 @@ house MyHouse {
       "statements": [
         {
           "condition": {
-            "id": 57,
+            "id": 55,
             "kind": "expressionBinary",
             "left": {
               "arguments": [
                 {
-                  "id": 43,
+                  "id": 41,
                   "kind": "expressionId",
                   "name": {
-                    "id": 42,
+                    "id": 40,
                     "kind": "id",
                     "name": "x",
                     "source": {
@@ -5849,10 +5771,10 @@ house MyHouse {
                   },
                 },
                 {
-                  "id": 45,
+                  "id": 43,
                   "kind": "expressionId",
                   "name": {
-                    "id": 44,
+                    "id": 42,
                     "kind": "id",
                     "name": "y",
                     "source": {
@@ -5928,7 +5850,7 @@ house MyHouse {
                 },
               ],
               "function": {
-                "id": 41,
+                "id": 39,
                 "kind": "id",
                 "name": "testFunction",
                 "source": {
@@ -5967,7 +5889,7 @@ house MyHouse {
                   },
                 },
               },
-              "id": 46,
+              "id": 44,
               "kind": "expressionCall",
               "source": {
                 "interval": Interval {
@@ -6009,7 +5931,7 @@ house MyHouse {
               "arguments": [
                 {
                   "field": {
-                    "id": 50,
+                    "id": 48,
                     "kind": "id",
                     "name": "x",
                     "source": {
@@ -6048,7 +5970,7 @@ house MyHouse {
                       },
                     },
                   },
-                  "id": 51,
+                  "id": 49,
                   "kind": "expressionField",
                   "source": {
                     "interval": Interval {
@@ -6085,10 +6007,10 @@ house MyHouse {
                     },
                   },
                   "struct": {
-                    "id": 49,
+                    "id": 47,
                     "kind": "expressionId",
                     "name": {
-                      "id": 48,
+                      "id": 46,
                       "kind": "id",
                       "name": "global",
                       "source": {
@@ -6165,7 +6087,7 @@ house MyHouse {
                 },
                 {
                   "field": {
-                    "id": 54,
+                    "id": 52,
                     "kind": "id",
                     "name": "y",
                     "source": {
@@ -6204,7 +6126,7 @@ house MyHouse {
                       },
                     },
                   },
-                  "id": 55,
+                  "id": 53,
                   "kind": "expressionField",
                   "source": {
                     "interval": Interval {
@@ -6241,10 +6163,10 @@ house MyHouse {
                     },
                   },
                   "struct": {
-                    "id": 53,
+                    "id": 51,
                     "kind": "expressionId",
                     "name": {
-                      "id": 52,
+                      "id": 50,
                       "kind": "id",
                       "name": "global",
                       "source": {
@@ -6321,7 +6243,7 @@ house MyHouse {
                 },
               ],
               "function": {
-                "id": 47,
+                "id": 45,
                 "kind": "id",
                 "name": "testFunction",
                 "source": {
@@ -6360,7 +6282,7 @@ house MyHouse {
                   },
                 },
               },
-              "id": 56,
+              "id": 54,
               "kind": "expressionCall",
               "source": {
                 "interval": Interval {
@@ -6435,89 +6357,11 @@ house MyHouse {
           "else": [
             {
               "expression": {
-                "id": 63,
-                "kind": "expressionBinary",
-                "left": {
-                  "id": 61,
-                  "kind": "expressionId",
-                  "name": {
-                    "id": 60,
-                    "kind": "id",
-                    "name": "return",
-                    "source": {
-                      "interval": Interval {
-                        "_contents": "return",
-                        "endIdx": 301,
-                        "sourceString": "fun testFunction(x: int, y: bool): int {
-    let z: int = x + 1;
-    if (y && z > 0) {
-        return z;
-    } else {
-        return -1;
-    }
-}
-
-fun testFunction2(x: int, y: bool): int {
-    if (testFunction(x, y) == testFunction(global.x, global.y)) {
-        return 123;
-    } else {
-        return -123;
-    }
-}
-
-house MyHouse {
-    global x: int;
-    player y: bool;
-
-    handle JOIN {
-        let x: int = 1;
-        let y: bool = true;
-        let z: int = testFunction2(x, y);
-        let z2: int = testFunction(x, y);
-    }
-}",
-                        "startIdx": 295,
-                      },
-                    },
-                  },
-                  "source": {
-                    "interval": Interval {
-                      "endIdx": 301,
-                      "sourceString": "fun testFunction(x: int, y: bool): int {
-    let z: int = x + 1;
-    if (y && z > 0) {
-        return z;
-    } else {
-        return -1;
-    }
-}
-
-fun testFunction2(x: int, y: bool): int {
-    if (testFunction(x, y) == testFunction(global.x, global.y)) {
-        return 123;
-    } else {
-        return -123;
-    }
-}
-
-house MyHouse {
-    global x: int;
-    player y: bool;
-
-    handle JOIN {
-        let x: int = 1;
-        let y: bool = true;
-        let z: int = testFunction2(x, y);
-        let z2: int = testFunction(x, y);
-    }
-}",
-                      "startIdx": 295,
-                    },
-                  },
-                },
+                "id": 59,
+                "kind": "expressionUnary",
                 "op": "-",
-                "right": {
-                  "id": 62,
+                "operand": {
+                  "id": 58,
                   "kind": "integerLiteral",
                   "source": {
                     "interval": Interval {
@@ -6587,12 +6431,12 @@ house MyHouse {
         let z2: int = testFunction(x, y);
     }
 }",
-                    "startIdx": 295,
+                    "startIdx": 302,
                   },
                 },
               },
-              "id": 64,
-              "kind": "statementExpression",
+              "id": 60,
+              "kind": "statementReturn",
               "source": {
                 "interval": Interval {
                   "endIdx": 307,
@@ -6629,7 +6473,7 @@ house MyHouse {
               },
             },
           ],
-          "id": 65,
+          "id": 61,
           "kind": "statementIf",
           "source": {
             "interval": Interval {
@@ -6668,7 +6512,7 @@ house MyHouse {
           "then": [
             {
               "expression": {
-                "id": 58,
+                "id": 56,
                 "kind": "integerLiteral",
                 "source": {
                   "interval": Interval {
@@ -6707,7 +6551,7 @@ house MyHouse {
                 },
                 "value": "123",
               },
-              "id": 59,
+              "id": 57,
               "kind": "statementReturn",
               "source": {
                 "interval": Interval {
@@ -6749,13 +6593,13 @@ house MyHouse {
       ],
     },
     {
-      "id": 102,
+      "id": 98,
       "items": [
         {
-          "id": 70,
+          "id": 66,
           "kind": "globalStat",
           "name": {
-            "id": 68,
+            "id": 64,
             "kind": "id",
             "name": "x",
             "source": {
@@ -6829,7 +6673,7 @@ house MyHouse {
             },
           },
           "type": {
-            "id": 69,
+            "id": 65,
             "kind": "id",
             "name": "int",
             "source": {
@@ -6870,10 +6714,10 @@ house MyHouse {
           },
         },
         {
-          "id": 73,
+          "id": 69,
           "kind": "playerStat",
           "name": {
-            "id": 71,
+            "id": 67,
             "kind": "id",
             "name": "y",
             "source": {
@@ -6947,7 +6791,7 @@ house MyHouse {
             },
           },
           "type": {
-            "id": 72,
+            "id": 68,
             "kind": "id",
             "name": "bool",
             "source": {
@@ -6989,7 +6833,7 @@ house MyHouse {
         },
         {
           "event": {
-            "id": 74,
+            "id": 70,
             "kind": "id",
             "name": "JOIN",
             "source": {
@@ -7028,7 +6872,7 @@ house MyHouse {
               },
             },
           },
-          "id": 101,
+          "id": 97,
           "kind": "handler",
           "source": {
             "interval": Interval {
@@ -7066,10 +6910,10 @@ house MyHouse {
           },
           "statements": [
             {
-              "id": 78,
+              "id": 74,
               "kind": "statementLet",
               "name": {
-                "id": 75,
+                "id": 71,
                 "kind": "id",
                 "name": "x",
                 "source": {
@@ -7143,7 +6987,7 @@ house MyHouse {
                 },
               },
               "type": {
-                "id": 76,
+                "id": 72,
                 "kind": "id",
                 "name": "int",
                 "source": {
@@ -7183,7 +7027,7 @@ house MyHouse {
                 },
               },
               "value": {
-                "id": 77,
+                "id": 73,
                 "kind": "integerLiteral",
                 "source": {
                   "interval": Interval {
@@ -7224,10 +7068,10 @@ house MyHouse {
               },
             },
             {
-              "id": 82,
+              "id": 78,
               "kind": "statementLet",
               "name": {
-                "id": 79,
+                "id": 75,
                 "kind": "id",
                 "name": "y",
                 "source": {
@@ -7301,7 +7145,7 @@ house MyHouse {
                 },
               },
               "type": {
-                "id": 80,
+                "id": 76,
                 "kind": "id",
                 "name": "bool",
                 "source": {
@@ -7341,7 +7185,7 @@ house MyHouse {
                 },
               },
               "value": {
-                "id": 81,
+                "id": 77,
                 "kind": "booleanLiteral",
                 "source": {
                   "interval": Interval {
@@ -7382,10 +7226,10 @@ house MyHouse {
               },
             },
             {
-              "id": 91,
+              "id": 87,
               "kind": "statementLet",
               "name": {
-                "id": 83,
+                "id": 79,
                 "kind": "id",
                 "name": "z",
                 "source": {
@@ -7459,7 +7303,7 @@ house MyHouse {
                 },
               },
               "type": {
-                "id": 84,
+                "id": 80,
                 "kind": "id",
                 "name": "int",
                 "source": {
@@ -7501,10 +7345,10 @@ house MyHouse {
               "value": {
                 "arguments": [
                   {
-                    "id": 87,
+                    "id": 83,
                     "kind": "expressionId",
                     "name": {
-                      "id": 86,
+                      "id": 82,
                       "kind": "id",
                       "name": "x",
                       "source": {
@@ -7579,10 +7423,10 @@ house MyHouse {
                     },
                   },
                   {
-                    "id": 89,
+                    "id": 85,
                     "kind": "expressionId",
                     "name": {
-                      "id": 88,
+                      "id": 84,
                       "kind": "id",
                       "name": "y",
                       "source": {
@@ -7658,7 +7502,7 @@ house MyHouse {
                   },
                 ],
                 "function": {
-                  "id": 85,
+                  "id": 81,
                   "kind": "id",
                   "name": "testFunction2",
                   "source": {
@@ -7697,7 +7541,7 @@ house MyHouse {
                     },
                   },
                 },
-                "id": 90,
+                "id": 86,
                 "kind": "expressionCall",
                 "source": {
                   "interval": Interval {
@@ -7736,10 +7580,10 @@ house MyHouse {
               },
             },
             {
-              "id": 100,
+              "id": 96,
               "kind": "statementLet",
               "name": {
-                "id": 92,
+                "id": 88,
                 "kind": "id",
                 "name": "z2",
                 "source": {
@@ -7813,7 +7657,7 @@ house MyHouse {
                 },
               },
               "type": {
-                "id": 93,
+                "id": 89,
                 "kind": "id",
                 "name": "int",
                 "source": {
@@ -7855,10 +7699,10 @@ house MyHouse {
               "value": {
                 "arguments": [
                   {
-                    "id": 96,
+                    "id": 92,
                     "kind": "expressionId",
                     "name": {
-                      "id": 95,
+                      "id": 91,
                       "kind": "id",
                       "name": "x",
                       "source": {
@@ -7933,10 +7777,10 @@ house MyHouse {
                     },
                   },
                   {
-                    "id": 98,
+                    "id": 94,
                     "kind": "expressionId",
                     "name": {
-                      "id": 97,
+                      "id": 93,
                       "kind": "id",
                       "name": "y",
                       "source": {
@@ -8012,7 +7856,7 @@ house MyHouse {
                   },
                 ],
                 "function": {
-                  "id": 94,
+                  "id": 90,
                   "kind": "id",
                   "name": "testFunction",
                   "source": {
@@ -8051,7 +7895,7 @@ house MyHouse {
                     },
                   },
                 },
-                "id": 99,
+                "id": 95,
                 "kind": "expressionCall",
                 "source": {
                   "interval": Interval {
@@ -8094,7 +7938,7 @@ house MyHouse {
       ],
       "kind": "house",
       "name": {
-        "id": 67,
+        "id": 63,
         "kind": "id",
         "name": "MyHouse",
         "source": {

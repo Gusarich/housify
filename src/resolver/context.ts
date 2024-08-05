@@ -9,9 +9,13 @@ export type Variable = {
 
 export class StatementContext {
     variables: Map<string, Variable>;
+    alwaysReturns: boolean;
+    expectedReturnType: Type;
 
-    constructor() {
+    constructor(expectedReturnType?: Type) {
         this.variables = new Map();
+        this.alwaysReturns = false;
+        this.expectedReturnType = expectedReturnType ?? { type: 'void' };
     }
 
     clone() {
@@ -19,6 +23,8 @@ export class StatementContext {
         for (const [name, variable] of this.variables) {
             sctx.addVariable(name, variable);
         }
+        sctx.alwaysReturns = this.alwaysReturns;
+        sctx.expectedReturnType = this.expectedReturnType;
         return sctx;
     }
 
@@ -36,6 +42,18 @@ export class StatementContext {
 
     deleteVariable(name: string) {
         this.variables.delete(name);
+    }
+
+    setAlwaysReturns() {
+        this.alwaysReturns = true;
+    }
+
+    unsetAlwaysReturns() {
+        this.alwaysReturns = false;
+    }
+
+    isAlwaysReturns() {
+        return this.alwaysReturns;
     }
 }
 

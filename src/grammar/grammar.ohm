@@ -13,7 +13,7 @@ Housify {
 
     Handler = handle id "{" Statement* "}"
 
-    Function = "fun" id "(" Parameters ","? ")" ":" Type "{" Statement* "}"
+    Function = fun id "(" Parameters ","? ")" ":" Type "{" Statement* "}"
 
     Parameters = ListOf<Parameter, ",">
     Parameter = id ":" Type
@@ -21,15 +21,15 @@ Housify {
     Statement = StatementAssign
               | StatementLet
               | StatementConst
+              | StatementReturn
               | StatementExpression
               | StatementIf
-              | StatementReturn
     
     StatementAssign = Expression ("=" | "+=" | "-=" | "*=" | "/=") Expression ";"
 
     StatementLet = let id ":" Type "=" Expression ";"
 
-    StatementConst = "const" id ":" Type "=" Expression ";"
+    StatementConst = const id ":" Type "=" Expression ";"
 
     StatementExpression = Expression ";"
 
@@ -37,7 +37,7 @@ Housify {
                 | if Expression "{" Statement* "}" else "{" Statement* "}" --withElse
                 | if Expression "{" Statement* "}" else StatementIf --withElseIf
     
-    StatementReturn = "return" Expression? ";"
+    StatementReturn = return Expression? ";"
     
     // Expressions are ordered by precedence
     
@@ -112,6 +112,9 @@ Housify {
     let = "let" ~idPart
     if = "if" ~idPart
     else = "else" ~idPart
+    fun = "fun" ~idPart
+    const = "const" ~idPart
+    return = "return" ~idPart
 
     keyword = house | handle | let | if | else
 
