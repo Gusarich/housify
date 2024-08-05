@@ -336,6 +336,36 @@ exports[`Resolver should fail unknown-type 1`] = `
 ResolveError: Type 'qwerty' not found"
 `;
 
+exports[`Resolver should fail unreachable-code 1`] = `
+"Line 4, col 5:
+  3 |     return y;
+> 4 |     y += 2;
+          ^~~~~~~
+  5 | }
+
+ResolveError: Unreachable code"
+`;
+
+exports[`Resolver should fail unreachable-code2 1`] = `
+"Line 8, col 5:
+  7 |     }
+> 8 |     y += 2;
+          ^~~~~~~
+  9 | }
+
+ResolveError: Unreachable code"
+`;
+
+exports[`Resolver should fail unreachable-code3 1`] = `
+"Line 12, col 5:
+  11 |     }
+> 12 |     y += 2;
+           ^~~~~~~
+  13 | }
+
+ResolveError: Unreachable code"
+`;
+
 exports[`Resolver should fail unused-statement-expression 1`] = `
 "Line 3, col 9:
   2 |     handle BLOCK_BREAK {
@@ -2388,6 +2418,62 @@ CompilerContext {
     },
   },
   "inlineFunctions": Map {},
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve unreachable-code-check 1`] = `
+CompilerContext {
+  "expressions": Map {
+    9 => {
+      "type": "int",
+    },
+    11 => {
+      "type": "int",
+    },
+    12 => {
+      "type": "int",
+    },
+    15 => {
+      "type": "int",
+    },
+    16 => {
+      "type": "int",
+    },
+    17 => {
+      "type": "bool",
+    },
+    19 => {
+      "type": "int",
+    },
+    23 => {
+      "type": "int",
+    },
+    24 => {
+      "type": "int",
+    },
+    27 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testFunction" => {
+      "astId": 29,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
   "staticConstants": Map {},
   "types": Map {},
 }

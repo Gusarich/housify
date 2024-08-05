@@ -273,6 +273,10 @@ export function processStatement(
     ctx: CompilerContext,
     sctx: StatementContext,
 ) {
+    if (sctx.alwaysReturns) {
+        throw new ResolveError('Unreachable code', statement.source);
+    }
+
     switch (statement.kind) {
         case 'statementAssign':
         case 'statementAugmentedAssign': {
