@@ -12,8 +12,8 @@ import { StatChangeMode, StatCompareMode } from '../housing/util';
 
 export class EmulatedHouse {
     handlers: Map<EventType, Action[]> = new Map();
-    #globalStats: Map<string, number> = new Map();
-    #playerStats: Map<string, Map<string, number>> = new Map();
+    globalStats: Map<string, number> = new Map();
+    playerStats: Map<string, Map<string, number>> = new Map();
     #uncollectedActions: Action[] = [];
 
     constructor(house: CompiledHouse) {
@@ -23,8 +23,8 @@ export class EmulatedHouse {
     }
 
     reset() {
-        this.#globalStats.clear();
-        this.#playerStats.clear();
+        this.globalStats.clear();
+        this.playerStats.clear();
         this.#uncollectedActions = [];
     }
 
@@ -45,11 +45,11 @@ export class EmulatedHouse {
     }
 
     globalStat(stat: string): number {
-        return this.#globalStats.get(stat) ?? 0;
+        return this.globalStats.get(stat) ?? 0;
     }
 
     playerStat(player: string, stat: string): number {
-        return this.#playerStats.get(player)?.get(stat) ?? 0;
+        return this.playerStats.get(player)?.get(stat) ?? 0;
     }
 
     getValue(value: string, player: string) {
@@ -134,38 +134,38 @@ export class EmulatedHouse {
         mode: StatChangeMode,
         value: string,
     ) {
-        if (!this.#globalStats.has(stat)) {
-            this.#globalStats.set(stat, 0);
+        if (!this.globalStats.has(stat)) {
+            this.globalStats.set(stat, 0);
         }
 
         value = this.getValue(value, player);
 
         switch (mode) {
             case StatChangeMode.INCREMENT:
-                this.#globalStats.set(
+                this.globalStats.set(
                     stat,
-                    this.#globalStats.get(stat)! + parseInt(value),
+                    this.globalStats.get(stat)! + parseInt(value),
                 );
                 break;
             case StatChangeMode.DECREMENT:
-                this.#globalStats.set(
+                this.globalStats.set(
                     stat,
-                    this.#globalStats.get(stat)! - parseInt(value),
+                    this.globalStats.get(stat)! - parseInt(value),
                 );
                 break;
             case StatChangeMode.SET:
-                this.#globalStats.set(stat, parseInt(value));
+                this.globalStats.set(stat, parseInt(value));
                 break;
             case StatChangeMode.MULTIPLY:
-                this.#globalStats.set(
+                this.globalStats.set(
                     stat,
-                    this.#globalStats.get(stat)! * parseInt(value),
+                    this.globalStats.get(stat)! * parseInt(value),
                 );
                 break;
             case StatChangeMode.DIVIDE:
-                this.#globalStats.set(
+                this.globalStats.set(
                     stat,
-                    Math.trunc(this.#globalStats.get(stat)! / parseInt(value)),
+                    Math.trunc(this.globalStats.get(stat)! / parseInt(value)),
                 );
                 break;
         }
@@ -177,54 +177,54 @@ export class EmulatedHouse {
         mode: StatChangeMode,
         value: string,
     ) {
-        if (!this.#playerStats.has(player)) {
-            this.#playerStats.set(player, new Map());
+        if (!this.playerStats.has(player)) {
+            this.playerStats.set(player, new Map());
         }
 
-        if (!this.#playerStats.get(player)!.has(stat)) {
-            this.#playerStats.get(player)!.set(stat, 0);
+        if (!this.playerStats.get(player)!.has(stat)) {
+            this.playerStats.get(player)!.set(stat, 0);
         }
 
         value = this.getValue(value, player);
 
         switch (mode) {
             case StatChangeMode.INCREMENT:
-                this.#playerStats
+                this.playerStats
                     .get(player)!
                     .set(
                         stat,
-                        this.#playerStats.get(player)!.get(stat)! +
+                        this.playerStats.get(player)!.get(stat)! +
                             parseInt(value),
                     );
                 break;
             case StatChangeMode.DECREMENT:
-                this.#playerStats
+                this.playerStats
                     .get(player)!
                     .set(
                         stat,
-                        this.#playerStats.get(player)!.get(stat)! -
+                        this.playerStats.get(player)!.get(stat)! -
                             parseInt(value),
                     );
                 break;
             case StatChangeMode.SET:
-                this.#playerStats.get(player)!.set(stat, parseInt(value));
+                this.playerStats.get(player)!.set(stat, parseInt(value));
                 break;
             case StatChangeMode.MULTIPLY:
-                this.#playerStats
+                this.playerStats
                     .get(player)!
                     .set(
                         stat,
-                        this.#playerStats.get(player)!.get(stat)! *
+                        this.playerStats.get(player)!.get(stat)! *
                             parseInt(value),
                     );
                 break;
             case StatChangeMode.DIVIDE:
-                this.#playerStats
+                this.playerStats
                     .get(player)!
                     .set(
                         stat,
                         Math.trunc(
-                            this.#playerStats.get(player)!.get(stat)! /
+                            this.playerStats.get(player)!.get(stat)! /
                                 parseInt(value),
                         ),
                     );
@@ -242,15 +242,15 @@ export class EmulatedHouse {
 
         switch (mode) {
             case StatCompareMode.EQUAL:
-                return (this.#globalStats.get(stat) ?? 0) === parseInt(value);
+                return (this.globalStats.get(stat) ?? 0) === parseInt(value);
             case StatCompareMode.GREATER_THAN:
-                return (this.#globalStats.get(stat) ?? 0) > parseInt(value);
+                return (this.globalStats.get(stat) ?? 0) > parseInt(value);
             case StatCompareMode.LESS_THAN:
-                return (this.#globalStats.get(stat) ?? 0) < parseInt(value);
+                return (this.globalStats.get(stat) ?? 0) < parseInt(value);
             case StatCompareMode.GREATER_THAN_OR_EQUAL:
-                return (this.#globalStats.get(stat) ?? 0) >= parseInt(value);
+                return (this.globalStats.get(stat) ?? 0) >= parseInt(value);
             case StatCompareMode.LESS_THAN_OR_EQUAL:
-                return (this.#globalStats.get(stat) ?? 0) <= parseInt(value);
+                return (this.globalStats.get(stat) ?? 0) <= parseInt(value);
         }
     }
 
@@ -265,27 +265,27 @@ export class EmulatedHouse {
         switch (mode) {
             case StatCompareMode.EQUAL:
                 return (
-                    (this.#playerStats.get(player)?.get(stat) ?? 0) ===
+                    (this.playerStats.get(player)?.get(stat) ?? 0) ===
                     parseInt(value)
                 );
             case StatCompareMode.GREATER_THAN:
                 return (
-                    (this.#playerStats.get(player)?.get(stat) ?? 0) >
+                    (this.playerStats.get(player)?.get(stat) ?? 0) >
                     parseInt(value)
                 );
             case StatCompareMode.LESS_THAN:
                 return (
-                    (this.#playerStats.get(player)?.get(stat) ?? 0) <
+                    (this.playerStats.get(player)?.get(stat) ?? 0) <
                     parseInt(value)
                 );
             case StatCompareMode.GREATER_THAN_OR_EQUAL:
                 return (
-                    (this.#playerStats.get(player)?.get(stat) ?? 0) >=
+                    (this.playerStats.get(player)?.get(stat) ?? 0) >=
                     parseInt(value)
                 );
             case StatCompareMode.LESS_THAN_OR_EQUAL:
                 return (
-                    (this.#playerStats.get(player)?.get(stat) ?? 0) <=
+                    (this.playerStats.get(player)?.get(stat) ?? 0) <=
                     parseInt(value)
                 );
         }

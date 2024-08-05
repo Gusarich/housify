@@ -1,9 +1,50 @@
 import { resetNodeId } from '../../grammar/ast';
 import { loadCases } from '../../utils/loadCases';
 import { resetTempId } from '../../generator/generate';
-import { EmulatedHouse } from '../emulate';
+import { EmulatedHouse as OriginalEmulatedHouse } from '../emulate';
 import { compile } from '../../compile';
 import { EventType } from '../../housing/events';
+
+expect.extend({
+    toNotStartWith(received, prefix) {
+        const pass = !received.startsWith(prefix);
+        if (pass) {
+            return {
+                message: () =>
+                    `expected ${received} not to start with ${prefix}`,
+                pass: true,
+            };
+        } else {
+            return {
+                message: () =>
+                    `expected ${received} to not start with ${prefix}`,
+                pass: false,
+            };
+        }
+    },
+});
+
+class EmulatedHouse extends OriginalEmulatedHouse {
+    emit(eventType: EventType, player: string) {
+        super.emit(eventType, player);
+        this.expectNoTemporaryStats();
+    }
+
+    expectNoTemporaryStats() {
+        for (const [stat, value] of this.globalStats) {
+            if (stat.startsWith('$') && value !== 0) {
+                throw new Error(`Global stat ${stat} is temporary`);
+            }
+        }
+        for (const [name, player] of this.playerStats) {
+            for (const [stat, value] of player) {
+                if (stat.startsWith('$') && value !== 0) {
+                    throw new Error(`Player stat ${name}.${stat} is temporary`);
+                }
+            }
+        }
+    }
+}
 
 describe('Emulator', () => {
     const cases = loadCases(__dirname + '/cases/');
