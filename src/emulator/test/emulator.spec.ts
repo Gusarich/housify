@@ -59,6 +59,7 @@ describe('Emulator', () => {
             cases.find((c) => c.name === 'counter')!.code,
             false,
         );
+        expect(module).toMatchSnapshot();
         const house = new EmulatedHouse(module.houses[0]!);
 
         house.emit(EventType.JOIN, 'player1');
@@ -90,6 +91,7 @@ describe('Emulator', () => {
             cases.find((c) => c.name === 'arithmetics')!.code,
             false,
         );
+        expect(module).toMatchSnapshot();
         const house = new EmulatedHouse(module.houses[0]!);
 
         house.emit(EventType.JOIN, 'player1');
@@ -110,6 +112,7 @@ describe('Emulator', () => {
             cases.find((c) => c.name === 'conditions')!.code,
             false,
         );
+        expect(module).toMatchSnapshot();
         const house = new EmulatedHouse(module.houses[0]!);
 
         house.emit(EventType.JOIN, 'player');
@@ -145,6 +148,7 @@ describe('Emulator', () => {
             cases.find((c) => c.name === 'multiple-handlers')!.code,
             false,
         );
+        expect(module).toMatchSnapshot();
         const house = new EmulatedHouse(module.houses[0]!);
 
         house.emit(EventType.JOIN, 'player1');
@@ -174,6 +178,7 @@ describe('Emulator', () => {
             cases.find((c) => c.name === 'booleans')!.code,
             false,
         );
+        expect(module).toMatchSnapshot();
         const house = new EmulatedHouse(module.houses[0]!);
 
         house.emit(EventType.JOIN, 'player');
