@@ -1,5 +1,6 @@
 import { InternalError, ResolveError } from '../errors';
 import { evaluateConstantExpression } from '../generator/evaluate';
+import { WriterContext } from '../generator/generate';
 import {
     AstExpression,
     AstExpressionField,
@@ -44,11 +45,18 @@ export function resolveType(type: AstId, ctx: CompilerContext): Type {
     }
 }
 
-export function resolveStructPath(path: AstExpressionField): string[] {
+export function resolveStructPath(
+    path: AstExpressionField,
+    wctx?: WriterContext,
+): string[] {
     if (path.struct.kind === 'expressionId') {
-        return [path.struct.name.name, path.field.name];
+        if (wctx) {
+            return [wctx.mapStatName(path.struct.name.name), path.field.name];
+        } else {
+            return [path.struct.name.name, path.field.name];
+        }
     } else if (path.struct.kind === 'expressionField') {
-        return resolveStructPath(path.struct).concat(path.field.name);
+        return resolveStructPath(path.struct, wctx).concat(path.field.name);
     } else {
         throw new InternalError('Invalid struct path', path.source);
     }
