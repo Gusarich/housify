@@ -1030,6 +1030,7 @@ CompilerContext {
   "houses": Map {},
   "inlineFunctions": Map {
     "testInt" => {
+      "astId": 13,
       "parameters": [
         {
           "name": "x",
@@ -1043,6 +1044,7 @@ CompilerContext {
       },
     },
     "testBool" => {
+      "astId": 28,
       "parameters": [
         {
           "name": "x",
@@ -1056,6 +1058,7 @@ CompilerContext {
       },
     },
     "testIntBool" => {
+      "astId": 41,
       "parameters": [
         {
           "name": "x",
@@ -1069,6 +1072,7 @@ CompilerContext {
       },
     },
     "testBoolInt" => {
+      "astId": 54,
       "parameters": [
         {
           "name": "x",
@@ -1247,6 +1251,7 @@ CompilerContext {
   },
   "inlineFunctions": Map {
     "testFunction2" => {
+      "astId": 36,
       "parameters": [
         {
           "name": "x",
@@ -1266,6 +1271,7 @@ CompilerContext {
       },
     },
     "testFunction" => {
+      "astId": 66,
       "parameters": [
         {
           "name": "x",
@@ -1419,6 +1425,7 @@ CompilerContext {
   },
   "inlineFunctions": Map {
     "testFunction" => {
+      "astId": 38,
       "parameters": [
         {
           "name": "x",
@@ -1438,6 +1445,7 @@ CompilerContext {
       },
     },
     "testFunction2" => {
+      "astId": 66,
       "parameters": [
         {
           "name": "x",
@@ -1491,6 +1499,7 @@ CompilerContext {
   "houses": Map {},
   "inlineFunctions": Map {
     "testFunction" => {
+      "astId": 13,
       "parameters": [
         {
           "name": "x",
@@ -1525,6 +1534,7 @@ CompilerContext {
   "houses": Map {},
   "inlineFunctions": Map {
     "testFunction" => {
+      "astId": 13,
       "parameters": [
         {
           "name": "x",
@@ -1565,6 +1575,7 @@ CompilerContext {
   "houses": Map {},
   "inlineFunctions": Map {
     "testFunction" => {
+      "astId": 18,
       "parameters": [
         {
           "name": "x",

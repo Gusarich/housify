@@ -585,6 +585,7 @@ export function prepareProcessInlineFunction(
     ctx.addInlineFunction(func.name.name, {
         type,
         parameters,
+        astId: func.id,
     });
 }
 

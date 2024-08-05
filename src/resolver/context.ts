@@ -1,4 +1,3 @@
-import { AstExpression } from '../grammar/ast';
 import { EventType } from '../housing/events';
 import { Type } from './type';
 
@@ -61,12 +60,10 @@ export type House = {
     globalStats: {
         name: string;
         type: Type;
-        defaultValue?: AstExpression;
     }[];
     playerStats: {
         name: string;
         type: Type;
-        defaultValue?: AstExpression;
     }[];
     handlers: EventType[];
 };
@@ -82,6 +79,7 @@ export type InlineFunction = {
         name: string;
         type: Type;
     }[];
+    astId: number;
 };
 
 export class CompilerContext {
