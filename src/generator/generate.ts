@@ -474,38 +474,50 @@ export function writeStatement(
                             ? StatChangeMode.DIVIDE
                             : StatChangeMode.SET;
             if (statement.lvalue.kind === 'expressionId') {
+                const value = writeExpression(statement.value, ctx, wctx);
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode,
                     stat: wctx.mapStatName(statement.lvalue.name.name),
-                    value: writeExpression(statement.value, ctx, wctx),
+                    value,
                 });
             } else if (statement.lvalue.kind === 'expressionField') {
                 if (statement.lvalue.struct.kind === 'expressionId') {
                     if (statement.lvalue.struct.name.name === 'global') {
+                        const value = writeExpression(
+                            statement.value,
+                            ctx,
+                            wctx,
+                        );
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_GLOBAL_STAT,
                             mode,
                             stat: statement.lvalue.field.name,
-                            value: writeExpression(statement.value, ctx, wctx),
+                            value,
                         });
                         break;
                     }
                     if (statement.lvalue.struct.name.name === 'player') {
+                        const value = writeExpression(
+                            statement.value,
+                            ctx,
+                            wctx,
+                        );
                         wctx.actions.push({
                             kind: ActionKind.CHANGE_PLAYER_STAT,
                             mode,
                             stat: statement.lvalue.field.name,
-                            value: writeExpression(statement.value, ctx, wctx),
+                            value,
                         });
                         break;
                     }
                 }
+                const value = writeExpression(statement.value, ctx, wctx);
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode,
                     stat: resolveStructPath(statement.lvalue, wctx).join('.'),
-                    value: writeExpression(statement.value, ctx, wctx),
+                    value,
                 });
             } else {
                 throw new InternalError('Invalid lvalue', statement.source);
@@ -519,12 +531,14 @@ export function writeStatement(
             const condition = writeExpression(statement.condition, ctx, wctx);
 
             const thenWctx = wctx.clone();
+            thenWctx.actions = [];
             for (const thenStatement of statement.then) {
                 writeStatement(thenStatement, returnStat, ctx, thenWctx);
             }
             wctx.usedStats = new Set(thenWctx.usedStats);
 
             const elseWctx = wctx.clone();
+            elseWctx.actions = [];
             if (statement.else) {
                 for (const elseStatement of statement.else) {
                     writeStatement(elseStatement, returnStat, ctx, elseWctx);
@@ -555,11 +569,12 @@ export function writeStatement(
         }
         case 'statementReturn':
             if (returnStat && statement.expression) {
+                const value = writeExpression(statement.expression, ctx, wctx);
                 wctx.actions.push({
                     kind: ActionKind.CHANGE_PLAYER_STAT,
                     mode: StatChangeMode.SET,
                     stat: returnStat,
-                    value: writeExpression(statement.expression, ctx, wctx),
+                    value,
                 });
             }
             break;

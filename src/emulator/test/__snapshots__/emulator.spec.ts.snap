@@ -864,40 +864,6 @@ exports[`Emulator should emulate conditions 1`] = `
                 {
                   "kind": "CHANGE_PLAYER_STAT",
                   "mode": "SET",
-                  "stat": "$$0",
-                  "value": "0",
-                },
-                {
-                  "conditions": [
-                    {
-                      "kind": "GLOBAL_STAT",
-                      "mode": "EQUAL",
-                      "stat": "counter",
-                      "value": "%stat.player/$$0%",
-                    },
-                  ],
-                  "else": [
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
-                      "stat": "$$1",
-                      "value": "0",
-                    },
-                  ],
-                  "kind": "CONDITIONAL",
-                  "matchAny": false,
-                  "then": [
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
-                      "stat": "$$1",
-                      "value": "1",
-                    },
-                  ],
-                },
-                {
-                  "kind": "CHANGE_PLAYER_STAT",
-                  "mode": "SET",
                   "stat": "$$3",
                   "value": "123",
                 },
@@ -939,74 +905,6 @@ exports[`Emulator should emulate conditions 1`] = `
                     },
                   ],
                   "else": [
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
-                      "stat": "$$0",
-                      "value": "0",
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "kind": "GLOBAL_STAT",
-                          "mode": "EQUAL",
-                          "stat": "counter",
-                          "value": "%stat.player/$$0%",
-                        },
-                      ],
-                      "else": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$1",
-                          "value": "0",
-                        },
-                      ],
-                      "kind": "CONDITIONAL",
-                      "matchAny": false,
-                      "then": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$1",
-                          "value": "1",
-                        },
-                      ],
-                    },
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
-                      "stat": "$$3",
-                      "value": "123",
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "kind": "GLOBAL_STAT",
-                          "mode": "EQUAL",
-                          "stat": "counter",
-                          "value": "%stat.player/$$3%",
-                        },
-                      ],
-                      "else": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$4",
-                          "value": "0",
-                        },
-                      ],
-                      "kind": "CONDITIONAL",
-                      "matchAny": false,
-                      "then": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$4",
-                          "value": "1",
-                        },
-                      ],
-                    },
                     {
                       "kind": "CHANGE_PLAYER_STAT",
                       "mode": "SET",
@@ -1054,108 +952,6 @@ exports[`Emulator should emulate conditions 1`] = `
                         {
                           "kind": "CHANGE_PLAYER_STAT",
                           "mode": "SET",
-                          "stat": "$$0",
-                          "value": "0",
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "kind": "GLOBAL_STAT",
-                              "mode": "EQUAL",
-                              "stat": "counter",
-                              "value": "%stat.player/$$0%",
-                            },
-                          ],
-                          "else": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$1",
-                              "value": "0",
-                            },
-                          ],
-                          "kind": "CONDITIONAL",
-                          "matchAny": false,
-                          "then": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$1",
-                              "value": "1",
-                            },
-                          ],
-                        },
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$3",
-                          "value": "123",
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "kind": "GLOBAL_STAT",
-                              "mode": "EQUAL",
-                              "stat": "counter",
-                              "value": "%stat.player/$$3%",
-                            },
-                          ],
-                          "else": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$4",
-                              "value": "0",
-                            },
-                          ],
-                          "kind": "CONDITIONAL",
-                          "matchAny": false,
-                          "then": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$4",
-                              "value": "1",
-                            },
-                          ],
-                        },
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$6",
-                          "value": "456",
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "kind": "GLOBAL_STAT",
-                              "mode": "EQUAL",
-                              "stat": "counter",
-                              "value": "%stat.player/$$6%",
-                            },
-                          ],
-                          "else": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$7",
-                              "value": "0",
-                            },
-                          ],
-                          "kind": "CONDITIONAL",
-                          "matchAny": false,
-                          "then": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$7",
-                              "value": "1",
-                            },
-                          ],
-                        },
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
                           "stat": "$$9",
                           "value": "0",
                         },
@@ -1169,108 +965,6 @@ exports[`Emulator should emulate conditions 1`] = `
                       "kind": "CONDITIONAL",
                       "matchAny": false,
                       "then": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$0",
-                          "value": "0",
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "kind": "GLOBAL_STAT",
-                              "mode": "EQUAL",
-                              "stat": "counter",
-                              "value": "%stat.player/$$0%",
-                            },
-                          ],
-                          "else": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$1",
-                              "value": "0",
-                            },
-                          ],
-                          "kind": "CONDITIONAL",
-                          "matchAny": false,
-                          "then": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$1",
-                              "value": "1",
-                            },
-                          ],
-                        },
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$3",
-                          "value": "123",
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "kind": "GLOBAL_STAT",
-                              "mode": "EQUAL",
-                              "stat": "counter",
-                              "value": "%stat.player/$$3%",
-                            },
-                          ],
-                          "else": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$4",
-                              "value": "0",
-                            },
-                          ],
-                          "kind": "CONDITIONAL",
-                          "matchAny": false,
-                          "then": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$4",
-                              "value": "1",
-                            },
-                          ],
-                        },
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$6",
-                          "value": "456",
-                        },
-                        {
-                          "conditions": [
-                            {
-                              "kind": "GLOBAL_STAT",
-                              "mode": "EQUAL",
-                              "stat": "counter",
-                              "value": "%stat.player/$$6%",
-                            },
-                          ],
-                          "else": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$7",
-                              "value": "0",
-                            },
-                          ],
-                          "kind": "CONDITIONAL",
-                          "matchAny": false,
-                          "then": [
-                            {
-                              "kind": "CHANGE_PLAYER_STAT",
-                              "mode": "SET",
-                              "stat": "$$7",
-                              "value": "1",
-                            },
-                          ],
-                        },
                         {
                           "kind": "CHANGE_PLAYER_STAT",
                           "mode": "SET",
@@ -1292,74 +986,6 @@ exports[`Emulator should emulate conditions 1`] = `
                     {
                       "kind": "CHANGE_PLAYER_STAT",
                       "mode": "SET",
-                      "stat": "$$0",
-                      "value": "0",
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "kind": "GLOBAL_STAT",
-                          "mode": "EQUAL",
-                          "stat": "counter",
-                          "value": "%stat.player/$$0%",
-                        },
-                      ],
-                      "else": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$1",
-                          "value": "0",
-                        },
-                      ],
-                      "kind": "CONDITIONAL",
-                      "matchAny": false,
-                      "then": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$1",
-                          "value": "1",
-                        },
-                      ],
-                    },
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
-                      "stat": "$$3",
-                      "value": "123",
-                    },
-                    {
-                      "conditions": [
-                        {
-                          "kind": "GLOBAL_STAT",
-                          "mode": "EQUAL",
-                          "stat": "counter",
-                          "value": "%stat.player/$$3%",
-                        },
-                      ],
-                      "else": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$4",
-                          "value": "0",
-                        },
-                      ],
-                      "kind": "CONDITIONAL",
-                      "matchAny": false,
-                      "then": [
-                        {
-                          "kind": "CHANGE_PLAYER_STAT",
-                          "mode": "SET",
-                          "stat": "$$4",
-                          "value": "1",
-                        },
-                      ],
-                    },
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
                       "stat": "$$5",
                       "value": "456",
                     },
@@ -1375,40 +1001,6 @@ exports[`Emulator should emulate conditions 1`] = `
               "kind": "CONDITIONAL",
               "matchAny": false,
               "then": [
-                {
-                  "kind": "CHANGE_PLAYER_STAT",
-                  "mode": "SET",
-                  "stat": "$$0",
-                  "value": "0",
-                },
-                {
-                  "conditions": [
-                    {
-                      "kind": "GLOBAL_STAT",
-                      "mode": "EQUAL",
-                      "stat": "counter",
-                      "value": "%stat.player/$$0%",
-                    },
-                  ],
-                  "else": [
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
-                      "stat": "$$1",
-                      "value": "0",
-                    },
-                  ],
-                  "kind": "CONDITIONAL",
-                  "matchAny": false,
-                  "then": [
-                    {
-                      "kind": "CHANGE_PLAYER_STAT",
-                      "mode": "SET",
-                      "stat": "$$1",
-                      "value": "1",
-                    },
-                  ],
-                },
                 {
                   "kind": "CHANGE_PLAYER_STAT",
                   "mode": "SET",
@@ -1589,6 +1181,1632 @@ exports[`Emulator should emulate counter 1`] = `
       "playerStats": [
         "counter",
       ],
+    },
+  ],
+  "kind": "module",
+}
+`;
+
+exports[`Emulator should emulate inline functions 1`] = `
+{
+  "houses": [
+    {
+      "globalStats": [
+        "x",
+        "y",
+        "z",
+      ],
+      "handlers": [
+        {
+          "actions": [
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "1",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$a",
+              "value": "%stat.player/$$0%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$b",
+              "value": "%stat.player/$$1%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "%stat.player/$a%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$4",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$5",
+              "value": "%stat.player/$$2%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$5",
+              "value": "%stat.player/$$4%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "%stat.player/$$5%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$c",
+              "value": "%stat.player/$$3%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$6",
+              "value": "%stat.player/$a%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$8",
+              "value": "%stat.player/$b%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$9",
+              "value": "%stat.player/$c%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$8",
+                  "value": "%stat.player/$$9%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$11",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$11",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$11",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$16",
+                  "value": "%stat.player/$$8%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$16",
+                  "value": "%stat.player/$$9%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$10",
+                  "value": "%stat.player/$$16%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$12",
+                  "value": "%stat.player/$$8%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$14",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$15",
+                  "value": "%stat.player/$$12%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$15",
+                  "value": "%stat.player/$$14%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$13",
+                  "value": "%stat.player/$$15%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$10",
+                  "value": "%stat.player/$$13%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$7",
+              "value": "%stat.player/$$10%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$6",
+                  "value": "%stat.player/$$7%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$18",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$18",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$18",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$23",
+                  "value": "%stat.player/$$6%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$23",
+                  "value": "%stat.player/$$7%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$17",
+                  "value": "%stat.player/$$23%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$19",
+                  "value": "%stat.player/$$6%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$21",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$22",
+                  "value": "%stat.player/$$19%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$22",
+                  "value": "%stat.player/$$21%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$20",
+                  "value": "%stat.player/$$22%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$17",
+                  "value": "%stat.player/$$20%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$d",
+              "value": "%stat.player/$$17%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$25",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$24",
+              "value": "%stat.player/$$25%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$27",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$28",
+              "value": "%stat.player/$$24%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$28",
+              "value": "%stat.player/$$27%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$26",
+              "value": "%stat.player/$$28%",
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "x",
+              "value": "%stat.player/$$26%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$29",
+              "value": "%stat.player/$b%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$30",
+              "value": "%stat.player/$d%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$29",
+                  "value": "%stat.player/$$30%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$32",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$32",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$32",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$37",
+                  "value": "%stat.player/$$29%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$37",
+                  "value": "%stat.player/$$30%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$31",
+                  "value": "%stat.player/$$37%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$33",
+                  "value": "%stat.player/$$29%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$35",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$36",
+                  "value": "%stat.player/$$33%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$36",
+                  "value": "%stat.player/$$35%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$34",
+                  "value": "%stat.player/$$36%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$31",
+                  "value": "%stat.player/$$34%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "y",
+              "value": "%stat.player/$$31%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$39",
+              "value": "%stat.player/$a%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$41",
+              "value": "2",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$42",
+              "value": "%stat.player/$$39%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "MULTIPLY",
+              "stat": "$$42",
+              "value": "%stat.player/$$41%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$40",
+              "value": "%stat.player/$$42%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$38",
+              "value": "%stat.player/$$40%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$46",
+              "value": "3",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$45",
+              "value": "%stat.player/$$46%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$48",
+              "value": "3",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$47",
+              "value": "%stat.player/$$48%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$45",
+                  "value": "%stat.player/$$47%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$50",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$50",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$50",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$55",
+                  "value": "%stat.player/$$45%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$55",
+                  "value": "%stat.player/$$47%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$49",
+                  "value": "%stat.player/$$55%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$51",
+                  "value": "%stat.player/$$45%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$53",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$54",
+                  "value": "%stat.player/$$51%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$54",
+                  "value": "%stat.player/$$53%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$52",
+                  "value": "%stat.player/$$54%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$49",
+                  "value": "%stat.player/$$52%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$44",
+              "value": "%stat.player/$$49%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$58",
+              "value": "%stat.player/$b%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$59",
+              "value": "%stat.player/$c%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$58",
+                  "value": "%stat.player/$$59%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$61",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$61",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$61",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$66",
+                  "value": "%stat.player/$$58%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$66",
+                  "value": "%stat.player/$$59%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$60",
+                  "value": "%stat.player/$$66%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$62",
+                  "value": "%stat.player/$$58%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$64",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$65",
+                  "value": "%stat.player/$$62%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$65",
+                  "value": "%stat.player/$$64%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$63",
+                  "value": "%stat.player/$$65%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$60",
+                  "value": "%stat.player/$$63%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$57",
+              "value": "%stat.player/$$60%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$67",
+              "value": "%stat.player/$d%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$57",
+                  "value": "%stat.player/$$67%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$69",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$69",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$69",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$74",
+                  "value": "%stat.player/$$57%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$74",
+                  "value": "%stat.player/$$67%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$68",
+                  "value": "%stat.player/$$74%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$70",
+                  "value": "%stat.player/$$57%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$72",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$73",
+                  "value": "%stat.player/$$70%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$73",
+                  "value": "%stat.player/$$72%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$71",
+                  "value": "%stat.player/$$73%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$68",
+                  "value": "%stat.player/$$71%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$56",
+              "value": "%stat.player/$$68%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$44",
+                  "value": "%stat.player/$$56%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$76",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$76",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$76",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$81",
+                  "value": "%stat.player/$$44%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$81",
+                  "value": "%stat.player/$$56%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$75",
+                  "value": "%stat.player/$$81%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$77",
+                  "value": "%stat.player/$$44%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$79",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$80",
+                  "value": "%stat.player/$$77%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$80",
+                  "value": "%stat.player/$$79%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$78",
+                  "value": "%stat.player/$$80%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$75",
+                  "value": "%stat.player/$$78%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$43",
+              "value": "%stat.player/$$75%",
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$38",
+                  "value": "%stat.player/$$43%",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$83",
+                  "value": "0",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$83",
+                  "value": "1",
+                },
+              ],
+            },
+            {
+              "conditions": [
+                {
+                  "kind": "PLAYER_STAT",
+                  "mode": "EQUAL",
+                  "stat": "$$83",
+                  "value": "1",
+                },
+              ],
+              "else": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$88",
+                  "value": "%stat.player/$$38%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "INCREMENT",
+                  "stat": "$$88",
+                  "value": "%stat.player/$$43%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$82",
+                  "value": "%stat.player/$$88%",
+                },
+              ],
+              "kind": "CONDITIONAL",
+              "matchAny": false,
+              "then": [
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$84",
+                  "value": "%stat.player/$$38%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$86",
+                  "value": "2",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$87",
+                  "value": "%stat.player/$$84%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "MULTIPLY",
+                  "stat": "$$87",
+                  "value": "%stat.player/$$86%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$85",
+                  "value": "%stat.player/$$87%",
+                },
+                {
+                  "kind": "CHANGE_PLAYER_STAT",
+                  "mode": "SET",
+                  "stat": "$$82",
+                  "value": "%stat.player/$$85%",
+                },
+              ],
+            },
+            {
+              "kind": "CHANGE_GLOBAL_STAT",
+              "mode": "SET",
+              "stat": "z",
+              "value": "%stat.player/$$82%",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$a",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$0",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$b",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$1",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$c",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$2",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$3",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$4",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$5",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$d",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$6",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$8",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$9",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$10",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$11",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$12",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$13",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$14",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$15",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$16",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$7",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$17",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$18",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$19",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$20",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$21",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$22",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$23",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$25",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$24",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$26",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$27",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$28",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$29",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$30",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$31",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$32",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$33",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$34",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$35",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$36",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$37",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$39",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$40",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$41",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$42",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$38",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$46",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$45",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$48",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$47",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$49",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$50",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$51",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$52",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$53",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$54",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$55",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$44",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$58",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$59",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$60",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$61",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$62",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$63",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$64",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$65",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$66",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$57",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$67",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$68",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$69",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$70",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$71",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$72",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$73",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$74",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$56",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$75",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$76",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$77",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$78",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$79",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$80",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$81",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$43",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$82",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$83",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$84",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$85",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$86",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$87",
+              "value": "0",
+            },
+            {
+              "kind": "CHANGE_PLAYER_STAT",
+              "mode": "SET",
+              "stat": "$$88",
+              "value": "0",
+            },
+          ],
+          "event": "JOIN",
+          "kind": "handler",
+        },
+      ],
+      "kind": "house",
+      "name": "TestHouse",
+      "playerStats": [],
     },
   ],
   "kind": "module",

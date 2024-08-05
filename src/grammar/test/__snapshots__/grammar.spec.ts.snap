@@ -3725,6 +3725,3525 @@ exports[`Grammar should parse field-access2 1`] = `
 }
 `;
 
+exports[`Grammar should parse function-calls 1`] = `
+{
+  "id": 102,
+  "items": [
+    {
+      "id": 11,
+      "kind": "function",
+      "name": {
+        "id": 1,
+        "kind": "id",
+        "name": "double",
+        "source": {
+          "interval": Interval {
+            "_contents": "double",
+            "endIdx": 10,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 4,
+          },
+        },
+      },
+      "parameters": [
+        {
+          "id": 4,
+          "kind": "parameter",
+          "name": {
+            "id": 2,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 12,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 11,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 17,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 11,
+            },
+          },
+          "type": {
+            "id": 3,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 17,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 14,
+              },
+            },
+          },
+        },
+      ],
+      "returnType": {
+        "id": 5,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 23,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 20,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 45,
+          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+          "startIdx": 0,
+        },
+      },
+      "statements": [
+        {
+          "expression": {
+            "id": 9,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 7,
+              "kind": "expressionId",
+              "name": {
+                "id": 6,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 38,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 37,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 38,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 37,
+                },
+              },
+            },
+            "op": "*",
+            "right": {
+              "id": 8,
+              "kind": "integerLiteral",
+              "source": {
+                "interval": Interval {
+                  "_contents": "2",
+                  "endIdx": 42,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 41,
+                },
+              },
+              "value": "2",
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 42,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 37,
+              },
+            },
+          },
+          "id": 10,
+          "kind": "statementReturn",
+          "source": {
+            "interval": Interval {
+              "endIdx": 43,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 30,
+            },
+          },
+        },
+      ],
+    },
+    {
+      "id": 37,
+      "kind": "function",
+      "name": {
+        "id": 12,
+        "kind": "id",
+        "name": "add",
+        "source": {
+          "interval": Interval {
+            "_contents": "add",
+            "endIdx": 54,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 51,
+          },
+        },
+      },
+      "parameters": [
+        {
+          "id": 15,
+          "kind": "parameter",
+          "name": {
+            "id": 13,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 56,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 55,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 61,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 55,
+            },
+          },
+          "type": {
+            "id": 14,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 61,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 58,
+              },
+            },
+          },
+        },
+        {
+          "id": 18,
+          "kind": "parameter",
+          "name": {
+            "id": 16,
+            "kind": "id",
+            "name": "y",
+            "source": {
+              "interval": Interval {
+                "_contents": "y",
+                "endIdx": 64,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 63,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 69,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 63,
+            },
+          },
+          "type": {
+            "id": 17,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 69,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 66,
+              },
+            },
+          },
+        },
+      ],
+      "returnType": {
+        "id": 19,
+        "kind": "id",
+        "name": "int",
+        "source": {
+          "interval": Interval {
+            "_contents": "int",
+            "endIdx": 75,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 72,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 164,
+          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+          "startIdx": 47,
+        },
+      },
+      "statements": [
+        {
+          "condition": {
+            "id": 24,
+            "kind": "expressionBinary",
+            "left": {
+              "id": 21,
+              "kind": "expressionId",
+              "name": {
+                "id": 20,
+                "kind": "id",
+                "name": "x",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "x",
+                    "endIdx": 87,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 86,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 87,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 86,
+                },
+              },
+            },
+            "op": "==",
+            "right": {
+              "id": 23,
+              "kind": "expressionId",
+              "name": {
+                "id": 22,
+                "kind": "id",
+                "name": "y",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "y",
+                    "endIdx": 92,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 91,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 92,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 91,
+                },
+              },
+            },
+            "source": {
+              "interval": Interval {
+                "endIdx": 92,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 86,
+              },
+            },
+          },
+          "else": [
+            {
+              "expression": {
+                "id": 34,
+                "kind": "expressionBinary",
+                "left": {
+                  "id": 31,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 30,
+                    "kind": "id",
+                    "name": "x",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "x",
+                        "endIdx": 151,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 150,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 151,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 150,
+                    },
+                  },
+                },
+                "op": "+",
+                "right": {
+                  "id": 33,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 32,
+                    "kind": "id",
+                    "name": "y",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "y",
+                        "endIdx": 155,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 154,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 155,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 154,
+                    },
+                  },
+                },
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 155,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 150,
+                  },
+                },
+              },
+              "id": 35,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 156,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 143,
+                },
+              },
+            },
+          ],
+          "id": 36,
+          "kind": "statementIf",
+          "source": {
+            "interval": Interval {
+              "endIdx": 162,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 82,
+            },
+          },
+          "then": [
+            {
+              "expression": {
+                "arguments": [
+                  {
+                    "id": 27,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 26,
+                      "kind": "id",
+                      "name": "x",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "x",
+                          "endIdx": 119,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 118,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 119,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 118,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 25,
+                  "kind": "id",
+                  "name": "double",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "double",
+                      "endIdx": 117,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 111,
+                    },
+                  },
+                },
+                "id": 28,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 120,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 111,
+                  },
+                },
+              },
+              "id": 29,
+              "kind": "statementReturn",
+              "source": {
+                "interval": Interval {
+                  "endIdx": 121,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 104,
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      "id": 101,
+      "items": [
+        {
+          "id": 41,
+          "kind": "playerStat",
+          "name": {
+            "id": 39,
+            "kind": "id",
+            "name": "x",
+            "source": {
+              "interval": Interval {
+                "_contents": "x",
+                "endIdx": 196,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 195,
+              },
+            },
+          },
+          "source": {
+            "interval": Interval {
+              "endIdx": 202,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 188,
+            },
+          },
+          "type": {
+            "id": 40,
+            "kind": "id",
+            "name": "int",
+            "source": {
+              "interval": Interval {
+                "_contents": "int",
+                "endIdx": 201,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 198,
+              },
+            },
+          },
+        },
+        {
+          "event": {
+            "id": 42,
+            "kind": "id",
+            "name": "JOIN",
+            "source": {
+              "interval": Interval {
+                "_contents": "JOIN",
+                "endIdx": 219,
+                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                "startIdx": 215,
+              },
+            },
+          },
+          "id": 100,
+          "kind": "handler",
+          "source": {
+            "interval": Interval {
+              "endIdx": 421,
+              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+              "startIdx": 208,
+            },
+          },
+          "statements": [
+            {
+              "id": 46,
+              "kind": "statementLet",
+              "name": {
+                "id": 43,
+                "kind": "id",
+                "name": "a",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "a",
+                    "endIdx": 235,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 234,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 245,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 230,
+                },
+              },
+              "type": {
+                "id": 44,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 240,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 237,
+                  },
+                },
+              },
+              "value": {
+                "id": 45,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "1",
+                    "endIdx": 244,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 243,
+                  },
+                },
+                "value": "1",
+              },
+            },
+            {
+              "id": 50,
+              "kind": "statementLet",
+              "name": {
+                "id": 47,
+                "kind": "id",
+                "name": "b",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "b",
+                    "endIdx": 259,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 258,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 269,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 254,
+                },
+              },
+              "type": {
+                "id": 48,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 264,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 261,
+                  },
+                },
+              },
+              "value": {
+                "id": 49,
+                "kind": "integerLiteral",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "2",
+                    "endIdx": 268,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 267,
+                  },
+                },
+                "value": "2",
+              },
+            },
+            {
+              "id": 57,
+              "kind": "statementLet",
+              "name": {
+                "id": 51,
+                "kind": "id",
+                "name": "c",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "c",
+                    "endIdx": 283,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 282,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 301,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 278,
+                },
+              },
+              "type": {
+                "id": 52,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 288,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 285,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 55,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 54,
+                      "kind": "id",
+                      "name": "a",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "a",
+                          "endIdx": 299,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 298,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 299,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 298,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 53,
+                  "kind": "id",
+                  "name": "double",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "double",
+                      "endIdx": 297,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 291,
+                    },
+                  },
+                },
+                "id": 56,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 300,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 291,
+                  },
+                },
+              },
+            },
+            {
+              "id": 70,
+              "kind": "statementLet",
+              "name": {
+                "id": 58,
+                "kind": "id",
+                "name": "d",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "d",
+                    "endIdx": 315,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 314,
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 341,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 310,
+                },
+              },
+              "type": {
+                "id": 59,
+                "kind": "id",
+                "name": "int",
+                "source": {
+                  "interval": Interval {
+                    "_contents": "int",
+                    "endIdx": 320,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 317,
+                  },
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "id": 62,
+                    "kind": "expressionId",
+                    "name": {
+                      "id": 61,
+                      "kind": "id",
+                      "name": "a",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "a",
+                          "endIdx": 328,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 327,
+                        },
+                      },
+                    },
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 328,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 327,
+                      },
+                    },
+                  },
+                  {
+                    "arguments": [
+                      {
+                        "id": 65,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 64,
+                          "kind": "id",
+                          "name": "b",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "b",
+                              "endIdx": 335,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 334,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 335,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 334,
+                          },
+                        },
+                      },
+                      {
+                        "id": 67,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 66,
+                          "kind": "id",
+                          "name": "c",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "c",
+                              "endIdx": 338,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 337,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 338,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 337,
+                          },
+                        },
+                      },
+                    ],
+                    "function": {
+                      "id": 63,
+                      "kind": "id",
+                      "name": "add",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "add",
+                          "endIdx": 333,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 330,
+                        },
+                      },
+                    },
+                    "id": 68,
+                    "kind": "expressionCall",
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 339,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 330,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 60,
+                  "kind": "id",
+                  "name": "add",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "add",
+                      "endIdx": 326,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 323,
+                    },
+                  },
+                },
+                "id": 69,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 340,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 323,
+                  },
+                },
+              },
+            },
+            {
+              "id": 99,
+              "kind": "statementAssign",
+              "lvalue": {
+                "field": {
+                  "id": 73,
+                  "kind": "id",
+                  "name": "x",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "x",
+                      "endIdx": 358,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 357,
+                    },
+                  },
+                },
+                "id": 74,
+                "kind": "expressionField",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 358,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 350,
+                  },
+                },
+                "struct": {
+                  "id": 72,
+                  "kind": "expressionId",
+                  "name": {
+                    "id": 71,
+                    "kind": "id",
+                    "name": "player",
+                    "source": {
+                      "interval": Interval {
+                        "_contents": "player",
+                        "endIdx": 356,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 350,
+                      },
+                    },
+                  },
+                  "source": {
+                    "interval": Interval {
+                      "endIdx": 356,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 350,
+                    },
+                  },
+                },
+              },
+              "source": {
+                "interval": Interval {
+                  "endIdx": 415,
+                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                  "startIdx": 350,
+                },
+              },
+              "value": {
+                "arguments": [
+                  {
+                    "arguments": [
+                      {
+                        "id": 78,
+                        "kind": "expressionId",
+                        "name": {
+                          "id": 77,
+                          "kind": "id",
+                          "name": "a",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "a",
+                              "endIdx": 373,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 372,
+                            },
+                          },
+                        },
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 373,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 372,
+                          },
+                        },
+                      },
+                    ],
+                    "function": {
+                      "id": 76,
+                      "kind": "id",
+                      "name": "double",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "double",
+                          "endIdx": 371,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 365,
+                        },
+                      },
+                    },
+                    "id": 79,
+                    "kind": "expressionCall",
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 374,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 365,
+                      },
+                    },
+                  },
+                  {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 84,
+                            "kind": "expressionBinary",
+                            "left": {
+                              "id": 82,
+                              "kind": "integerLiteral",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "1",
+                                  "endIdx": 385,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 384,
+                                },
+                              },
+                              "value": "1",
+                            },
+                            "op": "+",
+                            "right": {
+                              "id": 83,
+                              "kind": "integerLiteral",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "2",
+                                  "endIdx": 389,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 388,
+                                },
+                              },
+                              "value": "2",
+                            },
+                            "source": {
+                              "interval": Interval {
+                                "endIdx": 389,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 384,
+                              },
+                            },
+                          },
+                          {
+                            "id": 85,
+                            "kind": "integerLiteral",
+                            "source": {
+                              "interval": Interval {
+                                "_contents": "3",
+                                "endIdx": 392,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 391,
+                              },
+                            },
+                            "value": "3",
+                          },
+                        ],
+                        "function": {
+                          "id": 81,
+                          "kind": "id",
+                          "name": "add",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "add",
+                              "endIdx": 383,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 380,
+                            },
+                          },
+                        },
+                        "id": 86,
+                        "kind": "expressionCall",
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 393,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 380,
+                          },
+                        },
+                      },
+                      {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "id": 90,
+                                "kind": "expressionId",
+                                "name": {
+                                  "id": 89,
+                                  "kind": "id",
+                                  "name": "b",
+                                  "source": {
+                                    "interval": Interval {
+                                      "_contents": "b",
+                                      "endIdx": 404,
+                                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                      "startIdx": 403,
+                                    },
+                                  },
+                                },
+                                "source": {
+                                  "interval": Interval {
+                                    "endIdx": 404,
+                                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                    "startIdx": 403,
+                                  },
+                                },
+                              },
+                              {
+                                "id": 92,
+                                "kind": "expressionId",
+                                "name": {
+                                  "id": 91,
+                                  "kind": "id",
+                                  "name": "c",
+                                  "source": {
+                                    "interval": Interval {
+                                      "_contents": "c",
+                                      "endIdx": 407,
+                                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                      "startIdx": 406,
+                                    },
+                                  },
+                                },
+                                "source": {
+                                  "interval": Interval {
+                                    "endIdx": 407,
+                                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                    "startIdx": 406,
+                                  },
+                                },
+                              },
+                            ],
+                            "function": {
+                              "id": 88,
+                              "kind": "id",
+                              "name": "add",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "add",
+                                  "endIdx": 402,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 399,
+                                },
+                              },
+                            },
+                            "id": 93,
+                            "kind": "expressionCall",
+                            "source": {
+                              "interval": Interval {
+                                "endIdx": 408,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 399,
+                              },
+                            },
+                          },
+                          {
+                            "id": 95,
+                            "kind": "expressionId",
+                            "name": {
+                              "id": 94,
+                              "kind": "id",
+                              "name": "d",
+                              "source": {
+                                "interval": Interval {
+                                  "_contents": "d",
+                                  "endIdx": 411,
+                                  "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                  "startIdx": 410,
+                                },
+                              },
+                            },
+                            "source": {
+                              "interval": Interval {
+                                "endIdx": 411,
+                                "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                                "startIdx": 410,
+                              },
+                            },
+                          },
+                        ],
+                        "function": {
+                          "id": 87,
+                          "kind": "id",
+                          "name": "add",
+                          "source": {
+                            "interval": Interval {
+                              "_contents": "add",
+                              "endIdx": 398,
+                              "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                              "startIdx": 395,
+                            },
+                          },
+                        },
+                        "id": 96,
+                        "kind": "expressionCall",
+                        "source": {
+                          "interval": Interval {
+                            "endIdx": 412,
+                            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                            "startIdx": 395,
+                          },
+                        },
+                      },
+                    ],
+                    "function": {
+                      "id": 80,
+                      "kind": "id",
+                      "name": "add",
+                      "source": {
+                        "interval": Interval {
+                          "_contents": "add",
+                          "endIdx": 379,
+                          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                          "startIdx": 376,
+                        },
+                      },
+                    },
+                    "id": 97,
+                    "kind": "expressionCall",
+                    "source": {
+                      "interval": Interval {
+                        "endIdx": 413,
+                        "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                        "startIdx": 376,
+                      },
+                    },
+                  },
+                ],
+                "function": {
+                  "id": 75,
+                  "kind": "id",
+                  "name": "add",
+                  "source": {
+                    "interval": Interval {
+                      "_contents": "add",
+                      "endIdx": 364,
+                      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                      "startIdx": 361,
+                    },
+                  },
+                },
+                "id": 98,
+                "kind": "expressionCall",
+                "source": {
+                  "interval": Interval {
+                    "endIdx": 414,
+                    "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+                    "startIdx": 361,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "house",
+      "name": {
+        "id": 38,
+        "kind": "id",
+        "name": "TestHouse",
+        "source": {
+          "interval": Interval {
+            "_contents": "TestHouse",
+            "endIdx": 181,
+            "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+            "startIdx": 172,
+          },
+        },
+      },
+      "source": {
+        "interval": Interval {
+          "endIdx": 423,
+          "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+          "startIdx": 166,
+        },
+      },
+    },
+  ],
+  "kind": "module",
+  "source": {
+    "interval": Interval {
+      "endIdx": 423,
+      "sourceString": "fun double(x: int): int {
+    return x * 2;
+}
+
+fun add(x: int, y: int): int {
+    if (x == y) {
+        return double(x);
+    } else {
+        return x + y;
+    }
+}
+
+house TestHouse {
+    player x: int;
+
+    handle JOIN {
+        let a: int = 1;
+        let b: int = 2;
+        let c: int = double(a);
+        let d: int = add(a, add(b, c));
+        player.x = add(double(a), add(add(1 + 2, 3), add(add(b, c), d)));
+    }
+}",
+      "startIdx": 0,
+    },
+  },
+}
+`;
+
 exports[`Grammar should parse id 1`] = `
 {
   "id": 8,

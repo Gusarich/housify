@@ -1165,6 +1165,184 @@ CompilerContext {
 }
 `;
 
+exports[`Resolver should resolve inline-function-calls 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "int",
+    },
+    8 => {
+      "type": "int",
+    },
+    9 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    23 => {
+      "type": "int",
+    },
+    24 => {
+      "type": "bool",
+    },
+    27 => {
+      "type": "int",
+    },
+    28 => {
+      "type": "int",
+    },
+    31 => {
+      "type": "int",
+    },
+    33 => {
+      "type": "int",
+    },
+    34 => {
+      "type": "int",
+    },
+    45 => {
+      "type": "int",
+    },
+    49 => {
+      "type": "int",
+    },
+    55 => {
+      "type": "int",
+    },
+    56 => {
+      "type": "int",
+    },
+    62 => {
+      "type": "int",
+    },
+    65 => {
+      "type": "int",
+    },
+    67 => {
+      "type": "int",
+    },
+    68 => {
+      "type": "int",
+    },
+    69 => {
+      "type": "int",
+    },
+    72 => {
+      "fields": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "name": "player",
+      "type": "struct",
+    },
+    74 => {
+      "type": "int",
+    },
+    78 => {
+      "type": "int",
+    },
+    79 => {
+      "type": "int",
+    },
+    82 => {
+      "type": "int",
+    },
+    83 => {
+      "type": "int",
+    },
+    84 => {
+      "type": "int",
+    },
+    85 => {
+      "type": "int",
+    },
+    86 => {
+      "type": "int",
+    },
+    90 => {
+      "type": "int",
+    },
+    92 => {
+      "type": "int",
+    },
+    93 => {
+      "type": "int",
+    },
+    95 => {
+      "type": "int",
+    },
+    96 => {
+      "type": "int",
+    },
+    97 => {
+      "type": "int",
+    },
+    98 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "TestHouse" => {
+      "globalStats": [],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+    },
+  },
+  "inlineFunctions": Map {
+    "double" => {
+      "astId": 11,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "add" => {
+      "astId": 37,
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
 exports[`Resolver should resolve inline-function-unordered-calls 1`] = `
 CompilerContext {
   "expressions": Map {

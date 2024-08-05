@@ -143,7 +143,7 @@ describe('Emulator', () => {
         expect(actions).toHaveLength(0);
     });
 
-    it('should emulate multiple handlers', async () => {
+    it('should emulate multiple handlers', () => {
         const module = compile(
             cases.find((c) => c.name === 'multiple-handlers')!.code,
             false,
@@ -173,7 +173,7 @@ describe('Emulator', () => {
         expect(actions).toHaveLength(0);
     });
 
-    it('should emulate booleans', async () => {
+    it('should emulate booleans', () => {
         const module = compile(
             cases.find((c) => c.name === 'booleans')!.code,
             false,
@@ -193,6 +193,24 @@ describe('Emulator', () => {
         expect(house.globalStat('e')).toBe(0);
         expect(house.globalStat('f')).toBe(1);
         expect(house.globalStat('g')).toBe(1);
+
+        const actions = house.collect();
+        expect(actions).toHaveLength(0);
+    });
+
+    it('should emulate inline functions', () => {
+        const module = compile(
+            cases.find((c) => c.name === 'inline-functions')!.code,
+            false,
+        );
+        expect(module).toMatchSnapshot();
+        const house = new EmulatedHouse(module.houses[0]!);
+
+        house.emit(EventType.JOIN, 'player');
+
+        expect(house.globalStat('x')).toBe(4);
+        expect(house.globalStat('y')).toBe(7);
+        expect(house.globalStat('z')).toBe(17);
 
         const actions = house.collect();
         expect(actions).toHaveLength(0);
