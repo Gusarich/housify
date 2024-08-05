@@ -10,10 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   Static constants that are calculated at compile time: PR [#78](https://github.com/Gusarich/housify/pull/78)
+-   Inline functions: PR [#81](https://github.com/Gusarich/housify/pull/81)
 
 ### Changed
 
 ### Fixed
+
+-   Unused temporary stats are now set to 0 in the end of the handlers: PR [#81](https://github.com/Gusarich/housify/pull/81)
 
 ## [0.2.1] - 2024-07-24
 
