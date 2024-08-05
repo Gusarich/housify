@@ -1,0 +1,11 @@
+fun testInt(x: int): bool {
+    if (x == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+fun test(x: int): int {
+    return testInt(testInt(x));
+}

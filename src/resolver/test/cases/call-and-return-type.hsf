@@ -1,0 +1,23 @@
+fun testInt(x: bool): int {
+    if (x) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+fun testBool(x: int): bool {
+    if (x == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+fun testIntBool(x: int): int {
+    return testInt(testBool(x));
+}
+
+fun testBoolInt(x: bool): bool {
+    return testBool(testInt(x));
+}

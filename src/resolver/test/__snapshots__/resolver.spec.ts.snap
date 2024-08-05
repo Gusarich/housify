@@ -80,6 +80,26 @@ exports[`Resolver should fail binary-operation-between-boolean-and-integer 1`] =
 ResolveError: Operands must be integers, got 'bool'"
 `;
 
+exports[`Resolver should fail call-argument-type-mismatch 1`] = `
+"Line 10, col 20:
+   9 | fun test(x: int): int {
+> 10 |     return testInt(testInt(x));
+                          ^~~~~~~~~~
+  11 | }
+
+ResolveError: Argument 0 must be of type 'int', got 'bool'"
+`;
+
+exports[`Resolver should fail call-type-mismatch 1`] = `
+"Line 10, col 12:
+   9 | fun test(x: int): int {
+> 10 |     return testInt(x);
+                  ^~~~~~~~~~
+  11 | }
+
+ResolveError: Expected return type 'int', got 'bool'"
+`;
+
 exports[`Resolver should fail condition-not-boolean 1`] = `
 "Line 3, col 13:
   2 |     handle JOIN {
@@ -956,6 +976,112 @@ CompilerContext {
     },
   },
   "inlineFunctions": Map {},
+  "staticConstants": Map {},
+  "types": Map {},
+}
+`;
+
+exports[`Resolver should resolve call-and-return-type 1`] = `
+CompilerContext {
+  "expressions": Map {
+    7 => {
+      "type": "bool",
+    },
+    8 => {
+      "type": "int",
+    },
+    10 => {
+      "type": "int",
+    },
+    20 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    22 => {
+      "type": "bool",
+    },
+    23 => {
+      "type": "bool",
+    },
+    25 => {
+      "type": "bool",
+    },
+    37 => {
+      "type": "int",
+    },
+    38 => {
+      "type": "bool",
+    },
+    39 => {
+      "type": "int",
+    },
+    50 => {
+      "type": "bool",
+    },
+    51 => {
+      "type": "int",
+    },
+    52 => {
+      "type": "bool",
+    },
+  },
+  "houses": Map {},
+  "inlineFunctions": Map {
+    "testInt" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testBool" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "bool",
+      },
+    },
+    "testIntBool" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testBoolInt" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "bool",
+      },
+    },
+  },
   "staticConstants": Map {},
   "types": Map {},
 }
