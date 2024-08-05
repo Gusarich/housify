@@ -409,8 +409,15 @@ export function processStatement(
                         statement.expression.source,
                     );
                 }
-                sctx.setAlwaysReturns();
+            } else {
+                if (sctx.expectedReturnType.type !== 'void') {
+                    throw new ResolveError(
+                        `Expected return type '${sctx.expectedReturnType.type}', got 'void'`,
+                        statement.source,
+                    );
+                }
             }
+            sctx.setAlwaysReturns();
         }
     }
 }

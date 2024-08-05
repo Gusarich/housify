@@ -157,6 +157,35 @@ exports[`Resolver should fail inline-functions-not-always-returns3 1`] = `
 ResolveError: Function 'testFunction' does not always return a value"
 `;
 
+exports[`Resolver should fail inline-functions-return-type-mismatch 1`] = `
+"Line 3, col 16:
+  2 |     if (x) {
+> 3 |         return true;
+                     ^~~~
+  4 |     } else {
+
+ResolveError: Expected return type 'int', got 'bool'"
+`;
+
+exports[`Resolver should fail inline-functions-void 1`] = `
+"Line 1, col 28:
+> 1 | fun testFunction(x: bool): void {
+                                 ^~~~
+  2 |     return;
+
+ResolveError: Cannot declare a function of type 'void'"
+`;
+
+exports[`Resolver should fail inline-functions-void-return 1`] = `
+"Line 2, col 5:
+  1 | fun testFunction(x: bool): int {
+> 2 |     return;
+          ^~~~~~~
+  3 | }
+
+ResolveError: Expected return type 'int', got 'void'"
+`;
+
 exports[`Resolver should fail let-statement-value-type-mismatch 1`] = `
 "Line 3, col 9:
   2 |     handle BLOCK_BREAK {
