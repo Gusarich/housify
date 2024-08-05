@@ -949,9 +949,244 @@ CompilerContext {
 }
 `;
 
+exports[`Resolver should resolve inline-function-unordered-calls 1`] = `
+CompilerContext {
+  "expressions": Map {
+    19 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "bool",
+    },
+    22 => {
+      "type": "int",
+    },
+    25 => {
+      "type": "int",
+    },
+    27 => {
+      "type": "bool",
+    },
+    28 => {
+      "type": "int",
+    },
+    29 => {
+      "type": "bool",
+    },
+    30 => {
+      "type": "int",
+    },
+    32 => {
+      "type": "int",
+    },
+    33 => {
+      "type": "int",
+    },
+    48 => {
+      "type": "int",
+    },
+    49 => {
+      "type": "int",
+    },
+    50 => {
+      "type": "int",
+    },
+    53 => {
+      "type": "bool",
+    },
+    55 => {
+      "type": "int",
+    },
+    56 => {
+      "type": "int",
+    },
+    57 => {
+      "type": "bool",
+    },
+    58 => {
+      "type": "bool",
+    },
+    60 => {
+      "type": "int",
+    },
+    62 => {
+      "type": "int",
+    },
+    63 => {
+      "type": "int",
+    },
+    77 => {
+      "type": "int",
+    },
+    81 => {
+      "type": "bool",
+    },
+    87 => {
+      "type": "int",
+    },
+    89 => {
+      "type": "bool",
+    },
+    90 => {
+      "type": "int",
+    },
+    96 => {
+      "type": "int",
+    },
+    98 => {
+      "type": "bool",
+    },
+    99 => {
+      "type": "int",
+    },
+  },
+  "houses": Map {
+    "MyHouse" => {
+      "globalStats": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+      ],
+      "handlers": [
+        "JOIN",
+      ],
+      "playerStats": [
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+    },
+  },
+  "inlineFunctions": Map {
+    "testFunction2" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+    "testFunction" => {
+      "parameters": [
+        {
+          "name": "x",
+          "type": {
+            "type": "int",
+          },
+        },
+        {
+          "name": "y",
+          "type": {
+            "type": "bool",
+          },
+        },
+      ],
+      "type": {
+        "type": "int",
+      },
+    },
+  },
+  "staticConstants": Map {
+    "xx" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "1",
+    },
+    "yy" => {
+      "type": {
+        "type": "bool",
+      },
+      "value": "1",
+    },
+  },
+  "types": Map {},
+}
+`;
+
 exports[`Resolver should resolve inline-functions 1`] = `
 CompilerContext {
   "expressions": Map {
+    20 => {
+      "type": "int",
+    },
+    21 => {
+      "type": "int",
+    },
+    22 => {
+      "type": "int",
+    },
+    25 => {
+      "type": "bool",
+    },
+    27 => {
+      "type": "int",
+    },
+    28 => {
+      "type": "int",
+    },
+    29 => {
+      "type": "bool",
+    },
+    30 => {
+      "type": "bool",
+    },
+    32 => {
+      "type": "int",
+    },
+    34 => {
+      "type": "int",
+    },
+    35 => {
+      "type": "int",
+    },
+    49 => {
+      "type": "int",
+    },
+    51 => {
+      "type": "bool",
+    },
+    52 => {
+      "type": "int",
+    },
+    55 => {
+      "type": "int",
+    },
+    57 => {
+      "type": "bool",
+    },
+    58 => {
+      "type": "int",
+    },
+    59 => {
+      "type": "bool",
+    },
+    60 => {
+      "type": "int",
+    },
+    62 => {
+      "type": "int",
+    },
+    63 => {
+      "type": "int",
+    },
     77 => {
       "type": "int",
     },
@@ -1040,7 +1275,20 @@ CompilerContext {
       },
     },
   },
-  "staticConstants": Map {},
+  "staticConstants": Map {
+    "xx" => {
+      "type": {
+        "type": "int",
+      },
+      "value": "1",
+    },
+    "yy" => {
+      "type": {
+        "type": "bool",
+      },
+      "value": "1",
+    },
+  },
   "types": Map {},
 }
 `;

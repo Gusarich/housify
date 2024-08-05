@@ -1,3 +1,6 @@
+const xx: int = 1;
+const yy: bool = true;
+
 fun testFunction(x: int, y: bool): int {
     let z: int = x + 1;
     if (y && z > 0) {
@@ -8,7 +11,7 @@ fun testFunction(x: int, y: bool): int {
 }
 
 fun testFunction2(x: int, y: bool): int {
-    if (testFunction(x, y) == testFunction(global.x, global.y)) {
+    if (testFunction(x, y) == testFunction(xx, yy)) {
         return 123;
     } else {
         return -123;

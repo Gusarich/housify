@@ -356,6 +356,9 @@ export function processStatement(
                 for (const elseStatement of statement.else) {
                     processStatement(elseStatement, ctx, sctxElse);
                 }
+                if (sctxThen.alwaysReturns && sctxElse.alwaysReturns) {
+                    sctx.setAlwaysReturns();
+                }
             }
             break;
         }
